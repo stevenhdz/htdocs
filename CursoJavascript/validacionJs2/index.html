@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Javascript: funciones...</title>
+	<meta charset="utf-8"/>
+	<script src="js/script.js"></script>
+	<link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body onload="foco()">
+	
+	<form id="frm">
+		
+
+		<label for="nombre">Nombre: </label>
+		<input type="text" name="nombre" id="nombre" value="" /><br />
+
+		<label for="email">E-mail: </label>
+		<input type="text" name="email" id="email" value="" /><br />
+		<label for="email">Salario: </label>
+		<input type="text" name="salario" id="salario" value="" /><br />
+
+		<label for="fechaPag">Fecha de Pago: </label>
+		<input type="text" id="fechaPag" name="fechaPag" size="11" maxlength="11" placeholder="dd/mm/aaaa" /><br /><br />
+
+	<label for="nivEstudios">Nivel de Estudios: </label>
+		<select id="nivEstudios" class="alinDer">
+			<option value=""></option>
+			<option value="Tecnico">Tecnico</option>
+			<option value="Tecnologo">Tecnologo</option>
+			<option value="Profesional">Profesional</option>
+			<option value="Especialista">Especialista</option>
+			<option value="Magister">Magister</option>
+			<option value="Doctorado">Doctorado</option>
+			
+		</select><br /><br />
+
+	<span>Deporte preferido:</span><br />
+		<input type="radio" id="depfu" name="dep" /><label for="depfu">Futbol</label><br />
+		<input type="radio" id="depba" name="dep" /><label for="depba">Baskeball</label><br />
+		<input type="radio" id="depvo" name="dep" /><label for="depvo">Voleibol</label><br />
+		<input type="radio" id="depba" name="dep" /><label for="depbm">Balon mano</label><br />
+		<input type="radio" id="depmi" name="dep" /><label for="depmi">Microfutbol</label><br />
+		<input type="radio" id="DepOt" name="dep" /><label for="DepOt">Otro</label><br />
+		<label for="otroDep">Cual: </label>
+		<input type="text" id="otroDep" name="otroDep" size="30" maxlength="30" value="" /><br /><br />
+		
+		<input type="button" value="Enviar" onclick="mostrar()" />
+	</form>
+</body>
+</html>

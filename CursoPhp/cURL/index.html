@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+    <pre> BOOSTRAP + PHP + CURL conectados a API</pre>
+    <form action="http://localhost:8888/CursoPhp/cURL/PostCurl.php" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav class="navbar navbar-light bg-blue btn btn-primary">
+                        <div class="container">
+                          <p class="modal-title" align="center">Post</p>
+                        </div>
+                      </nav>
+                    <input class="form-control" type="text" placeholder="name" name="name">
+                    <input class="form-control" type="text" placeholder="email" name="email">
+                    <input class="form-control" type="text" placeholder="password" name="password">
+                    <input class="form-control btn btn-primary" type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <form action="http://localhost:8888/CursoPhp/cURL/PutCurl.php" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav class="navbar navbar-light bg-blue btn btn-primary">
+                        <div class="container">
+                          <p class="modal-title" align="center">Put</p>
+                        </div>
+                      </nav>
+                    <input class="form-control" type="number" placeholder="id" name="id">
+                    <input class="form-control" type="text" placeholder="name" name="name">
+                    <input class="form-control" type="text" placeholder="email" name="email">
+                    <input class="form-control" type="text" placeholder="password" name="password">
+                    <input class="form-control btn btn-success" type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <form action="http://localhost:8888/CursoPhp/cURL/DeleteCurl.php" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav class="navbar navbar-light bg-blue btn btn-primary">
+                        <div class="container">
+                          <p class="modal-title" align="center">Delete</p>
+                        </div>
+                      </nav>
+                    <input class="form-control" type="text" placeholder="id" name="id">
+                    <input class="form-control btn btn-danger" type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <form action="http://localhost:8888/CursoPhp/cURL/GetCurl.php" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav class="navbar navbar-light bg-blue btn btn-primary">
+                        <div class="container">
+                          <p class="modal-title" align="center">Get</p>
+                        </div>
+                      </nav>
+                    <input class="form-control btn btn-warning" type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <form action="http://localhost:8888/CursoPhp/cURL/GetCurlid.php" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav class="navbar navbar-light bg-blue btn btn-primary">
+                        <div class="container">
+                          <p class="modal-title" align="center">Get id</p>
+                        </div>
+                      </nav>
+                    <input class="form-control" type="number" placeholder="id" name="id">
+                    <input class="form-control" type="text" placeholder="name" name="name">
+                    <input class="form-control" type="text" placeholder="email" name="email">
+                    <input class="form-control" type="text" placeholder="password" name="password">
+                    <input class="form-control btn btn-warning" type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+
+</html>

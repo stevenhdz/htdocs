@@ -1,0 +1,2 @@
+ErrorDocument 404 http://localhost:8888/CursoPhp/404.php
+ErrorDocument 400 http://localhost:8888/CursoPhp/400.php

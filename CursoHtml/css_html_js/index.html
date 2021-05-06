@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Parcial 2" />
+  <meta name="author" content="Steven hernandez" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="js/function.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body onload="foco()">
+  <img src="image/logo-universdad.png" alt="" srcset="" height="90px" width="300px" align="center">
+  <form action="" method="get" name="form">
+    <table id="customers">
+      <thead>
+        <tr>
+          <th id="" colspan="2">
+            <pre>INFORMACION DEL EMPLEADO</pre>
+          </th>
+        </tr>
+        <tr>
+          <th id="" colspan="2">
+            <pre>Ingrese los siguientes datos:</pre>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><label for="nombre">Nombre:</label></td>
+          <td><input type="text" name="nombre" id="nombre" /></td>
+        </tr>
+        <tr>
+          <td><label for="estatura">Estatura:</label></td>
+          <td><input type="text" name="estatura" id="estatura" /></td>
+        </tr>
+        <tr>
+          <td><label>Sexo:</label></td>
+          <td>
+            <input type="radio" name="sexo" id="sexom" />
+            <label for="sexom">M</label>
+            <input type="radio" name="sexo" id="sexof" />
+            <label for="sexof">F</label>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="salario">Salario:</label></td>
+          <td>
+            <input type="number" name="salario" id="salario" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="dias">Dias trabajados:</label></td>
+          <td>
+            <input type="number" name="dias" id="dias" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td>
+            <input type="email" name="email" id="email" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="date">Fecha:</label></td>
+          <td>
+            <input type="date" name="date" id="date" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="lenguaje">Lenguaje Preferido:</label></td>
+          <td>
+            <select name="lenguaje" id="lenguaje">
+              <option value="">Seleccione...</option>
+              <option value="Java">Java</option>
+              <option value="C++">C++</option>
+              <option value="Python">Python</option>
+              <option value="Ruby">Ruby</option>
+              <option value="C#">C#</option>
+              <option value="Php">Php</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="salarioP">Salario a pagar:</label></td>
+          <td>
+            <input type="number" name="salarioP" id="salarioP" disabled="disabled" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" id="button">
+            <input type="button" onclick="calc()" value="Calcular" />
+            <input type="button" onclick="mostrar()" value="Enviar" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</body>
+
+</html>

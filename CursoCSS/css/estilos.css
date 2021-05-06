@@ -1,0 +1,25 @@
+p {
+    color: brown;
+    font-family: tahoma;
+    font-size: 20pt;
+    text-align: justify;
+}
+h1 {
+    color:darkgoldenrod;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30pt;
+    text-align: center;
+}
+h2 {
+    color:cadetblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25pt;
+}
+body {
+    background-color:aliceblue;
+    background-image: url('../img/oro.jpg');
+    margin-top: 2cm;
+    margin-left: 4cm;
+    margin-right: 3cm;
+    margin-bottom: 2cm;
+}
