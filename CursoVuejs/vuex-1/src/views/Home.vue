@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {mapState, mapMutations} from 'vuex'
+import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -23,7 +23,8 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['incrementar'])
+    ...mapMutations(['incrementar']),
+    ...mapActions(['accionIncrementar'])
   },
 }
 </script>
