@@ -22,7 +22,7 @@ const productos = Vue.component("productos", {
                 .post({addproductos: true,newText: com.f})
                 .then((r) => {
                     alert(JSON.stringify(r.data));
-                    window.location.replace('http://localhost:8881/Cursovuejs/CursoVuejsCdn/apps/#/listProducts')
+                    window.location.replace('http://localhost:8882/Cursovuejs/CursoVuejsCdn/apps/#/listProducts')
                 })
                 .catch((r) => {
                     console.log(r);
