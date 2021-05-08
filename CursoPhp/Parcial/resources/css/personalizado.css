@@ -1,0 +1,19 @@
+.buscador {
+	width: 25rem;
+	float: right;
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+    border: none;
+	border-bottom: 2px solid #17a2b8;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	outline: none;
+	position: absolute;
+    top: 80px;
+    left: 688px;
+}
