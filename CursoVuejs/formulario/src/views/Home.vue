@@ -1,60 +1,33 @@
 <template>
-    <form @submit.prevent="procesarForm">
-        <input type="text" class="form-control my-2" placeholder="Ingrese nombre" v-model.trim="tarea.nombre" />
+    <div>
+    <h1 class="my-5"> Formlarios con vuejs</h1>
 
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" v-model="tarea.categorias"
-                value="javascript" />
-            <label class="form-check-label" for="flexSwitchCheckDefault">Javascript</label>
-        </div>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1" v-model="tarea.categorias"
-                value="nodejs" />
-            <label class="form-check-label" for="flexSwitchCheckDefault1">Nodejs</label>
-        </div>
-
-        <div class="mt-2">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaul0"
-                    v-model="tarea.estado" value="urgente">
-                <label class="form-check-label" for="flexRadioDefaul0">
-                    Default radio
-                </label>
-            </div>
-
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaul1"
-                    v-model="tarea.estado" value="relax">
-                <label class="form-check-label" for="flexRadioDefaul1">
-                    Default radio
-                </label>
-            </div>
-        </div>
-
-
-        <div class="mt-2">
-            <input class="form-control" type="number" v-model.number="tarea.numero">
-        </div>
-
-        <button class="btn btn-dark mt-2 btn-block" type="submit" :disabled="bloquear">
-            Procesar
-        </button>
-
-        <p>
+        <form @submit.prevent="procesarForm">
+            <Input :tarea="tarea"/>
+        </form>
+        <hr>
+            <p>
             {{ tarea }}
-        </p>
-    </form>
+            </p>
+
+             <ListaTareas/>
+    </div>
 </template>
 
 <script>
+import Input from '../components/Input'
+import {mapActions} from 'vuex'
+import ListaTareas from '../components/ListaTareas.vue';
+const shortid = require('shortid')
+
     export default {
         name: "Home",
-        component: {},
+        components: { Input, ListaTareas },
         data() {
             return {
                 tarea: {
-                    nombre: "",
+                    id: '',
+                    nombre: '',
                     categorias: [],
                     estado: '',
                     numero: 0
@@ -62,6 +35,8 @@
             };
         },
         methods: {
+            ...mapActions(['setTareas']),
+            //npm i all json
             procesarForm(){
                 console.log(this.tarea)
                 if(this.tarea.nombre.trim() === ""){
@@ -69,11 +44,21 @@
                     return
                 }
                 console.log('no vacio')
-            }
-        },
-        computed:{
-            bloquear(){
-                return this.tarea.nombre.trim() === "" ? true : false
+                //generar id 
+                this.tarea.id = shortid.generate()
+                console.log(this.tarea.id)
+
+                //envio 
+                this.setTareas(this.tarea)
+
+                //ponerlos vacios o default
+                this.tarea = {
+                    id: '',
+                    nombre: '',
+                    categorias: [],
+                    estado: '',
+                    numero: 0
+                }
             }
         }
     };
