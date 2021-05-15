@@ -1,0 +1,49 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#ffbfe2",
+        "activityBar.activeBorder": "#ffbfe2",
+        "list.activeSelectionForeground": "#F44336",
+        "list.inactiveSelectionForeground": "#F44336",
+        "list.highlightForeground": "#F44336",
+        "scrollbarSlider.activeBackground": "#e4dcdb50",
+        "editorSuggestWidget.highlightForeground": "#F44336",
+        "textLink.foreground": "#F44336",
+        "progressBar.background": "#F44336",
+        "pickerGroup.foreground": "#F44336",
+        "notificationLink.foreground": "#F44336",
+        "editorWidget.resizeBorder": "#F44336",
+        "editorWidget.border": "#F44336",
+        "settings.modifiedItemIndicator": "#F44336",
+        "settings.headerForeground": "#F44336",
+        "panelTitle.activeBorder": "#F44336",
+        "breadcrumb.activeSelectionForeground": "#F44336",
+        "menu.selectionForeground": "#F44336",
+        "menubar.selectionForeground": "#F44336",
+        "editor.findMatchBorder": "#F44336",
+        "selection.background": "#F4433640",
+        "statusBarItem.remoteBackground": "#F44336",
+        "activityBar.background": "#028dff",
+        "titleBar.activeBackground": "#0071ce",
+        "titleBar.activeForeground": "#e7e7e7",
+        "activityBar.activeBackground": "#028dff",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.foreground": "#15202b",
+        "statusBar.background": "#0071ce",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#028dff",
+        "titleBar.inactiveBackground": "#0071ce99",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    
+        "filewatcher.commands": [
+            {
+                "match": "\\.*",
+                "isAsync": true,
+                "cmd": "echo 'archivo modificado en: ${file}, extension de archivo: ${fileExtname}, raiz: ${workspaceRoot}'",
+                "event": "onFileChange"
+            }        
+        ],
+        "peacock.color": "#0071ce"
+    
+}
