@@ -10,5 +10,6 @@ const store = new Vuex.Store({
     },
     getters: {
         all: state => state.all
-    }
+    },
+    actions: {}
 })

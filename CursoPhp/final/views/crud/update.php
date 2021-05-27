@@ -25,9 +25,7 @@ if ($_POST['updateone']) {
         ]
     );
 
-    printf("documento(s) %d Encontrado\n", $updateResult->getMatchedCount());
-    echo '<br>';
     printf("documento(s) %d Modificado\n", $updateResult->getModifiedCount());
 
-    header('Location: http://localhost:8882/final/views/index.php?id=3');
+    header('Location: http://localhost:8882/final/views/');
 }
