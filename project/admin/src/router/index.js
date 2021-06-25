@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Notifications from 'vue-notification'
+
 import routes from './routes'
 
-Vue.use(VueRouter).use(Notifications)
+Vue.use(VueRouter)
 
 /*
  * If not building with SSR mode, you can

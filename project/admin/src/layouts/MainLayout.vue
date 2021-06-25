@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          EasyMarket
+          Quasar App
         </q-toolbar-title>
 
-        <div> v{{ $q.version }}</div>
+        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
