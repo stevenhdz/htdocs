@@ -59,19 +59,19 @@ while (continuar == "S"):
                     print(x3)
                     if list != "":
                         print('    ')
-                        entrada2 = input("Ingrese nombre a reemplazar")
-                        entrada10 = input("Ingrese nombre nuevo")
+                        entrada2 = input("Ingrese nombre a reemplazar: ")
+                        entrada10 = input("Ingrese nombre nuevo: ")
                         print('    ')
-                        entrada3 = input("Ingrese el estrato a cambiar")
+                        entrada3 = input("Ingrese el estrato a cambiar: ")
                         entrada4 = input(
-                            "Ingrese el estrato nuevo entre 1,2 o 3:")
+                            "Ingrese el estrato nuevo entre 1,2 o 3: ")
                         print('    ')
                         entrada7 = input(
                             "Numero del grado del cual va a cambiar: ")
-                        entrada8 = input("Numero nuevo del grado:")
+                        entrada8 = input("Numero nuevo del grado: ")
                         print('    ')
                         entrada01 = input("Promedio ponderado a cambiar: ")
-                        entrada33 = input("Promedio ponderado nuevo")
+                        entrada33 = input("Promedio ponderado nuevo: ")
 
                         if entrada2 != "" and len(entrada3) != 0 and len(entrada7)!= 0 and len(entrada01) != 0:
                             for x in list:
