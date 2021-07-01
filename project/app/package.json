@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "productName": "EasyMarket Client",
   "author": "Alexander Jimenez <alexanderjmz2015@icloud.com>",
   "private": true,
   "scripts": {

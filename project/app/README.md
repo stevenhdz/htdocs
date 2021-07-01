@@ -1,4 +1,4 @@
-# Quasar App (app)
+# Quasar App (EasyMarket Client)
 
 A Quasar Framework app
 

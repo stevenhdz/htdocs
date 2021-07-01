@@ -21,26 +21,25 @@
           <q-page-container>
             <q-page padding>
               <q-card class="my-card">
-               <div v-for="n in f" :key="n">
-                <q-img
-                  :src="n.url" />
-                <q-card-section>
-                  <div class="row no-wrap items-center">
-                    <div class="col text-h6 ellipsis">
-                      {{ n.name }}
+                <div v-for="n in f" :key="n">
+                  <q-img :src="n.url" />
+                  <q-card-section>
+                    <div class="row no-wrap items-center">
+                      <div class="col text-h6 ellipsis">
+                        {{ n.name }}
+                      </div>
                     </div>
-                  </div>
-                </q-card-section>
-                <q-card-section class="q-pt-none">
-                  <div class="text-subtitle1">
-                    <q-icon color="primary" name="sell" />
-                    {{ n.price }}
-                  </div>
-                  <div class="text-caption text-grey">
-                    Descripcion: {{ n.description }}
-                  </div>
-                </q-card-section>
-                <q-separator />
+                  </q-card-section>
+                  <q-card-section class="q-pt-none">
+                    <div class="text-subtitle1">
+                      <q-icon color="primary" name="sell" />
+                      {{ n.price }}
+                    </div>
+                    <div class="text-caption text-grey">
+                      Descripcion: {{ n.description }}
+                    </div>
+                  </q-card-section>
+                  <q-separator />
                 </div>
               </q-card>
               <br />
@@ -97,8 +96,8 @@
 
     <div class="q-pa-md">
       <div class="q-gutter-md">
-        <q-select filled v-model="model" :options="f" label="Seleccionar producto" multiple emit-value
-          map-options :dense="dense">
+        <q-select filled v-model="model" :options="f" label="Seleccionar producto" multiple emit-value map-options
+          :dense="dense">
           <template v-slot:option="{
               itemProps,
               itemEvents,
@@ -123,35 +122,38 @@
 
 
     <div class="q-pa-sm">
-      <q-table title="Carrito de productos" table-colspan="1" :data="n"  :columns="columns" dense row-key="id">
+      <q-table title="Carrito de productos" table-colspan="1" :data="n" :columns="columns" dense row-key="id">
         <template v-slot:body="props">
           <q-tr :props="props">
             <q-td auto-width>
-            <q-btn size="sm" color="accent" round dense @click="props.expand = !props.expand" :icon="props.expand != 0 ? 'remove' : 'add'" />
-          </q-td>
+              <q-btn size="sm" color="accent" round dense @click="props.expand = !props.expand"
+                :icon="props.expand != 0 ? 'remove' : 'add'" />
+            </q-td>
             <q-td key="name" :props="props">
               {{ props.row.name }}
             </q-td>
             <q-td key="price" :props="props">
-                {{ props.row.price }}
+              {{ props.row.price }}
             </q-td>
             <q-td key="discount" :props="props">
-              <q-badge v-if="props.row.discount == props.row.discount " :color="props.row.discount ? 'purple' : 'white'" >
+              <q-badge v-if="props.row.discount == props.row.discount "
+                :color="props.row.discount ? 'purple' : 'white'">
                 {{ props.row.discount }}
               </q-badge>
             </q-td>
             <q-td key="cantidad" :props="props">
               <q-btn size="sm" color="blue" round dense icon="add" @click="incrementCounter(props.rowIndex)" />
-              {{ props.row.cantidad }} <!-- {{props.key}} -->
+              {{ props.row.cantidad }}
+              <!-- {{props.key}} -->
               <q-btn size="sm" color="blue" round dense icon="remove" @click="incrementCounter1(props.rowIndex)" />
             </q-td>
 
           </q-tr>
           <q-tr v-show="props.expand" :props="props">
-          <q-td colspan="100%">
-            <div class="text-left">Descripcion producto: {{ props.row.description }}.</div>
-          </q-td>
-        </q-tr>
+            <q-td colspan="100%">
+              <div class="text-left">Descripcion producto: {{ props.row.description }}.</div>
+            </q-td>
+          </q-tr>
         </template>
 
       </q-table>
@@ -177,8 +179,8 @@
         </template>
       </q-btn>
 
-      <q-btn :loading="loading4" color="primary" @click="
-          simulateProgress(4);
+      <q-btn v-if=" viewBtn == true" :loading="loading3" color="primary" @click="
+          simulateProgress1(3);
           empuje();
           sum();
           porcentaje();
@@ -195,8 +197,8 @@
     <div class="q-ma-md">
       <p style="text-align: center">Total</p>
       <q-separator color="blue" inset />
-      <q-scroll-area :thumb-style="thumbStyle" :content-style="contentStyle" :content-active-style="contentActiveStyle"
-        style="height: 85px; max-width: auto;">
+      <q-scroll-area v-if=" viewBtn2 == true" :thumb-style="thumbStyle" :content-style="contentStyle"
+        :content-active-style="contentActiveStyle" style="height: 85px; max-width: auto;">
         <pre v-if="x == ''" style="text-align: center; font-size:x-large"></pre>
         <pre v-else style="text-align: center; font-size:x-large">{{
           "$ " + totaldisc
@@ -204,8 +206,8 @@
       </q-scroll-area>
     </div>
 
-    <div v-if="n != ''" class="q-pa-md q-gutter-sm">
-      <q-btn :loading="loading3" color="primary" @click="send()" style="width: 130px; display: block; margin: 0 auto;">
+    <div v-if="n != '' && viewBtn3 == true" class="q-pa-md q-gutter-sm">
+      <q-btn :loading="loading2" color="primary" @click="send()" style="width: 130px; display: block; margin: 0 auto;">
         Enviar
         <template v-slot:loading>
           <q-spinner-hourglass class="on-left" />
@@ -229,22 +231,22 @@
       return {
         f: [],
         filter: '',
-columns: [
-        {
-          name: '',
-          required: true,
-          label: '',
-          align: 'left',
-          field: row => row.name,
-          format: val => `${val}`,
-          sortable: true
-        },
-        { name: 'name', align: 'center', label: 'Product', field: 'name', sortable: true },
-        { name: 'price', align: 'center', label: 'precio', field: 'price', sortable: true },
-        { name: 'discount', align: 'center' , label: 'desc %', field: 'discount', sortable: true },
-        { name: 'cantidad', align: 'center', label: 'cantidad', field: 'cantidad' , sortable: true },
+        columns: [
+          {
+            name: '',
+            required: true,
+            label: '',
+            align: 'left',
+            field: row => row.name,
+            format: val => `${val}`,
+            sortable: true
+          },
+          { name: 'name', align: 'center', label: 'Product', field: 'name', sortable: true },
+          { name: 'price', align: 'center', label: 'precio', field: 'price', sortable: true },
+          { name: 'discount', align: 'center', label: 'desc %', field: 'discount', sortable: true },
+          { name: 'cantidad', align: 'center', label: 'cantidad', field: 'cantidad', sortable: true },
 
-      ],
+        ],
         layout: false,
         all: [],
         keyUnique: 0,
@@ -285,17 +287,42 @@ columns: [
           opacity: 0.75
         },
         loading4: false,
-        loading3: false
+        loading3: false,
+        viewBtn: false,
+        viewBtn2: false,
+        viewBtn3: false
       };
     },
 
     methods: {
+      simulateProgress1(number) {
+        this[`loading${number}`] = true;
+        setTimeout(() => {
+          this[`loading${number}`] = false;
+        }, 3000);
+
+        this.viewBtn2 = true
+        this.viewBtn3 = true
+      },
+
       simulateProgress(number) {
         this[`loading${number}`] = true;
         setTimeout(() => {
           this[`loading${number}`] = false;
         }, 3000);
+
+        this.viewBtn = true
       },
+
+      simulateProgress2(number) {
+        this[`loading${number}`] = true;
+        setTimeout(() => {
+          this[`loading${number}`] = false;
+        }, 3000);
+
+        this.viewBtn = true
+      },
+
       empuje() {
         this.n = Object.assign([], this.model);
       },
@@ -318,7 +345,7 @@ columns: [
       },
 
 
-     async send() {
+      async send() {
         try {
           const res = await fetch(`https://webs-85287-default-rtdb.firebaseio.com/web/${this.keyUnique}.json`, {
             method: 'PUT',
@@ -333,7 +360,7 @@ columns: [
           this.$notify({
             group: 'foo',
             title: '<b style="font-size: medium">EasyMarket</b>',
-            text: 'Mercado registrado con el codigo: ' + '<b style="font-size: medium"> Anotarlo: ' +this.keyUnique +'</b>',
+            text: 'Mercado registrado con el codigo: ' + '<b style="font-size: medium"> Anotarlo: ' + this.keyUnique + '</b>',
 
             duration: 300000,
             speed: 100
@@ -343,17 +370,17 @@ columns: [
         }
       },
 
-    async consult(){
-      try {
-        const res = await fetch('https://webs-85287-default-rtdb.firebaseio.com/producto.json')
-        //respuesta
-        const dataDB = await res.json()
-        this.f = dataDB
+      async consult() {
+        try {
+          const res = await fetch('https://webs-85287-default-rtdb.firebaseio.com/producto.json')
+          //respuesta
+          const dataDB = await res.json()
+          this.f = dataDB
 
-      } catch (error) {
-        console.log(error)
-      }
-    },
+        } catch (error) {
+          console.log(error)
+        }
+      },
 
 
       autoincrement() {
@@ -363,7 +390,7 @@ columns: [
       },
 
       porcentaje() {
-         this.x2 = this.n.reduce(
+        this.x2 = this.n.reduce(
           (sum1, item) => sum1 + ((item.price * item.cantidad) / 100) * -item.discount,
           0
         );

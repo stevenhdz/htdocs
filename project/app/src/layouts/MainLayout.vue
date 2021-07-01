@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          EasyMarket
+          EasyMarket Client
         </q-toolbar-title>
 
         <div> v{{ $q.version }}</div>

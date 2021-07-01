@@ -2,7 +2,7 @@
   "name": "admin",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "productName": "Administrador",
   "author": "Alexander Jimenez <83792067+AlexDevOrigin@users.noreply.github.com>",
   "private": true,
   "scripts": {

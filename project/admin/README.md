@@ -1,4 +1,4 @@
-# Quasar App (admin)
+# Quasar App (Administrador)
 
 A Quasar Framework app
 
