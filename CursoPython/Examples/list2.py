@@ -13,7 +13,7 @@ while (continuar == "S"):
     print(
         """
     -------------------------------------
-        MENU PRINCIPAL
+        MENU PRINCIPAL 2
     -------------------------------------
         1. Registrar estudiantes
         2. Estudiantes registrados
