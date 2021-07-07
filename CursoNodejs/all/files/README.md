@@ -1,4 +1,4 @@
-# Se viene utilizando el modulo **fs**
+## modulo **fs**
 
 *Texto en cursiva*
 _Texto en cursiva_
@@ -35,7 +35,9 @@ Título 2
 Esto es un \*ejemplo con asteriscos\*.
 
 
-Puedes colocar [^1] notas en el pie de página [^2] fácilmente.
+Puedes colocar 
+          [^1] notas en el pie de página 
+		  [^2] fácilmente.
 [^1]: Aquí encuentras el texto de la nota al pie de página.
 [^2]: **Las notas de pie de página** pueden *formatearse* también.
 Estas pueden ocupar varias líneas.
