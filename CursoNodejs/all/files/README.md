@@ -1,5 +1,13 @@
 ## modulo **fs**
 
+*El módulo fs permite interactuar con el sistema de archivos de una manera modelada en funciones POSIX estándar.*
+
+```js
+import * as fs from 'fs';
+```
+
+
+
 *Texto en cursiva*
 _Texto en cursiva_
 **Texto en negrita**
