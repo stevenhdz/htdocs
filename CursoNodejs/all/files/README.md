@@ -8,7 +8,7 @@ const fs = require('fs');
 
 Ejemplo readdir en: [Link](https://nodejs.org/docs/latest-v15.x/api/fs.html#fs_fs_readdir_path_options_callback).
 
-Esto es `código`.
+Se ejecuta en terminal con `node xxx.js`.
 
 mas info:
   - https://nodejs.org/docs/latest-v15.x/api/fs.html
