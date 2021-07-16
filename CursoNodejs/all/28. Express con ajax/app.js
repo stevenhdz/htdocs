@@ -4,11 +4,10 @@ const path = require('path');
 const fs = require('fs');
 const app = express();
 
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support enc
 //app.use(express.static('./public'));
-
-
 
 app.get('/quote/line/', (req, res) =>{
 

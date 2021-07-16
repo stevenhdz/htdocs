@@ -40,7 +40,7 @@
                 const peliculas = document.querySelector('#peliculas');
                 let html = '';
                 data.peliculas.forEach(element => {
-                    html += `<div>${element.nombre} <img src='https://github.com/stevenhdz/htdocs/blob/master/CursoNodejs/all/28.%20Express%20con%20ajax/public/img/star.png' width='30' />${element.rating}</div>`;    
+                    html += `<div>${element.nombre} <img src='https://locahost:3000/CursoNodejs/all/28. Express con ajax/public/index.html' width='16' />${element.rating}</div>`;    
                 });
                 peliculas.innerHTML = html;
             });
