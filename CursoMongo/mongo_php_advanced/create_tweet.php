@@ -2,7 +2,7 @@
 session_start();
 require_once('dbconnect.php');
 
-if (!isset($_SESSION['body'])) {
+if (!isset($_POST['body'])) {
    exit;
 }
 
@@ -18,6 +18,6 @@ $db->tweets->insertOne(array(
     'created' => $date
 ));
 
-header('Location: home.php')
+header('Location: home.php');
 
 ?>
