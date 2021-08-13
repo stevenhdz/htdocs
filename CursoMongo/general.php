@@ -201,5 +201,18 @@ $upsertedDocument = $collection->findOne([
 
 var_dump($upsertedDocument);
 
+//para convertir fecha string a timestamp
+$data = $collection->find([]);
+    foreach ($data as $key => $value) {
+        if(!empty($value["fecha_creacion"])){
+            if(is_string($value["fecha_creacion"])){
+                var_dump($value["_id"]);
+                $col = new MongoDB\BSON\UTCDateTime(new DateTime($value["fecha_creacion"], new DateTimeZone($timezone)));
+                $echo = $collection->updateOne(['_id' => new \MongoDB\BSON\ObjectID($value["_id"])], ['$set' =>["fecha_creacion" => $col]]);
+                var_dump($echo);
+            }
+        }
+    }
+
 ?>
 

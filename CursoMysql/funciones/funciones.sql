@@ -15,3 +15,10 @@ select *, ucase(concat(name," ",email)) as "nombress completo" from api.users;
 
 /* minusculas*/
 select *, lcase(concat(name," ",email)) as "nombress completo" from api.users;
+
+
+select 
+group_concat(nombres,apellidos) as "toalkasdnasbd", 
+sum(valortotal) as total, 
+sum(cantidadequipos) as cantidad 
+from dbsistema.soporte;
