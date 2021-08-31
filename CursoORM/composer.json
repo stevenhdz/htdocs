@@ -1,0 +1,19 @@
+{
+    "require": {
+        "php": "*",
+        "ext-pdo_sqlite": "*",
+        "doctrine/orm": "*",
+        "symfony/yaml": "*",
+        "psr/cache": "^1",
+        "symfony/cache": "*"
+    },
+    "config": {
+
+        "platform-check": false
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    }
+}

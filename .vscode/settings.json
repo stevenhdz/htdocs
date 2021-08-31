@@ -44,6 +44,16 @@
                 "event": "onFileChange"
             }        
         ],
-        "peacock.color": "#0071ce"
+        "peacock.color": "#0071ce",
+        "sqltools.connections": [
+            {
+                "previewLimit": 50,
+                "driver": "SQLite",
+                "database": "${workspaceFolder:htdocs}/CursoORM/db.sqlite",
+                "name": "orm",
+                "group": "orm"
+            }
+        ],
+        "sqltools.useNodeRuntime": true
     
 }

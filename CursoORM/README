@@ -1,0 +1,16 @@
+los php funcionan desde la consola de vscode: 
+
+ejemplo: php update_product.php 1 john
+
+## Installation in terminal:
+
+```bash
+composer install
+
+vendor/bin/doctrine orm:schema-tool:create
+
+vendor/bin/doctrine orm:schema-tool:drop --force
+vendor/bin/doctrine orm:schema-tool:create
+
+vendor/bin/doctrine orm:schema-tool:update --force
+```

@@ -1,5 +1,8 @@
-create database bdhospital 
-use bdhospital 
+create database bdhospital;
+
+go;
+
+use bdhospital;
 
 create table plantas (
   idPlanta int(11) not null primary key AUTO_INCREMENT,
@@ -7,7 +10,7 @@ create table plantas (
   NroPiso varchar(3) not null,
   JefePlanta varchar(30) not null,
   numeroHabitacion varchar(3) not null
-)
+);
 
 go;
 
@@ -36,7 +39,7 @@ create table pacientes (
     SexoPaciente varchar(3) not null,
     CiudadPaciente varchar(20) not null,
     historialPaciente varchar(200) not null
-  )
+  );
   
 go;
 
@@ -64,7 +67,7 @@ create table medicos (
     EdadMedico varchar(3) not null,
     SexoMedico varchar(3) not null,
     CiudadMedico varchar(20) not null
-  ) 
+  );
   
 go;
 
@@ -84,55 +87,88 @@ VALUES
 
 go;
 
+
+
+
 create table PlantasPacientes (
     idPlanta int(11),
+    CedulaMedico varchar(20),
     CedulaPaciente varchar(20),
-    FOREIGN KEY (idPlanta) REFERENCES plantas(idPlanta),
-    FOREIGN KEY (CedulaPaciente) REFERENCES pacientes(CedulaPaciente)
-  ) 
+    descripcionRemitencia varchar(200),
+    FOREIGN KEY (CedulaMedico) REFERENCES medicos(CedulaMedico),
+    FOREIGN KEY (idPlanta) REFERENCES plantas(idPlanta)
+  );
   
 go;
 
 INSERT INTO `PlantasPacientes` 
-(`idPlanta`,`CedulaPaciente`) 
+(`idPlanta`,`CedulaMedico`,`CedulaPaciente`,`descripcionRemitencia`) 
 VALUES 
-(1,"5108"),
-(2,"3698"),
-(3,"7706"),
-(4,"1363"),
-(5,"5059"),
-(6,"7206"),
-(7,"4124"),
-(8,"2231"),
-(9,"2992"),
-(10,"4497");
+(1,"2159","5108","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(2,"2874","3698","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(3,"2642","7706","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(4,"8358","1363","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(5,"9898","5059","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(6,"3678","7206","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(7,"1657","4124","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(8,"3267","2231","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(9,"8687","2992","presenta problemas al respirar, cuidados especiales, conectar a oxigeno"),
+(10,"3271","4497","presenta problemas al respirar, cuidados especiales, conectar a oxigeno");
 
 
-create table PacienteMedico (
-    CedulaPaciente varchar(10),
+create table TriageMedico (
+    codTriage int(11),
     CedulaMedico varchar(20),
-    FOREIGN KEY (CedulaPaciente) REFERENCES pacientes(CedulaPaciente),
     FOREIGN KEY (CedulaMedico) REFERENCES medicos(CedulaMedico)
-  )
+  );
   
 go;
 
-INSERT INTO `PacienteMedico` 
-(`CedulaPaciente`,`CedulaMedico`) 
+INSERT INTO `TriageMedico` 
+(`codTriage`,`CedulaMedico`) 
 VALUES 
-("5108","2159"),
-("3698","2874"),
-("7706","2642"),
-("1363","8358"),
-("5059","9898"),
-("7206","3678"),
-("4124","1657"),
-("2231","3267"),
-("2992","8687"),
-("4497","3271");
+(1,"2159"),
+(2,"2874"),
+(3,"2642"),
+(4,"8358"),
+(5,"9898"),
+(6,"3678"),
+(7,"1657"),
+(8,"3267"),
+(9,"8687"),
+(10,"3271");
 
 go;
 
+
+create table triage (
+    codTriage int(11) not null primary key,
+    Descripcion varchar(200) not null,
+    CedulaPaciente varchar(10),
+    CedulaMedico varchar(10),
+    FOREIGN KEY (CedulaPaciente) REFERENCES pacientes(CedulaPaciente),
+    FOREIGN KEY (CedulaMedico) REFERENCES TriageMedico(CedulaMedico)
+  );
+  
+go;
+
+
+INSERT INTO `triage` 
+(`codTriage`,`Descripcion`,`CedulaPaciente`,`CedulaMedico`) 
+VALUES 
+(1,"remitido tiene problemas de respiracion","5108","2159"),
+(2,"remitido tiene problemas de respiracion","3698","2874"),
+(3,"remitido tiene problemas de respiracion","7706","2642"),
+(4,"remitido tiene problemas de respiracion","1363","8358"),
+(5,"remitido tiene problemas de respiracion","5059","9898"),
+(6,"remitido tiene problemas de respiracion","7206","3678"),
+(7,"remitido tiene problemas de respiracion","4124","1657"),
+(8,"remitido tiene problemas de respiracion","2231","3267"),
+(9,"remitido tiene problemas de respiracion","2992","8687"),
+(10,"remitido tiene problemas de respiracion","4497","3271");
+
+
+go;
 
 /* PLANTAS */
 
@@ -416,32 +452,32 @@ go;
 
 
 
-/* pacienteMedicos */
+/* triageMedicos  mODIFICAR BIEN */
 
 
 /* Procedimiento para listar */
-DROP TABLE IF EXISTS PacienteMedico
-DROP PROCEDURE IF EXISTS PacienteMedico
-ALTER TABLE PacienteMedico AUTO_INCREMENT = 1
+DROP TABLE IF EXISTS TriageMedico
+DROP PROCEDURE IF EXISTS TriageMedico
+ALTER TABLE TriageMedico AUTO_INCREMENT = 1
 
 go;
 
-CREATE DEFINER = 'admin' @'localhost' PROCEDURE listPacienteMedicos() SQL SECURITY INVOKER BEGIN SELECT * FROM PacienteMedico;
+CREATE DEFINER = 'admin' @'localhost' PROCEDURE listTriageMedico() SQL SECURITY INVOKER BEGIN SELECT * FROM TriageMedico;
 END 
 
-call listPacienteMedicos()
+call listTriageMedico()
 
 go;
 
 /* Procedimiento para consultar */ 
 
-DROP PROCEDURE IF EXISTS consultPacienteMedico;
+DROP PROCEDURE IF EXISTS consultTriageMedico;
 
 go;
-CREATE DEFINER = 'admin' @'localhost' PROCEDURE consultPacienteMedico(IN CedulaPaciente1 varchar(10) ) SQL SECURITY INVOKER BEGIN SELECT * FROM PacienteMedico WHERE CedulaPaciente = CedulaPaciente1 or CedulaMedico = CedulaPaciente1 ;
+CREATE DEFINER = 'admin' @'localhost' PROCEDURE consultTriageMedico(IN CedulaMedico1 varchar(10) ) SQL SECURITY INVOKER BEGIN SELECT * FROM TriageMedico WHERE CedulaMedico= CedulaMedico1 or codTriage = CedulaMedico1 ;
 END 
 
-call consultPacienteMedico("2159")
+call consultTriageMedico("2159")
 
 go;
 
@@ -492,7 +528,7 @@ CALL updateMedicos("5059","4444")
 
 go;
 
-/* FIN pacienteMedicos */
+/* FIN triageMedicos */
 
 
 
