@@ -1,6 +1,18 @@
 
 initial: composer create-project --prefer-dist laravel/laravel blog "5.8.*"
 
+Run composer install.
+
+Rename .env.example file to .env or run cp .env.example .env.
+
+Update .env to your specific needs. Don't forget to set DB_USERNAME and DB_PASSWORD with the settings used behind.
+
+Run php artisan key:generate.
+
+Run php artisan migrate --seed.
+
+Run php artisan serve.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

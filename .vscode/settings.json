@@ -5,7 +5,7 @@
         "list.activeSelectionForeground": "#F44336",
         "list.inactiveSelectionForeground": "#F44336",
         "list.highlightForeground": "#F44336",
-        "scrollbarSlider.activeBackground": "#383A59",
+        "scrollbarSlider.activeBackground": "#765fd4",
         "editorSuggestWidget.highlightForeground": "#F44336",
         "textLink.foreground": "#F44336",
         "progressBar.background": "#F44336",
