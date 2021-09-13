@@ -2,7 +2,8 @@
     const database = require("./db.js");
     const Produto = require("./producto.js");
 
-const produto = await Produto.findByPk(2);
+let id = process.argv[2]
+const produto = await Produto.findByPk(id);
 console.log(produto)
 
 })();
