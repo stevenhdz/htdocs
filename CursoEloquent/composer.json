@@ -1,6 +1,8 @@
 {
     "require": {
         "kint-php/kint": "^3.3",
-        "illuminate/database": "^8.60"
+        "illuminate/database": "^8.60",
+        "laravel/installer": "^4.2",
+        "laravel-shift/blueprint": "^2.0"
     }
 }

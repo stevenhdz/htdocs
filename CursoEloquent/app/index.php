@@ -4,6 +4,7 @@ require_once '../vendor/autoload.php';
 require_once 'database/database.php';
 require_once 'models/Usuario.php';
 
+
 //NOTE get() todo
 
 /* $usuarios = $database::table('persona')->get();
@@ -37,7 +38,7 @@ d($usuarios);  */
 $usuarios = Prestamo::find(11);
 
 $usuarios->update([
-    'NumeroPrestamo' => '99999999',
+    'NumeroPrestamo' => '88888',
 ]);
 
 $usuarios->save();
