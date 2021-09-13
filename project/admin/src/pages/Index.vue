@@ -276,7 +276,7 @@
       async consult() {
         try {
           const res = await fetch(
-            "https://webs-85287-default-rtdb.firebaseio.com/web.json"
+            "https://webs-ea519-default-rtdb.firebaseio.com/web.json"
           );
           //respuesta
           const dataDB = await res.json();
@@ -290,7 +290,7 @@
       async consultP() {
         try {
           const res = await fetch(
-            "https://webs-85287-default-rtdb.firebaseio.com/producto.json"
+            "https://webs-ea519-default-rtdb.firebaseio.com/producto.json"
           );
           //respuesta
           const dataDB = await res.json();
@@ -302,7 +302,7 @@
 
       async view() {
         const res = await fetch(
-          "https://webs-85287-default-rtdb.firebaseio.com/web.json"
+          "https://webs-ea519-default-rtdb.firebaseio.com/web.json"
         );
         //respuesta
         const dataDB = await res.json();
@@ -320,7 +320,7 @@
 
     async view2() {
         const res = await fetch(
-          "https://webs-85287-default-rtdb.firebaseio.com/web.json"
+          "https://webs-ea519-default-rtdb.firebaseio.com/web.json"
         );
         //respuesta
         const dataDB2 = await res.json();

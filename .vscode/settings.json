@@ -5,7 +5,7 @@
         "list.activeSelectionForeground": "#F44336",
         "list.inactiveSelectionForeground": "#F44336",
         "list.highlightForeground": "#F44336",
-        "scrollbarSlider.activeBackground": "#765fd4",
+        "scrollbarSlider.activeBackground": "#15202b",
         "editorSuggestWidget.highlightForeground": "#F44336",
         "textLink.foreground": "#F44336",
         "progressBar.background": "#F44336",
@@ -22,17 +22,17 @@
         "editor.findMatchBorder": "#F44336",
         "selection.background": "#F4433640",
         "statusBarItem.remoteBackground": "#F44336",
-        "activityBar.background": "#028dff",
-        "titleBar.activeBackground": "#0071ce",
+        "activityBar.background": "#15202b",
+        "titleBar.activeBackground": "#15202b",
         "titleBar.activeForeground": "#e7e7e7",
-        "activityBar.activeBackground": "#028dff",
+        "activityBar.activeBackground": "#8da09e",
         "activityBar.foreground": "#e7e7e7",
         "activityBar.inactiveForeground": "#e7e7e799",
         "activityBarBadge.foreground": "#15202b",
-        "statusBar.background": "#0071ce",
+        "statusBar.background": "#15202b",
         "statusBar.foreground": "#e7e7e7",
-        "statusBarItem.hoverBackground": "#028dff",
-        "titleBar.inactiveBackground": "#0071ce99",
+        "statusBarItem.hoverBackground": "#15202b",
+        "titleBar.inactiveBackground": "#15202b",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
     
@@ -44,7 +44,6 @@
                 "event": "onFileChange"
             }        
         ],
-        "peacock.color": "#0071ce",
         "sqltools.connections": [
             {
                 "previewLimit": 50,

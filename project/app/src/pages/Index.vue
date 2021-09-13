@@ -347,7 +347,7 @@
 
       async send() {
         try {
-          const res = await fetch(`https://webs-85287-default-rtdb.firebaseio.com/web/${this.keyUnique}.json`, {
+          const res = await fetch(`https://webs-ea519-default-rtdb.firebaseio.com/web/${this.keyUnique}.json`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'Application/json'
@@ -372,7 +372,7 @@
 
       async consult() {
         try {
-          const res = await fetch('https://webs-85287-default-rtdb.firebaseio.com/producto.json')
+          const res = await fetch('https://webs-ea519-default-rtdb.firebaseio.com/producto.json')
           //respuesta
           const dataDB = await res.json()
           this.f = dataDB
