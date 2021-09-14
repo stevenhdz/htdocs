@@ -1,7 +1,5 @@
 {
     "workbench.colorCustomizations": {
-        "activityBarBadge.background": "#ffbfe2",
-        "activityBar.activeBorder": "#ffbfe2",
         "list.activeSelectionForeground": "#F44336",
         "list.inactiveSelectionForeground": "#F44336",
         "list.highlightForeground": "#F44336",
@@ -21,19 +19,7 @@
         "menubar.selectionForeground": "#F44336",
         "editor.findMatchBorder": "#F44336",
         "selection.background": "#F4433640",
-        "statusBarItem.remoteBackground": "#F44336",
-        "activityBar.background": "#15202b",
-        "titleBar.activeBackground": "#15202b",
-        "titleBar.activeForeground": "#e7e7e7",
-        "activityBar.activeBackground": "#8da09e",
-        "activityBar.foreground": "#e7e7e7",
-        "activityBar.inactiveForeground": "#e7e7e799",
-        "activityBarBadge.foreground": "#15202b",
-        "statusBar.background": "#15202b",
-        "statusBar.foreground": "#e7e7e7",
-        "statusBarItem.hoverBackground": "#15202b",
-        "titleBar.inactiveBackground": "#15202b",
-        "titleBar.inactiveForeground": "#e7e7e799"
+        "statusBarItem.remoteBackground": "#F44336"
     },
     
         "filewatcher.commands": [
