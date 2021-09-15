@@ -11,7 +11,10 @@ header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE');
 
 $data = json_decode(file_get_contents("php://input"));
 
-require_once "/Applications/MAMP/htdocs/CursoVuejs/CursoVuejsCdn/server/perf/shared/mongoClass.php"; //mongo class
+//NOTE MAC
+/* require_once "/Applications/MAMP/htdocs/CursoVuejs/CursoVuejsCdn/server/perf/shared/mongoClass.php";  */
+//NOTE WINDOWS
+require_once "C:\\xampp\htdocs\CursoVuejs\CursoVuejsCdn\server\perf\shared\mongoClass.php";
 
 //funciones x compartidas
 
