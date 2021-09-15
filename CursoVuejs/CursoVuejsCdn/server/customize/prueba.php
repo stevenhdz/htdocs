@@ -4,8 +4,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require '/Applications/MAMP/htdocs/CursoMongo/vendor/autoload.php';
-
+//NOTE MAC
+/* require '/Applications/MAMP/htdocs/CursoMongo/vendor/autoload.php'; */
+//NOTE: WINDOWS
+require 'C:\xampp\htdocs\CursoMongo\vendor\autoload.php';
 trait prueba{
 
     function addproductos($info, $new){
