@@ -3993,6 +3993,7 @@ INSERT INTO `pelicula` (`id`, `titulo`, `genero`, `año`, `disponible`) VALUES
 (27116, 'cccc', 'Ciencia ficción', 2021, 1),
 (27118, 'fsd', 'Acción, Ciencia ficción', 1998, 1);
 
+
 --
 -- Índices para tablas volcadas
 --
