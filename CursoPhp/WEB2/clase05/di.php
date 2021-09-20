@@ -7,7 +7,7 @@ interface Proveedor {
 
 class ProveedorCorreo implements proveedor {
     public function enviar($de,$a,$msg){
-        return "Usando <b> ProveedorMail1 </b>, se esta enviando un correo desde {$de} a {$a} y el mensaje es {$msg}";
+        return "Usando <b> ProveedorMail1 </b>, se esta enviando un correo desde ";
     }
 }
 
