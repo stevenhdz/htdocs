@@ -1,3 +1,9 @@
+Linux web admin:  npx quasar dev
+Linux application admin:  npx quasar dev -m electron  -T linux
+
+
+
+
 # Quasar App (Administrador)
 
 A Quasar Framework app
