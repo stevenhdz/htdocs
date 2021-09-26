@@ -1,5 +1,36 @@
+
+
+
+Electron, capacitor ya vienen instalados ejecutar: npm install
+luego: cd admin o cd app
+
+luego lo siguiente segun el sistema operativo donde lo corran:
+
 Linux web admin:  npx quasar dev
-Linux application admin:  npx quasar dev -m electron  -T linux
+Linux application admin desktop:  npx quasar dev -m electron  -T linux
+Linux application admin mobil:  npx quasar dev -m capacitor -T android --ide
+
+add line in quasar.conf.js:
+
+    bin: {
+      linuxAndroidStudio: "/home/shernaji/Escritorio/android-studio/bin/studio.sh",
+    },
+
+add:
+
+  npx cap add android
+  npx cap add ios
+  npx cap add electron
+
+
+
+Mac web admin: quasar dev
+Mac application admin desktop: quasar dev -m electron -T darwin
+
+Windows web admin: quasar dev
+windows application admin desktop: quasar dev -m electron -T win32
+
+
 
 
 
