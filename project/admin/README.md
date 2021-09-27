@@ -1,59 +1,84 @@
-
-
-
-Electron, capacitor ya vienen instalados ejecutar: npm install
-luego: cd admin o cd app
-
-luego lo siguiente segun el sistema operativo donde lo corran:
-
-Linux web admin:  npx quasar dev
-Linux application admin desktop:  npx quasar dev -m electron  -T linux
-Linux application admin mobil:  npx quasar dev -m capacitor -T android --ide
-
-add line in quasar.conf.js:
-
-    bin: {
-      linuxAndroidStudio: "/home/shernaji/Escritorio/android-studio/bin/studio.sh",
-    },
-
-add:
-
-  npx cap add android
-  npx cap add ios
-  npx cap add electron
-
-
-
-Mac web admin: quasar dev
-Mac application admin desktop: quasar dev -m electron -T darwin
-
-Windows web admin: quasar dev
-windows application admin desktop: quasar dev -m electron -T win32
-
-
-
-
-
-
-# Quasar App (Administrador)
-
-A Quasar Framework app
-
 ## Install the dependencies
 ```bash
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
+### Install capacitor / electron: 
+```shell
+npm install @capacitor/core @capacitor/cli
+npm install --save-dev @electron-forge/cli
+```
+
+ingresa al proyecto por consola: 
+
+* version escritorio y web
+```shell
+cd admin 
+```
+
+* version móvil y web
+```shell
+cd app
+```
+
+#### segun el sistema operativo donde lo corran:
+
+# LINUX
+
+Linux web admin:  
+```shell
+npx quasar dev
+```
+Linux application admin desktop:  
+```shell
+npx quasar dev -m electron  -T linux
+```
+Linux application admin móvil:  
+```shell
+npx quasar dev -m capacitor -T android --ide
+```
+add line in quasar.conf.js:
+
+```json
+    bin: {
+      linuxAndroidStudio: "/home/shernaji/Escritorio/android-studio/bin/studio.sh",
+    },
+```
+
+add:
+
+```shell
+  npx cap add android
+  npx cap add ios
+  npx cap add electron
+```
+
+# MAC OS
+
+Mac web admin: 
+```shell
 quasar dev
 ```
-
-
-### Build the app for production
-```bash
-quasar build
+Mac application admin desktop: 
+```shell
+quasar dev -m electron -T darwin
 ```
+
+# WINDOWS
+
+Windows web admin: 
+```shell
+quasar dev
+```
+windows application admin desktop: 
+```shell
+quasar dev -m electron -T win32
+```
+
+
+
+
+
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
