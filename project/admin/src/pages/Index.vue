@@ -48,6 +48,11 @@
         </q-layout>
       </q-dialog>
 
+   
+ <q-btn flat @click="exportPDF()" round dense icon="menu" />
+ 
+
+
       <div class="q-pa-lg row items-start q-gutter-lg" style="float:right;">
         <q-card class="my-card">
           <q-card-section style="width:400px;   float:right;">
@@ -174,6 +179,8 @@
 </template>
 
 <script>
+  import jsPDF from 'jspdf';
+  import * as autoTable from 'jspdf-autotable';
   const stringOptions = ["Google", "Facebook", "Twitter", "Apple", "Oracle"];
   export default {
     data() {
@@ -181,6 +188,7 @@
         f: [],
         n: [],
         xx3: [],
+        new: [],
         xxxx: "",
         model: null,
         fis1: null,
@@ -234,6 +242,26 @@
       };
     },
     methods: {
+       exportPDF() {
+      var vm = this
+    
+      
+
+      var columns = [
+        {title: "cliente", dataKey: "cliente"},
+        {title: "direccion", dataKey: "direccion"},
+        {title: "fechaCompra", dataKey: "fechaCompra"},
+        {title: "numero", dataKey: "numero"},
+        {title: "tienda", dataKey: "tienda"},
+        {title: "total", dataKey: "total"}
+      ];
+      var doc = new jsPDF('p', 'pt');
+      doc.text('Factura', 40, 40);
+      doc.autoTable(columns, vm.new, {
+        margin: {top: 60},
+      });
+      doc.save('todos.pdf');
+    },
       createValue(val, done) {
         if (val.length > 0) {
           if (!stringOptions.includes(val)) {
@@ -309,6 +337,8 @@
         this.fis1 = Object.assign([], dataDB);
 
         this.xxxx = this.fis1[this.model[0]];
+
+               this.new.push(this.xxxx)
 
         var c2 = [];
         this.xxxx.productos.forEach(element => {

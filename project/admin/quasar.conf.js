@@ -159,6 +159,11 @@ module.exports = function (/* ctx */) {
       hideSplashscreen: true
     },
 
+    bin: {
+      linuxAndroidStudio: "/home/shernaji/Escritorio/android-studio/bin/studio.sh",
+    },
+    
+
     // Full list of options: https://v1.quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
     electron: {
       bundler: 'packager', // 'packager' or 'builder'

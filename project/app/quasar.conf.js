@@ -153,6 +153,10 @@ module.exports = function (/* ctx */) {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 
+
+    bin: {
+      linuxAndroidStudio: "/home/shernaji/Escritorio/android-studio/bin/studio.sh",
+    },
     // Full list of options: https://v1.quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
       hideSplashscreen: true

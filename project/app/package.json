@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@capacitor/android": "^3.2.2",
-    "@capacitor/cli": "^3.2.2",
-    "@capacitor/core": "^3.2.2",
+    "@capacitor/cli": "^3.2.4",
+    "@capacitor/core": "^3.2.4",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",

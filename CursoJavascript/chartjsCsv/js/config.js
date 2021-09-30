@@ -45,5 +45,5 @@ function makeChart(players) {
 }
 
 //using D3
-d3.csv('http://localhost:80/cursoJavascript/chartjsCsv/js/example.csv')
+d3.csv('http://localhost:80/CursoJavascript/chartjsCsv/js/example.csv')
   .then(makeChart);

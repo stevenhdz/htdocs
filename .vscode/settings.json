@@ -39,6 +39,7 @@
                 "group": "orm"
             }
         ],
-        "sqltools.useNodeRuntime": true
+        "sqltools.useNodeRuntime": true,
+        "discord.enabled": true
     
 }
