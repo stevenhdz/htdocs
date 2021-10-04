@@ -96,6 +96,15 @@
 
     <div class="q-pa-md">
       <div class="q-gutter-md">
+
+<el-select v-model="model" clearable filterable multiple placeholder="Select">
+    <el-option
+      v-for="item in f"
+      :key="item.id"
+      :label="item.name"
+      :value="item.name">
+    </el-option>
+  </el-select>
         <q-select filled v-model="model" :options="f" label="Seleccionar producto" multiple emit-value map-options
           :dense="dense">
           <template v-slot:option="{
@@ -223,7 +232,6 @@
 
 
   import moment from 'moment'
-
   const shortid = require('shortid')
 
   export default {

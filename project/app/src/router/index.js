@@ -2,8 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 import routes from './routes'
-
-Vue.use(VueRouter).use(Notifications)
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(VueRouter).use(Notifications).use(ElementUI);
 
 /*
  * If not building with SSR mode, you can

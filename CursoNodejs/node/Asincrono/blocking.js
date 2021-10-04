@@ -1,0 +1,6 @@
+var fs = require("fs")
+console.log("Abriendo archivo...")
+var content = fs.readFileSync("archivo.txt","utf8")
+console.log(content)
+console.log("Haciendo otra cosa")
+console.log(process.uptime())

@@ -16,7 +16,6 @@ error_reporting(E_ALL);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video tienda - Películas</title>
     <link rel="stylesheet" href="../recursos/css/bootstrap.min.css" />
-    
 </head>
 
 <body>
@@ -30,7 +29,7 @@ error_reporting(E_ALL);
                 <div class="card-title">
                     <a class="btn btn-sm btn-info" href="pelicula_actualizar.php">nueva película</a>
                 </div>
-                <table class="table table-striped table-sm">
+                <table id="myTable" class="table table-striped table-sm">
                     <tr>
                         <th>Id</th>
                         <th>Título</th>
@@ -61,5 +60,4 @@ error_reporting(E_ALL);
         </div>
     </div>
 </body>
-
 </html>
