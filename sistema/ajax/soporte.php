@@ -7,9 +7,9 @@ require_once "../modelos/Soporte.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/Exception.php';
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/PHPMailer.php';
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/SMTP.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/Exception.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/PHPMailer.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/SMTP.php';
 
 
 $soporte=new Soporte();
@@ -266,7 +266,7 @@ switch ($_GET["op"]){
 						Señor@ usuario, '.$reg->nombres." ".$reg->apellidos.'%0d%0a%0d%0a
 						Con '.$reg->cantidadequipos.' 
 						equipos entrados en la fecha '.$reg->fechaentrada.', que vienen de la direccion '.$reg->direccion.'       
-						 con el problema/configuracion indicada : '.$reg->descripcion.' tendra un valor a cobrar en su totalidad de $'.$reg->valortotal.'&Attachment=/Applications/MAMP/htdocs/sistema/public/images/bg.jpg
+						 con el problema/configuracion indicada : '.$reg->descripcion.' tendra un valor a cobrar en su totalidad de $'.$reg->valortotal.'&Attachment=/opt/lampp/htdocs/sistema/public/images/bg.jpg
 					 "class="btn btn-primary"><i class="fas fa-envelope-square"></i></a> 
 
 					

@@ -21,7 +21,7 @@ const listProducts = Vue.component("listProducts", {
             .post({deleteProducts: true,id: id})
             .then((r) => {
                 alert(JSON.stringify(r.data));
-                window.location.reload('http://localhost:8882/Cursovuejs/CursoVuejsCdn/apps/#/listProducts')
+                window.location.reload('http://localhost/Cursovuejs/CursoVuejsCdn/apps/#/listProducts')
             })
             .catch((r) => {
                 console.log(r);

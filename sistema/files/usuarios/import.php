@@ -1,6 +1,6 @@
 <?php
 
-include '/Applications/MAMP/htdocs/sistema/config/conexion.php';
+include '/opt/lampp/htdocs/sistema/config/conexion.php';
 if(!$conexion){
     die("imposible conectarse: ".mysqli_error($conexion));
 }
@@ -8,7 +8,7 @@ if (@mysqli_connect_errno()) {
     die("Connect failed: ".mysqli_connect_errno()." : ". mysqli_connect_error());
 }
    $archivo = $_POST['archivo'];
-   $producto = fopen ("/Applications/MAMP/htdocs/sistema/files/usuarios/archivos/$archivo" , "r" );
+   $producto = fopen ("/opt/lampp/htdocs/sistema/files/usuarios/archivos/$archivo" , "r" );
    $i=0;
    while (($datos=fgetcsv($producto,1000,";")) !== FALSE){
     $i++; if($i==1) continue; // saltar la 1
@@ -84,7 +84,7 @@ echo "Errores: ".number_format($errores,2)." <br/>";
 
 $filename = "soporte-" . date('Y-m-d').".csv";
 
-    unlink('/Applications/MAMP/htdocs/sistema/files/usuarios/archivos/'.str_replace("-","",$filename));
+    unlink('/opt/lampp/htdocs/sistema/files/usuarios/archivos/'.str_replace("-","",$filename));
 
     
 ?>

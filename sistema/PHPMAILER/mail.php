@@ -4,9 +4,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/Exception.php';
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/PHPMailer.php';
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/SMTP.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/Exception.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/PHPMailer.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/SMTP.php';
 
 
 //https://mail.google.com/mail/u/0/#settings/fwdandpop

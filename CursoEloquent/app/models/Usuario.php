@@ -7,7 +7,7 @@ class Prestamo extends Model
     //NOTE timestamp con el create
     public $timestamps = false;
 
-    protected $tabla = 'prestamo';
+    protected $tabla = 'prestamos';
 
     protected $primaryKey = 'idPrestamos';
 

@@ -33,20 +33,20 @@ final class Versions
      * @internal
      */
     const VERSIONS          = array (
-  'composer/package-versions-deprecated' => '1.11.99.3@fff576ac850c045158a250e7e27666e146e78d18',
+  'composer/package-versions-deprecated' => '1.11.99.4@b174585d1fe49ceed21928a945138948cb394600',
   'doctrine/cache' => '2.1.1@331b4d5dbaeab3827976273e9356b3b453c300ce',
-  'doctrine/dbal' => '3.1.1@8e0fde2b90e3f61361013d1e928621beeea07bc0',
+  'doctrine/dbal' => '3.1.3@96b0053775a544b4a6ab47654dac0621be8b4cf8',
   'doctrine/deprecations' => 'v0.5.3@9504165960a1f83cc1480e2be1dd0a0478561314',
   'doctrine/event-manager' => '1.1.1@41370af6a30faa9dc0368c4a6814d596e81aba7f',
   'doctrine/inflector' => '2.0.3@9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
-  'illuminate/collections' => 'v8.60.0@18fa841df912ec56849351dd6ca8928e8a98b69d',
-  'illuminate/console' => 'v8.60.0@94d9ba35e12ed8a00f82270b25a052bc43390802',
-  'illuminate/container' => 'v8.60.0@ecb645e1838cdee62eebd07ded490b1de5505f35',
-  'illuminate/contracts' => 'v8.60.0@ab4bb4ec3b36905ccf972c84f9aaa2bdd1153913',
-  'illuminate/database' => 'v8.60.0@40ecc9d71ce79067db2275f1ff20beba2266279b',
-  'illuminate/filesystem' => 'v8.60.0@f33219e5550f8f280169e933b91a95250920de06',
-  'illuminate/macroable' => 'v8.60.0@300aa13c086f25116b5f3cde3ca54ff5c822fb05',
-  'illuminate/support' => 'v8.60.0@c0fbc05c4362de423a7a4da137098e9d1affaf54',
+  'illuminate/collections' => 'v8.63.0@8e6c29c49f28b90e9de0cac1c14290feb99202c5',
+  'illuminate/console' => 'v8.63.0@417c16e14c4778fdb770d528f5e6396a5e6157ad',
+  'illuminate/container' => 'v8.63.0@ef73feb5216ef97ab7023cf59c0c8dbbd5505a9d',
+  'illuminate/contracts' => 'v8.63.0@ab4bb4ec3b36905ccf972c84f9aaa2bdd1153913',
+  'illuminate/database' => 'v8.63.0@4f46da6a564fe5a906f6dbeda968f8e18c35ad92',
+  'illuminate/filesystem' => 'v8.63.0@f33219e5550f8f280169e933b91a95250920de06',
+  'illuminate/macroable' => 'v8.62.0@300aa13c086f25116b5f3cde3ca54ff5c822fb05',
+  'illuminate/support' => 'v8.63.0@259993e2119e99be17c10486f66c5a13b7fe4a70',
   'kint-php/kint' => '3.3@335ac1bcaf04d87df70d8aa51e8887ba2c6d203b',
   'laravel-shift/blueprint' => 'v2.0.0@61478da9ced3d045bf0157b1f85e78d221cf93dd',
   'laravel-shift/faker-registry' => 'v0.1.0@051c1d50f428b699ee9456072f9c54cb073a006f',
@@ -66,11 +66,11 @@ final class Versions
   'symfony/process' => 'v5.3.7@38f26c7d6ed535217ea393e05634cb0b244a1967',
   'symfony/service-contracts' => 'v2.4.0@f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb',
   'symfony/string' => 'v5.3.7@8d224396e28d30f81969f083a58763b8b9ceb0a5',
-  'symfony/translation' => 'v5.3.7@4d595a6d15fd3a2c67f6f31d14d15d3b7356d7a6',
+  'symfony/translation' => 'v5.3.9@6e69f3551c1a3356cf6ea8d019bf039a0f8b6886',
   'symfony/translation-contracts' => 'v2.4.0@95c812666f3e91db75385749fe219c5e494c7f95',
   'symfony/yaml' => 'v5.3.6@4500fe63dc9c6ffc32d3b1cb0448c329f9c814b7',
   'voku/portable-ascii' => '1.5.6@80953678b19901e5165c56752d087fc11526017c',
-  '__root__' => 'dev-master@ab1d8f92dcbc9f6a6967b20acfd8760135ba35f9',
+  '__root__' => 'dev-master@5cee4e5c9f62e787ae999c44938d0cea9ee59c97',
 );
 
     private function __construct()
@@ -130,7 +130,7 @@ final class Versions
             }
         } else {
             $rawData = InstalledVersions::getRawData();
-            if ($rawData === []) {
+            if ($rawData === null || $rawData === []) {
                 return false;
             }
         }

@@ -4,10 +4,11 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 $database = new Capsule;
 
+
 $database->addConnection([
     'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'bibliotecaremington',
+    'host' => '127.0.0.1',
+    'database' => 'bibliotecaUniremington',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',

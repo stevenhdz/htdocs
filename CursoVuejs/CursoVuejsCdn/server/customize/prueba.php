@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 //NOTE MAC
 /* require '/Applications/MAMP/htdocs/CursoMongo/vendor/autoload.php'; */
 //NOTE: WINDOWS
-require 'C:\xampp\htdocs\CursoMongo\vendor\autoload.php';
+require '/opt/lampp/htdocs/CursoMongo/vendor/autoload.php';
 trait prueba{
 
     function addproductos($info, $new){

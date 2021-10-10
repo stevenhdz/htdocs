@@ -1,7 +1,7 @@
 <?php
 /* error_reporting(E_ALL);
 ini_set('display_errors', '1'); */
-include '/Applications/MAMP/htdocs/sistema/config/conexion.php';
+include '/opt/lampp/htdocs/sistema/config/conexion.php';
 
 try {
 
@@ -43,7 +43,7 @@ try {
 
         $carpeta = 'archivos';
         $root = __dir__.'/'.$carpeta;
-            copy('/Users/alexanderjimenez/downloads/'.str_replace("-","",$filename),'/Applications/MAMP/htdocs/sistema/files/usuarios/archivos/'.str_replace("-","",$filename));
+            copy('/Users/alexanderjimenez/downloads/'.str_replace("-","",$filename),'/opt/lampp/htdocs/sistema/files/usuarios/archivos/'.str_replace("-","",$filename));
           
         }
 

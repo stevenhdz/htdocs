@@ -10,7 +10,8 @@ header('Content-type: application/json; charset=utf-8');
 //NOTE: ruta mac
 /* require_once "/Applications/MAMP/htdocs/CursoVuejs/CursoVuejsCdn/server/customize/prueba.php"; */
 //NOTE: windows
-require_once "C:\\xampp\htdocs\CursoVuejs\CursoVuejsCdn\server\customize\prueba.php";
+
+require_once "/opt/lampp/htdocs/CursoVuejs/CursoVuejsCdn/server/customize/prueba.php";
 class mongoClass
 {
     use prueba;

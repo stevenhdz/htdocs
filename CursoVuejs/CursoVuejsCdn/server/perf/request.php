@@ -14,7 +14,7 @@ $data = json_decode(file_get_contents("php://input"));
 //NOTE MAC
 /* require_once "/Applications/MAMP/htdocs/CursoVuejs/CursoVuejsCdn/server/perf/shared/mongoClass.php";  */
 //NOTE WINDOWS
-require_once "C:\\xampp\htdocs\CursoVuejs\CursoVuejsCdn\server\perf\shared\mongoClass.php";
+require_once "/opt/lampp/htdocs/CursoVuejs/CursoVuejsCdn/server/perf/shared/mongoClass.php";
 
 //funciones x compartidas
 

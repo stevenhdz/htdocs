@@ -15,7 +15,7 @@ const editProducts = Vue.component("editProducts", {
                     .post({editProducts: true,data: this.fin,id: this.$route.params.id})
                     .then((r) => {
                         alert(JSON.stringify(r.data));
-                        window.location.replace('http://localhost:8882/Cursovuejs/CursoVuejsCdn/apps/#/listProducts')
+                        window.location.replace('http://localhost/Cursovuejs/CursoVuejsCdn/apps/#/listProducts')
                     })
                     .catch((r) => {
                         console.log(r);

@@ -4,9 +4,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/Exception.php';
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/PHPMailer.php';
-require '/Applications/MAMP/htdocs/CursoPhp/PHPMAILER/phpmailer/src/SMTP.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/Exception.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/PHPMailer.php';
+require '/opt/lampp/htdocs/CursoPhp/PHPMAILER/phpmailer/src/SMTP.php';
 
 
 //https://mail.google.com/mail/u/0/#settings/fwdandpop
@@ -43,7 +43,7 @@ function enviarEmail(){
 
             //Attachments
             //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-            $mail->addAttachment('/Applications/MAMP/htdocs/CursoPhp/imagen.jpg', 'new.jpg');    // Optional name
+            $mail->addAttachment('/opt/lampp/htdocs/CursoPhp/imagen.jpg', 'new.jpg');    // Optional name
 
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML

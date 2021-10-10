@@ -44,7 +44,7 @@ function agregar_zip($dir, $zip) {
    * la barra inclinada al final es importante
    * la ruta debe ser relativa no absoluta
    */
-  $dir = '/Applications/MAMP/htdocs/sistema/files/usuarios/';
+  $dir = '/opt/lampp/htdocs/sistema/files/usuarios/';
    
   //ruta donde guardar los archivos zip, ya debe existir
   $rutaFinal = "archivos";
