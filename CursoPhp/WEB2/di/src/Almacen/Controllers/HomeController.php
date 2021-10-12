@@ -1,4 +1,0 @@
-<?php
-
-use Almacen\Controllers;
-
