@@ -2,15 +2,20 @@
 
 {% block content %}
     <h2>PHP con FastRoute, PHP-DI y Twig</h2>
-    <h4>Listado de artículos</h4>
+    <h4>Listado de clientes</h4>
+
+     <a href="/delete/cliente/0">Ir al Eliminador</a>
 
     <ul class="collection">
-        {% for art in articulos %}
+        {% for client in clientes %}
             <li class="collection-item avatar">
-                <i class="mdi-insert-comment circle"></i>
-                <b class="title">{{art.getDescripcion()}}</b>
-                <p>{{art.getPrecio()}}</p>
-                <a href="/articulo/{{art.getId()}}">Ver más</a>
+                <i class="mdi mdi-nature-people circle"></i>
+                <b class="title">{{client.getNombre()}}</b>
+                <p>{{client.getCorreo()}}</p>
+                <p>{{client.getFecha_ingreso()}}</p>
+                <p>{{client.getCapacidad_de_credito()}}</p>
+                <p>{{client.getDisponible()}}</p>
+                <a href="/cliente/{{client.getId()}}">Ver más</a>
             </li>
         {% endfor %}
     </ul>

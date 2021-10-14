@@ -1,31 +1,33 @@
 <?php
 
-namespace Almacen\Controllers;
+namespace Comercial\Controllers;
 
-use Almacen\Interfaces\IArticulo;
+use Comercial\Interfaces\ICliente;
 use Twig\Environment;
 
 class HomeController {
 
-    protected IArticulo $repositorio;
+    protected ICliente $repositorio;
     protected Environment $twig;
 
-    public function __construct(IArticulo $repositorio, Environment $twig) {
+    public function __construct(ICliente $repositorio, Environment $twig) {
         $this->repositorio = $repositorio;
         $this->twig = $twig;
     }
 
     public function index() {
-        echo "<h3>... index desde el home controller ! </h3>";
+        echo $this->twig->render("index.twig", []);
     }
 
-    public function obtenerArticulos() {
-        // echo "<h3>... Obteniendo todos los artículos .... ! </h3>";
-        echo $this->twig->render("listado.twig", ["articulos" => $this->repositorio->obtenerArticulos()]);
+    public function obtenerClientes() {
+        echo $this->twig->render("listado.twig", ["clientes" => $this->repositorio->obtenerClientes()]);
     }
     
-    public function obtenerArticulo(int $id) {
-        // echo "<h3>... Obteniendo el artículo con id $id ! </h3>";
-        echo $this->twig->render("consulta.twig", ["articulo" => $this->repositorio->obtenerArticulo($id)]);
+    public function obtenerCliente(int $id) {
+        echo $this->twig->render("consulta.twig", ["cliente" => $this->repositorio->obtenerCliente($id)]);
     }    
+
+    public function eliminarCliente(int $id) {
+        echo $this->twig->render("delete.twig", ["clientes" => $this->repositorio->eliminarCliente($id)]);
+    }  
 }

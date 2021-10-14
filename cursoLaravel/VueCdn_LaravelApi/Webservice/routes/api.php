@@ -18,10 +18,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/articulos','App\Http\Controllers\ArticuloController@index');
-Route::post('/articulos','App\Http\Controllers\ArticuloController@store');
-Route::put('/articulos/{id}','App\Http\Controllers\ArticuloController@update');
-Route::delete('/articulos/{id}','App\Http\Controllers\ArticuloController@destroy');
+Route::get('/investigadores','App\Http\Controllers\investigadoresController@index');
+Route::post('/investigadores','App\Http\Controllers\investigadoresController@store');
+Route::put('/investigadores/{id}','App\Http\Controllers\investigadoresController@update');
+Route::delete('/investigadores/{id}','App\Http\Controllers\investigadoresController@destroy');
 
+
+Route::get('/rols','App\Http\Controllers\rolsController@index');
+Route::post('/rols','App\Http\Controllers\rolsController@store');
+Route::put('/rols/{id}','App\Http\Controllers\rolsController@update');
+Route::delete('/rols/{id}','App\Http\Controllers\rolsController@destroy');
 
 //Route::resource('blog',App\Http\Controllers\BlogController::class)->only(['index','store','update','show','delete']);

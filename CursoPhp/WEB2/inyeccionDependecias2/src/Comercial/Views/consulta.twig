@@ -2,13 +2,16 @@
 
 {% block content %}
     <h2>PHP con FastRoute, PHP-DI y Twig</h2>
-    <h4>Consulta del artículo con id {{articulo.getId()}}</h4>
+    <h4>Consulta del cliente con id {{cliente.getId()}}</h4>
 
     <ul class="collection">
         <li class="collection-item avatar">
             <i class="mdi-insert-comment circle"></i>
-            <b class="title">Descripción: {{articulo.getDescripcion()}}</b>
-            <p>Precio: {{articulo.getPrecio()}}</p>
+            <b class="title">Descripción: {{cliente.getNombre()}}</b>
+            <p>Correo: {{cliente.getCorreo()}}</p>
+            <p>Fecha_ingreso: {{cliente.getFecha_ingreso()}}</p>
+            <p>Capacidad_de_credito: {{cliente.getCapacidad_de_credito()}}</p>
+            <p>Disponible: {{cliente.getDisponible()}}</p>
         </li>
     </ul>
 {% endblock %}
