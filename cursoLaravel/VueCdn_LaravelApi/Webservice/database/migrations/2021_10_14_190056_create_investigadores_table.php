@@ -19,7 +19,7 @@ class CreateInvestigadoresTable extends Migration
             $table->string('Apellidos');
             $table->string('Email');
             $table->string('Celular');
-            $table->unsignedBigInteger('CodigoRol1');
+            $table->bigInteger('CodigoRol1');
             $table->foreign('CodigoRol1')->references('CodigoRol')->on('rols');
         });
     }

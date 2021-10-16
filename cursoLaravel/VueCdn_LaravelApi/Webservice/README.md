@@ -9,3 +9,6 @@ php artisan make:controller ArticuloController --resource
 php artisan vendor:publish
  CODE: 10 -> cors
 php artisan serve
+
+
+php artisan migrate:refresh

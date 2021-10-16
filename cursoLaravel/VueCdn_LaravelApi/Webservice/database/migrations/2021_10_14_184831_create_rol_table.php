@@ -14,7 +14,7 @@ class CreateRolTable extends Migration
     public function up()
     {
         Schema::create('rols', function (Blueprint $table) {
-            $table->id('CodigoRol');
+            $table->bigInteger('CodigoRol')->autoIncrement();
             $table->text('Descripcion');
         });
     }
@@ -26,6 +26,6 @@ class CreateRolTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rols');
+        Schema::dropIfExists('rol');
     }
 }

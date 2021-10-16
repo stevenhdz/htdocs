@@ -12,10 +12,15 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Gestor de proyectos de investigacion
         </q-toolbar-title>
+<!--Quasar v{{ $q.version }}-->
+        <div>{{ Email }}
 
-        <div>Quasar v{{ $q.version }}</div>
+              <q-btn  color="white" @click="eliminarSession()" text-color="black" label="Cerrar session"  v-if="Email1 != '' || Email != null"/>
+
+              <q-btn color="white" @click="eliminarSession()" text-color="black" label="Iniciar session" v-else />
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -28,7 +33,7 @@
         <q-item-label
           header
         >
-          Essential Links
+          Menu
         </q-item-label>
 
         <EssentialLink
@@ -50,7 +55,7 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Docs',
+    title: 'Roles',
     caption: 'quasar.dev',
     icon: 'school',
     link: 'https://quasar.dev'
@@ -61,36 +66,6 @@ const linksList = [
     icon: 'code',
     link: 'https://github.com/quasarframework'
   },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
 ];
 
 import { defineComponent, ref } from 'vue'
@@ -107,11 +82,27 @@ export default defineComponent({
 
     return {
       essentialLinks: linksList,
+      Email1: "",
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      },
     }
-  }
+  },
+
+   mounted() {
+         this.Email1 = localStorage.getItem("username");
+      },
+    methods: {
+      eliminarSession() {
+         this.$router.push('/')
+         localStorage.removeItem("username");
+      },
+      iniciarSession() {
+         this.$router.push('/')
+      },
+    }
+
+
 })
 </script>

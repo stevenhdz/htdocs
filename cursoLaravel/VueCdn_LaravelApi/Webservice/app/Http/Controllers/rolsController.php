@@ -38,9 +38,10 @@ class rolsController extends Controller
     public function store(Request $request)
     {
         $rol = new Rols();
-        $rol->CodigoRol = $request->CodigoRol;
         $rol->Descripcion = $request->Descripcion;
         $rol->save();
+        return response()->json($rol);
+
     }
 
     /**
@@ -88,7 +89,7 @@ class rolsController extends Controller
      */
     public function destroy(Request $request)
     {
-        $rol = Rols::destroy($request->id);
+        $rol = Rols::destroy($request->CodigoRol);
         return $rol;
     }
 }

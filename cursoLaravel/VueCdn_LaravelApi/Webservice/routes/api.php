@@ -25,8 +25,8 @@ Route::delete('/investigadores/{id}','App\Http\Controllers\investigadoresControl
 
 
 Route::get('/rols','App\Http\Controllers\rolsController@index');
-Route::post('/rols','App\Http\Controllers\rolsController@store');
+Route::post('/rols/create','App\Http\Controllers\rolsController@store');
 Route::put('/rols/{id}','App\Http\Controllers\rolsController@update');
-Route::delete('/rols/{id}','App\Http\Controllers\rolsController@destroy');
+Route::delete('/rols/delete/{CodigoRol}','App\Http\Controllers\rolsController@destroy');
 
 //Route::resource('blog',App\Http\Controllers\BlogController::class)->only(['index','store','update','show','delete']);
