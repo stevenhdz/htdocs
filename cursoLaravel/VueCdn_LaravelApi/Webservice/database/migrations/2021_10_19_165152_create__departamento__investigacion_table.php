@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvestigadoresTable extends Migration
+class CreateDepartamentoInvestigacionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateInvestigadoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('investigadores', function (Blueprint $table) {
-            $table->bigInteger('Cedula')->autoIncrement();
+        Schema::create('_departamento__investigacion', function (Blueprint $table) {
+            $table->bigInteger('CodigoV')->autoIncrement();
             $table->string('Nombre');
-            $table->string('Apellidos');
+            $table->longText('Ubicación');
+            $table->string('Contacto_Tel');
             $table->string('Email');
-            $table->string('Celular');
-            $table->bigInteger('CodigoRol1');
-            $table->foreign('CodigoRol1')->references('CodigoRol')->on('rols');
         });
     }
 
@@ -31,6 +29,6 @@ class CreateInvestigadoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('investigadores');
+        Schema::dropIfExists('_departamento__investigacion');
     }
 }

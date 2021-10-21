@@ -10,7 +10,7 @@
 
   <div>
 
-        <q-btn label="Submit" type="submit" color="primary" @click="crear()" />
+        <q-btn label="Submit" type="submit" color="primary" @click="actualizar()" />
 
         <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
 
@@ -22,26 +22,30 @@
 <script>
   import { defineComponent } from "vue";
   import axios from "axios";
-  let url = "http://127.0.0.1:8000/api/rols/create/";
+  let url = "http://127.0.0.1:8000/api/rols/update/";
   export default {
-    name: "CreateRol",
+    name: "UpdateRol",
     data() {
       return {
         roles: [],
         rol: {
           Descripcion: "",
+          CodigoRol: null
         },
       };
     },
 
     methods: {
-      crear() {
+      actualizar() {
         let parametros = {
           Descripcion: this.rol.Descripcion,
+          CodigoRol: this.rol.CodigoRol
         };
-        axios.post(url, parametros).then((response) => {
+        axios.put(url + this.rol.CodigoRol , parametros).then((response) => {
           setTimeout("location.reload()", 1000);
-        });
+        }).catch(error => {
+              console.log(error);
+            });
             //this.rol.Descripcion = "";
       },
     },

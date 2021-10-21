@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolTable extends Migration
+class CreateClasificacionRevistaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRolTable extends Migration
      */
     public function up()
     {
-        Schema::create('rols', function (Blueprint $table) {
-            $table->bigInteger('CodigoRol')->autoIncrement();
-            $table->text('Descripcion');
+        Schema::create('_clasificacion__revista', function (Blueprint $table) {
+            $table->bigInteger('idClasificacion')->autoIncrement();
+            $table->longText('Detalle');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateRolTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rols');
+        Schema::dropIfExists('_clasificacion__revista');
     }
 }

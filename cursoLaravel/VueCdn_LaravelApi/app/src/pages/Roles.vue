@@ -2,6 +2,7 @@
   <div class="q-pa-md">
     <div class="row" v-if="siInicio != null && EmailUnique != ''">
       <div class="col-4">
+
         <q-card class="my-card" v-if="EmailUnique == 1">
           <CreateRol />
         </q-card>
