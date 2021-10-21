@@ -23,7 +23,6 @@ Route::post('/investigadores','App\Http\Controllers\investigadoresController@sto
 Route::put('/investigadores/{id}','App\Http\Controllers\investigadoresController@update');
 Route::delete('/investigadores/{id}','App\Http\Controllers\investigadoresController@destroy');
 
-
 Route::get('/rols','App\Http\Controllers\rolsController@index');
 Route::post('/rols/create','App\Http\Controllers\rolsController@store');
 Route::put('/rols/update/{id}','App\Http\Controllers\rolsController@update');
@@ -44,7 +43,6 @@ Route::post('/DepartamentoInvestigacion/create','App\Http\Controllers\Departamen
 Route::put('/DepartamentoInvestigacion/update/{idProyecto}','App\Http\Controllers\Departamento_InvestigacionController@update');
 Route::delete('/DepartamentoInvestigacion/delete/{idProyecto}','App\Http\Controllers\Departamento_InvestigacionController@destroy');
 
-
 Route::get('/Producto','App\Http\Controllers\ProductoController@index');
 Route::post('/Producto/create','App\Http\Controllers\ProductoController@store');
 Route::put('/Producto/update/{idProyecto}','App\Http\Controllers\ProductoController@update');
@@ -59,4 +57,19 @@ Route::get('/Programa','App\Http\Controllers\ProgramaController@index');
 Route::post('/Programa/create','App\Http\Controllers\ProgramaController@store');
 Route::put('/Programa/update/{idProyecto}','App\Http\Controllers\ProgramaController@update');
 Route::delete('/Programa/delete/{idProyecto}','App\Http\Controllers\ProgramaController@destroy');
+
+Route::get('/Facultad','App\Http\Controllers\FacultadController@index');
+Route::post('/Facultad/create','App\Http\Controllers\FacultadController@store');
+Route::put('/Facultad/update/{idProyecto}','App\Http\Controllers\FacultadController@update');
+Route::delete('/Facultad/delete/{idProyecto}','App\Http\Controllers\FacultadController@destroy');
+
+Route::get('/GrupoInvestigacion','App\Http\Controllers\Grupo_InvestigacionController@index');
+Route::post('/GrupoInvestigacion/create','App\Http\Controllers\Grupo_InvestigacionController@store');
+Route::put('/GrupoInvestigacion/update/{idProyecto}','App\Http\Controllers\Grupo_InvestigacionController@update');
+Route::delete('/GrupoInvestigacion/delete/{idProyecto}','App\Http\Controllers\Grupo_InvestigacionController@destroy');
+
+Route::get('/InvestigadoresProyecto','App\Http\Controllers\Investigadores_ProyectoController@index');
+Route::post('/InvestigadoresProyecto/create','App\Http\Controllers\Investigadores_ProyectoController@store');
+Route::put('/InvestigadoresProyecto/update/{idProyecto}','App\Http\Controllers\Investigadores_ProyectoController@update');
+Route::delete('/InvestigadoresProyecto/delete/{idProyecto}','App\Http\Controllers\Investigadores_ProyectoController@destroy');
 //Route::resource('blog',App\Http\Controllers\BlogController::class)->only(['index','store','update','show','delete']);
