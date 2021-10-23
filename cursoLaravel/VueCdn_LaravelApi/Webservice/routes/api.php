@@ -18,10 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/investigadores','App\Http\Controllers\investigadoresController@index');
-Route::post('/investigadores','App\Http\Controllers\investigadoresController@store');
-Route::put('/investigadores/{id}','App\Http\Controllers\investigadoresController@update');
-Route::delete('/investigadores/{id}','App\Http\Controllers\investigadoresController@destroy');
+Route::get('/investigadores','App\Http\Controllers\InvestigadoresController@index');
+Route::post('/Investigadores','App\Http\Controllers\InvestigadoresController@store');
+Route::put('/Investigadores/{id}','App\Http\Controllers\InvestigadoresController@update');
+Route::delete('/Investigadores/{id}','App\Http\Controllers\InvestigadoresController@destroy');
 
 Route::get('/rols','App\Http\Controllers\rolsController@index');
 Route::post('/rols/create','App\Http\Controllers\rolsController@store');

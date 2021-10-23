@@ -1,38 +1,36 @@
 <template>
   <div class="q-pa-md">
     <div class="row" v-if="siInicio != null && EmailUnique != ''">
-      <div class="col-4">
+      
+      <div class="col-12">
+        <q-card class="my-card" style="max-width: 100%; max-heigth: 90%">
+          <div class="q-pa-md">
+            <h5>Listar roles</h5>
+            <q-table virtual-scroll dense :rows="roles" :columns="columns" row-key="name" />
+          </div>
 
+        </q-card>
+
+        <br>
+      </div>
+       <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
           <CreateRol />
         </q-card>
+      </div>
 
-        <br>
-
+      <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-          <DeleteRol />
-        </q-card>
-
-        <br>
-
-         <q-card class="my-card" v-if="EmailUnique == 1">
           <UpdateRol />
         </q-card>
       </div>
-
-
-      <div class="col-8">
-        <q-card class="my-card" style="max-width: 100%; max-heigth: 100%">
-          <div class="q-pa-md">
-            <h5>Listar</h5>
-            <q-table virtual-scroll title="Treats" dense :rows="roles" :columns="columns" row-key="name" />
-          </div>
-
-          <div class="q-pa-md q-gutter-sm">
-            <q-btn to="/investigadores" color="white" text-color="black" label="Investigadores" />
-          </div>
+      <div class="col-4">
+        <q-card class="my-card" v-if="EmailUnique == 1">
+          <DeleteRol />
         </q-card>
       </div>
+        
+      
     </div>
     <div v-else>
       <Denied />
@@ -43,7 +41,7 @@
 <style lang="sass" scoped>
   .my-card
      width: 100%
-     max-width: 93%
+     max-width: 98%
 </style>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="bg-primary">
       <q-toolbar>
         <q-btn
           flat
@@ -8,7 +8,7 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
+          @click="toggleLeftDrawer()"
         />
 
         <q-toolbar-title>
@@ -17,14 +17,21 @@
 <!--Quasar v{{ $q.version }}-->
         <div>{{ Email }}
 
-              <q-btn  color="white" @click="eliminarSession()" text-color="black" label="Cerrar session"  v-if="Email1 != '' || Email != null"/>
+              <q-btn  color="red" @click="eliminarSession()" text-color="white" label="Cerrar session"  v-if="Email1 != '' || Email != null"/>
 
-              <q-btn color="white" @click="eliminarSession()" text-color="black" label="Iniciar session" v-else />
+              <q-btn color="red" @click="eliminarSession()" text-color="white" label="Iniciar session" v-else />
         </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+
+     <q-footer elevated class="bg-primary text-white"> 
+        <q-toolbar  class="text-center">
+          <q-toolbar-title class="text-overline">Copyright © 2021 SLtechnology</q-toolbar-title>
+        </q-toolbar>
+      </q-footer>
+
+    <q-drawer v-if="leftDrawerOpen == true"
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -36,11 +43,23 @@
           Menu
         </q-item-label>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+
+        <div class="q-pa-md">
+            <div class="row">
+               <div class="col-12">
+                  <q-btn to="/roles"   color="primary" class="ps" text-color="white" label="Roles" @click="toggleLeftDrawer()"/>
+               </div>
+               <div class="col-12">
+                  <q-btn to="/Investigadores"  class="ps"  color="primary" text-color="white" label="Investigadores" @click="toggleLeftDrawer()" />
+               </div>
+            </div>
+        </div>
+
+         
+           
+         
+
+        
       </q-list>
     </q-drawer>
 
@@ -50,38 +69,25 @@
   </q-layout>
 </template>
 
-<script>
-import EssentialLink from 'components/EssentialLink.vue'
+<style lang="sass" scoped>
+  .ps
+     padding: 2
+     margin-top: 5px
+     width: 100%
+     heigth: 100% 
+</style>
 
-const linksList = [
-  {
-    title: 'Roles',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-];
+<script>
 
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'MainLayout',
 
-  components: {
-    EssentialLink
-  },
-
   setup () {
     const leftDrawerOpen = ref(false)
 
     return {
-      essentialLinks: linksList,
       Email1: "",
       leftDrawerOpen,
       toggleLeftDrawer () {

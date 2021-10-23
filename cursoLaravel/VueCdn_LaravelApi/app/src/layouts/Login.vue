@@ -1,5 +1,5 @@
 <template>
- <div class="q-pa-md" style="max-width: 400px; text-align:center; margin: 0 auto;float: none;margin-bottom: 10px; margin-top: 200px;">
+ <div class="q-pa-md bg" style="max-width: 400px; text-align:center; margin: 0 auto;float: none;margin-bottom: 10px; margin-top: 200px;">
 <q-card class="my-card" flat>
 
   <div class="q-pa-md q-gutter-sm">
@@ -41,6 +41,8 @@
 </template>
 
 <style lang="sass" scoped>
+  .bg
+     background: #FFFFFF !important
 </style>
 
 <script>

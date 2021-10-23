@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <router-view class="bg-cyan-1"/>
 </template>
 <script>
 import { defineComponent } from 'vue';

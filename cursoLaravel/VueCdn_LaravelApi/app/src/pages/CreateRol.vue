@@ -1,15 +1,14 @@
 <template>
   <div class="q-pa-md">
-    <h5>Crear</h5>
 
     <q-form class="q-gutter-md">
       <q-input filled v-model="rol.Descripcion" label="Descripcion *" lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']" />
+        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una descripcion']" />
       <div>
 
-        <q-btn label="Submit" type="submit" color="primary" @click="crear()" />
-
-        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+        <q-btn label="Ingresar" type="submit" color="primary" class="q-ml-xs"  @click="crear()" />
+        
+        <q-btn label="Cancelar" type="reset" color="red" class="q-ml-xs" @click="clear()" />
 
       </div>
     </q-form>
@@ -32,6 +31,9 @@
     },
 
     methods: {
+      clear(){
+        this.rol.Descripcion = ''
+      },
       crear() {
         let parametros = {
           Descripcion: this.rol.Descripcion,

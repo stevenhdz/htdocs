@@ -1,18 +1,18 @@
 <template>
-  <div class="q-pa-md" style="max-width: 400px">
-    <h5>Actualizar</h5>
+  <div class="q-pa-md">
 
     <q-form class="q-gutter-md">
        <q-input filled v-model="rol.CodigoRol" label="id *" lazy-rules
+       :rules="[ val => !val || /(^\d{1,10}$)/.test(val) || 'Ingrese id valido, debe ser un numero entero']"
        />
       <q-input filled v-model="rol.Descripcion" label="Descripcion *" lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']" />
+        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una descripcion']" />
 
   <div>
 
-        <q-btn label="Submit" type="submit" color="primary" @click="actualizar()" />
+        <q-btn label="Actualizar" type="submit" color="primary" class="q-ml-xs" @click="actualizar()" />
 
-        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+        <q-btn label="Cancelar" type="reset" color="red" class="q-ml-xs" @click="clear()" />
 
       </div>
     </q-form>
@@ -36,6 +36,10 @@
     },
 
     methods: {
+       clear(){
+        this.rol.Descripcion = ''
+        this.rol.CodigoRol = ''
+      },
       actualizar() {
         let parametros = {
           Descripcion: this.rol.Descripcion,
