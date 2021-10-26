@@ -19,9 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/investigadores','App\Http\Controllers\InvestigadoresController@index');
-Route::post('/Investigadores','App\Http\Controllers\InvestigadoresController@store');
-Route::put('/Investigadores/{id}','App\Http\Controllers\InvestigadoresController@update');
-Route::delete('/Investigadores/{id}','App\Http\Controllers\InvestigadoresController@destroy');
+Route::post('/Investigadores/create','App\Http\Controllers\InvestigadoresController@store');
+Route::put('/Investigadores/{Cedula}','App\Http\Controllers\InvestigadoresController@update');
+Route::delete('/Investigadores/delete/{Cedula}','App\Http\Controllers\InvestigadoresController@destroy');
 
 Route::get('/rols','App\Http\Controllers\rolsController@index');
 Route::post('/rols/create','App\Http\Controllers\rolsController@store');

@@ -40,8 +40,9 @@ class InvestigadoresController extends Controller
         $investigador->Cedula = $request->Cedula;
         $investigador->Nombre = $request->Nombre;
         $investigador->Apellidos = $request->Apellidos;
+        $investigador->Email = $request->Email;
         $investigador->Celular = $request->Celular;
-        $investigador->CodigoRol = $request->CodigoRol;
+        $investigador->CodigoRol1 = $request->CodigoRol1;
         $investigador->save();
     }
 
@@ -79,8 +80,9 @@ class InvestigadoresController extends Controller
         $investigador = Investigadores::findOrFail($request->Cedula);
         $investigador->Nombre = $request->Nombre;
         $investigador->Apellidos = $request->Apellidos;
+        $investigador->Email = $request->Email;
         $investigador->Celular = $request->Celular;
-        $investigador->CodigoRol = $request->CodigoRol;
+        $investigador->CodigoRol1 = $request->CodigoRol1;
         $investigador->save();
         return $investigador;
     }
@@ -93,7 +95,7 @@ class InvestigadoresController extends Controller
      */
     public function destroy(Request $request)
     {
-        $investigador = Investigadores::destroy($request->id);
+        $investigador = Investigadores::destroy($request->Cedula);
         return $investigador;
     }
 }

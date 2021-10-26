@@ -1,59 +1,67 @@
 <template>
-  <div>
-    <h1>investigadores:</h1>
-    <div class="q-pa-md">
-      <q-table
-        title="Treats"
-        dense
-        :rows="investigadores"
-        :columns="columns"
-        row-key="name"
-      />
-    </div>
+  <div class="q-pa-md">
+    <div class="row" v-if="siInicio != null && EmailUnique != ''">
+      
+      <div class="col-12">
+        <q-card class="my-card" style="max-width: 100%; max-heigth: 90%">
+          <div class="q-pa-md">
+            <h5>Listar investigadores</h5>
+            <q-table virtual-scroll dense :rows="investigadores" :columns="columns" row-key="name" />
+          </div>
 
-    <div class="q-pa-md q-gutter-sm">
-      <q-btn color="white" text-color="black" label="Standard" />
-    </div>
+        </q-card>
 
-    <div class="q-pa-md">
-      <div class="q-gutter-md row items-start">
-        <q-file color="orange" filled v-model="model" label="Label">
-          <template v-if="model" v-slot:append>
-            <q-icon
-              name="cancel"
-              @click.stop.prevent="model = null"
-              class="cursor-pointer"
-            />
-          </template>
-        </q-file>
-
-        <q-file
-          v-model="files"
-          label="Pick files"
-          filled
-          counter
-          max-files="3"
-          multiple
-          style="max-width: 300px"
-        />
+        <br>
       </div>
+       <div class="col-4">
+        <q-card class="my-card" v-if="EmailUnique == 1">
+         <CreateInvestigadores />
+        </q-card>
+      </div>
+
+      <div class="col-4">
+        <q-card class="my-card" v-if="EmailUnique == 1">
+          <DeleteInvestigadores />
+        </q-card>
+      </div>
+      <div class="col-4">
+        <q-card class="my-card" v-if="EmailUnique == 1">
+          
+        </q-card>
+      </div>
+        
+      
+    </div>
+    <div v-else>
+      <Denied />
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import Denied from "pages/Denied.vue";
+import CreateInvestigadores from "components/CreateInvestigadores.vue";
+import DeleteInvestigadores from "components/DeleteInvestigadores.vue"
 import axios from "axios";
 let url = "http://127.0.0.1:8000/api/investigadores/";
 
 export default {
+  components: {
+      Denied,
+      CreateInvestigadores,
+      DeleteInvestigadores
+    },
   data() {
     return {
+      siInicio: "",
       model: null,
       files: null,
       investigadores: [],
       dialog: false,
       operacion: "",
+      EmailUnique: "",
+      Email: [],
       investigador: {
         Cedula: null,
         Nombre: "",
@@ -65,11 +73,16 @@ export default {
   },
   mounted() {
     this.mostrar();
+    this.siInicio = localStorage.getItem('username')
   },
   methods: {
     mostrar() {
       axios.get(url).then((response) => {
         this.investigadores = response.data;
+            console.log(this.investigadores);
+            var username = localStorage.getItem("username");
+            this.Email = this.investigadores.filter(word => word.Email == username );
+            this.EmailUnique =  this.Email[0].CodigoRol1
       });
     },
   },
