@@ -50,7 +50,7 @@
                   <q-btn to="/roles"   color="primary" class="ps" text-color="white" label="Roles" @click="toggleLeftDrawer()"/>
                </div>
                <div class="col-12">
-                  <q-btn to="/Investigadores"  class="ps"  color="primary" text-color="white" label="Investigadores" @click="toggleLeftDrawer()" />
+                  <q-btn to="/investigadores"  class="ps"  color="primary" text-color="white" label="Investigadores" @click="toggleLeftDrawer()" />
                </div>
                 <div class="col-12">
                   <q-btn to="/clasificacionRevistas"  class="ps"  color="primary" text-color="white" label="Clasificacion de revistas" @click="toggleLeftDrawer()" />
