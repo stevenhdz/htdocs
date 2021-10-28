@@ -33,10 +33,10 @@ Route::post('/ProyectoInvestigacion/create','App\Http\Controllers\ProyectoInvest
 Route::put('/ProyectoInvestigacion/update/{idProyecto}','App\Http\Controllers\ProyectoInvestigacionController@update');
 Route::delete('/ProyectoInvestigacion/delete/{idProyecto}','App\Http\Controllers\ProyectoInvestigacionController@destroy');
 
-Route::get('/ClasificacionRevista','App\Http\Controllers\Clasificacion_RevistaController@index');
-Route::post('/ClasificacionRevista/create','App\Http\Controllers\Clasificacion_RevistaController@store');
-Route::put('/ClasificacionRevista/update/{idProyecto}','App\Http\Controllers\Clasificacion_RevistaController@update');
-Route::delete('/ClasificacionRevista/delete/{idProyecto}','App\Http\Controllers\Clasificacion_RevistaController@destroy');
+Route::get('/ClasificacionRevista','App\Http\Controllers\Clasificacion_RevistasController@index');
+Route::post('/ClasificacionRevista/create','App\Http\Controllers\Clasificacion_RevistasController@store');
+Route::put('/ClasificacionRevista/update/{idProyecto}','App\Http\Controllers\Clasificacion_RevistasController@update');
+Route::delete('/ClasificacionRevista/delete/{idProyecto}','App\Http\Controllers\Clasificacions_RevistaController@destroy');
 
 Route::get('/DepartamentoInvestigacion','App\Http\Controllers\Departamento_InvestigacionController@index');
 Route::post('/DepartamentoInvestigacion/create','App\Http\Controllers\Departamento_InvestigacionController@store');
