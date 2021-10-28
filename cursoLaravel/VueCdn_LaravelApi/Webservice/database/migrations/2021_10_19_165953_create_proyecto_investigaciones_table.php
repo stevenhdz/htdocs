@@ -13,18 +13,18 @@ class CreateProyectoInvestigacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('_proyecto_investigaciones', function (Blueprint $table) {
+        Schema::create('proyecto_investigaciones', function (Blueprint $table) {
             $table->bigInteger('idProyecto')->autoIncrement();
             $table->string('nombre');
             $table->longText('detalles');
             $table->dateTime('fechaApertura');
             $table->dateTime('fechaCierre');
             $table->bigInteger('idG');
-            $table->foreign('idG')->references('idG')->on('_grupo__investigacion');
+            $table->foreign('idG')->references('idG')->on('grupo_investigaciones');
             $table->bigInteger('idProg');
-            $table->foreign('idProg')->references('IdPrograma')->on('_programa');
+            $table->foreign('idProg')->references('IdPrograma')->on('programas');
             $table->bigInteger('CodigoV');
-            $table->foreign('CodigoV')->references('CodigoV')->on('_departamento__investigacion');
+            $table->foreign('CodigoV')->references('CodigoV')->on('departamento_investigaciones');
         });
 
     }
@@ -36,6 +36,6 @@ class CreateProyectoInvestigacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_proyecto_investigaciones');
+        Schema::dropIfExists('proyecto_investigaciones');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Grupo_Investigacion;
+use App\Models\Programas;
 use Illuminate\Http\Request;
 
-class Grupo_InvestigacionController extends Controller
+class ProgramasController extends Controller
 {
       /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class Grupo_InvestigacionController extends Controller
      */
     public function index()
     {
-        $gruposInvestigaciones = Grupo_Investigacion::all();
-        return $gruposInvestigaciones;
+        $programas = Programas::all();
+        return $programas;
     }
 
     /**
@@ -36,11 +36,10 @@ class Grupo_InvestigacionController extends Controller
      */
     public function store(Request $request)
     {
-        $grupoInvestigacion = new Grupo_Investigacion();
-        $grupoInvestigacion->idG = $request->idG;
-        $grupoInvestigacion->Nombre = $request->Nombre;
-        $grupoInvestigacion->Categoria_Minciencias = $request->Categoria_Minciencias;
-        $grupoInvestigacion->save();
+        $programa = new Programas();
+        $programa->IdPrograma = $request->IdPrograma;
+        $programa->Nombre = $request->Nombre;
+        $programa->save();
     }
 
     /**
@@ -74,11 +73,10 @@ class Grupo_InvestigacionController extends Controller
      */
     public function update(Request $request)
     {
-        $grupoInvestigacion = Grupo_Investigacion::findOrFail($request->idG);
-        $grupoInvestigacion->Nombre = $request->Nombre;
-        $grupoInvestigacion->Categoria_Minciencias = $request->Categoria_Minciencias;
-        $grupoInvestigacion->save();
-        return $grupoInvestigacion;
+        $programa = Programas::findOrFail($request->IdPrograma);
+        $programa->Nombre = $request->Nombre;
+        $programa->save();
+        return $programa;
     }
 
     /**
@@ -89,7 +87,7 @@ class Grupo_InvestigacionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $grupoInvestigacion = Grupo_Investigacion::destroy($request->idG);
-        return $grupoInvestigacion;
+        $programa = Programas::destroy($request->IdPrograma);
+        return $programa;
     }
 }

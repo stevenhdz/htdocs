@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/investigadores','App\Http\Controllers\InvestigadoresController@index');
 Route::post('/Investigadores/create','App\Http\Controllers\InvestigadoresController@store');
-Route::put('/Investigadores/{Cedula}','App\Http\Controllers\InvestigadoresController@update');
+Route::put('/Investigadores/update/{Cedula}','App\Http\Controllers\InvestigadoresController@update');
 Route::delete('/Investigadores/delete/{Cedula}','App\Http\Controllers\InvestigadoresController@destroy');
 
 Route::get('/rols','App\Http\Controllers\rolsController@index');
@@ -58,10 +58,10 @@ Route::post('/Programa/create','App\Http\Controllers\ProgramaController@store');
 Route::put('/Programa/update/{idProyecto}','App\Http\Controllers\ProgramaController@update');
 Route::delete('/Programa/delete/{idProyecto}','App\Http\Controllers\ProgramaController@destroy');
 
-Route::get('/Facultad','App\Http\Controllers\FacultadController@index');
-Route::post('/Facultad/create','App\Http\Controllers\FacultadController@store');
-Route::put('/Facultad/update/{idProyecto}','App\Http\Controllers\FacultadController@update');
-Route::delete('/Facultad/delete/{idProyecto}','App\Http\Controllers\FacultadController@destroy');
+Route::get('/Facultades','App\Http\Controllers\FacultadesController@index');
+Route::post('/Facultad/create','App\Http\Controllers\FacultadesController@store');
+Route::put('/Facultad/update/{idFacultad}','App\Http\Controllers\FacultadesController@update');
+Route::delete('/Facultad/delete/{idFacultad}','App\Http\Controllers\FacultadesController@destroy');
 
 Route::get('/GrupoInvestigacion','App\Http\Controllers\Grupo_InvestigacionController@index');
 Route::post('/GrupoInvestigacion/create','App\Http\Controllers\Grupo_InvestigacionController@store');

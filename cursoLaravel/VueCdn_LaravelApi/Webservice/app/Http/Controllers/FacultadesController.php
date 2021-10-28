@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clasificacion_Revista;
+use App\Models\Facultades;
 use Illuminate\Http\Request;
 
-class Clasificacion_RevistaController extends Controller
+class FacultadesController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $clasificacion_revistas = Clasificacion_Revista::all();
-        return $clasificacion_revistas;
+        //funcion statica ::
+        //funcion ->
+        $facultades = Facultades::all();
+        return $facultades;
     }
 
     /**
@@ -36,10 +38,11 @@ class Clasificacion_RevistaController extends Controller
      */
     public function store(Request $request)
     {
-        $clasificacionRevista = new Clasificacion_Revista();
-        $clasificacionRevista->idClasificacion = $request->idClasificacion;
-        $clasificacionRevista->Detalle = $request->Detalle;
-        $clasificacionRevista->save();
+        //instanciando el modelo
+        $facultad = new Facultades();
+        $facultad->idFacultad = $request->idFacultad;
+        $facultad->Nombre = $request->Nombre;
+        $facultad->save();
     }
 
     /**
@@ -73,10 +76,10 @@ class Clasificacion_RevistaController extends Controller
      */
     public function update(Request $request)
     {
-        $clasificacionRevista = Clasificacion_Revista::findOrFail($request->idClasificacion);
-        $clasificacionRevista->Detalle = $request->Detalle;
-        $clasificacionRevista->save();
-        return $clasificacionRevista;
+        $facultad = Facultades::findOrFail($request->idFacultad);
+        $facultad->Nombre = $request->Nombre;
+        $facultad->save();
+        return $facultad;
     }
 
     /**
@@ -87,7 +90,7 @@ class Clasificacion_RevistaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $clasificacionRevista = Clasificacion_Revista::destroy($request->idClasificacion);
-        return $clasificacionRevista;
+        $facultad = Facultades::destroy($request->idFacultad);
+        return $facultad;
     }
 }

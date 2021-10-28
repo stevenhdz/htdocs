@@ -11,6 +11,9 @@
       children: [
         { path: '/investigadores', component: () => import('pages/Investigadores.vue') },
         { path: '/roles', component: () => import('pages/Roles.vue') },
+        { path: '/facultades', component: () => import('pages/Facultades.vue') },
+        { path: '/clasificacionRevistas', component: () => import('pages/clasificacionRevistas.vue') },
+        { path: '/departamentosInvestigaciones', component: () => import('pages/departamentosInvestigaciones.vue') },
       ]
     },
     {

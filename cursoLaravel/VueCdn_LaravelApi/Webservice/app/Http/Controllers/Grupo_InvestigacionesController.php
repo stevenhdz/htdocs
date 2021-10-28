@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Facultad;
+use App\Models\Grupo_Investigaciones;
 use Illuminate\Http\Request;
 
-class FacultadController extends Controller
+class Grupo_InvestigacionesController extends Controller
 {
-     /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //funcion statica ::
-        //funcion ->
-        $facultades = Facultad::all();
-        return $facultades;
+        $gruposInvestigaciones = Grupo_Investigaciones::all();
+        return $gruposInvestigaciones;
     }
 
     /**
@@ -38,11 +36,11 @@ class FacultadController extends Controller
      */
     public function store(Request $request)
     {
-        //instanciando el modelo
-        $facultad = new Facultad();
-        $facultad->idFacultad = $request->idFacultad;
-        $facultad->Nombre = $request->Nombre;
-        $facultad->save();
+        $grupoInvestigacion = new Grupo_Investigaciones();
+        $grupoInvestigacion->idG = $request->idG;
+        $grupoInvestigacion->Nombre = $request->Nombre;
+        $grupoInvestigacion->Categoria_Minciencias = $request->Categoria_Minciencias;
+        $grupoInvestigacion->save();
     }
 
     /**
@@ -76,10 +74,11 @@ class FacultadController extends Controller
      */
     public function update(Request $request)
     {
-        $facultad = Facultad::findOrFail($request->idFacultad);
-        $facultad->Nombre = $request->Nombre;
-        $facultad->save();
-        return $facultad;
+        $grupoInvestigacion = Grupo_Investigaciones::findOrFail($request->idG);
+        $grupoInvestigacion->Nombre = $request->Nombre;
+        $grupoInvestigacion->Categoria_Minciencias = $request->Categoria_Minciencias;
+        $grupoInvestigacion->save();
+        return $grupoInvestigacion;
     }
 
     /**
@@ -90,7 +89,7 @@ class FacultadController extends Controller
      */
     public function destroy(Request $request)
     {
-        $facultad = Facultad::destroy($request->idFacultad);
-        return $facultad;
+        $grupoInvestigacion = Grupo_Investigaciones::destroy($request->idG);
+        return $grupoInvestigacion;
     }
 }

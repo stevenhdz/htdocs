@@ -15,18 +15,18 @@
       </div>
        <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-          <CreateRol />
+          <CreateFacultad />
         </q-card>
       </div>
 
       <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-          <UpdateRol />
+          <UpdateFacultad />
         </q-card>
       </div>
       <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-          <DeleteRol />
+          <DeleteFacultad />
         </q-card>
       </div>
         
@@ -45,18 +45,18 @@
 </style>
 
 <script>
-  import CreateRol from "pages/CreateRol.vue";
-  import DeleteRol from "pages/DeleteRol.vue";
-  import UpdateRol from "pages/UpdateRol.vue";
+  import CreateFacultad from "components/CreateFacultad.vue";
+  import DeleteFacultad from "components/DeleteFacultad.vue";
+  import UpdateFacultad from "components/UpdateFacultad.vue";
   import Denied from "pages/Denied.vue";
   import axios from "axios";
-  let url = "http://127.0.0.1:8000/api/facultades/";
+  let url = "http://127.0.0.1:8000/api/Facultades/";
   let url1 = "http://127.0.0.1:8000/api/investigadores/";
   export default {
     components: {
-      CreateRol,
-      DeleteRol,
-      UpdateRol,
+      CreateFacultad,
+      DeleteFacultad,
+      UpdateFacultad,
       Denied
     },
     data() {

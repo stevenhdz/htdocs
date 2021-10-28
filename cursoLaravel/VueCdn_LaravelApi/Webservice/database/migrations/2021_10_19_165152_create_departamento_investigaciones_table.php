@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepartamentoInvestigacionTable extends Migration
+class CreateDepartamentoInvestigacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDepartamentoInvestigacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('_departamento__investigacion', function (Blueprint $table) {
+        Schema::create('departamento_investigaciones', function (Blueprint $table) {
             $table->bigInteger('CodigoV')->autoIncrement();
             $table->string('Nombre');
             $table->longText('Ubicación');
@@ -29,6 +29,6 @@ class CreateDepartamentoInvestigacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_departamento__investigacion');
+        Schema::dropIfExists('departamento_investigaciones');
     }
 }

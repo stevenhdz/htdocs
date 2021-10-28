@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFacultadTable extends Migration
+class CreateClasificacionRevistasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateFacultadTable extends Migration
      */
     public function up()
     {
-        Schema::create('facultad', function (Blueprint $table) {
-            $table->bigInteger('idFacultad')->autoIncrement();
-            $table->longText('Nombre');
+        Schema::create('clasificacion_revistas', function (Blueprint $table) {
+            $table->bigInteger('idClasificacion')->autoIncrement();
+            $table->longText('Detalle');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateFacultadTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('facultad');
+        Schema::dropIfExists('clasificacion_revistas');
     }
 }

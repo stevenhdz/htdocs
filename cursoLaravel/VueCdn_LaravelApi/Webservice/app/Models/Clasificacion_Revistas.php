@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Grupo_Investigacion extends Model
+class Clasificacion_Revistas extends Model
 {
     use HasFactory;
-    protected $fillable = ['idG',
-    'Nombre',
-    'Categoria_Minciencias'];
+    protected $fillable = ['idClasificacion','Detalle'];
     public $timestamps = false;
-    protected $primaryKey = "idG";
+    protected $primaryKey = "idClasificacion";
 }

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Programa;
+use App\Models\Revistas;
 use Illuminate\Http\Request;
 
-class ProgramaController extends Controller
+class RevistasController extends Controller
 {
-      /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $programas = Programa::all();
-        return $programas;
+        $revistas = Revistas::all();
+        return $revistas;
     }
 
     /**
@@ -36,10 +36,12 @@ class ProgramaController extends Controller
      */
     public function store(Request $request)
     {
-        $programa = new Programa();
-        $programa->IdPrograma = $request->IdPrograma;
-        $programa->Nombre = $request->Nombre;
-        $programa->save();
+        $revista = new Revistas();
+        $revista->IdRevista = $request->IdRevista;
+        $revista->Nombre = $request->Nombre;
+        $revista->Pais = $request->Pais;
+        $revista->Detalles_Publicidad = $request->Detalles_Publicidad;
+        $revista->save();
     }
 
     /**
@@ -73,10 +75,12 @@ class ProgramaController extends Controller
      */
     public function update(Request $request)
     {
-        $programa = Programa::findOrFail($request->IdPrograma);
-        $programa->Nombre = $request->Nombre;
-        $programa->save();
-        return $programa;
+        $revista = Revistas::findOrFail($request->IdRevista);
+        $revista->Nombre = $request->Nombre;
+        $revista->Pais = $request->Pais;
+        $revista->Detalles_Publicidad = $request->Detalles_Publicidad;
+        $revista->save();
+        return $revista;
     }
 
     /**
@@ -87,7 +91,7 @@ class ProgramaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $programa = Programa::destroy($request->IdPrograma);
-        return $programa;
+        $revista = Revistas::destroy($request->IdRevista);
+        return $revista;
     }
 }

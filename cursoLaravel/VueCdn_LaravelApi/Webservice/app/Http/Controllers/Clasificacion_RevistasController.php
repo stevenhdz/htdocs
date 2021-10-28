@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Revista;
+use App\Models\Clasificacion_Revistas;
 use Illuminate\Http\Request;
 
-class RevistaController extends Controller
+class Clasificacion_RevistasController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $revistas = Revista::all();
-        return $revistas;
+        $clasificacion_revistas = Clasificacion_Revistas::all();
+        return $clasificacion_revistas;
     }
 
     /**
@@ -36,12 +36,10 @@ class RevistaController extends Controller
      */
     public function store(Request $request)
     {
-        $revista = new Revista();
-        $revista->IdRevista = $request->IdRevista;
-        $revista->Nombre = $request->Nombre;
-        $revista->Pais = $request->Pais;
-        $revista->Detalles_Publicidad = $request->Detalles_Publicidad;
-        $revista->save();
+        $clasificacionRevista = new Clasificacion_Revistas();
+        $clasificacionRevista->idClasificacion = $request->idClasificacion;
+        $clasificacionRevista->Detalle = $request->Detalle;
+        $clasificacionRevista->save();
     }
 
     /**
@@ -75,12 +73,10 @@ class RevistaController extends Controller
      */
     public function update(Request $request)
     {
-        $revista = Revista::findOrFail($request->IdRevista);
-        $revista->Nombre = $request->Nombre;
-        $revista->Pais = $request->Pais;
-        $revista->Detalles_Publicidad = $request->Detalles_Publicidad;
-        $revista->save();
-        return $revista;
+        $clasificacionRevista = Clasificacion_Revistas::findOrFail($request->idClasificacion);
+        $clasificacionRevista->Detalle = $request->Detalle;
+        $clasificacionRevista->save();
+        return $clasificacionRevista;
     }
 
     /**
@@ -91,7 +87,7 @@ class RevistaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $revista = Revista::destroy($request->IdRevista);
-        return $revista;
+        $clasificacionRevista = Clasificacion_Revistas::destroy($request->idClasificacion);
+        return $clasificacionRevista;
     }
 }

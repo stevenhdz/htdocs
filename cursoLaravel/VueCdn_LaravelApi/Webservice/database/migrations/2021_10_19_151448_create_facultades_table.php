@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGrupoInvestigacionTable extends Migration
+class CreateFacultadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateGrupoInvestigacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('_grupo__investigacion', function (Blueprint $table) {
-            $table->bigInteger('idG')->autoIncrement();
+        Schema::create('facultades', function (Blueprint $table) {
+            $table->bigInteger('idFacultad')->autoIncrement();
             $table->longText('Nombre');
-            $table->string('Categoria_Minciencias');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateGrupoInvestigacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_grupo__investigacion');
+        Schema::dropIfExists('facultades');
     }
 }

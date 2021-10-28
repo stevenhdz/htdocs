@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvestigadoresProyectoTable extends Migration
+class CreateInvestigadoresProyectosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateInvestigadoresProyectoTable extends Migration
      */
     public function up()
     {
-        Schema::create('_investigadores__proyecto', function (Blueprint $table) {
+        Schema::create('investigadores_proyectos', function (Blueprint $table) {
             $table->bigInteger('idProyecto');
-            $table->foreign('idProyecto')->references('idProyecto')->on('_proyecto_investigaciones');
+            $table->foreign('idProyecto')->references('idProyecto')->on('proyecto_investigaciones');
             $table->bigInteger('Cedula');
             $table->foreign('Cedula')->references('Cedula')->on('investigadores');
         });
@@ -28,6 +28,6 @@ class CreateInvestigadoresProyectoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_investigadores__proyecto');
+        Schema::dropIfExists('investigadores_proyecto');
     }
 }
