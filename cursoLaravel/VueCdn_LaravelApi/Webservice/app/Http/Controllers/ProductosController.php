@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Departamento_Investigacion;
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
-class Departamento_InvestigacionController extends Controller
+class ProductosController extends Controller
 {
-   /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $departamento_investigacion = Departamento_Investigacion::all();
-        return $departamento_investigacion;
+        $productos = Productos::all();
+        return $productos;
     }
 
     /**
@@ -36,13 +36,12 @@ class Departamento_InvestigacionController extends Controller
      */
     public function store(Request $request)
     {
-        $departamentoInvestigacion = new Departamento_Investigacion();
-        $departamentoInvestigacion->CodigoV = $request->CodigoV;
-        $departamentoInvestigacion->Nombre = $request->Nombre;
-        $departamentoInvestigacion->Ubicación = $request->Ubicación;
-        $departamentoInvestigacion->Contacto_Tel = $request->Contacto_Tel;
-        $departamentoInvestigacion->Email = $request->Email;
-        $departamentoInvestigacion->save();
+        $producto = new Productos();
+        $producto->idClasificacion = $request->idClasificacion;
+        $producto->Descripcion = $request->Descripcion;
+        $producto->Titulo_Detalle = $request->Titulo_Detalle;
+        $producto->Nropaginas = $request->Nropaginas;
+        $producto->save();
     }
 
     /**
@@ -76,13 +75,12 @@ class Departamento_InvestigacionController extends Controller
      */
     public function update(Request $request)
     {
-        $departamentoInvestigacion = Departamento_Investigacion::findOrFail($request->CodigoV);
-        $departamentoInvestigacion->Nombre = $request->Nombre;
-        $departamentoInvestigacion->Ubicación = $request->Ubicación;
-        $departamentoInvestigacion->Contacto_Tel = $request->Contacto_Tel;
-        $departamentoInvestigacion->Email = $request->Email;
-        $departamentoInvestigacion->save();
-        return $departamentoInvestigacion;
+        $producto = Productos::findOrFail($request->Idproducto);
+        $producto->Descripcion = $request->Descripcion;
+        $producto->Titulo_Detalle = $request->Titulo_Detalle;
+        $producto->Nropaginas = $request->Nropaginas;
+        $producto->save();
+        return $producto;
     }
 
     /**
@@ -93,7 +91,7 @@ class Departamento_InvestigacionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $departamentoInvestigacion = Departamento_Investigacion::destroy($request->CodigoV);
-        return $departamentoInvestigacion;
+        $producto = Productos::destroy($request->Idproducto);
+        return $producto;
     }
 }
