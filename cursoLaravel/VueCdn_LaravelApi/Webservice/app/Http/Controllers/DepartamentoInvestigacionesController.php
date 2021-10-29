@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Departamento_Investigaciones;
+use App\Models\DepartamentoInvestigaciones;
 use Illuminate\Http\Request;
 
-class Departamento_InvestigacionesController extends Controller
+class DepartamentoInvestigacionesController extends Controller
 {
    /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class Departamento_InvestigacionesController extends Controller
      */
     public function index()
     {
-        $departamento_investigacion = Departamento_Investigaciones::all();
+        $departamento_investigacion = DepartamentoInvestigaciones::all();
         return $departamento_investigacion;
     }
 
@@ -36,7 +36,7 @@ class Departamento_InvestigacionesController extends Controller
      */
     public function store(Request $request)
     {
-        $departamentoInvestigacion = new Departamento_Investigaciones();
+        $departamentoInvestigacion = new DepartamentoInvestigaciones();
         $departamentoInvestigacion->CodigoV = $request->CodigoV;
         $departamentoInvestigacion->Nombre = $request->Nombre;
         $departamentoInvestigacion->Ubicación = $request->Ubicación;
@@ -76,7 +76,7 @@ class Departamento_InvestigacionesController extends Controller
      */
     public function update(Request $request)
     {
-        $departamentoInvestigacion = Departamento_Investigaciones::findOrFail($request->CodigoV);
+        $departamentoInvestigacion = DepartamentoInvestigaciones::findOrFail($request->CodigoV);
         $departamentoInvestigacion->Nombre = $request->Nombre;
         $departamentoInvestigacion->Ubicación = $request->Ubicación;
         $departamentoInvestigacion->Contacto_Tel = $request->Contacto_Tel;
@@ -93,7 +93,7 @@ class Departamento_InvestigacionesController extends Controller
      */
     public function destroy(Request $request)
     {
-        $departamentoInvestigacion = Departamento_Investigaciones::destroy($request->CodigoV);
+        $departamentoInvestigacion = DepartamentoInvestigaciones::destroy($request->CodigoV);
         return $departamentoInvestigacion;
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Investigadores;
-use App\Models\Investigadores_Proyectos;
+use App\Models\InvestigadoresProyectos;
 use Illuminate\Http\Request;
 
-class Investigadores_ProyectosController extends Controller
+class InvestigadoresProyectosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class Investigadores_ProyectosController extends Controller
      */
     public function index()
     {
-        $InvestigadoresProyectos = Investigadores_Proyectos::all();
+        $InvestigadoresProyectos = InvestigadoresProyectos::all();
         return $InvestigadoresProyectos;
     }
 
@@ -37,7 +37,7 @@ class Investigadores_ProyectosController extends Controller
      */
     public function store(Request $request)
     {
-        $investigadoresProyecto = new Investigadores_Proyectos();
+        $investigadoresProyecto = new InvestigadoresProyectos();
         $investigadoresProyecto->idProyecto = $request->idProyecto;
         $investigadoresProyecto->Cedula = $request->Cedula;
         $investigadoresProyecto->save();
@@ -74,8 +74,8 @@ class Investigadores_ProyectosController extends Controller
      */
     public function update(Request $request)
     {
-        $investigadoresProyecto = Investigadores_Proyectos::findOrFail($request->idProyecto);
-        $investigadoresProyecto = Investigadores_Proyectos::findOrFail($request->Cedula);
+        $investigadoresProyecto = InvestigadoresProyectos::findOrFail($request->idProyecto);
+        $investigadoresProyecto = InvestigadoresProyectos::findOrFail($request->Cedula);
         $investigadoresProyecto->save();
         return $investigadoresProyecto;
     }
@@ -88,8 +88,8 @@ class Investigadores_ProyectosController extends Controller
      */
     public function destroy(Request $request)
     {
-        $investigadoresProyecto = Investigadores_Proyectos::destroy($request->idProyecto);
-        $investigadoresProyecto = Investigadores_Proyectos::destroy($request->Cedula);
+        $investigadoresProyecto = InvestigadoresProyectos::destroy($request->idProyecto);
+        $investigadoresProyecto = InvestigadoresProyectos::destroy($request->Cedula);
         return $investigadoresProyecto;
     }
 }

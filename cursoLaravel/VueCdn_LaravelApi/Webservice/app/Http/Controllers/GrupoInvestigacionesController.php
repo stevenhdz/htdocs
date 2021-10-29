@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clasificacion_Revistas;
+use App\Models\GrupoInvestigaciones;
 use Illuminate\Http\Request;
 
-class Clasificacion_RevistasController extends Controller
+class GrupoInvestigacionesController extends Controller
 {
-    /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $clasificacion_revistas = Clasificacion_Revistas::all();
-        return $clasificacion_revistas;
+        $gruposInvestigaciones = GrupoInvestigaciones::all();
+        return $gruposInvestigaciones;
     }
 
     /**
@@ -36,10 +36,11 @@ class Clasificacion_RevistasController extends Controller
      */
     public function store(Request $request)
     {
-        $clasificacionRevista = new Clasificacion_Revistas();
-        $clasificacionRevista->idClasificacion = $request->idClasificacion;
-        $clasificacionRevista->Detalle = $request->Detalle;
-        $clasificacionRevista->save();
+        $grupoInvestigacion = new GrupoInvestigaciones();
+        $grupoInvestigacion->idG = $request->idG;
+        $grupoInvestigacion->Nombre = $request->Nombre;
+        $grupoInvestigacion->Categoria_Minciencias = $request->Categoria_Minciencias;
+        $grupoInvestigacion->save();
     }
 
     /**
@@ -73,10 +74,11 @@ class Clasificacion_RevistasController extends Controller
      */
     public function update(Request $request)
     {
-        $clasificacionRevista = Clasificacion_Revistas::findOrFail($request->idClasificacion);
-        $clasificacionRevista->Detalle = $request->Detalle;
-        $clasificacionRevista->save();
-        return $clasificacionRevista;
+        $grupoInvestigacion = GrupoInvestigaciones::findOrFail($request->idG);
+        $grupoInvestigacion->Nombre = $request->Nombre;
+        $grupoInvestigacion->Categoria_Minciencias = $request->Categoria_Minciencias;
+        $grupoInvestigacion->save();
+        return $grupoInvestigacion;
     }
 
     /**
@@ -87,7 +89,7 @@ class Clasificacion_RevistasController extends Controller
      */
     public function destroy(Request $request)
     {
-        $clasificacionRevista = Clasificacion_Revistas::destroy($request->idClasificacion);
-        return $clasificacionRevista;
+        $grupoInvestigacion = GrupoInvestigaciones::destroy($request->idG);
+        return $grupoInvestigacion;
     }
 }
