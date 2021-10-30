@@ -16,6 +16,8 @@
         { path: '/departamentosInvestigaciones', component: () => import('pages/departamentosInvestigaciones.vue') },
         { path: '/GrupoInvestigacion', component: () => import('pages/GrupoInvestigacion.vue') },
         { path: '/InvestigadoresProyecto', component: () => import('pages/InvestigadoresProyecto.vue') },
+        { path: '/Revista', component: () => import('pages/Revista.vue') },
+        { path: '/Programa', component: () => import('pages/Programa.vue') },
         
       ]
     },

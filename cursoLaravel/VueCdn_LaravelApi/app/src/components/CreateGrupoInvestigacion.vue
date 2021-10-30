@@ -4,14 +4,14 @@
     <q-form class="q-gutter-md">
       
 
-      <q-input filled v-model="GrupoInvestigacion.idG" label="idClasificacion *" lazy-rules
-        :rules="[ val => !val && val.length < 10 || /(^\d{1,10}$)/.test(val) || 'Ingrese idClasificacion, debe ser numerica']" />
+      <q-input filled v-model="GrupoInvestigacion.idG" label="idG *" lazy-rules
+        :rules="[ val => !val && val.length < 10 || /(^\d{1,10}$)/.test(val) || 'Ingrese idG, debe ser numerica']" />
 
-      <q-input filled v-model="GrupoInvestigacion.Nombre" label="Detalle *" lazy-rules
+      <q-input filled v-model="GrupoInvestigacion.Nombre" label="Nombre *" lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Nombre']" />
 
-<q-input filled v-model="GrupoInvestigacion.Categoria_Minciencias" label="Detalle *" lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Nombre']" />
+<q-input filled v-model="GrupoInvestigacion.Categoria_Minciencias" label="Categoria_Minciencias *" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Categoria_Minciencias']" />
 
         
       <div>

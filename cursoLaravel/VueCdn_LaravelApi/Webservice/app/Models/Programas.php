@@ -9,7 +9,7 @@ class Programas extends Model
 {
     use HasFactory;
     protected $fillable = ['IdPrograma',
-    'Nombre'];
+    'Nombre','idF'];
     public $timestamps = false;
     protected $primaryKey = "IdPrograma";
 }

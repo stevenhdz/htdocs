@@ -41,6 +41,7 @@ class RevistasController extends Controller
         $revista->Nombre = $request->Nombre;
         $revista->Pais = $request->Pais;
         $revista->Detalles_Publicidad = $request->Detalles_Publicidad;
+        $revista->idClasificacion = $request->idClasificacion;
         $revista->save();
     }
 
@@ -79,6 +80,7 @@ class RevistasController extends Controller
         $revista->Nombre = $request->Nombre;
         $revista->Pais = $request->Pais;
         $revista->Detalles_Publicidad = $request->Detalles_Publicidad;
+        $revista->idClasificacion = $request->idClasificacion;
         $revista->save();
         return $revista;
     }

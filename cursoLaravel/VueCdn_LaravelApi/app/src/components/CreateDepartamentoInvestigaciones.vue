@@ -4,20 +4,20 @@
     <q-form class="q-gutter-md">
       
 
-      <q-input filled v-model="DepartamentoInvestigacion.CodigoV" label="idClasificacion *" lazy-rules
-        :rules="[ val => !val && val.length < 10 || /(^\d{1,10}$)/.test(val) || 'Ingrese idClasificacion, debe ser numerica']" />
+      <q-input filled v-model="DepartamentoInvestigacion.CodigoV" label="CodigoV *" lazy-rules
+        :rules="[ val => !val && val.length < 10 || /(^\d{1,10}$)/.test(val) || 'Ingrese CodigoV, debe ser numerica']" />
 
-      <q-input filled v-model="DepartamentoInvestigacion.Nombre" label="Detalle *" lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Nombre']" />
+      <q-input filled v-model="DepartamentoInvestigacion.Nombre" label="Nombre *" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese Nombre']" />
 
-<q-input filled v-model="DepartamentoInvestigacion.Ubicacion" label="Detalle *" lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Nombre']" />
+<q-input filled v-model="DepartamentoInvestigacion.Ubicacion" label="Ubicacion *" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese Ubicacion']" />
 
-<q-input filled v-model="DepartamentoInvestigacion.Contacto_Tel" label="Detalle *" lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Nombre']" />
+<q-input filled v-model="DepartamentoInvestigacion.Contacto_Tel" label="Contacto_Tel *" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese Contacto_Tel']" />
 
-<q-input filled v-model="DepartamentoInvestigacion.Email" label="Detalle *" lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Nombre']" />
+<q-input filled v-model="DepartamentoInvestigacion.Email" label="Email *" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese Email']" />
 
         
       <div>

@@ -2,8 +2,8 @@
   <div class="q-pa-md">
     
     <q-form class="q-gutter-md">
-      <q-input filled v-model="facultad.idFacultad" label="id *" lazy-rules
-      :rules="[ val => !val || /(^\d{1,10}$)/.test(val) || 'Ingrese id valido, debe ser un numero entero']"
+      <q-input filled v-model="facultad.idFacultad" label="idFacultad *" lazy-rules
+      :rules="[ val => !val || /(^\d{1,10}$)/.test(val) || 'Ingrese idFacultad valido, debe ser un numero entero']"
        />
       <div>
 

@@ -17,7 +17,7 @@ class CreateRevistasTable extends Migration
             $table->bigInteger('IdRevista')->autoIncrement();
             $table->longText('Nombre');
             $table->string('Pais');
-            $table->integer('Detalles_Publicidad');
+            $table->string('Detalles_Publicidad');
             $table->bigInteger('idClasificacion');
             $table->foreign('idClasificacion')->references('idClasificacion')->on('clasificacion_revistas');
         });

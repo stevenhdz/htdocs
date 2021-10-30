@@ -8,7 +8,6 @@
             <h5>Listar investigadores</h5>
             <q-table virtual-scroll dense :rows="investigadores" :columns="columns" row-key="name" />
           </div>
-
         </q-card>
 
         <br>
@@ -37,6 +36,12 @@
     </div>
   </div>
 </template>
+
+<style lang="sass" scoped>
+  .my-card
+     width: 100%
+     max-width: 98%
+</style>
 
 <script>
 import { defineComponent } from "vue";

@@ -13,7 +13,7 @@
 
           
 
-        <q-btn label="Ingresar" type="submit" color="primary" class="q-ml-xs"  @click="crear()" />
+        <q-btn label="Eliminar" type="submit" color="primary" class="q-ml-xs"  @click="crear()" />
         
         <q-btn label="Cancelar" type="reset" color="red" class="q-ml-xs" @click="clear()" />
 

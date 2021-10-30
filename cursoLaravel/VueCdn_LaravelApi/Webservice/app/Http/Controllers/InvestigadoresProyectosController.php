@@ -88,6 +88,9 @@ class InvestigadoresProyectosController extends Controller
      */
     public function destroy(Request $request)
     {
+        
+        $investigadoresProyecto = InvestigadoresProyectos::findOrFail($request->idProyecto);
+        $investigadoresProyecto = InvestigadoresProyectos::findOrFail($request->Cedula);
         $investigadoresProyecto = InvestigadoresProyectos::destroy($request->idProyecto);
         $investigadoresProyecto = InvestigadoresProyectos::destroy($request->Cedula);
         return $investigadoresProyecto;

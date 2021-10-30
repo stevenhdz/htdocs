@@ -1,3 +1,4 @@
+
 <template>
   <div class="q-pa-md">
     <div class="row" v-if="siInicio != null && EmailUnique != ''">
@@ -5,8 +6,8 @@
       <div class="col-12">
         <q-card class="my-card" style="max-width: 100%; max-heigth: 90%">
           <div class="q-pa-md">
-            <h5>Listar Grupo Investigacion</h5>
-            <q-table virtual-scroll dense :rows="GrupoInvestigacion" :columns="columns" row-key="name" />
+            <h5>Listar Revistas</h5>
+            <q-table virtual-scroll dense :rows="Revista" :columns="columns" row-key="name" />
           </div>
 
         </q-card>
@@ -15,22 +16,21 @@
       </div>
        <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-         <CreateGrupoInvestigacion />
+          <CreateRevista />
         </q-card>
       </div>
 
       <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-          <DeleteGrupoInvestigacion />
-        </q-card>
-      </div>
-      <div class="col-4">
-        <q-card class="my-card" v-if="EmailUnique == 1">
-          <UpdateGrupoInvestigacion />
+          <DeleteRevista />
         </q-card>
       </div>
         
-      
+      <div class="col-4">
+        <q-card class="my-card" v-if="EmailUnique == 1">
+          <UpdateRevista />
+        </q-card>
+      </div>
     </div>
     <div v-else>
       <Denied />
@@ -44,40 +44,37 @@
      max-width: 98%
 </style>
 
-
 <script>
-import { defineComponent } from "vue";
-import Denied from "pages/Denied.vue";
-import CreateGrupoInvestigacion from "components/CreateGrupoInvestigacion.vue";
-import DeleteGrupoInvestigacion from "components/DeleteGrupoInvestigacion.vue"
-import UpdateGrupoInvestigacion from "components/UpdateGrupoInvestigacion.vue"
-import axios from "axios";
-let url = "http://127.0.0.1:8000/api/GrupoInvestigacion/";
- let url1 = "http://127.0.0.1:8000/api/investigadores/";
-export default {
-  components: {
-      Denied,
-      CreateGrupoInvestigacion,
-      DeleteGrupoInvestigacion,
-      UpdateGrupoInvestigacion
+  import CreateRevista from "components/CreateRevista.vue";
+  import DeleteRevista from "components/DeleteRevista.vue";
+  import UpdateRevista from "components/UpdateRevista.vue";
+  import Denied from "pages/Denied.vue";
+  import axios from "axios";
+  let url = "http://127.0.0.1:8000/api/Revista/";
+  let url1 = "http://127.0.0.1:8000/api/investigadores/";
+  export default {
+    components: {
+      CreateRevista,
+      DeleteRevista,
+      UpdateRevista,
+      Denied
     },
-  data() {
-    return {
-      siInicio: "",
-      model: null,
-      files: null,
-      GrupoInvestigacion: [],
-      dialog: false,
-      operacion: "",
-      EmailUnique: "",
-      Email: [],
-      DepartamentoInvestigacion: {
-        idClasificacion: null,
-        Detalle: ""
-      },
-    };
-  },
-  mounted() {
+    data() {
+      return {
+        siInicio: "",
+        Investigadores: [],
+        EmailUnique: "",
+        Revista: [],
+        dialog: false,
+        operacion: "",
+        Email: [],
+        Revista1: {
+          CodigoRol: null,
+          Descripcion: "",
+        },
+      };
+    },
+    mounted() {
 
 
            this.mostrar();
@@ -100,9 +97,9 @@ export default {
     methods: {
       mostrar() {
         axios.get(url).then((response) => {
-          this.GrupoInvestigacion = response.data;
+          this.Revista = response.data;
         });
       },
     },
-};
+  };
 </script>

@@ -12,7 +12,8 @@ class Revistas extends Model
         'IdRevista',
         'Nombre',
         'Pais',
-        'Detalles_Publicidad'
+        'Detalles_Publicidad',
+        'idClasificacion'
     ];
     public $timestamps = false;
     protected $primaryKey = "IdRevista";

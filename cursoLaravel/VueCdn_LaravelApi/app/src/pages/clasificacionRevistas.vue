@@ -38,6 +38,13 @@
   </div>
 </template>
 
+<style lang="sass" scoped>
+  .my-card
+     width: 100%
+     max-width: 98%
+</style>
+
+
 <script>
 import { defineComponent } from "vue";
 import Denied from "pages/Denied.vue";

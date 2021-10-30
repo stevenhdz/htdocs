@@ -39,6 +39,7 @@ class ProgramasController extends Controller
         $programa = new Programas();
         $programa->IdPrograma = $request->IdPrograma;
         $programa->Nombre = $request->Nombre;
+        $programa->idF = $request->idF;
         $programa->save();
     }
 
@@ -75,6 +76,7 @@ class ProgramasController extends Controller
     {
         $programa = Programas::findOrFail($request->IdPrograma);
         $programa->Nombre = $request->Nombre;
+        $programa->idF = $request->idF;
         $programa->save();
         return $programa;
     }
