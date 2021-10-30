@@ -39,7 +39,7 @@ class DepartamentoInvestigacionesController extends Controller
         $departamentoInvestigacion = new DepartamentoInvestigaciones();
         $departamentoInvestigacion->CodigoV = $request->CodigoV;
         $departamentoInvestigacion->Nombre = $request->Nombre;
-        $departamentoInvestigacion->Ubicación = $request->Ubicación;
+        $departamentoInvestigacion->Ubicacion = $request->Ubicacion;
         $departamentoInvestigacion->Contacto_Tel = $request->Contacto_Tel;
         $departamentoInvestigacion->Email = $request->Email;
         $departamentoInvestigacion->save();
@@ -78,7 +78,7 @@ class DepartamentoInvestigacionesController extends Controller
     {
         $departamentoInvestigacion = DepartamentoInvestigaciones::findOrFail($request->CodigoV);
         $departamentoInvestigacion->Nombre = $request->Nombre;
-        $departamentoInvestigacion->Ubicación = $request->Ubicación;
+        $departamentoInvestigacion->Ubicacion = $request->Ubicacion;
         $departamentoInvestigacion->Contacto_Tel = $request->Contacto_Tel;
         $departamentoInvestigacion->Email = $request->Email;
         $departamentoInvestigacion->save();

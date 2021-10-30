@@ -14,6 +14,9 @@
         { path: '/facultades', component: () => import('pages/Facultades.vue') },
         { path: '/clasificacionRevistas', component: () => import('pages/clasificacionRevistas.vue') },
         { path: '/departamentosInvestigaciones', component: () => import('pages/departamentosInvestigaciones.vue') },
+        { path: '/GrupoInvestigacion', component: () => import('pages/GrupoInvestigacion.vue') },
+        { path: '/InvestigadoresProyecto', component: () => import('pages/InvestigadoresProyecto.vue') },
+        
       ]
     },
     {

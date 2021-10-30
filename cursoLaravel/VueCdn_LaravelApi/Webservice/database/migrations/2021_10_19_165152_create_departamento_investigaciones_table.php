@@ -16,7 +16,7 @@ class CreateDepartamentoInvestigacionesTable extends Migration
         Schema::create('departamento_investigaciones', function (Blueprint $table) {
             $table->bigInteger('CodigoV')->autoIncrement();
             $table->string('Nombre');
-            $table->longText('Ubicación');
+            $table->longText('Ubicacion');
             $table->string('Contacto_Tel');
             $table->string('Email');
         });

@@ -5,8 +5,8 @@
       <div class="col-12">
         <q-card class="my-card" style="max-width: 100%; max-heigth: 90%">
           <div class="q-pa-md">
-            <h5>Listar DepartamentoInvestigaciones</h5>
-            <q-table virtual-scroll dense :rows="DepartamentoInvestigaciones" :columns="columns" row-key="name" />
+            <h5>Listar Grupo Investigacion</h5>
+            <q-table virtual-scroll dense :rows="GrupoInvestigacion" :columns="columns" row-key="name" />
           </div>
 
         </q-card>
@@ -15,18 +15,18 @@
       </div>
        <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-         <CreateDepartamentoInvestigaciones />
+         <CreateGrupoInvestigacion />
         </q-card>
       </div>
 
       <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-          <DeleteDepartamentoInvestigaciones />
+          <DeleteGrupoInvestigacion />
         </q-card>
       </div>
       <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-          <UpdateDepartamentoInvestigaciones />
+          <UpdateGrupoInvestigacion />
         </q-card>
       </div>
         
@@ -41,25 +41,25 @@
 <script>
 import { defineComponent } from "vue";
 import Denied from "pages/Denied.vue";
-import CreateDepartamentoInvestigaciones from "components/CreateDepartamentoInvestigaciones.vue";
-import DeleteDepartamentoInvestigaciones from "components/DeleteDepartamentoInvestigaciones.vue"
-import UpdateDepartamentoInvestigaciones from "components/UpdateDepartamentoInvestigaciones.vue"
+import CreateGrupoInvestigacion from "components/CreateGrupoInvestigacion.vue";
+import DeleteGrupoInvestigacion from "components/DeleteGrupoInvestigacion.vue"
+import UpdateGrupoInvestigacion from "components/UpdateGrupoInvestigacion.vue"
 import axios from "axios";
-let url = "http://127.0.0.1:8000/api/DepartamentoInvestigacion/";
+let url = "http://127.0.0.1:8000/api/GrupoInvestigacion/";
  let url1 = "http://127.0.0.1:8000/api/investigadores/";
 export default {
   components: {
       Denied,
-      CreateDepartamentoInvestigaciones,
-      DeleteDepartamentoInvestigaciones,
-      UpdateDepartamentoInvestigaciones
+      CreateGrupoInvestigacion,
+      DeleteGrupoInvestigacion,
+      UpdateGrupoInvestigacion
     },
   data() {
     return {
       siInicio: "",
       model: null,
       files: null,
-      DepartamentoInvestigaciones: [],
+      GrupoInvestigacion: [],
       dialog: false,
       operacion: "",
       EmailUnique: "",
@@ -93,7 +93,7 @@ export default {
     methods: {
       mostrar() {
         axios.get(url).then((response) => {
-          this.DepartamentoInvestigaciones = response.data;
+          this.GrupoInvestigacion = response.data;
         });
       },
     },

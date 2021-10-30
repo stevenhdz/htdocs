@@ -4,7 +4,7 @@
     <q-form class="q-gutter-md">
       
 
-      <q-input filled v-model="clasificacionRevista.idClasificacion" label="idClasificacion *" lazy-rules
+      <q-input filled v-model="DepartamentoInvestigacion.CodigoV" label="idClasificacion *" lazy-rules
         :rules="[ val => !val && val.length < 10 || /(^\d{1,10}$)/.test(val) || 'Ingrese idClasificacion, debe ser numerica']" />
 
     
@@ -25,25 +25,25 @@
 <script>
   import { defineComponent } from "vue";
   import axios from "axios";
-  let url = "http://127.0.0.1:8000/api/ClasificacionRevista/delete/";
+  let url = "http://127.0.0.1:8000/api/DepartamentoInvestigacion/delete/";
   export default {
-    name: "DeleteClasificacionRevistas",
+    name: "DeleteDepartamentoInvestigacion",
     data() {
       return {
         facultades: [],
-        clasificacionRevista: {
-          idClasificacion: null
+        DepartamentoInvestigacion: {
+          CodigoV: null
         },
       };
     },
 
     methods: {
       clear(){
-        this.clasificacionRevista.detalle = ''
+        this.DepartamentoInvestigacion.CodigoV = ''
       },
       crear() {
-        axios.delete(url + this.clasificacionRevista.idClasificacion).then((response) => {
-          setTimeout("location.reload()", 1000);
+        axios.delete(url + this.DepartamentoInvestigacion.CodigoV).then((response) => {
+          //setTimeout("location.reload()", 1000);
         });
             //this.facultad.Nombre = "";
       },

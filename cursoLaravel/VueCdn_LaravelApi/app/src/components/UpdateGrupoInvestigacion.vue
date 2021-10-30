@@ -4,10 +4,13 @@
     <q-form class="q-gutter-md">
       
 
-      <q-input filled v-model="clasificacionRevista.idClasificacion" label="idClasificacion *" lazy-rules
+      <q-input filled v-model="GrupoInvestigacion.idG" label="idClasificacion *" lazy-rules
         :rules="[ val => !val && val.length < 10 || /(^\d{1,10}$)/.test(val) || 'Ingrese idClasificacion, debe ser numerica']" />
 
-      <q-input filled v-model="clasificacionRevista.Detalle" label="Detalle *" lazy-rules
+      <q-input filled v-model="GrupoInvestigacion.Nombre" label="Detalle *" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Nombre']" />
+
+<q-input filled v-model="GrupoInvestigacion.Categoria_Minciencias" label="Detalle *" lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Por favor ingrese una Nombre']" />
 
         
@@ -27,30 +30,33 @@
 <script>
   import { defineComponent } from "vue";
   import axios from "axios";
-  let url = "http://127.0.0.1:8000/api/ClasificacionRevista/create/";
+  let url = "http://127.0.0.1:8000/api/GrupoInvestigacion/update/";
   export default {
-    name: "CreateClasificacionRevistas",
+    name: "UpdateGrupoInvestigacion",
     data() {
       return {
         facultades: [],
-        clasificacionRevista: {
-          idClasificacion: null,
-          Detalle: ''
+        GrupoInvestigacion: {
+          idG: null,
+          Nombre: '',
+          Categoria_Minciencias: ''
         },
       };
     },
 
     methods: {
       clear(){
-        this.clasificacionRevista.Detalle = '',
-        this.clasificacionRevista.idClasificacion = ''
+        this.GrupoInvestigacion.idG = '',
+        this.GrupoInvestigacion.Nombre = '',
+        this.GrupoInvestigacion.Categoria_Minciencias = ''
       },
       crear() {
         let parametros = {
-            idClasificacion: this.clasificacionRevista.idClasificacion,
-          Detalle: this.clasificacionRevista.Detalle,
+          idG: this.GrupoInvestigacion.idG,
+          Nombre: this.GrupoInvestigacion.Nombre,
+          Categoria_Minciencias: this.GrupoInvestigacion.Categoria_Minciencias,
         };
-        axios.post(url, parametros).then((response) => {
+        axios.put(url + this.GrupoInvestigacion.idG, parametros).then((response) => {
           setTimeout("location.reload()", 1000);
         });
             //this.facultad.Nombre = "";

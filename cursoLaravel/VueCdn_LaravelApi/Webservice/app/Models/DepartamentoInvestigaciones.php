@@ -11,7 +11,7 @@ class DepartamentoInvestigaciones extends Model
     protected $fillable = [
         'CodigoV',
         'Nombre',
-        'Ubicación',
+        'Ubicacion',
         'Contacto_Tel',
         'Email'
     ];

@@ -65,19 +65,19 @@
                   <q-btn to="/GrupoInvestigacion"  class="ps"  color="primary" text-color="white" label="Grupo Investigacion" @click="toggleLeftDrawer()" />
                </div>
                 <div class="col-12">
-                  <q-btn to="/InvestigadoresProyecto"  class="ps"  color="primary" text-color="white" label="Investigadores Proyecto" @click="toggleLeftDrawer()" />
+                  <q-btn to="/InvestigadoresProyecto"  class="ps"  color="secondary" text-color="white" label="Investigadores Proyecto" @click="toggleLeftDrawer()" />
                </div>
                 <div class="col-12">
-                  <q-btn to="/Producto"  class="ps"  color="primary" text-color="white" label="Producto" @click="toggleLeftDrawer()" />
+                  <q-btn to="/Producto"  class="ps"  color="secondary" text-color="white" label="Producto" @click="toggleLeftDrawer()" />
                </div>
                 <div class="col-12">
-                  <q-btn to="/Programa"  class="ps"  color="primary" text-color="white" label="Programa" @click="toggleLeftDrawer()" />
+                  <q-btn to="/Programa"  class="ps"  color="secondary" text-color="white" label="Programa" @click="toggleLeftDrawer()" />
                </div>
                 <div class="col-12">
-                  <q-btn to="/ProyectoInvestigacion"  class="ps"  color="primary" text-color="white" label="Proyecto Investigacion" @click="toggleLeftDrawer()" />
+                  <q-btn to="/ProyectoInvestigacion"  class="ps"  color="secondary" text-color="white" label="Proyecto Investigacion" @click="toggleLeftDrawer()" />
                </div>
                 <div class="col-12">
-                  <q-btn to="/Revista"  class="ps"  color="primary" text-color="white" label="Revista" @click="toggleLeftDrawer()" />
+                  <q-btn to="/Revista"  class="ps"  color="secondary" text-color="white" label="Revista" @click="toggleLeftDrawer()" />
                </div>
             </div>
         </div>
