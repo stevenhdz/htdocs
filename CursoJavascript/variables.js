@@ -11,8 +11,7 @@ y;
 
 
 var weather = "rainy";
-​weather = "sunny";
-weather;
+console.log(weather)
 
 
 var camelCase = "lowercase word, then uppercase";
