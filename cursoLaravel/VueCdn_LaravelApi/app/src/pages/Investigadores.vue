@@ -8,7 +8,6 @@
             <h5>Listar investigadores</h5>
             <q-table virtual-scroll dense :rows="investigadores" :columns="columns" row-key="name" />
           </div>
-
         </q-card>
 
         <br>
@@ -26,7 +25,7 @@
       </div>
       <div class="col-4">
         <q-card class="my-card" v-if="EmailUnique == 1">
-          
+          <UpdateInvestigadores />
         </q-card>
       </div>
         
@@ -38,11 +37,18 @@
   </div>
 </template>
 
+<style lang="sass" scoped>
+  .my-card
+     width: 100%
+     max-width: 98%
+</style>
+
 <script>
 import { defineComponent } from "vue";
 import Denied from "pages/Denied.vue";
 import CreateInvestigadores from "components/CreateInvestigadores.vue";
 import DeleteInvestigadores from "components/DeleteInvestigadores.vue"
+import UpdateInvestigadores from "components/UpdateInvestigadores.vue"
 import axios from "axios";
 let url = "http://127.0.0.1:8000/api/investigadores/";
 
@@ -50,7 +56,8 @@ export default {
   components: {
       Denied,
       CreateInvestigadores,
-      DeleteInvestigadores
+      DeleteInvestigadores,
+      UpdateInvestigadores
     },
   data() {
     return {

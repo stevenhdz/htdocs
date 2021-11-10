@@ -2,7 +2,7 @@
   <div class="q-pa-md">
 
     <q-form class="q-gutter-md">
-       <q-input filled v-model="rol.CodigoRol" label="id *" lazy-rules
+       <q-input filled v-model="rol.CodigoRol" label="Codigo rol *" lazy-rules
        :rules="[ val => !val || /(^\d{1,10}$)/.test(val) || 'Ingrese id valido, debe ser un numero entero']"
        />
       <q-input filled v-model="rol.Descripcion" label="Descripcion *" lazy-rules
