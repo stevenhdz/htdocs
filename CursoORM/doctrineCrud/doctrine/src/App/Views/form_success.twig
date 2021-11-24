@@ -1,0 +1,7 @@
+      {% if msg is not empty %}
+            <div class="alert alert-success">
+                {% for msg in msg %}
+                    <span>{{ msg }}</span><br/>
+                {% endfor %}
+            </div>
+        {% endif %}
