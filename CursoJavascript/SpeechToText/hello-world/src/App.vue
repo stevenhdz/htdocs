@@ -1,128 +1,133 @@
 <template>
-  <div id="app">
-  <v-app id="inspire">
-    <v-container fluid>
-      <v-layout row wrap justify-center class="mt-4">
-        <v-flex xs12 sm10 text-xs-center>
-          <v-text-field
-            label="The text"
-            v-model="text"
-            textarea
-          ></v-text-field>
-        </v-flex>
-        <v-flex xs12 sm8 md4 text-xs-center>
-        
+  <div>
+    <v-app>
+      <v-form>
+        <v-container>
 
-  <v-card>
-    <v-card-text>
-      <v-layout row wrap justify-space-around>
-        <v-flex xs8 sm9 text-xs-center>
-          <p v-if="error" class="grey--text">{{error}}</p>
-          <p v-else class="mb-0">
-            <span v-if="sentences.length > 0" v-for="sentence in sentences" :key="sentence">{{sentence}}. </span>
-            <span>{{runtimeTranscription}}</span>
-          </p>
-        </v-flex>
-        <v-flex xs2 sm1 text-xs-center>
-          <v-btn
-            dark
-            @click.stop="toggle ? endSpeechRecognition() : startSpeechRecognition()"
-            icon
-            :color="!toggle ? 'grey' : (speaking ? 'red' : 'red darken-3')"
-            :class="{'animated infinite pulse': toggle}"
+          <span>
+            https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/speechstart_event
+            https://vuetifyjs.com/en/components/icons/#props
+            https://vuejs.org/
+          </span>
+          <v-textarea solo name="input-6-4" v-model="output"></v-textarea>
+
+          <div v-if="toggle == true">
+            <v-text-field v-model="message"></v-text-field>
+          </div>
+
+          <div>
+            <v-text-field v-model="preview"></v-text-field>
+          </div>
+
+          <v-btn class="pa-4 rounded-circle" :color="!toggle ? 'grey' : (speaking ? 'red' : 'red darken-3')" elevation="7" x-small @click.stop="toggle ? End() : Start()"
+            >  <v-icon small>{{toggle ? 'mic' : 'mic_off'}}</v-icon></v-btn
           >
-            <v-icon>{{toggle ? 'mic_off' : 'mic'}}</v-icon>
-          </v-btn>
-        </v-flex>
-      </v-layout>
-    </v-card-text>
-  </v-card>
-
-        </v-flex>
-        <v-flex xs12 text-xs-center class="mt-4">
-          {{sentences}}
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-app>
-</div>
+        </v-container>
+      </v-form>
+    </v-app>
+  </div>
 </template>
 
 <script>
-let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-let recognition = SpeechRecognition? new SpeechRecognition() : false
+let SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = SpeechRecognition ? new SpeechRecognition() : false;
+import axios from "axios";
 export default {
-  name: 'speech-to-text',
-
-  
-  data: () => ({
-    error: false,
+  data() {
+    return {
+      message: "",
+      output: "",
+      error: false,
       speaking: false,
       toggle: false,
-      runtimeTranscription: '',
-      sentences: []
-  }),
-
+      lang: 'es-ES',
+      preview: ''
+    };
+  },
   methods: {
-
-   checkCompatibility () {
+    checkCompatibility() {
       if (!recognition) {
-        this.error = 'Speech Recognition is not available on this browser. Please use Chrome or Firefox'
+        this.message = "Tu navegador no es compatible";
       }
     },
-    endSpeechRecognition () {
-      recognition.stop()
-      this.toggle = false
-      this.$emit('speechend', {
-        sentences: this.sentences,
-        text: this.sentences.join('. ')
-      })
+
+    End() {
+      recognition.stop();
+      this.toggle = false;
     },
-    startSpeechRecognition () {
+
+    Start() {
       if (!recognition) {
-        this.error = 'Speech Recognition is not available on this browser. Please use Chrome or Firefox'
-        return false
+        this.message = "No compatible navegador";
+        return false;
       }
-      this.toggle = true
-      recognition.lang = this.lang
-      recognition.interimResults = true
 
-      recognition.addEventListener('speechstart', event => {
-        this.speaking = true
-      })
+      this.toggle = true;
+       //recognition.lang = this.lang
+      recognition.interimResults = true;
 
-      recognition.addEventListener('speechend', event => {
-        this.speaking = false
-      })
+      recognition.addEventListener("start", () => {
+        this.message = "Ha comenzado el servicio de reconocimiento de voz";
+      });
 
-      recognition.addEventListener('result', event => {
-        const text = Array.from(event.results).map(result => result[0]).map(result => result.transcript).join('')
-        this.runtimeTranscription = text
-      })
+      recognition.addEventListener("speechstart", () => {
+        this.message = "Se ha detectado voz";
+        this.speaking = true;
+      });
 
-      recognition.addEventListener('end', () => {
-        if (this.runtimeTranscription !== '') {
-          this.sentences.push(this.capitalizeFirstLetter(this.runtimeTranscription))
-          this.$emit('update:text', `${this.text}${this.sentences.slice(-1)[0]}. `)
+      recognition.addEventListener("speechend", () => {
+        this.message = "El habla a dejado de detectarse";
+        this.speaking = false;
+      });
+
+      recognition.addEventListener("error", (event) => {
+        this.message = "Error de reconocimiento de voz detectado: " + event.error;
+      });
+
+      recognition.addEventListener("result", (event) => {
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          this.preview = event.results[i][0].transcript
+          if (event.results[i].isFinal) {
+            if (this.output == "") {
+              this.output += event.results[i][0].transcript;
+            } else {
+              this.output += " " + event.results[i][0].transcript;
+            }
+          }
         }
-        this.runtimeTranscription = ''
-        recognition.stop()
+      });
+
+      recognition.addEventListener("end", () => {
+        this.message = "Servicio de reconocimiento de voz desconectado";
+        recognition.stop();
         if (this.toggle) {
           // keep it going.
-          recognition.start()
+          recognition.start();
         }
-      })
-      recognition.start()
+      });
+      recognition.start();
     },
-    capitalizeFirstLetter (string) {
-      return string.charAt(0).toUpperCase() + string.slice(1)
-    }
+
+    save() {
+      let parametros = {
+        Descripcion1: this.output,
+      };
+      axios
+        .post("http://127.0.0.1:8000/api/Articulos/create/", parametros)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .then(function () {
+          // always exec
+        });
+    },
   },
-  mounted(){  this.checkCompatibility()
-  }
-}
+  mounted() {
+    this.checkCompatibility();
+  },
+};
 </script>
-
-
-
-
