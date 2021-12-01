@@ -7,7 +7,7 @@ function Start(start1,out) {
       var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
       let recognition = new SpeechRecognition()
     
-      recognition.continuous = true
+      recognition.interimResults = true
     
       recognition.onstart = function () {
           message.innerHTML = "Ha comenzado el servicio de reconocimiento de voz"
@@ -19,6 +19,7 @@ function Start(start1,out) {
     
       recognition.onend = function () {
           message.innerHTML = "Servicio de reconocimiento de voz desconectado"
+          recognition.continuos = true
       }
     
       recognition.onspeechend = function () {
@@ -112,9 +113,11 @@ function save() {
     .post("http://127.0.0.1:8000/api/Articulos/create/", parametros)
     .then(function (response) {
       console.log(response);
+      document.getElementById("message3").innerHTML = "Se guardo" +  JSON.stringify(response.data)
     })
     .catch(function (error) {
       console.log(error);
+      document.getElementById("message3").innerHTML = "Error" +  JSON.stringify(response.data)
     })
     .then(function () {
       // always exec

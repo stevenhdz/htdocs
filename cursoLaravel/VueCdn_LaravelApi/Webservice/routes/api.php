@@ -72,4 +72,4 @@ Route::get('/InvestigadoresProyecto','App\Http\Controllers\InvestigadoresProyect
 Route::post('/InvestigadoresProyecto/create','App\Http\Controllers\InvestigadoresProyectosController@store');
 Route::put('/InvestigadoresProyecto/update/{idProyecto}','App\Http\Controllers\InvestigadoresProyectosController@update');
 Route::delete('/InvestigadoresProyecto/delete/{idProyecto}','App\Http\Controllers\InvestigadoresProyectosController@destroy');
-//Route::resource('blog',App\Http\Controllers\BlogController::class)->only(['index','store','update','show','delete']);
+Route::resource('blog',App\Http\Controllers\BlogController::class)->only(['index','store','update','show','delete']);
