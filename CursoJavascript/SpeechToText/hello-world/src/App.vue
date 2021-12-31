@@ -55,6 +55,7 @@ export default {
     End() {
       recognition.stop();
       this.toggle = false;
+      this.save()
     },
 
     Start() {
@@ -102,7 +103,7 @@ export default {
         this.message = "Servicio de reconocimiento de voz desconectado";
         recognition.stop();
         if (this.toggle) {
-          // keep it going.
+          // keep it going.s
           recognition.start();
         }
       });
@@ -112,6 +113,7 @@ export default {
     save() {
       let parametros = {
         Descripcion1: this.output,
+        Descripcion2: 'null'
       };
       axios
         .post("http://127.0.0.1:8000/api/Articulos/create/", parametros)

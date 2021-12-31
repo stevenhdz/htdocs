@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Usando canvas to blob</title>
+</head>
+<body>
+
+    <canvas></canvas>
+  
+  <button id="generarblob" onclick="save()">imagen a blob</button>
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" crossorigin="anonymous" id="scream">
+
+
+  <a></a>
+
+  <script>
+
+
+function save(){
+
+   // tomar cualquier imagen
+let img = document.querySelector('img');
+
+// hacer el <canvas> del mismo tamaño
+let canvas = document.createElement('canvas');
+canvas.width = img.clientWidth;
+canvas.height = img.clientHeight;
+
+let context = canvas.getContext('2d');
+
+// copiar la imagen en él (este método permite cortar la imagen)
+context.drawImage(img, 0, 0);
+// podemos hacer un context.rotate(), y muchas otras cosas en canvas
+
+// toBlob es una operación asincrónica, callback es llamada al terminar
+canvas.toBlob(function(blob) {
+  console.log(blob)  
+  // blob listo, descárgalo
+  let link = document.createElement('a');
+  link.download = 'example.png';
+
+  link.href = URL.createObjectURL(blob);
+  link.click();
+
+  console.log(link.href)
+
+  // borrar la referencia interna del blob, para permitir al navegador eliminarlo de la memoria
+  URL.revokeObjectURL(link.href);
+}, 'image/png');
+
+}
+  </script>
+</body>
+</html>

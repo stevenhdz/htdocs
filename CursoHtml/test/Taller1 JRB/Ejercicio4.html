@@ -1,0 +1,86 @@
+<!-- Realizar formulario con todas las etiquetas y sus tipos aplicando buenas practicas, SEO -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contenedor{
+            background-color: #4CAF50;
+            padding: 12px;
+        }
+
+        label {
+            display: inline-block;
+            width: 140px;
+        }
+
+        .input{
+            margin-left: 550px;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            padding: 15px 28px;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor" >
+        <center>
+            <h3>INFORMACION DEL EMPLEADO</h3><br>
+            <h3>Ingrese los siguientes datos</h3>
+        </center>
+    </div><br>
+
+    <form action="">
+        <label for="nombre">Nombre:</label> 
+        <input type="text" id="nombre" name="Nombre" class="input"> <br><br>
+
+        <label for="estatura">Estatura:</label>
+        <input type="text" id="estatura" name="estatura" class="input"> <br><br>
+
+        <label for="sexo">Sexo:</label>
+            <input type="radio" id="masculino" name="masculino" style="margin-left: 550px;">
+            <label for="mujer">M</label> 
+            <input type="radio" id="femenino" name="femenino" >
+            <label for="mujer">F</label> <br><br> 
+
+        <label for="salario">Salario:</label>
+        <input type="number" id="salario" name="salario" class="input"> <br><br>
+
+        <label for="diastrabajados">Días trabajados:</label>
+        <input type="number" id="diastrabajados" name="diastrabajados" class="input"> <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="input"> <br><br>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" class="input" style="width: 168px;"><br><br> 
+
+        <label for="lenguajePreferido">Lenguaje preferido:</label class="input">
+            <select name="lenguajePreferido" class="input" style="width: 185px;">
+                <option value="Español" selected>Seleccione...</option>
+                <option value="python" >Python</option>
+                <option value="java">Java</option>
+                <option value="c#">C#</option>
+                <option value="javascript">JavaScript</option>
+                <option value="php">Php</option>
+            </select><br><br>
+
+        <label for="salario">Salario a pagar:</label>
+        <input type="number" id="salario" name="salario" class="input"> <br><br>
+
+        <input type="submit" value="Cancelar" style=" margin-left: 650px;">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
