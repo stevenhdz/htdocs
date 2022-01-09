@@ -1,0 +1,28 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Almacenar libros{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h1 class="text-center text-muted">Eliminar libro</h1>
+        </div>
+        <hr class="my-4 text-success" style="border: solid 2px"/>
+
+        {% include 'form_errors.twig' %}
+          {% include 'form_success.twig' %}
+
+        <form method="post">
+
+            <div class="form-group mt-2">
+                <label for="id">id</label>
+                <input type="text" id="id" name="id" value="{{book.id}}" class="form-control"/> 
+            </div>
+                    
+            
+            <div class="form-group mt-2">
+                <input type="submit" name="btn_guardar" value="Eliminar" class="btn btn-danger" />
+            </div>   
+        </form>
+    </div>
+{% endblock %}
