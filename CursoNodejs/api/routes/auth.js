@@ -21,22 +21,22 @@ router.post('/login', async (req, res) => {
     // validaciones
     const { error } = schemaLogin.validate(req.body);
     if (error) return res.status(400).json({ error: error.details[0].message })
-    
+
     const user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(400).json({ error: 'Usuario no encontrado' });
 
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) return res.status(400).json({ error: 'contraseña no válida' })
 
-     // create token
-     const token = jwt.sign({
+    // create token
+    const token = jwt.sign({
         name: user.name,
         id: user._id
     }, process.env.TOKEN_SECRET)
-    
+
     res.header('auth-token', token).json({
         error: null,
-        data: {token}
+        data: { token }
     })
 
     res.json({
@@ -49,22 +49,22 @@ router.post('/login', async (req, res) => {
 
 })
 
-router.post('/register', async (req,res,next) => {
+router.post('/register', async (req, res, next) => {
 
     //validacion de usuario
     const { error } = schemaRegister.validate(req.body)
 
     if (error) {
         return res.status(400).json(
-            {error: error.details[0].message}
+            { error: error.details[0].message }
         )
     }
 
     const isEmailExist = await User.findOne({ email: req.body.email });
-    
+
     if (isEmailExist) {
         return res.status(400).json(
-            {error: 'Email ya registrado'}
+            { error: 'Email ya registrado' }
         )
     }
 
@@ -86,7 +86,7 @@ router.post('/register', async (req,res,next) => {
             data: savedUser
         })
     } catch (error) {
-        res.status(400).json({error})
+        res.status(400).json({ error })
     }
 
 })
