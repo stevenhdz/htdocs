@@ -35,6 +35,7 @@ mongoose.connect(uri,options).then(() => console.log('Conectada'))
 
 //Import routes
 const authRoutes = require('./routes/auth');
+const { createSecretKey } = require('crypto');
 
 //route middlewares
 app.use('/api/user', authRoutes);
@@ -43,10 +44,10 @@ app.use('/api/admin', verifyToken, admin);
 // iniciar server 
 const PORT = process.env.PORT || 3001;
 
-
 https.createServer({
-    cert: fs.readFileSync('server.crt'),
-    key: fs.readFileSync('server.key')
+    cert: fs.readFileSync('cert/cert.pem'),
+    key: fs.readFileSync('cert/key.pem'),
+    ca: [fs.readFileSync('cert/csr.pem')] //array
 },app).listen(PORT, () =>{
     console.log(`servidor en ${PORT}`)
 })

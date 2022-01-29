@@ -6,7 +6,10 @@ configurar el dev y start en scripts
 
 npm run dev
 
-
 Crear los ssl/tls
 
-openssl req -new -x509 -nodes -days 3650 -out server.crt -keyout server.key
+openssl genrsa -out key.pem
+openssl req -new -key key.pem -out csr.pem
+openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem
+
+Doc apis : https://documenter.getpostman.com/view/6282494/UVeCQTxn
