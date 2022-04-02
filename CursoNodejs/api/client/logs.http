@@ -1,0 +1,11 @@
+### logs all
+
+GET https://localhost:3001/api/logs/ HTTP/2.0
+Content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MWY3MDA2NTQ4ZGU0MzZjYWRkMzViZGUiLCJpYXQiOjE2NDM2ODIxNzV9.A2MAdH8Ryi6hITGLhA3N-WWjY-4Q6N8YUwFG4pqz5HE
+
+### logs one
+
+GET https://localhost:3001/api/logs/61fc4ca80291f3bec9764fdf HTTP/2.0
+Content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MWY3MDA2NTQ4ZGU0MzZjYWRkMzViZGUiLCJpYXQiOjE2NDM2ODIxNzV9.A2MAdH8Ryi6hITGLhA3N-WWjY-4Q6N8YUwFG4pqz5HE

@@ -1,0 +1,41 @@
+### tener encuenta que no daria si la ip no esta aprobada
+
+### roles all -> el token caduco pruebas...
+
+GET https://localhost:3001/api/roles/ HTTP/2.0
+Content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MWY3MDA2NTQ4ZGU0MzZjYWRkMzViZGUiLCJpYXQiOjE2NDM2ODIxNzV9.A2MAdH8Ryi6hITGLhA3N-WWjY-4Q6N8YUwFG4pqz5HE
+
+### roles one error falta
+
+GET https://localhost:3001/api/roles/61fbf41562e147f59ea7d52d HTTP/2.0
+Content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MWY3MDA2NTQ4ZGU0MzZjYWRkMzViZGUiLCJpYXQiOjE2NDM2ODIxNzV9.A2MAdH8Ryi6hITGLhA3N-WWjY-4Q6N8YUwFG4pqz5HE
+
+### roles created
+
+POST https://localhost:3001/api/roles/ HTTP/2.0
+Content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MWY3MDA2NTQ4ZGU0MzZjYWRkMzViZGUiLCJpYXQiOjE2NDM2ODIxNzV9.A2MAdH8Ryi6hITGLhA3N-WWjY-4Q6N8YUwFG4pqz5HE
+
+{
+    "name":"xxxxxxxx300",
+    "description":"xxxxxx"
+}
+
+### roles updated
+
+PUT https://localhost:3001/api/roles/61fbf40f62e147f59ea7d529 HTTP/2.0
+Content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MWY3MDA2NTQ4ZGU0MzZjYWRkMzViZGUiLCJpYXQiOjE2NDM2ODIxNzV9.A2MAdH8Ryi6hITGLhA3N-WWjY-4Q6N8YUwFG4pqz5HE
+
+{
+    "name":"xxxxxxxx237",
+    "description":"xxxxxx"
+}
+
+### roles deleted
+
+DELETE https://localhost:3001/api/roles/61fdc46496913ceed97c01f5 HTTP/2.0
+Content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MWY3MDA2NTQ4ZGU0MzZjYWRkMzViZGUiLCJpYXQiOjE2NDM2ODIxNzV9.A2MAdH8Ryi6hITGLhA3N-WWjY-4Q6N8YUwFG4pqz5HE

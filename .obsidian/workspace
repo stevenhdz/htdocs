@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "CursoORM/vendor/doctrine/orm/README.md",
+            "file": "project/admin/README.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CursoORM/vendor/doctrine/orm/README.md",
+                "file": "project/admin/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,6 +88,7 @@
   },
   "active": "16dd8ad8337da332",
   "lastOpenFiles": [
+    "project/admin/README.md",
     "CursoORM/vendor/doctrine/orm/README.md",
     "cursoLaravel/blog/README.md",
     "CursoNodejs/all/files/README.md",

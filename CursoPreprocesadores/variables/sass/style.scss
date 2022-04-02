@@ -1,0 +1,16 @@
+/* variables */
+$hola: antiquewhite;
+h1 {
+    color: black;
+    background-color: $hola;
+}
+
+form {
+    color: aqua;
+    h4 {
+        color: $hola;
+        span {
+            color: bisque;
+        }
+    }
+}
