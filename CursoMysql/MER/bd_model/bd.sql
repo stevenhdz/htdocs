@@ -1,4 +1,19 @@
 CREATE DATABASE tickets_manager;
+
+
+
+/*
+USUARIOS fullName
+stock eliminar
+usuarios asignacion compuetrs serial
+asignacion a sends 
+
+
+proveedor con shopping intermedia fechas de adquision 
+
+
+
+*/
 USE tickets_manager;
 /* tipo de equipo */
 CREATE TABLE type_computers(
