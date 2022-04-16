@@ -48,17 +48,21 @@
             <el-icon><edit  /></el-icon>
             <template #title>Configuracion</template>
           </el-menu-item>
-          <el-menu-item index="1" route="usuario">
+          <el-menu-item index="2" route="ticket">
+            <el-icon><user /></el-icon>
+            <template #title>Casos</template>
+          </el-menu-item>
+          <el-menu-item index="3" route="usuario">
             <el-icon><user /></el-icon>
             <template #title>Usuarios</template>
           </el-menu-item>
-          <el-menu-item index="2" disabled>
-            <el-icon><document /></el-icon>
-            <span>About</span>
+          <el-menu-item index="4" route="envios">
+            <el-icon><user /></el-icon>
+            <template #title>Envios</template>
           </el-menu-item>
-          <el-menu-item router="/about">
-            <el-icon><document /></el-icon>
-            <template #title>Navigator Four</template>
+           <el-menu-item index="4" route="equipos">
+            <el-icon><user /></el-icon>
+            <template #title>Equipos</template>
           </el-menu-item>
         </el-menu>
       </el-col>

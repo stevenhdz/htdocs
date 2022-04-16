@@ -6,10 +6,15 @@ proveedor con shopping intermedia fechas de adquision
 */
 USE tickets_manager;
 CREATE TABLE proveedores(
-  idProveedores INT AUTO_INCREMENT PRIMARY KEY NOT NULL
+  idProveedores INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  nombre  VARCHAR(50) NOT NULL
 );
 CREATE TABLE adquisicion(
-  idAqusicion INT AUTO_INCREMENT PRIMARY KEY NOT NULL
+  idAqusicion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  idProveedor INT NOT NULL,
+  idShopping INT NOT NULL,
+  FOREIGN KEY (idProveedor) REFERENCES proveedores(idProveedores),
+  FOREIGN KEY (idShopping) REFERENCES shopping(idShopping)
 );
 /* tipo de equipo */
 CREATE TABLE type_computers(
@@ -51,7 +56,8 @@ CREATE TABLE shopping(
   count INT NOT NULL,
   description VARCHAR(255) NOT NULL,
   created DATETIME NOT NULL,
-  user_id INT NOT NULL
+  user_id INT NOT NULL,
+  FOREIGN KEY (idShopping) REFERENCES stockComputers(idstockComputers)
 );
 /*esta de esos equipos enviados si fue recibido 1 no 0*/
 CREATE TABLE statusSends(

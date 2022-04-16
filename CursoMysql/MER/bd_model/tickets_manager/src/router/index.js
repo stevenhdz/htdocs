@@ -14,8 +14,19 @@ import Tipopc from "../views/Tipopc.vue";
 import Estadoenvio from "../views/Estadoenvio.vue";
 import Asignacion from "../views/Asignacion.vue";
 import Stock from "../views/Stock.vue";
+import Proveedor from "../views/Proveedor.vue";
+import Adquisicion from "../views/Adquisicion.vue";
+import Config from "../views/Config/Config.vue";
+import Envios from "../views/Envios.vue";
+import Compras from "../views/Compras.vue";
+import Computadores from "../views/Computadores.vue";
 
 const routes = [
+  {
+    path: "/config",
+    name: "Config",
+    component: Config,
+  },
   {
     path: "/usuario",
     name: "Usuario",
@@ -240,6 +251,81 @@ const routes = [
     path: "/editar/stock/:id",
     name: "editarstock",
      component: () => import("../components/stock/edit.vue"),
+  },
+  {
+    path: "/proveedor",
+    name: "Proveedor",
+    component: Proveedor,
+  },
+  {
+    path: "/crear/proveedor",
+    name: "creacionproveedor",
+     component: () => import("../components/proveedor/create.vue"),
+  },
+  {
+    path: "/editar/proveedor/:id",
+    name: "editarproveedor",
+     component: () => import("../components/proveedor/edit.vue"),
+  },
+  {
+    path: "/adquisicion",
+    name: "Adquisicion",
+    component: Adquisicion,
+  },
+  {
+    path: "/crear/adquisicion",
+    name: "creacionadquisicion",
+     component: () => import("../components/adquisicion/create.vue"),
+  },
+  {
+    path: "/editar/adquisicion/:id",
+    name: "editaradquisicion",
+     component: () => import("../components/adquisicion/edit.vue"),
+  },
+  {
+    path: "/envios",
+    name: "Envios",
+    component: Envios,
+  },
+  {
+    path: "/crear/envios",
+    name: "creacionenvios",
+     component: () => import("../components/envios/create.vue"),
+  },
+  {
+    path: "/editar/envios/:id",
+    name: "editarenvios",
+     component: () => import("../components/envios/edit.vue"),
+  },
+  {
+    path: "/compras",
+    name: "Compras",
+    component: Compras,
+  },
+  {
+    path: "/crear/compras",
+    name: "creacioncompras",
+     component: () => import("../components/compras/create.vue"),
+  },
+  {
+    path: "/editar/compras/:id",
+    name: "editarcompras",
+     component: () => import("../components/compras/edit.vue"),
+  },
+  {
+    path: "/computadores",
+    name: "Computadores",
+    component: Computadores,
+  },
+  {
+    path: "/crear/computadores",
+    name: "creacioncomputadores",
+     component: () => import("../components/computadores/create.vue"),
+  },
+  {
+    path: "/editar/computadores/:id",
+    name: "editarcomputadores",
+     component: () => import("../components/computadores/edit.vue"),
   },
 ];
 
