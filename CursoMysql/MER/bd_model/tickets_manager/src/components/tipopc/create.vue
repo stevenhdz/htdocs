@@ -14,9 +14,6 @@
       class="demo-ruleForm"
       :rules="rules"
     >
-      <el-form-item label="id" prop="id">
-        <el-input style="width: 20%" v-model.number="form.id" />
-      </el-form-item>
       <el-form-item label="tipopc" prop="tipopc">
         <el-input style="width: 20%" v-model="form.tipopc" />
       </el-form-item>

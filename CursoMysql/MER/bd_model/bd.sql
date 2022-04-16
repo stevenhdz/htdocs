@@ -9,25 +9,18 @@ CREATE TABLE proveedores(
   idProveedores INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   nombre  VARCHAR(50) NOT NULL
 );
-CREATE TABLE adquisicion(
-  idAqusicion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  idProveedor INT NOT NULL,
-  idShopping INT NOT NULL,
-  FOREIGN KEY (idProveedor) REFERENCES proveedores(idProveedores),
-  FOREIGN KEY (idShopping) REFERENCES shopping(idShopping)
-);
 /* tipo de equipo */
-CREATE TABLE type_computers(
+CREATE TABLE tipocomputadores(
   idType INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(50) NOT NULL
 );
 /*modelo equipo*/
-CREATE TABLE model(
+CREATE TABLE modelo(
   idModel INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(50) NOT NULL
 );
 /*marca equipo*/
-CREATE TABLE brand(
+CREATE TABLE marca(
   idBrand INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(50) NOT NULL
 );
@@ -39,38 +32,45 @@ CREATE TABLE computers(
   id_brand INT NOT NULL,
   descripcion VARCHAR(255) NOT NULL,
   serial VARCHAR(10) NOT NULL,
-  FOREIGN KEY (id_type) REFERENCES type_computers(idType),
-  FOREIGN KEY (id_model) REFERENCES model(idModel),
-  FOREIGN KEY (id_brand) REFERENCES brand(idBrand)
+  FOREIGN KEY (id_type) REFERENCES tipocomputadores(idType),
+  FOREIGN KEY (id_model) REFERENCES modelo(idModel),
+  FOREIGN KEY (id_brand) REFERENCES marca(idBrand)
 );
 /* stock de cada computador */
-CREATE TABLE stockComputers(
+CREATE TABLE stockComptadores(
   idstockComputers INT PRIMARY KEY NOT NULL,
   computer_id INT NOT NULL,
   count INT NOT NULL,
   FOREIGN KEY (computer_id) REFERENCES computers(idComputer)
 );
 /* registro para mandar a realizar compra segun el stock de los equipos */
-CREATE TABLE shopping(
+CREATE TABLE compras(
   idShopping INT PRIMARY KEY NOT NULL,
   count INT NOT NULL,
   description VARCHAR(255) NOT NULL,
   created DATETIME NOT NULL,
   user_id INT NOT NULL,
-  FOREIGN KEY (idShopping) REFERENCES stockComputers(idstockComputers)
+  FOREIGN KEY (idShopping) REFERENCES stockComptadores(idstockComputers)
+);
+CREATE TABLE adquisicion(
+  idAqusicion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  idProveedor INT NOT NULL,
+  idShopping INT NOT NULL,
+  FOREIGN KEY (idProveedor) REFERENCES proveedores(idProveedores),
+  FOREIGN KEY (idShopping) REFERENCES compras(idShopping)
 );
 /*esta de esos equipos enviados si fue recibido 1 no 0*/
-CREATE TABLE statusSends(
+CREATE TABLE eestadosenvio(
   idStatuSend INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(150) NOT NULL
 );
 /* rol del usuario admin, agente*/
-CREATE TABLE role(
+CREATE TABLE rol(
   idRole INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(150) NOT NULL
 );
 /* usuarios tienen un rol */
-CREATE TABLE user(
+CREATE TABLE usuarios(
   idUser INT PRIMARY KEY NOT NULL,
   Name1 VARCHAR(50) NOT NULL,
   Name2 VARCHAR(50) NULL,
@@ -83,36 +83,36 @@ CREATE TABLE user(
   role_id INT NOT NULL,
   created DATETIME NOT NULL,
   updated DATETIME,
-  FOREIGN KEY (role_id) REFERENCES role(idRole)
+  FOREIGN KEY (role_id) REFERENCES rol(idRole)
 );
 /* categoria o clasificacion de tickets */
-CREATE TABLE category(
+CREATE TABLE categorias(
   idCategory INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(150) NOT NULL
 );
 /* proyecto en caso de ser varios */
-CREATE TABLE project(
+CREATE TABLE proyectos(
   idProject INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(150) NOT NULL,
   description VARCHAR(255) NOT NULL
 );
 /*estado abierto, cerrado*/
-CREATE TABLE statu(
+CREATE TABLE estados(
   idStatu INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(150) NOT NULL
 );
 /* el tipo es incidente, bug, peticion */
-CREATE TABLE type(
+CREATE TABLE tipos(
   idTypes INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(150) NOT NULL
 );
 /* las prioridades serian AlTA, BAJA, MEDIA */
-CREATE TABLE priority(
+CREATE TABLE prioridad(
   idPriority INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(150) NOT NULL
 );
 /* centralizacion de lo solicitado */
-CREATE TABLE ticket(
+CREATE TABLE casos(
   idTicket INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   title VARCHAR(50) NOT NULL,
   description VARCHAR(255) NOT NULL,
@@ -127,35 +127,34 @@ CREATE TABLE ticket(
   category_id INT NOT NULL,
   priority_id INT NOT NULL,
   status_id INT NOT NULL,
-  FOREIGN KEY (type_id) REFERENCES type(idTypes),
-  FOREIGN KEY (user_id) REFERENCES user(idUser),
-  FOREIGN KEY (agent_id) REFERENCES user(idUser),
-  FOREIGN KEY (project_id) REFERENCES project(idProject),
-  FOREIGN KEY (category_id) REFERENCES category(idCategory),
-  FOREIGN KEY (priority_id) REFERENCES priority(idPriority),
-  FOREIGN KEY (status_id) REFERENCES statu(idStatu)
+  FOREIGN KEY (type_id) REFERENCES tipos(idTypes),
+  FOREIGN KEY (user_id) REFERENCES usuarios(idUser),
+  FOREIGN KEY (project_id) REFERENCES proyectos(idProject),
+  FOREIGN KEY (category_id) REFERENCES categorias(idCategory),
+  FOREIGN KEY (priority_id) REFERENCES prioridad(idPriority),
+  FOREIGN KEY (status_id) REFERENCES estados(idStatu)
 );
 /*el usuario puede comentar n cantidad de veces al igual que otra persona un mismo ticket (segun la sesion) */
-CREATE TABLE comment(
+CREATE TABLE comentario(
   idComment INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   descriptions VARCHAR(150) NOT NULL,
   ticket_id INT NOT NULL,
   user_id INT NOT NULL,
-  FOREIGN KEY (ticket_id) REFERENCES ticket(idTicket)
+  FOREIGN KEY (ticket_id) REFERENCES casos(idTicket)
 );
-CREATE TABLE asign(
+CREATE TABLE asignacion(
   idAsing INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   idstockComputers INT NOT NULL,
   idUsers INT NOT NULL,
-  FOREIGN KEY (idstockComputers) REFERENCES stockComputers(idstockComputers),
-  FOREIGN KEY (idUsers) REFERENCES user(idUser)
+  FOREIGN KEY (idstockComputers) REFERENCES stockComptadores(idstockComputers),
+  FOREIGN KEY (idUsers) REFERENCES usuarios(idUser)
 );
 /* regisro de equipos a enviar */
-CREATE TABLE sends(
+CREATE TABLE envios(
   idSend INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   proyecto VARCHAR(50) NOT NULL,
   date_created DATETIME NOT NULL,
   id_status_sends INT NOT NULL,
-  FOREIGN KEY (id_status_sends) REFERENCES statusSends(idStatuSend),
-  FOREIGN KEY (idSend) REFERENCES asign(idAsing)
+  FOREIGN KEY (id_status_sends) REFERENCES eestadosenvio(idStatuSend),
+  FOREIGN KEY (idSend) REFERENCES asignacion(idAsing)
 );

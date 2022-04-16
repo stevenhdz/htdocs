@@ -4,7 +4,7 @@
     <br />
     <el-divider content-position="left"
       ><h1 style="color: #409eff; font-size: 30px">
-        Creacion usuarios
+        Creacion ticket
       </h1></el-divider
     >
     <br />
@@ -14,9 +14,6 @@
       class="demo-ruleForm"
       :rules="rules"
     >
-      <el-form-item label="idTicket">
-        <el-input style="width: 20%" v-model.number="form.idTicket" />
-      </el-form-item>
       <el-form-item label="title" prop="nombre1">
         <el-input style="width: 20%" v-model="form.title" />
       </el-form-item>

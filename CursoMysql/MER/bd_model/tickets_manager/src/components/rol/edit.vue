@@ -4,7 +4,7 @@
     <br />
     <el-divider content-position="left"
       ><h1 style="color: #409eff; font-size: 30px">
-        Editando usuario {{$route.params.id}}
+        Editando rol {{$route.params.id}}
       </h1></el-divider
     >
     <br />
@@ -22,7 +22,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">Create</el-button>
-        <el-button v-on:click="$router.push({ path: '/usuario' })">Cancel</el-button>
+        <el-button v-on:click="$router.push({ path: '/rol' })">Cancel</el-button>
       </el-form-item>
     </el-form>
   </div>

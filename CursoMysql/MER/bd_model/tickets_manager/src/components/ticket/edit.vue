@@ -71,11 +71,18 @@
         <el-button v-on:click="$router.push({ path: '/ticket' })">Cancel</el-button>
       </el-form-item>
     </el-form>
+    <Comentario/>
   </div>
 </template>
 
 <script>
+import Comentario from '../comentario/create.vue'
+import ComentarioList from '../../views/Comentario.vue'
 export default {
+  components: {
+    Comentario,
+    ComentarioList
+  },
   data() {
     return {
       rolOptions: [
