@@ -44,6 +44,10 @@
           </div>
           <br />
           <br />
+          <el-menu-item index="1" route="config">
+            <el-icon><edit  /></el-icon>
+            <template #title>Configuracion</template>
+          </el-menu-item>
           <el-menu-item index="1" route="usuario">
             <el-icon><user /></el-icon>
             <template #title>Usuarios</template>
@@ -71,6 +75,7 @@ import {
   Location,
   Setting,
   DArrowLeft,
+  Edit
 } from "@element-plus/icons-vue";
 export default {
   components: {
@@ -80,6 +85,7 @@ export default {
     Location,
     Setting,
     DArrowLeft,
+    Edit,
   },
   setup() {
     return {
