@@ -27,18 +27,16 @@
       <el-form-item label="Email">
         <el-input v-model="form.Email" />
       </el-form-item>
-      <el-form-item label="idEstudios">
-        <el-input v-model="form.idEstudios" />
-      </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">Create</el-button>
+        <el-button type="primary" @click="onSubmit">Crear</el-button>
         <el-button>Cancel</el-button>
       </el-form-item>
 
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column label="Id Titulo" prop="Id_Titulo" />
-        <el-table-column label="Nombre" prop="Nombre" />
+        <el-table-column label="Id Estudio" prop="Id_Estudio" />
+        <el-table-column label="Id Titulo" prop="Titulo" />
         <el-table-column label="Fecha Graduacion" prop="Fecha_Graduacion" />
+         <el-table-column label="Id Medico" prop="Id_Medico" />
         <el-table-column align="right">
           <template #header>
             <el-input
@@ -82,24 +80,28 @@ export default {
     return {
       tableData: [
         {
-          Id_Titulo: 1,
-          Nombre: "Ingeniero civil",
+          Id_Estudio: 1,
+          Titulo: "Ingeniero civil",
           Fecha_Graduacion: "2016-05-03",
+          Id_Medico: "101010"
         },
         {
-          Id_Titulo: 2,
-          Nombre: "Ingeniero sistemas",
+          Id_Estudio: 2,
+          Titulo: "Ingeniero sistemas",
           Fecha_Graduacion: "2016-05-03",
+          Id_Medico: "101010"
         },
         {
-          Id_Titulo: 3,
-          Nombre: "Tecnologo en desarrollo de software",
+          Id_Estudio: 3,
+          Titulo: "Tecnologo en desarrollo de software",
           Fecha_Graduacion: "2016-05-03",
+          Id_Medico: "101010"
         },
         {
-          Id_Titulo: 4,
-          Nombre: "Ingeniero ambiental",
+          Id_Estudio: 4,
+          Titulo: "Ingeniero ambiental",
           Fecha_Graduacion: "2016-05-03",
+          Id_Medico: "101010"
         },
       ],
       form: {
@@ -110,8 +112,7 @@ export default {
         Apellido2: "jimenez",
         Tel: "30303030303",
         Celular: "939393939",
-        Email: "steven@prueba.com",
-        idEstudios: 1,
+        Email: "steven@prueba.com"
       },
       currentPage3: 3,
       currentPage4: 4,

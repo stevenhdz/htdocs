@@ -153,6 +153,71 @@
         >
       </el-col>
     </el-row>
+
+    <br />
+    <br />
+    <el-divider content-position="left"><h5>Respaldos</h5></el-divider>
+    
+  <el-row :gutter="12">
+      <el-col :span="3">
+        <el-card shadow="hover">
+          <User width="40" />
+          <br />
+          <el-button type="primary" v-on:click="$router.push({ path: '/rol' })"
+            >General
+          </el-button></el-card
+        >
+      </el-col>
+       <el-col :span="10">
+        <el-card shadow="hover">
+          <User width="40" />
+          <br />
+          <el-button type="primary" v-on:click="$router.push({ path: '/rol' })"
+            >Por fecha
+          </el-button>
+           <el-date-picker v-model="value1" style="width: 120px" type="date" placeholder="Pick a day" /></el-card
+        >
+      </el-col>
+
+       <br />
+    <br />
+    <el-divider content-position="left"><h5>Reportes</h5></el-divider>
+
+       <el-col :span="24">
+       
+     
+
+<br>
+
+
+      
+
+
+ <el-divider content-position="left"><h5>Incumplidos</h5></el-divider>
+  <div class="demo-progress">
+    <el-progress type="circle"  color="red" :percentage="20" />
+  </div>
+
+      </el-col>
+
+ <el-col :span="24">
+       
+       
+<br>
+
+
+     <el-divider content-position="left"><h5>Cumplidos</h5></el-divider>  
+<div class="demo-progress">
+    <el-progress type="circle" color="green" :percentage="80" />
+  </div>
+
+
+ 
+      </el-col>
+
+
+    </el-row>
+
   </div>
 </template>
 
@@ -165,7 +230,9 @@ export default {
     Plus,
   },
   data() {
-    return {};
+    return {
+      value1: ''
+    };
   },
   methods: {},
 };
