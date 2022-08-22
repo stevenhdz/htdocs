@@ -1,0 +1,26 @@
+###-------register--------
+POST https://localhost:3001/api/user/register  HTTP/1.1
+Content-type: application/json
+
+{
+    "name": "steven",
+    "email": "prueba@prueba.com",
+    "password": "123456789"
+}
+
+###-------login--------
+### devuelve eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MmRkZGVhZmUyYzEyNjAxYjY5MjcxNTYiLCJpYXQiOjE2NTg3MDc3MDV9.ltRIldOSzpaAbH92jYxwq-IN8WvmBVpf1vaZelhSR-o
+POST https://localhost:3001/api/user/login HTTP/2.0
+Content-type: application/json
+
+{
+    "email":"prueba@prueba.com", 
+    "password":"123456789"
+}
+
+###--- rol con token-----
+
+GET https://localhost:3001/api/roles HTTP/1.1
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3RldmVuIiwiaWQiOiI2MmRkZGVhZmUyYzEyNjAxYjY5MjcxNTYiLCJpYXQiOjE2NTg3MDc3MDV9.ltRIldOSzpaAbH92jYxwq-IN8WvmBVpf1vaZelhSR-o
+
+

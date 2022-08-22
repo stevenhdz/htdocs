@@ -44,17 +44,25 @@
           </div>
           <br />
           <br />
-          <el-menu-item index="1" route="usuario">
-            <el-icon><user /></el-icon>
+          <el-menu-item index="1" route="config">
+            <el-icon><Menu  /></el-icon>
+            <template #title>Configuracion</template>
+          </el-menu-item>
+          <el-menu-item index="2" route="ticket">
+            <el-icon><User /></el-icon>
+            <template #title>Casos</template>
+          </el-menu-item>
+          <el-menu-item index="3" route="usuario">
+            <el-icon><User /></el-icon>
             <template #title>Usuarios</template>
           </el-menu-item>
-          <el-menu-item index="2" disabled>
-            <el-icon><document /></el-icon>
-            <span>About</span>
+          <el-menu-item index="4" route="envios">
+            <el-icon><Promotion /></el-icon>
+            <template #title>Envios</template>
           </el-menu-item>
-          <el-menu-item router="/about">
-            <el-icon><document /></el-icon>
-            <template #title>Navigator Four</template>
+           <el-menu-item index="5" route="equipos">
+            <el-icon><Platform /></el-icon>
+            <template #title>Equipos</template>
           </el-menu-item>
         </el-menu>
       </el-col>
@@ -66,20 +74,24 @@
 import { ref } from "vue";
 import {
   Fold,
-  Document,
+  Menu,
   User,
-  Location,
+  Promotion,
   Setting,
   DArrowLeft,
+  Edit,
+  Platform
 } from "@element-plus/icons-vue";
 export default {
   components: {
     Fold,
-    Document,
+    Menu,
     User,
-    Location,
+    Promotion,
     Setting,
     DArrowLeft,
+    Edit,
+    Platform
   },
   setup() {
     return {
