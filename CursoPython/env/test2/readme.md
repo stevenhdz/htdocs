@@ -1,7 +1,17 @@
-python3 -m venv [name]
-source bin/activate
-source bin/desactivate
-pip3 install -r ../test2/requirements.txt
+Paso 1:
 
-sudo chmod +x [archivosh]
-./install.sh
+    python3 -m venv [name]
+
+Paso 2:
+
+    source bin/activate
+    source bin/desactivate
+
+Paso 3:
+
+    pip3 install -r ../test2/requirements.txt
+
+Paso 4:
+
+    sudo chmod +x [archivosh]
+    ./install.sh
