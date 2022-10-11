@@ -13,8 +13,11 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
+    "brain.js": "^1.4.10",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0",
+    "say": "^0.16.0",
+    "stream": "^0.0.2",
     "vue": "^3.0.0",
     "vue-barcode-reader": "^1.0.2",
     "vue-router": "^4.0.0",

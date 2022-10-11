@@ -1,33 +1,49 @@
 <template>
   <div class="q-pa-md" id="principal">
     <div class="q-pa-md">
-      <div class="row items-start q-gutter-md">
-        <q-responsive
+      <q-carousel
+        animated
+        v-model="slide"
+        navigation
+        v-model:fullscreen="fullscreen"
+        infinite
+        :autoplay="autoplay"
+        arrows
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        @mouseenter="autoplay = false"
+        @mouseleave="autoplay = true"
+      >
+        <q-carousel-slide
+          :name="key"
           v-for="(item, key) in array"
           :key="key"
-          :ratio="16 / 9"
-          class="col"
-        >
-          <div>
-            <q-avatar size="200px">
-              <img
-                @click="
-                  llamar(
-                    item.tel,
-                    item.name,
-                    item.msg,
-                    item.parent,
-                    item.user,
-                    item.rol
-                  )
-                "
-                :src="item.image"
-              />
-            </q-avatar>
-          </div>
-        </q-responsive>
-        <q-btn @click="push()" round color="secondary" icon="navigation" />
-      </div>
+          :img-src="item.image"
+          @click="
+            llamar(
+              item.tel,
+              item.name,
+              item.msg,
+              item.parent,
+              item.user,
+              item.rol
+            )
+          "
+        />
+        <template v-slot:control>
+          <q-carousel-control position="bottom-right" :offset="[18, 18]">
+            <q-btn
+              push
+              round
+              dense
+              color="white"
+              text-color="primary"
+              :icon="fullscreen ? 'fullscreen_exit' : 'fullscreen'"
+              @click="fullscreen = !fullscreen"
+            />
+          </q-carousel-control>
+        </template>
+      </q-carousel>
     </div>
   </div>
 </template>
@@ -38,10 +54,13 @@ import { defineComponent } from "vue";
 export default defineComponent({
   data() {
     return {
+      slide: 1,
+      autoplay: true,
       dir: null,
       dirFormatt: "",
       gettingLocation: false,
       errorStr: null,
+      fullscreen: false,
       array: [
         {
           name: "alicia",
@@ -54,9 +73,9 @@ export default defineComponent({
           rol: "ingeniero",
         },
         {
-          name: "alex",
+          name: "alexander torres",
           user: "steven",
-          tel: "3002988526",
+          tel: "3174722738",
           image:
             "https://cdn.elnacional.com/wp-content/uploads/2019/11/John-Legend-Foto-Archivo.jpg",
           msg: "necesita de tu ayuda",
@@ -124,7 +143,7 @@ export default defineComponent({
 
       (async () => {
         const rawResponse = await fetch(
-          "http://127.0.0.1:8081/robot?tel=" +
+          "http://127.0.0.1:3000/robot?tel=" +
             tel +
             "&name=" +
             name +

@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-toolbar-title> CarefulEasyMonitor </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
@@ -19,15 +19,10 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header> Essential Links </q-item-label>
+        <q-item-label header> Informacion del paciente </q-item-label>
 
         <div id="logo">
-          <q-img
-            width="90px"
-            position="50%"
-            src="https://raw.githubusercontent.com/stevenhdz/htdocs/master/projects/public/Imagen%201.png?token=GHSAT0AAAAAABX4IWSR5RD4D5BLHO4PCMUIYYP7HTQ"
-            alt=""
-          />
+          <q-img width="90px" position="50%" src="" alt="" />
         </div>
 
         <EssentialLink
@@ -53,8 +48,9 @@ const linksList = [
     Edad: "25",
     grupo_sanguineo: "B+",
     ubicacion: "https://quasar.dev",
-    historial: "AINES alergias",
-    numeros_auxiliares: "333",
+    historial:
+      "Con antecedentes de alergia con Los  (AINEs) constituyen un grupo farmacológico, químicamente heterogéneo y ampliamente utilizado, no solo en el tratamiento de patologías del aparato locomotor (artrosis, artritis reumatoide, trastornos músculoesqueléticos), sino también en otras indicaciones terapéuticas (fiebre, ...",
+    numeros_auxiliares: "3002988526, 30303030300",
   },
 ];
 

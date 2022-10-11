@@ -1,10 +1,11 @@
-CREATE DATABASE tickets_manager;
+/*exec*/
+CREATE DATABASE tickets_manager2;
 /*
 usuarios asignacion compuetrs serial
 asignacion a sends 
 proveedor con shopping intermedia fechas de adquision 
 */
-USE tickets_manager;
+USE tickets_manager2;
 CREATE TABLE proveedores(
   idProveedores INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   nombre  VARCHAR(50) NOT NULL
@@ -31,31 +32,22 @@ CREATE TABLE computers(
   id_model INT NOT NULL,
   id_brand INT NOT NULL,
   descripcion VARCHAR(255) NOT NULL,
+   count INT NOT NULL,
+   idAsing INT NOT NULL,
   serial VARCHAR(10) NOT NULL,
+
+  FOREIGN KEY (idAsing) REFERENCES asignacion(idAsing),
   FOREIGN KEY (id_type) REFERENCES tipocomputadores(idType),
   FOREIGN KEY (id_model) REFERENCES modelo(idModel),
   FOREIGN KEY (id_brand) REFERENCES marca(idBrand)
 );
-/* stock de cada computador */
-CREATE TABLE stockComptadores(
-  idstockComputers INT PRIMARY KEY NOT NULL,
-  computer_id INT NOT NULL,
-  count INT NOT NULL,
-  FOREIGN KEY (computer_id) REFERENCES computers(idComputer)
-);
-/* registro para mandar a realizar compra segun el stock de los equipos */
-CREATE TABLE compras(
-  idShopping INT PRIMARY KEY NOT NULL,
-  count INT NOT NULL,
-  description VARCHAR(255) NOT NULL,
-  created DATETIME NOT NULL,
-  user_id INT NOT NULL,
-  FOREIGN KEY (idShopping) REFERENCES stockComptadores(idstockComputers)
-);
+
 CREATE TABLE adquisicion(
   idAqusicion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   idProveedor INT NOT NULL,
   idShopping INT NOT NULL,
+  idComputer INT NOT NULL,
+  FOREIGN KEY (idComputer) REFERENCES proveedores(idComputer),
   FOREIGN KEY (idProveedor) REFERENCES proveedores(idProveedores),
   FOREIGN KEY (idShopping) REFERENCES compras(idShopping)
 );
