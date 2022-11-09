@@ -11,6 +11,8 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@capacitor/cli": "^4.4.0",
+    "@capacitor/core": "^4.4.0",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "brain.js": "^1.4.10",
@@ -25,7 +27,9 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
+    "@electron-forge/cli": "^6.0.0-beta.70",
     "@quasar/app": "^3.0.0",
+    "electron": "^21.2.0",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.0.0",

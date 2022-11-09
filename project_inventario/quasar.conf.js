@@ -75,14 +75,14 @@ module.exports = configure(function (ctx) {
       server: {
         type: "https",
       },
-      port: 8080,
+      port: 8085,
       open: true, // opens browser window automatically
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       config: {
-        notify: {}
+        notify: {},
       },
 
       // iconSet: 'material-icons', // Quasar icon set
@@ -96,9 +96,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [
-        'Notify'
-      ],
+      plugins: ["Notify"],
     },
 
     // animations: 'all', // --- includes all animations
@@ -186,6 +184,10 @@ module.exports = configure(function (ctx) {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 
+    bin: {
+      linuxAndroidStudio:
+        "/home/shernaji/Escritorio/android-studio/bin/studio.sh",
+    },
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
       hideSplashscreen: true,

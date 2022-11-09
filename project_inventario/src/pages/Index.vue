@@ -7,7 +7,9 @@
           @loaded="onLoaded"
           v-on:change="sonidoLeido()"
         ></StreamBarcodeReader>
-        <div class="text-h6" v-on:click="speak('Escanear producto')">Escanear producto</div>
+        <div class="text-h6" v-on:click="speak('Escanear producto')">
+          Escanear producto
+        </div>
         <div class="text-h6" style="text-align: center">{{ idLeidos }}</div>
         <p class="mt-1 ml-2" v-show="toggle">Escuchando</p>
         <p class="mt-1 ml-2" v-show="!toggle && sentences == []">
@@ -25,18 +27,28 @@
       <q-responsive :ratio="16 / 9" class="col">
         <div class="bg-white text-black flex flex-center">
           <q-form @submit="onSubmit" class="q-gutter-md">
-            <div v-if="exists == false" v-on:click="speak(adds)" class="text-h6">
+            <div
+              v-if="exists == false"
+              v-on:click="speak(adds)"
+              class="text-h6"
+            >
               {{ adds }}
             </div>
-            <div v-else class="text-h6" v-on:click="speak('Editar informacion del producto')" >Editar informacion del producto</div>
+            <div
+              v-else
+              class="text-h6"
+              v-on:click="speak('Editar informacion del producto')"
+            >
+              Editar informacion del producto
+            </div>
             <q-input
-            v-if="add == true"
-             color="blue"
+              v-if="add == true"
+              color="blue"
               outlined
               v-model="idActual"
               label="id del producto"
-             autofocus
-             disabled
+              autofocus
+              disabled
             />
 
             <q-input
@@ -51,7 +63,9 @@
                   round
                   :color="!toggle ? 'primary' : speaking ? 'red' : 'red'"
                   @click.stop="
-                    toggle ? endSpeechRecognition('nombreDelProducto') : startSpeechRecognition('nombreDelProducto')
+                    toggle
+                      ? endSpeechRecognition('nombreDelProducto')
+                      : startSpeechRecognition('nombreDelProducto')
                   "
                   icon="mic"
                 />
@@ -71,7 +85,9 @@
                   round
                   :color="!toggle ? 'primary' : speaking ? 'red' : 'red'"
                   @click.stop="
-                    toggle ? endSpeechRecognition('precio') : startSpeechRecognition('precio')
+                    toggle
+                      ? endSpeechRecognition('precio')
+                      : startSpeechRecognition('precio')
                   "
                   icon="mic"
                 />
@@ -82,14 +98,16 @@
               placeholder="Descripcion del producto"
               v-model="descripcionProducto"
               min-height="5rem"
-                    v-on:click="speak('descripcion del producto')"
+              v-on:click="speak('descripcion del producto')"
             />
             <q-btn
               style="float: right !important"
               round
               :color="!toggle ? 'primary' : speaking ? 'red' : 'red'"
               @click.stop="
-                toggle ? endSpeechRecognition('descripcionProducto') : startSpeechRecognition('descripcionProducto')
+                toggle
+                  ? endSpeechRecognition('descripcionProducto')
+                  : startSpeechRecognition('descripcionProducto')
               "
               icon="mic"
             />
@@ -103,7 +121,10 @@
               icon="add"
             />
 
-            <div id="printID" class="rounded-borders bg-white text-black flex flex-center">
+            <div
+              id="printID"
+              class="rounded-borders bg-white text-black flex flex-center"
+            >
               <img
                 v-if="fullUrl != ''"
                 :src="fullUrl"
@@ -120,19 +141,21 @@
                 v-if="idActual != ''"
                 round
                 color="black"
-                v-on:click="generarQR(), speak('codigo QR generado con el id de caja '+ randoms)"
+                v-on:click="
+                  generarQR(),
+                    speak('codigo QR generado con el id de caja ' + randoms)
+                "
                 icon="qr_code"
               />
-
             </div>
-               <q-btn
-                v-show="!qrshow"
-                v-if="idActual != ''"
-                round
-                color="black"
-                v-on:click="prints(), speak('imprimiendo QR')"
-                icon="print"
-              />
+            <q-btn
+              v-show="!qrshow"
+              v-if="idActual != ''"
+              round
+              color="black"
+              v-on:click="prints(), speak('imprimiendo QR')"
+              icon="print"
+            />
           </q-form>
         </div>
       </q-responsive>
@@ -184,21 +207,21 @@ export default defineComponent({
           type: "negative",
           message: "Error",
         });
-                 this.speak("error")
+        this.speak("error");
       },
       edits() {
         $q.notify({
           type: "positive",
           message: "Editado",
         });
-        this.speak("producto Editado")
+        this.speak("producto Editado");
       },
       saves() {
         $q.notify({
           type: "positive",
           message: "Insertado",
         });
-                this.speak("producto agregado")
+        this.speak("producto agregado");
       },
       adds,
       qrshow,
@@ -227,13 +250,12 @@ export default defineComponent({
     },
   },
   methods: {
-   prints(){
-      var ficha = document.getElementById('printID');
-	  var ventimp = window.open(' ', 'popimpr');
-	  ventimp.document.write( ficha.innerHTML );
-	  ventimp.document.close();
-	  ventimp.print();
-
+    prints() {
+      var ficha = document.getElementById("printID");
+      var ventimp = window.open(" ", "popimpr");
+      ventimp.document.write(ficha.innerHTML);
+      ventimp.document.close();
+      ventimp.print();
     },
     onDecode(a, b, c) {
       console.log(a, b, c);
@@ -281,15 +303,14 @@ export default defineComponent({
     onLoaded() {
       console.log("load");
     },
-    speechEnd({ sentences, text ,input}) {
-      
-      if(input == 'nombreDelProducto'){
+    speechEnd({ sentences, text, input }) {
+      if (input == "nombreDelProducto") {
         this.sentences = sentences;
         this.nombreDelProducto = text;
-      }else if(input == 'precio'){
+      } else if (input == "precio") {
         this.sentences = sentences;
         this.precio = parseInt(text);
-      }else if(input == 'descripcionProducto'){
+      } else if (input == "descripcionProducto") {
         this.sentences = sentences;
         this.descripcionProducto = text;
       }
@@ -302,83 +323,68 @@ export default defineComponent({
     },
 
     endSpeechRecognition(input) {
-      
       recognition.stop();
       this.toggle = false;
       this.speaking = false;
 
-      if(input == 'nombreDelProducto'){
-
+      if (input == "nombreDelProducto") {
         if (this.nombreDelProducto.length >= 1) {
-            setTimeout(() => {
-              this.speechEnd({
-                sentences: this.sentences,
-                text: `${this.nombreDelProducto}. ${this.sentences.join(". ")}`,
-                 input: input,
-              });
-            }, 500);
+          setTimeout(() => {
+            this.speechEnd({
+              sentences: this.sentences,
+              text: `${this.nombreDelProducto}. ${this.sentences.join(". ")}`,
+              input: input,
+            });
+          }, 500);
         } else {
-            setTimeout(() => {
-              this.speechEnd({
-                sentences: this.sentences,
-                text: `${this.sentences.join(". ")}`,
-                 input: input,
-              });
-            }, 500);
+          setTimeout(() => {
+            this.speechEnd({
+              sentences: this.sentences,
+              text: `${this.sentences.join(". ")}`,
+              input: input,
+            });
+          }, 500);
         }
-
-      }else if(input == 'precio'){
-
-
+      } else if (input == "precio") {
         if (this.precio.length >= 1) {
-            setTimeout(() => {
-              this.speechEnd({
-                sentences: this.sentences,
-                text: `${this.precio}. ${this.sentences.join(". ")}`,
-                input: input,
-              });
-            }, 500);
+          setTimeout(() => {
+            this.speechEnd({
+              sentences: this.sentences,
+              text: `${this.precio}. ${this.sentences.join(". ")}`,
+              input: input,
+            });
+          }, 500);
         } else {
-            setTimeout(() => {
-              this.speechEnd({
-                sentences: this.sentences,
-                text: `${this.sentences.join(". ")}`,
-                 input: input,
-              });
-            }, 500);
+          setTimeout(() => {
+            this.speechEnd({
+              sentences: this.sentences,
+              text: `${this.sentences.join(". ")}`,
+              input: input,
+            });
+          }, 500);
         }
-        
-      }else if(input == 'descripcionProducto'){
-
-
+      } else if (input == "descripcionProducto") {
         if (this.descripcionProducto.length >= 1) {
-            setTimeout(() => {
-              this.speechEnd({
-                sentences: this.sentences,
-                text: `${this.descripcionProducto}. ${this.sentences.join(". ")}`,
-                 input: input,
-              });
-            }, 500);
+          setTimeout(() => {
+            this.speechEnd({
+              sentences: this.sentences,
+              text: `${this.descripcionProducto}. ${this.sentences.join(". ")}`,
+              input: input,
+            });
+          }, 500);
         } else {
-            setTimeout(() => {
-              this.speechEnd({
-                sentences: this.sentences,
-                text: `${this.sentences.join(". ")}`,
-                 input: input,
-              });
-            }, 500);
+          setTimeout(() => {
+            this.speechEnd({
+              sentences: this.sentences,
+              text: `${this.sentences.join(". ")}`,
+              input: input,
+            });
+          }, 500);
         }
-
       }
-
-     
     },
 
     startSpeechRecognition(input) {
-
-     
- 
-     
       this.toggle = true;
 
       recognition.lang = this.lang;
@@ -417,27 +423,22 @@ export default defineComponent({
         }
       };
 
-
-  
       recognition.start();
-    
     },
 
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
 
-    speak(adds){
-      fetch(
-          "https://localhost:8083/speak/" + adds
-        )
-          .then((response) => response.json())
-          .then((datas) => {
-            console.log(datas)
-          })
-          .catch((err) => {
-            console.log(err)
-          });
+    speak(adds) {
+      fetch("https://localhost:8083/speak/" + adds)
+        .then((response) => response.json())
+        .then((datas) => {
+          console.log(datas);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
 
     onSubmit() {
@@ -457,10 +458,7 @@ export default defineComponent({
           }),
         };
 
-        fetch(
-          "https://localhost:8083/productos/edit/" + this.idActual,
-          config
-        )
+        fetch("https://localhost:8083/productos/edit/" + this.idActual, config)
           .then((response) => response.json())
           .then((datas) => {
             this.edits();
@@ -469,9 +467,8 @@ export default defineComponent({
             this.errors();
           });
 
-          this.onReset()
+        this.onReset();
       } else {
-
         let config = {
           method: "POST",
           headers: {
@@ -495,8 +492,7 @@ export default defineComponent({
           });
       }
 
-this.onReset();
-      
+      this.onReset();
     },
 
     sonido(action) {

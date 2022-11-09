@@ -1,42 +1,84 @@
-# Quasar App (project_inventario)
-
-A Quasar Framework app
-
 ## Install the dependencies
-
 ```bash
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Install capacitor / electron: 
+```shell
+npm install @capacitor/core @capacitor/cli
+npm install --save-dev @electron-forge/cli
+```
 
-```bash
+ingresa al proyecto por consola: 
+
+* version escritorio y web
+```shell
+cd admin 
+```
+
+* version móvil y web
+```shell
+cd app
+```
+
+#### segun el sistema operativo donde lo corran:
+
+# LINUX
+
+Linux web admin:  
+```shell
+npx quasar dev
+```
+Linux application admin desktop:  
+```shell
+npx quasar dev -m electron  -T linux
+```
+Linux application admin móvil:  
+```shell
+npx quasar dev -m capacitor -T android --ide
+```
+add line in quasar.conf.js:
+
+```json
+    bin: {
+      linuxAndroidStudio: "/home/shernaji/Escritorio/android-studio/bin/studio.sh",
+    },
+```
+
+add:
+
+```shell
+  npx cap add android
+  npx cap add ios
+  npx cap add electron
+```
+
+# MAC OS
+
+Mac web admin: 
+```shell
 quasar dev
 ```
-
-### Lint the files
-
-```bash
-npm run lint
+Mac application admin desktop: 
+```shell
+quasar dev -m electron -T darwin
 ```
 
-### Format the files
+# WINDOWS
 
-```bash
-npm run format
+Windows web admin: 
+```shell
+quasar dev
+```
+windows application admin desktop: 
+```shell
+quasar dev -m electron -T win32
 ```
 
-### Build the app for production
 
-```bash
-quasar build
-```
+
+
+
 
 ### Customize the configuration
-
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
-
-
-
-brainjs 
-npm install --save brain.js@1.4.10
+See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
