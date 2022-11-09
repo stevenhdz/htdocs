@@ -83,7 +83,22 @@ CREATE TABLE categorias(
 CREATE TABLE proyectos(
   idProject INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(150) NOT NULL,
-  description VARCHAR(255) NOT NULL
+  description VARCHAR(255) NOT NULL,
+  dateEnd DATETIME ,
+  dateStart DATETIME NOT NULL
+);
+
+CREATE TABLE area(
+ idArea INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+ name VARCHAR(150) NOT NULL,
+ description VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE proyectoArea(
+  idArea INT NOT NULL,
+  idProject INT NOT NULL,
+  FOREIGN KEY (idArea) REFERENCES area(idArea),
+  FOREIGN KEY (idProject) REFERENCES proyectos(idProject)
 );
 /*estado abierto, cerrado*/
 CREATE TABLE estados(
@@ -135,6 +150,15 @@ CREATE TABLE asignacion(
   idAsing INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   idUsers INT NOT NULL,
   FOREIGN KEY (idUsers) REFERENCES usuarios(idUser)
+);
+
+CREATE TABLE asignacionComputadores(
+  idAsing INT NOT NULL,
+  idComputer INT NOT NULL,
+  idUsers INT NOT NULL,
+  fecha DATETIME NOT NULL,
+  FOREIGN KEY (idComputer) REFERENCES computers(idComputer),
+  FOREIGN KEY (idAsing) REFERENCES asignacion(idAsing)
 );
 /* regisro de equipos a enviar */
 CREATE TABLE envios(
