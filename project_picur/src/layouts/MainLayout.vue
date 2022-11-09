@@ -11,15 +11,25 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> CarefulEasyMonitor </q-toolbar-title>
+        <q-toolbar-title>
+          <router-link to="/" tag="button" style="color: white">
+            CarefulEasyMonitor</router-link
+          >
+        </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>
+          <router-link to="/contacts" tag="button" style="color: white"
+            >Agregar contactos</router-link
+          >
+        </div>
       </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header> Informacion del paciente </q-item-label>
+        <q-item-label header style="text-align: center">
+          Informacion del paciente
+        </q-item-label>
 
         <div id="logo">
           <q-img width="90px" position="50%" src="" alt="" />

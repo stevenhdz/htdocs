@@ -1,24 +1,22 @@
 <template>
-  <q-item clickable tag="a" target="_blank" :href="link">
-    <q-item-section v-if="icon" avatar>
-      <q-icon :name="icon" />
-    </q-item-section>
+  <q-item clickable tag="a" :href="link">
     <q-item-section>
-      <q-item-label>{{ Paciente }}</q-item-label>
+      <div class="q-pa-md q-gutter-sm">
+        <q-avatar size="150px" style="display: block; margin: auto">
+          <img :src="image" />
+        </q-avatar>
+      </div>
+      <q-item-label>{{ names }}</q-item-label>
       <br />
-      <q-item-label caption> <b>Edad:</b> {{ Edad }} </q-item-label>
+      <q-item-label caption> <b>Edad:</b> {{ year }} </q-item-label>
+      <br />
+      <q-item-label caption> <b>Grupo sanguineo:</b> {{ group }} </q-item-label>
       <br />
       <q-item-label caption>
-        <b>Grupo sanguineo:</b> {{ grupo_sanguineo }}
+        <b>Historial medico:</b> {{ history }}
       </q-item-label>
       <br />
-      <q-item-label caption>
-        <b>Historial medico:</b> {{ historial }}
-      </q-item-label>
-      <br />
-      <q-item-label caption>
-        <b>Contactos:</b> {{ numeros_auxiliares }}
-      </q-item-label>
+      <q-item-label caption> <b>Contactos:</b> {{ contacts }} </q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -29,7 +27,21 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "EssentialLink",
   data() {
-    return {};
+    return {
+      link: "http://localhost:8084/#/client",
+      id: "",
+      image: "",
+      names: "",
+      rol: "",
+      history: "",
+      contacts: "",
+      email: "",
+      entity: "",
+      parent: "",
+      custom: "",
+      year: "",
+      group: "",
+    };
   },
   props: {
     title: {
@@ -63,6 +75,24 @@ export default defineComponent({
       type: String,
       default: "",
     },
+  },
+  created() {
+    fetch("https://localhost:3000/client/list/paciente")
+      .then((response) => response.json())
+      .then((data) => {
+        this.id = data.id;
+        this.image = data.image;
+        this.names = data.names;
+        this.rol = data.rol;
+        this.history = data.history;
+        this.contacts = data.contacts;
+        this.email = data.email;
+        this.entity = data.entity;
+        this.parent = data.parent;
+        this.custom = data.custom;
+        this.year = data.year;
+        this.group = data.group;
+      });
   },
 });
 </script>

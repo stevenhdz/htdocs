@@ -21,9 +21,9 @@
           :img-src="item.image"
           @click="
             llamar(
-              item.tel,
-              item.name,
-              item.msg,
+              item.contacts,
+              item.names,
+              item.custom,
               item.parent,
               item.user,
               item.rol
@@ -61,32 +61,17 @@ export default defineComponent({
       gettingLocation: false,
       errorStr: null,
       fullscreen: false,
-      array: [
-        {
-          name: "alicia",
-          user: "steven",
-          tel: "3004456553",
-          image:
-            "https://us.123rf.com/450wm/rido/rido1906/rido190600113/124982944-retrato-de-mujer-joven-en-casa-con-gafas-hermosa-mujer-madura-con-anteojos-y-mirando-a-c%C3%A1mara-se%C3%B1ora.jpg?ver=6",
-          msg: "necesita de tu ayuda",
-          parent: "paciente",
-          rol: "ingeniero",
-        },
-        {
-          name: "alexander torres",
-          user: "steven",
-          tel: "3174722738",
-          image:
-            "https://cdn.elnacional.com/wp-content/uploads/2019/11/John-Legend-Foto-Archivo.jpg",
-          msg: "necesita de tu ayuda",
-          parent: "paciente",
-          rol: "ingeniero",
-        },
-      ],
+      array: [],
     };
   },
   name: "PageIndex",
   created() {
+    fetch("https://localhost:3000/client/list")
+      .then((response) => response.json())
+      .then((data) => {
+        this.array = data;
+      });
+
     if (!("geolocation" in navigator)) {
       this.errorStr = "Geolocation is not available.";
       return;
@@ -106,18 +91,6 @@ export default defineComponent({
   },
 
   methods: {
-    push() {
-      this.array.push({
-        name: "monica",
-        user: "steven",
-        tel: "3164011274",
-        image:
-          "https://cdn.elnacional.com/wp-content/uploads/2019/11/John-Legend-Foto-Archivo.jpg",
-        msg: "necesita de tu ayuda",
-        parent: "paciente",
-        rol: "profesora",
-      });
-    },
     send(tel, name, msg, parent, user, rol) {
       this.dirFormatt = this.dir.replaceAll(/\s/g, "%20");
 
@@ -135,15 +108,14 @@ export default defineComponent({
         " " +
         rol +
         " " +
-        name +
-        " contactarlo urgentemente ";
+        name;
     },
     llamar(tel, name, msg, parent, user, rol) {
       window.location.href = "tel:" + tel;
 
       (async () => {
         const rawResponse = await fetch(
-          "http://127.0.0.1:3000/robot?tel=" +
+          "https://localhost:3000/robot?tel=" +
             tel +
             "&name=" +
             name +
