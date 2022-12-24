@@ -41,7 +41,7 @@ app.get("/robot", function (req, res) {
     say.stop();
     say.speak(
       "llamando a " + req.query.rol + "  " + req.query.name,
-      "Monica",
+      "Mónica",
       0.9
     );
 
@@ -55,14 +55,14 @@ app.get("/robot", function (req, res) {
 
     setTimeout(function () {
       robot.mouseClick();
-    }, 2000);
+    }, 1000);
     setTimeout(function () {
       robot.mouseClick();
-    }, 2000);
+    }, 1000);
   }, 7000);
 
   setTimeout(function () {
-    robot.moveMouse(1631, 133);
+    robot.moveMouse(1433, 152);
 
     setTimeout(function () {
       robot.mouseClick();

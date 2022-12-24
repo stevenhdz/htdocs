@@ -2,7 +2,7 @@
 
 npm init -y
 
-npm i express mongoose bcrypt dotenv jsonwebtoken @hapi/joi nodemon cors fs https
+npm i express mongoose bcrypt dotenv jsonwebtoken @hapi/joi nodemon cors fs https method-override morgan axios colors
 
 **Start API:**
 

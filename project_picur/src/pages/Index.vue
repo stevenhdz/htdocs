@@ -97,15 +97,13 @@ export default defineComponent({
       window.location.href =
         "https://api.whatsapp.com/send?phone=+57" +
         tel +
-        "&text=El " +
-        parent +
-        " " +
-        user +
+        "&text=El paciente " +
+        "peepe" +
         " se encuentra en la ubicacion : https://www.google.com/maps/place/" +
         this.dirFormatt +
         " " +
         msg +
-        " " +
+        ", " +
         rol +
         " " +
         name;
