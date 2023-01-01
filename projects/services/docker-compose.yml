@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  web:
+    build: ./views/
+    ports:
+      - 3000:3000
+  api:
+    build: ./
+    ports:
+      - 5002:8080

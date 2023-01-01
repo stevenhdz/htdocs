@@ -1,0 +1,19 @@
+### logs all
+
+GET https://localhost:3001/api/commit/ HTTP/2.0
+Content-type: application/json
+### logs one
+
+GET https://localhost:3001/api/commit/1 HTTP/2.0
+Content-type: application/json
+
+###post
+POST https://localhost:3001/api/commit/ HTTP/2.0
+Content-type: application/json
+
+{
+    "responsible":"22",
+    "commit":"cccadhasudjajdhash djashdjhasdhsajhdjashdhsajd jhjdhsajdhsajhd jsah sad",
+    "nameCharacter":"ss",
+    "idCharacter":"1"
+}
