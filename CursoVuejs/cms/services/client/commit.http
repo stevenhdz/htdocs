@@ -1,0 +1,32 @@
+### logs all
+
+GET https://localhost:3001/api/commit/ HTTP/2.0
+Content-type: application/json
+### logs one
+
+GET https://localhost:3001/api/commit/1 HTTP/2.0
+Content-type: application/json
+
+### update
+
+PUT https://localhost:3001/api/commit/63ee5cc7a22b045e6c1ba4a0 HTTP/2.0
+Content-type: application/json
+
+{
+    "id": "1",
+    "cms":[]
+}
+
+### delete
+
+DELETE https://localhost:3001/api/commit/1 HTTP/2.0
+Content-type: application/json
+
+###post
+POST https://localhost:3001/api/commit/ HTTP/2.0
+Content-type: application/json
+
+{
+    "id": "1",
+    "cms":[]
+}
