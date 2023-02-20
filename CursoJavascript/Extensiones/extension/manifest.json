@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Captura de color de página",
+    "version": "1.0",
+    "description": "Extensión que permite capturar el color de la página actual en Chrome",
+    "permissions": [
+      "activeTab",
+      "tabs",
+      "storage"
+    ],
+    "icons": {
+      "128": "128.png"
+    },
+    "browser_action": {
+      "default_title": "Capturar color de página",
+      "default_popup": "popup.html"
+    }
+  }
+  
