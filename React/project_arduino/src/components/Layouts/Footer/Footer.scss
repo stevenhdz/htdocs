@@ -1,0 +1,15 @@
+$white: snow;
+$dark: #333;
+$primary: #1976d1;
+$secondary: #b33939;
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $primary;
+    padding-top: 10px;
+    text-align: center;
+    z-index: 9999; /* Valor alto para asegurar que el footer se superponga sobre el contenido */
+}

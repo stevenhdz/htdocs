@@ -1,0 +1,22 @@
+.jumbotron {
+    background-color: #f35805;
+    color: #fff;
+  }
+  .jumbotron h1 {
+    font-size: 48px;
+    font-weight: bold;
+    position: relative; /* Para establecer el contexto de apilamiento */
+    animation: animateText 2s ease-in-out infinite; /* Animación de texto */
+  }
+  /* Animación de texto */
+  @keyframes animateText {
+    0% {
+      transform: scale(1); /* Tamaño original */
+    }
+    50% {
+      transform: scale(1.1); /* Tamaño aumentado */
+    }
+    100% {
+      transform: scale(1); /* Tamaño original */
+    }
+  }
