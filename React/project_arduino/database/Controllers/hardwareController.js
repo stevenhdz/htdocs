@@ -31,9 +31,9 @@ class HardwareController {
   }
 
   async createRol(req, res) {
-    const { ip, mac, version_firmware, status } = req.body;
+    const { ip, mac, version_firmware } = req.body;
     try {
-      const rol = await Hardware.create({ ip, mac, version_firmware, status });
+      const rol = await Hardware.create({ ip, mac, version_firmware });
       res.json(rol);
     } catch (error) {
       console.error(error);
@@ -44,9 +44,9 @@ class HardwareController {
 
   async updateRol(req, res) {
     const id_hardware = req.params.id_hardware;
-    const { ip, mac, version_firmware, status } = req.body;
+    const { ip, mac, version_firmware } = req.body;
     try {
-      const [result] = await Hardware.update({ ip, mac, version_firmware, status }, { where: { id_hardware } });
+      const [result] = await Hardware.update({ ip, mac, version_firmware }, { where: { id_hardware } });
       if (result == 0) {
         res.status(404).json({ error: "Rol no encontrado" });
       } else {

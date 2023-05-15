@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import "./Login.css"
+import "./Login.css";
 import { TitleComponent } from "../../Title/TitleComponent";
 import { MyInputComponent } from "../../Field/MyInputComponent";
 import { emailRegex, passwordRegex } from "../../../utils/regex";
-import { apiUrl, port } from '../../../utils/config';
+import { apiUrl, port } from "../../../utils/config";
 
 export default function Login() {
-  const [news, setNew] = useState({ usuario: "", password: ""});
-  const form = 'register';
-  
+  const [news, setNew] = useState({ usuario: "", password: "" });
+  const form = "register";
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -33,53 +33,48 @@ export default function Login() {
       return;
     }
 
-    const id = news.usuario.replaceAll('@sl.com', '');
+    const id = news.usuario.replaceAll("@sl.com", "");
 
     fetch(`${apiUrl}${port}/${form}/doc/${id}`)
-  .then(response => response.json())
-  .then(dataget => {
-     
-       if(dataget.idStatusF == 1){
-         fetch(`${apiUrl}${port}/login/auth`, {
-           method: "POST",
-           crossDomain: true,
-           headers: {
-             "Content-Type": "application/json",
-             Accept: "application/json",
-             "Access-Control-Allow-Origin": "*",
-           },
-           body: JSON.stringify({
-             usuario: news.usuario,
-             password: news.password,
-           }),
-         })
-           .then((res) => res.json())
-           .then((data) => {
-             if (typeof data.usuario != "undefined") {
+      .then((response) => response.json())
+      .then((dataget) => {
+        if (dataget.idStatusF == 1) {
+          fetch(`${apiUrl}${port}/login/auth`, {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+              usuario: news.usuario,
+              password: news.password,
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (typeof data.usuario != "undefined") {
+                window.localStorage.setItem("loggedIn", true);
+                window.localStorage.setItem("nameLogin", news.usuario);
+                window.localStorage.setItem("idUser", dataget.id_user);
 
-               window.localStorage.setItem("loggedIn", true);
-               window.localStorage.setItem("nameLogin", news.usuario)
-               window.localStorage.setItem("idUser", dataget.id_user)
-
-               if (data.idRolF == 1) {
-                 window.localStorage.setItem("rol", 1);
-                 window.location.href = "./Main";
-               } else if(data.idRolF >= 2) {                 
-                 window.localStorage.setItem("rol", data.idRolF);
-                 window.location.href = "./MainAgent";
-               }
-             }else{
-               alert("usuario o contraseña incorrectos.")
-             }
-           });
-       }else{
-         alert("cuenta no habilitada, contacte al adminitrador::")
-       }
-   
-
-  })
-  .catch(error => console.error(error));
-
+                if (data.idRolF == 1) {
+                  window.localStorage.setItem("rol", 1);
+                  window.location.href = "./Main";
+                } else if (data.idRolF >= 2) {
+                  window.localStorage.setItem("rol", data.idRolF);
+                  window.location.href = "./MainAgent";
+                }
+              } else {
+                alert("usuario o contraseña incorrectos.");
+              }
+            });
+        } else {
+          alert("cuenta no habilitada, contacte al adminitrador::");
+        }
+      })
+      .catch((error) => console.error(error));
   }
 
   return (
@@ -88,26 +83,26 @@ export default function Login() {
         <form onSubmit={handleSubmit}>
           <TitleComponent title="Iniciar sesión" size="h1" />
 
-              <MyInputComponent
-                  type="text"
-                  required
-                  label="Correo *"
-                  name="usuario"
-                  value={news.usuario}
-                  onChange={handleInputChange}
-                />
+          <MyInputComponent
+            type="text"
+            required
+            label="Correo *"
+            name="usuario"
+            value={news.usuario}
+            onChange={handleInputChange}
+          />
 
-            <MyInputComponent
-                  type="password"
-                  required
-                  label="Contraseña *"
-                  name="password"
-                  value={news.password}
-                  onChange={handleInputChange}
-                />
+          <MyInputComponent
+            type="password"
+            required
+            label="Contraseña *"
+            name="password"
+            value={news.password}
+            onChange={handleInputChange}
+          />
 
-<p className="forgot-password text-right">
-            <a href="/pass">Se te olvido la contraseña ?</a>
+          <p className="forgot-password text-right">
+            <a href="/reset">Se te olvidó la contraseña ?</a>
           </p>
 
           <div className="form-group form-check">

@@ -31,9 +31,9 @@ class MunicipalityController {
   }
 
   async createRol(req, res) {
-    const { desc_municipality } = req.body;
+    const { desc_municipality, idDepartmentF } = req.body;
     try {
-      const rol = await Municipality.create({ desc_municipality });
+      const rol = await Municipality.create({ desc_municipality, idDepartmentF });
       res.json(rol);
     } catch (error) {
       console.error(error);
@@ -44,9 +44,9 @@ class MunicipalityController {
 
   async updateRol(req, res) {
     const id_municipality = req.params.id_municipality;
-    const { desc_municipality } = req.body;
+    const { desc_municipality, idDepartmentF } = req.body;
     try {
-      const [result] = await Municipality.update({ desc_municipality }, { where: { id_municipality } });
+      const [result] = await Municipality.update({ desc_municipality, idDepartmentF }, { where: { id_municipality } });
       if (result == 0) {
         res.status(404).json({ error: "Rol no encontrado" });
       } else {

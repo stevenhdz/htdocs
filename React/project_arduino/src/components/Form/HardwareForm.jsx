@@ -231,7 +231,7 @@ export const HardwareForm = () => {
             handleEdit={handleEdit}
             handleMultipleDelete={handleMultipleDelete}
             idField={"id_hardware"}
-            Fields={["ip", "mac", "version_firmware", "status", "createdAt", "updatedAt"]}
+            Fields={["ip", "mac", "version_firmware", "createdAt", "updatedAt"]}
           />
           <MyPaginationComponent
             data={forms}

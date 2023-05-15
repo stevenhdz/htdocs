@@ -1,0 +1,17 @@
+
+  
+  .arduino {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .battery-percentage{
+    color: black;
+    font-size: 60px;
+  }
+
+  .battery-meter {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }

@@ -17,6 +17,7 @@ import { Main } from "./pages/Main";
 
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
+import Reset from "./components/Auth/Reset/Reset";
 
 import { RolForm } from "./components/Form/RolForm";
 import { TypeDocForm } from "./components/Form/TypeDocForm";
@@ -29,6 +30,7 @@ import { HardwareForm } from "./components/Form/HardwareForm";
 import { PlaceForm } from "./components/Form/PlaceForm";
 import { ReportForm } from "./components/Form/ReportForm";
 import { HardwarePlaceForm } from "./components/Form/HardwarePlaceForm";
+import BackupReports from "./components/Form/ReportsBackupsForm";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn");
@@ -56,6 +58,7 @@ function App() {
                 }
               />
               <Route exact path="/" element={<Login></Login>} />
+              <Route exact path="/reset" element={<Reset></Reset>} />
               <Route exact path="/login" element={<Login></Login>} />
               <Route exact path="/register" element={<Register></Register>} />
               <Route exact path="/Main" element={<Main></Main>} />
@@ -114,6 +117,11 @@ function App() {
                 exact
                 path="/create/hardwareplace"
                 element={<HardwarePlaceForm></HardwarePlaceForm>}
+              />
+               <Route
+                exact
+                path="/backup/reports"
+                element={<BackupReports></BackupReports>}
               />
             </Routes>
           </div>

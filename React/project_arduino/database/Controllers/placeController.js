@@ -31,9 +31,9 @@ class PlaceController {
   }
 
   async createRol(req, res) {
-    const {  detail, georeference, idDepartmentF, idMunicipalityF } = req.body;
+    const {  detail, georeference, idMunicipalityF } = req.body;
     try {
-      const rol = await Place.create({ detail, georeference, idDepartmentF, idMunicipalityF });
+      const rol = await Place.create({ detail, georeference, idMunicipalityF });
       res.json(rol);
     } catch (error) {
       console.error(error);
@@ -44,9 +44,9 @@ class PlaceController {
 
   async updateRol(req, res) {
     const id_place = req.params.id_place;
-    const {  detail, georeference, idDepartmentF, idMunicipalityF } = req.body;
+    const {  detail, georeference, idMunicipalityF } = req.body;
     try {
-      const [result] = await Place.update({  detail, georeference, idDepartmentF, idMunicipalityF }, { where: { id_place } });
+      const [result] = await Place.update({  detail, georeference, idMunicipalityF }, { where: { id_place } });
       if (result == 0) {
         res.status(404).json({ error: "Rol no encontrado" });
       } else {

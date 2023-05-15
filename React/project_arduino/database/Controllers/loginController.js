@@ -54,6 +54,20 @@ class UserLoginController {
     }
   }
 
+  async getUserByIds(req, res) {
+    try {
+      const { usuario } = req.body;
+
+      const user = await UserLogin.findOne({ where: { usuario } });
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.json(user);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
   async getUserById(req, res1) {
     try {
       const { usuario, password } = req.body;

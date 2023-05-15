@@ -12,6 +12,8 @@ const placeRoutes = require('./Routes/place');
 const hardwarePlaceRoutes = require('./Routes/hardwarePlace');
 const reportRoutes = require('./Routes/report');
 const loginRoutes = require('./Routes/login');
+const mailRoutes = require('./Routes/mail');
+const backupRoutes = require('./Routes/backup');
 const cors = require('cors');
 const syncModels = require('./syncModels');
 
@@ -20,6 +22,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use('/mail', mailRoutes)
+app.use('/backup', backupRoutes)
 app.use('/register', registerRoutes);
 app.use('/login', loginRoutes);
 app.use('/rols', rolRoutes);

@@ -113,7 +113,7 @@ export const UserForm = () => {
       const response = await fetch(`${apiUrl}${port}/typedocs`);
       const data = await response.json();
       const newOptions2 = data.map((element) => ({
-        value: element.id_typedocs,
+        value: element.id_typedoc,
         label: element.description_type_doc,
       }));
       setOptions2(newOptions2);
@@ -141,38 +141,46 @@ export const UserForm = () => {
     }
 
     if (selected) {
-      if (window.confirm("¿Estás seguro de que quieres actualizar este usuario?")) {
-        try {
-          // Enviar solicitud para actualizar un rol existente
-          const response = await fetch(
-            `${apiUrl}${port}/${form}/${selected.id_user}`,
-            {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(news),
-            }
-          );
-          const data = await response.json();
-          setForm((prev) =>
-            prev.map((rol) => (rol.id_user == data.id_user ? data : rol))
-          );
-          setSelected(null);
-          setNew({
-            number_doc: "",
-            idStatusF: "",
-            idTypedocF: "",
-            name: "",
-            name2: "",
-            lastname: "",
-            lastname2: "",
-            email: "",
-            telephone: "",
-          });
-        } catch (error) {
-          console.error("Error al actualizar:", error);
+      if (selected.id_user > 1) {
+        if (
+          window.confirm(
+            "¿Estás seguro de que quieres actualizar este usuario?"
+          )
+        ) {
+          try {
+            // Enviar solicitud para actualizar un rol existente
+            const response = await fetch(
+              `${apiUrl}${port}/${form}/${selected.id_user}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(news),
+              }
+            );
+            const data = await response.json();
+            setForm((prev) =>
+              prev.map((rol) => (rol.id_user == data.id_user ? data : rol))
+            );
+            setSelected(null);
+            setNew({
+              number_doc: "",
+              idStatusF: "",
+              idTypedocF: "",
+              name: "",
+              name2: "",
+              lastname: "",
+              lastname2: "",
+              email: "",
+              telephone: "",
+            });
+          } catch (error) {
+            console.error("Error al actualizar:", error);
+          }
         }
+      } else {
+        alert("No esta permitido para los usuarios por defecto.");
       }
     } else {
       try {
@@ -223,29 +231,33 @@ export const UserForm = () => {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("¿Estás seguro de que quieres eliminar este?")) {
-      try {
-        // Enviar solicitud para eliminar un rol existente
-        await fetch(`${apiUrl}${port}/${form}/${id}`, {
-          method: "DELETE",
-        });
-
-        // Actualizar el estado después de la eliminación
-        setForm((prev) => prev.filter((info) => info.id != id));
-        setDeleted(true);
-        if (selected && selected.id == id) {
-          setSelected(null);
-          setNew({
-            id_user: "",
-            usuario: "",
-            password: "",
-            number_doc: "",
-            idRolF: "",
+    if (id > 1) {
+      if (window.confirm("¿Estás seguro de que quieres eliminar este?")) {
+        try {
+          // Enviar solicitud para eliminar un rol existente
+          await fetch(`${apiUrl}${port}/${form}/${id}`, {
+            method: "DELETE",
           });
+
+          // Actualizar el estado después de la eliminación
+          setForm((prev) => prev.filter((info) => info.id != id));
+          setDeleted(true);
+          if (selected && selected.id == id) {
+            setSelected(null);
+            setNew({
+              id_user: "",
+              usuario: "",
+              password: "",
+              number_doc: "",
+              idRolF: "",
+            });
+          }
+        } catch (error) {
+          console.error("Error al eliminar rol:", error);
         }
-      } catch (error) {
-        console.error("Error al eliminar rol:", error);
       }
+    } else {
+      alert("No esta permitido para los usuarios por defecto.");
     }
   };
 
@@ -315,6 +327,7 @@ export const UserForm = () => {
                 <MyInputComponent
                   type="text"
                   required
+                  disabled={true}
                   label="Numero documento *"
                   name="number_doc"
                   value={news.number_doc}

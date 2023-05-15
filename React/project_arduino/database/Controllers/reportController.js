@@ -19,7 +19,14 @@ class ReportController {
   async getRoleslimit(req, res) {
     const { idUserRegisterF, idHardwareF } = req.params;
     try {
-      const roles = await Report.query(`SELECT * FROM Reports WHERE idUserRegisterF = ${idUserRegisterF} AND idHardwareF = ${idHardwareF} ORDER BY id_report DESC LIMIT 1`);
+      const roles = await Report.findAll({
+        where: {
+          idUserRegisterF: idUserRegisterF,
+          idHardwareF: idHardwareF,
+        },
+        order: [['id_report', 'DESC']],
+        limit: 1,
+      });
       res.json(roles);
     } catch (error) {
       console.error(error);

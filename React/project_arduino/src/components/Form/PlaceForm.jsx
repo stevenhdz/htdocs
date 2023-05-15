@@ -17,11 +17,10 @@ import { MySelectComponent } from "../Field/MySelectComponent";
 
 export const PlaceForm = () => {
   const [forms, setForm] = useState([]);
-  const [news, setNew] = useState({ detail:"" , georeference:"" , idDepartmentF:"" , idMunicipalityF:"" });
+  const [news, setNew] = useState({ detail:"" , georeference:"" , idMunicipalityF:"" });
   const [selected, setSelected] = useState(null);
   const [deleted, setDeleted] = useState(false);
   const [deleted2, setDeleted2] = useState(false);
-  const [options, setOptions] = useState([]);
   const [options2, setOptions2] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(0); // Estado para el número de página actual
@@ -72,7 +71,7 @@ export const PlaceForm = () => {
 
 
   const handleGetTwo = async () => {
-    try {
+    /* try {
       const response = await fetch(`${apiUrl}${port}/departments`);
       const data = await response.json();
       const newOptions = data.map((element) => ({
@@ -82,8 +81,8 @@ export const PlaceForm = () => {
       setOptions(newOptions);
     } catch (error) {
       console.error("Error al obtener lugares:", error);
-    }
-    try {
+    } */
+   try {
       const response = await fetch(`${apiUrl}${port}/municipality`);
       const data = await response.json();
       const newOptions2 = data.map((element) => ({
@@ -93,7 +92,7 @@ export const PlaceForm = () => {
       setOptions2(newOptions2);
     } catch (error) {
       console.error("Error al obtener lugares:", error);
-    }
+    } 
   };
 
   
@@ -123,7 +122,7 @@ export const PlaceForm = () => {
             prev.map((rol) => (rol.id_place == data.id_place ? data : rol))
           );
           setSelected(null);
-          setNew({ detail:"" , georeference:"" , idDepartmentF:"" , idMunicipalityF:"" });
+          setNew({ detail:"" , georeference:"" , idMunicipalityF:"" });
         } catch (error) {
           console.error("Error al actualizar lugar:", error);
         }
@@ -140,7 +139,7 @@ export const PlaceForm = () => {
         });
         const data = await response.json();
         setForm((prev) => [...prev, data]);
-        setNew({  detail:"" , georeference:"" , idDepartmentF:"" , idMunicipalityF:"" });
+        setNew({  detail:"" , georeference:"" , idMunicipalityF:"" });
       } catch (error) {
         console.error("Error al crear rol:", error);
       }
@@ -183,7 +182,7 @@ export const PlaceForm = () => {
         setDeleted(true)
         if (selected && selected.id == id) {
           setSelected(null);
-          setNew({ id_place: "", detail:"" , georeference:"" , idDepartmentF:"" , idMunicipalityF:"" });
+          setNew({ id_place: "", detail:"" , georeference:"" , idMunicipalityF:"" });
         }
       } catch (error) {
         console.error("Error al eliminar rol:", error);
@@ -194,12 +193,12 @@ export const PlaceForm = () => {
   const handleEdit = (info) => {
     // Cargar los datos del rol seleccionado en los campos de edición
     setSelected(info);
-    setNew({ id_place: info.id_place, detail: info.detail, georeference: info.georeference, idDepartmentF: info.idDepartmentF, idMunicipalityF: info.idMunicipalityF });
+    setNew({ id_place: info.id_place, detail: info.detail, georeference: info.georeference, idMunicipalityF: info.idMunicipalityF });
   };
 
   const handleCancel = () => {
     setSelected(null);
-    setNew({ detail:"" , georeference:"" , idDepartmentF:"" , idMunicipalityF:"" });
+    setNew({ detail:"" , georeference:"" , idMunicipalityF:""});
   };
 
   // Función para manejar el cambio de página
@@ -224,16 +223,8 @@ export const PlaceForm = () => {
         <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
           <form onSubmit={handleSubmit} className="mb-4">
             <div className="form-row">
-            {/* "detail", "georeference", "idDepartmentF", "idMunicipalityF" */}
+            {/* "detail", "georeference", "idMunicipalityF", "idMunicipalityF" */}
                 <MySelectComponent
-                  required
-                  label="Departamento *"
-                  name="idDepartmentF"
-                  value={news.idDepartmentF}
-                  options={options}
-                  onChange={handleSelectChange}
-                />
-                  <MySelectComponent
                   required
                   label="Municipio *"
                   name="idMunicipalityF"
@@ -282,7 +273,7 @@ export const PlaceForm = () => {
             handleEdit={handleEdit}
             handleMultipleDelete={handleMultipleDelete}
             idField={"id_place"}
-            Fields={["detail", "georeference", "idDepartmentF", "idMunicipalityF", "createdAt", "updatedAt"]}
+            Fields={["detail", "georeference", "idMunicipalityF", "createdAt", "updatedAt"]}
           />
           <MyPaginationComponent
             data={forms}

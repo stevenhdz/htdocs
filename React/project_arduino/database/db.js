@@ -1,9 +1,9 @@
 const { Sequelize } = require('sequelize');
  /* local */
- const sequelize = new Sequelize('FreeEnergy', 'prueba','', {
+ const sequelize = new Sequelize('FreeEnergy', 'root','', {
     host: 'localhost',
     dialect: 'mysql',
-    port: '8889'
+    port: '3306'
   });
 
 /* docker */

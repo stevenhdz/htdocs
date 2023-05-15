@@ -20,10 +20,6 @@ const Hardware = database.define('Hardware', {
     version_firmware: {
       type: Sequelize.STRING(20),
       allowNull: false,
-    },
-    status: {
-      type: Sequelize.BOOLEAN,
-      allowNull: false
     }
 })
 

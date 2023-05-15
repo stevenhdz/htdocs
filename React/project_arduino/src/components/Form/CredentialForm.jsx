@@ -6,10 +6,7 @@ import { TitleComponent } from "../Title/TitleComponent";
 import UpdateIcon from "@mui/icons-material/Update";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
-import {
-  passwordRegex,
-  trimRegex,
-} from "../../utils/regex";
+import { passwordRegex, trimRegex } from "../../utils/regex";
 import { apiUrl, port } from "../../utils/config";
 import { NavAdmin } from "../Layouts/NavBar/NavBarAdmin/NavBar";
 import { MySelectComponent } from "../Field/MySelectComponent";
@@ -112,40 +109,49 @@ export const CredrentialsForm = () => {
     }
 
     if (selected) {
-      if (window.confirm("¿Estás seguro de que quieres actualizar este?")) {
-        try {
-          if (!news.password.match(passwordRegex)) {
-            alert(
-              "Por favor, ingrese una contraseña válida. La contraseña debe contener al menos 8 caracteres, incluyendo al menos una mayúscula, una minúscula, un número y un carácter especial (@$!%*?&)."
-            );
-            return;
-          }
-
-
-          const password = "Sltech2023*"
-          // Enviar solicitud para actualizar un rol existente
-          const response = await fetch(
-            `${apiUrl}${port}/${form}/${selected.id_credentials}`,
-            {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({id_credentials: news.id_credentials, usuario: news.usuario, password: password, number_doc: news.number_doc, idRolF: news.idRolF}),
+      if (selected.id_credentials > 1) {
+        if (window.confirm("¿Estás seguro de que quieres actualizar este?")) {
+          try {
+            if (!news.password.match(passwordRegex)) {
+              alert(
+                "Por favor, ingrese una contraseña válida. La contraseña debe contener al menos 8 caracteres, incluyendo al menos una mayúscula, una minúscula, un número y un carácter especial (@$!%*?&)."
+              );
+              return;
             }
+
+            const password = "Sltech2023*";
+            // Enviar solicitud para actualizar un rol existente
+            const response = await fetch(
+              `${apiUrl}${port}/${form}/${selected.id_credentials}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  id_credentials: news.id_credentials,
+                  usuario: news.usuario,
+                  password: password,
+                  number_doc: news.number_doc,
+                  idRolF: news.idRolF,
+                }),
+              }
             );
 
-          const data = await response.json();
-          setForm((prev) =>
-            prev.map((rol) =>
-              rol.id_credentials == data.id_credentials ? data : rol
-            )
-          );
-          setSelected(null);
-          setNew({ usuario: "", password: "", number_doc: "", idRolF: "" });
-        } catch (error) {
-          console.error("Error al actualizar:", error);
+            const data = await response.json();
+            setForm((prev) =>
+              prev.map((rol) =>
+                rol.id_credentials == data.id_credentials ? data : rol
+              )
+            );
+            setSelected(null);
+            setNew({ usuario: "", password: "", number_doc: "", idRolF: "" });
+          } catch (error) {
+            console.error("Error al actualizar:", error);
+          }
         }
+      } else {
+        alert("No esta permitido para los usuarios por defecto.");
       }
     } else {
       try {
@@ -166,6 +172,31 @@ export const CredrentialsForm = () => {
     }
   };
 
+  const sendEmail = (from, to, subject, text, html) => {
+    fetch(`${apiUrl}${port}/mail/send`, {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        from: from,
+        to: to,
+        subject: subject,
+        text: text,
+        html: html,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (window.confirm("Se envio al correo registrado la nueva clave")) {
+          window.location = "/login";
+        }
+      });
+  };
+
   const handleMultipleDelete = async (ids) => {
     if (
       window.confirm(
@@ -182,33 +213,44 @@ export const CredrentialsForm = () => {
       setDeleted2(true);
       const data = await response.json();
       console.log(data);
+      sendEmail(
+        null,
+        news.number_doc + "@sl.com",
+        "Notificacion de tu nueva contraseña",
+        `Tu nueva contraseña es: <b> Sltech2023* </b> `,
+        true
+      );
     }
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("¿Estás seguro de que quieres eliminar este?")) {
-      try {
-        // Enviar solicitud para eliminar un rol existente
-        await fetch(`${apiUrl}${port}/${form}/${id}`, {
-          method: "DELETE",
-        });
-
-        // Actualizar el estado después de la eliminación
-        setForm((prev) => prev.filter((info) => info.id != id));
-        setDeleted(true);
-        if (selected && selected.id == id) {
-          setSelected(null);
-          setNew({
-            id_credentials: "",
-            usuario: "",
-            password: "",
-            number_doc: "",
-            idRolF: "",
+    if (id > 1) {
+      if (window.confirm("¿Estás seguro de que quieres eliminar este?")) {
+        try {
+          // Enviar solicitud para eliminar un rol existente
+          await fetch(`${apiUrl}${port}/${form}/${id}`, {
+            method: "DELETE",
           });
+
+          // Actualizar el estado después de la eliminación
+          setForm((prev) => prev.filter((info) => info.id != id));
+          setDeleted(true);
+          if (selected && selected.id == id) {
+            setSelected(null);
+            setNew({
+              id_credentials: "",
+              usuario: "",
+              password: "",
+              number_doc: "",
+              idRolF: "",
+            });
+          }
+        } catch (error) {
+          console.error("Error al eliminar rol:", error);
         }
-      } catch (error) {
-        console.error("Error al eliminar rol:", error);
       }
+    } else {
+      alert("No esta permitido para las credenciales por defecto.");
     }
   };
 
@@ -283,11 +325,17 @@ export const CredrentialsForm = () => {
                   onChange={handleInputChangeTrim}
                 />
 
-          <p style={{"font-size": "1px", "color" : "black", "backgroundColor": "#f47f7f" }}>
-            Tener encuenta que al restablecer el rol, se cambiara la clave para obligar al usuario iniciar sesion con la nueva y evitar problemas al navegar.
-            La clave por defecto: <b>Sltech2023*</b>
-            </p>
-
+                <p
+                  style={{
+                    "font-size": "12px",
+                    color: "black",
+                    backgroundColor: "#f47f7f",
+                  }}
+                >
+                  Tener encuenta que al restablecer el rol, se cambiara la clave
+                  para obligar al usuario iniciar sesion con la nueva y evitar
+                  problemas al navegar. La clave por defecto: <b>Sltech2023*</b>
+                </p>
 
                 <div className="form-group col-md-2 d-flex align-items-end">
                   <button

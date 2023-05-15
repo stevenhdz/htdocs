@@ -20,8 +20,9 @@ async function syncModels() {
   UserRegister.hasMany(Report, { foreignKey: "idUserRegisterF" });
   Hardware_place.hasMany(Report, { foreignKey: "idHardwareF" });
   Hardware.hasMany(Hardware_place, { foreignKey: "idHardwareF", onDelete: "RESTRICT" });
+  
   Place.hasMany(Hardware_place, { foreignKey: "idPlaceF" });
-  Department.hasMany(Place, { foreignKey: "idDepartmentF", onDelete: "RESTRICT" });
+  Department.hasMany(Municipality, { foreignKey: "idDepartmentF", onDelete: "RESTRICT" });
   Municipality.hasMany(Place, { foreignKey: "idMunicipalityF", onDelete: "RESTRICT" });
 
   //1:1

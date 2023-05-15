@@ -140,6 +140,7 @@ export const ReportForm = () => {
           body: JSON.stringify(news),
         });
         const data = await response.json();
+        
         setForm((prev) => [...prev, data]);
         setNew({  fecha_carga: "", nivel_carga: "", idUserRegisterF:"", idHardwareF:"" });
       } catch (error) {

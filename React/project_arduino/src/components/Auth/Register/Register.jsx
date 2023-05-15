@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { TitleComponent } from "../../Title/TitleComponent";
 import { MyInputComponent } from "../../Field/MyInputComponent";
 import { emailRegex, passwordRegex } from "../../../utils/regex";
@@ -28,7 +30,6 @@ export default function Register() {
     pass: "",
     idRolF: 1,
   });
-
 
   useEffect(() => {
     handleGet();
@@ -91,6 +92,7 @@ export default function Register() {
         if (data != "") {
           alert("Registration Successful");
           resetForm();
+          window.location.href = "/login";
         } else {
           alert(data.message);
         }
@@ -112,10 +114,8 @@ export default function Register() {
         return;
       }
 
-      if(!news.lastname2){
-        alert(
-          "Por favor, ingrese segundo apellido"
-        );
+      if (!news.lastname2) {
+        alert("Por favor, ingrese segundo apellido");
         return;
       }
 
@@ -155,127 +155,144 @@ export default function Register() {
   };
 
   return (
-    <div className="centrar auth-wrapper">
+    <div className="centrar auth-wrapper" style={{width: "800px"}}>
       <div className="auth-inner">
-        <form onSubmit={handleSubmit}>
-          <TitleComponent title="Registro" size="h1" />
+        <div className="container">
+          <form onSubmit={handleSubmit}>
+            <TitleComponent title="Registro de usuario" size="h1" />
 
-          <div className="mb-3">
-            <MySelectComponent
-              required
-              label="Tipo de documento *"
-              name="idTypedocF"
-              value={news.idTypedocF}
-              options={options}
-              onChange={(e) => handleSelectedChange(e, setNew)}
-            />
+            <div className="row">
+              <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <MySelectComponent
+                  required
+                  label="Tipo de documento *"
+                  name="idTypedocF"
+                  value={news.idTypedocF}
+                  options={options}
+                  onChange={(e) => handleSelectedChange(e, setNew)}
+                />
 
-            <MyInputComponent
-              type="text"
-              required
-              label="Numero de identificacion *"
-              name="number_doc"
-              value={news.number_doc}
-              onChange={(e) => handleInputChangeNumber(e, setNew)}
-            />
+                <MyInputComponent
+                  type="text"
+                  required
+                  label="Numero de identificacion *"
+                  name="number_doc"
+                  value={news.number_doc}
+                  onChange={(e) => handleInputChangeNumber(e, setNew)}
+                />
 
-            <MyInputComponent
-              type="text"
-              required
-              label="Primer nombre *"
-              name="name"
-              value={news.name}
-              onChange={(e) => handleInputChangeText(e, setNew)}
-            />
+                <MyInputComponent
+                  type="text"
+                  required
+                  label="Primer nombre *"
+                  name="name"
+                  value={news.name}
+                  onChange={(e) => handleInputChangeText(e, setNew)}
+                />
 
-            <MyInputComponent
-              type="text"
-              required={false}
-              label="Segundo nombre"
-              name="name2"
-              value={news.name2}
-              onChange={(e) => handleInputChangeText(e, setNew)}
-            />
+                <MyInputComponent
+                  type="text"
+                  required={false}
+                  label="Segundo nombre"
+                  name="name2"
+                  value={news.name2}
+                  onChange={(e) => handleInputChangeText(e, setNew)}
+                />
 
-            <MyInputComponent
-              type="text"
-              required
-              label="Primer apellido *"
-              name="lastname"
-              value={news.lastname}
-              onChange={(e) => handleInputChangeText(e, setNew)}
-            />
+                <MyInputComponent
+                  type="text"
+                  required
+                  label="Primer apellido *"
+                  name="lastname"
+                  value={news.lastname}
+                  onChange={(e) => handleInputChangeText(e, setNew)}
+                />
+              </div>
+              <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <MyInputComponent
+                  type="text"
+                  required={false}
+                  label="Segundo apellido *"
+                  name="lastname2"
+                  value={news.lastname2}
+                  onChange={(e) => handleInputChangeText(e, setNew)}
+                />
 
-            <MyInputComponent
-              type="text"
-              required={false}
-              label="Segundo apellido *"
-              name="lastname2"
-              value={news.lastname2}
-              onChange={(e) => handleInputChangeText(e, setNew)}
-            />
+                <MyInputComponent
+                  type="text"
+                  required
+                  label="Correo *"
+                  name="email"
+                  value={news.email}
+                  onChange={(e) => handleInputChange(e, setNew)}
+                />
 
-            <MyInputComponent
-              type="text"
-              required
-              label="Correo *"
-              name="email"
-              value={news.email}
-              onChange={(e) => handleInputChange(e, setNew)}
-            />
+                <MyInputComponent
+                  type="tel"
+                  required
+                  label="Telefono *"
+                  name="telephone"
+                  value={news.telephone}
+                  onChange={(e) => handleInputChangeNumber(e, setNew)}
+                />
 
-            <MyInputComponent
-              type="text"
-              required
-              label="Telefono *"
-              name="telephone"
-              value={news.telephone}
-              onChange={(e) => handleInputChangeNumber(e, setNew)}
-            />
+                <MyInputComponent
+                  type={hidden == true ? "password" : "text"}
+                  required
+                  label="Contraseña *"
+                  name="password"
+                  value={news.password}
+                  onChange={(e) => handleInputChange(e, setNew)}
+                />
 
-            <MyInputComponent
-              type={hidden == true ? "password" : "text"}
-              required
-              label="Contraseña *"
-              name="password"
-              value={news.password}
-              onChange={(e) => handleInputChange(e, setNew) }
-            />
+                <MyInputComponent
+                  type={hidden == true ? "password" : "text"}
+                  required
+                  label="Confirmar contraseña *"
+                  name="pass"
+                  value={news.pass}
+                  onChange={(e) => handleInputChange(e, setNew)}
+                />
+              </div>
+            </div>
+            <div className="mb-9">
+              { news.password != '' || news.pass != '' ?
+              
+              <p
+                style={{
+                  "font-size": "12px",
+                  color: "black",
+                  backgroundColor: "#f47f7f",
+                }}
+              >
+                Por favor, tener en cuenta que la contraseña ingresada debe
+                contener al menos 8 caracteres, incluyendo al menos una
+                mayúscula, una minúscula, un número y un carácter especial
+                (@$!%*?&).
+              </p> : <></>
+            }
 
-            <MyInputComponent
-              type={hidden == true ? "password" : "text"}
-              required
-              label="Confirmar contraseña *"
-              name="pass"
-              value={news.pass}
-              onChange={(e) => handleInputChange(e, setNew) }
-            />
+              <button
+                type="button"
+                className="btn btn-warning btn-block mt-1"
+                onClick={toggleHidden}
+              >
+                {hidden ? <><VisibilityOffIcon /></> : <><VisibilityIcon /></>}
+              </button>
 
-            <p style={{"font-size": "1px", "color" : "black", "backgroundColor": "#f47f7f" }}>
-            Por favor, tener en cuenta que la contraseña ingresada debe 
-            contener al menos 8 caracteres, 
-            incluyendo al menos una mayúscula, 
-            una minúscula, un número y 
-            un carácter especial (@$!%*?&).
+              <br />
+              <br />
+            </div>
+            <div className="d-grid">
+              <button type="submit" className="btn btn-primary">
+                Registrar
+              </button>
+            </div>
+            <p className="forgot-password text-right">
+              Ya está registrado <a href="/login">Iniciar sesión?</a>
             </p>
-
-            <button
-              type="button"
-              className="btn btn-secondary btn-block mt-1"
-              onClick={toggleHidden}
-            >
-              {hidden ? <>Ver contraseña</> : <>ocultar contraseña</>}
-            </button>
-          </div>
-          <div className="d-grid">
-            <button type="submit" className="btn btn-primary">
-              Registrar
-            </button>
-          </div>
-          <p className="forgot-password text-right">
-            Ya está registrado <a href="/login">Iniciar sesión?</a>
-          </p>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

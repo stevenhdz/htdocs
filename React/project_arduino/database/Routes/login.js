@@ -6,6 +6,7 @@ const userLoginController = new UserLoginController();
 
 router.get("/", userLoginController.getAllUsers);
 router.post("/auth", userLoginController.getUserById);
+router.post("/user", userLoginController.getUserByIds);
 router.post("/", userLoginController.createUser);
 router.post("/m", userLoginController.deleteMultiple);
 router.put("/:id_credentials", userLoginController.updateUser);

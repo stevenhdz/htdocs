@@ -11,15 +11,17 @@ import { NavAdmin } from "../Layouts/NavBar/NavBarAdmin/NavBar";
 import {
   handleInputChange,
 } from "../../utils/validate";
+import { MySelectComponent } from "../Field/MySelectComponent";
 
 
 
 export const MunicipalityForm = () => {
   const [forms, setForm] = useState([]);
-  const [news, setNew] = useState({ desc_municipality: "" });
+  const [news, setNew] = useState({ desc_municipality: "", idDepartmentF: "" });
   const [selected, setSelected] = useState(null);
   const [deleted, setDeleted] = useState(false);
   const [deleted2, setDeleted2] = useState(false);
+  const [options2, setOptions2] = useState([])
 
   const [currentPage, setCurrentPage] = useState(0); // Estado para el número de página actual
   const PerPage = 6; // Número de roles por página
@@ -34,6 +36,18 @@ export const MunicipalityForm = () => {
       setForm(data);
     } catch (error) {
       console.error("Error al obtener municipios:", error);
+    }
+
+    try {
+      const response = await fetch(`${apiUrl}${port}/departments`);
+      const data = await response.json();
+      const newOptions = data.map((element) => ({
+        value: element.id_department,
+        label: element.desc_department,
+      }));
+      setOptions2(newOptions);
+    } catch (error) {
+      console.error("Error al obtener lugares:", error);
     }
   };
   
@@ -80,7 +94,7 @@ export const MunicipalityForm = () => {
             prev.map((rol) => (rol.id_municipality == data.id_municipality ? data : rol))
           );
           setSelected(null);
-          setNew({ desc_municipality: "" });
+          setNew({ desc_municipality: "", idDepartmentF: "" });
         } catch (error) {
           console.error("Error al actualizar municipio:", error);
         }
@@ -97,7 +111,7 @@ export const MunicipalityForm = () => {
         });
         const data = await response.json();
 
-        data.error == "Ocurrió un error en el servidor" ?  alert("ya existe") : setForm((prev) => [...prev, data]); setNew({ desc_municipality: "" });
+        data.error == "Ocurrió un error en el servidor" ?  alert("ya existe") : setForm((prev) => [...prev, data]); setNew({ desc_municipality: "", idDepartmentF: "" });
 
       } catch (error) {
         console.error("Error al crear rol:", error);
@@ -141,13 +155,23 @@ export const MunicipalityForm = () => {
         setDeleted(true)
         if (selected && selected.id == id) {
           setSelected(null);
-          setNew({ id_municipality: "", desc_municipality: "" });
+          setNew({ id_municipality: "", desc_municipality: "", idDepartmentF: "" });
         }
       } catch (error) {
         console.error("Error al eliminar municipio:", error);
       }
     }
   };  
+
+  const handleSelectChange = (e) => {
+    const { name, value } = e.target;
+    /* if (!value.match(emailRegex)) { */
+    setNew((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  
 
   const handleEdit = (info) => {
     // Cargar los datos del rol seleccionado en los campos de edición
@@ -157,7 +181,7 @@ export const MunicipalityForm = () => {
 
   const handleCancel = () => {
     setSelected(null);
-    setNew({ desc_municipality: "" });
+    setNew({ desc_municipality: "", idDepartmentF: "" });
   };
 
   // Función para manejar el cambio de página
@@ -190,6 +214,14 @@ export const MunicipalityForm = () => {
                 value={news.desc_municipality}
                 onChange={(e) => handleInputChange(e, setNew)}
               />
+                <MySelectComponent
+                    required
+                    label="Departamento *"
+                    name="idDepartmentF"
+                    value={news.idDepartmentF}
+                    options={options2}
+                    onChange={handleSelectChange}
+                />
               <div className="form-group col-md-2 d-flex align-items-end">
                 <button type="submit" className="btn btn-primary btn-block">
                   {selected ? <UpdateIcon /> : <AddIcon />}
@@ -215,7 +247,7 @@ export const MunicipalityForm = () => {
             handleEdit={handleEdit}
             handleMultipleDelete={handleMultipleDelete}
             idField={"id_municipality"}
-            Fields={["desc_municipality", "createdAt", "updatedAt"]}
+            Fields={["desc_municipality", "idDepartmentF", "createdAt", "updatedAt"]}
           />
           <MyPaginationComponent
             data={forms}
