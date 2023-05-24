@@ -1,3 +1,5 @@
-﻿Nombre;Edad;Genero;Origen etnico;Nivel socioeconómico;Situación laboral de los padres;Nivel educativo de los padres;Relación con los padres;Recursos comunitarios;Transporte;Calificacion1;Calificacion2;Calificacion3;Calificacion4;Asistencia;Materia;Desertó
-Ana;18;F;Asiatico;Alto;Empleado;Universitario;Buena;Amplios;Privado;1;1;1;1;3;Mateticas;Sí
-Luis;16;M;Hispano;Bajo;Desempleado;Secundaria;Regular;Limitados;Público;5;5;5;5;12;Ingles;No
+﻿Nombre;Cedula;Edad;Genero;Origen etnico;Nivel socioeconómico;Situación laboral de los padres;Nivel educativo de los padres;Relación con los padres;Recursos comunitarios;Transporte;Calificacion1;Calificacion2;Calificacion3;Calificacion4;Asistencia;Materia;Desertó
+Ana;1017247467;18;F;Asiatico;Alto;Empleado;Universitario;Buena;Amplios;Privado;1;1;1;1;3;Mateticas;Sí
+Ana1;1017247467;18;F;Asiatico;Alto;Empleado;Universitario;Buena;Amplios;Privado;2;2;2;2;3;Mateticas;Sí
+Luis;1017247468;16;M;Hispano;Bajo;Desempleado;Secundaria;Regular;Limitados;Público;5;5;5;5;12;Ingles;No
+Luis2;1017247468;16;M;Hispano;Bajo;Desempleado;Secundaria;Regular;Limitados;Público;5;4;4;5;12;Ingles;No
