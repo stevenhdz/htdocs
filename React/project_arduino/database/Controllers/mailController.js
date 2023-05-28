@@ -24,17 +24,15 @@ static removeTags(str) {
 
   async sendEmail(req, res) {
     try {
-      const { from, to, subject, text, html } = req.body;
+      const { from, to, subject, text, html, attachmentPath } = req.body;
 
       const credentials = {
-        client_id:
-          "138602344841-tqn6gt39ro4k57o0epql1141otqoj173.apps.googleusercontent.com",
-        client_secret: "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",
+        client_id: "138602344841-1qghi666324bu2ui2t57hbislqa25tp9.apps.googleusercontent.com",
+        client_secret: "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",
         redirect_uris: ["https://developers.google.com/oauthplayground"],
       };
 
-      const codigoAutorizacion =
-        "1//04JB1pDr3e0DKCgYIARAAGAQSNwF-L9Ir5BJJLeIgGrOKkDJr1I0aE11lONw4SxrJumDxhlq7QpQsmfvhICEUVrpQLvy_EKSn4JY";
+      const codigoAutorizacion = "1//04kSTYL0WYwFcCgYIARAAGAQSNwF-L9IrcWwwpJSr_iD-L3RbmvoFJPoTUHXO7Psleekum_1mckEzp5gmZCCzkDUtDM6S-hk7deE";
 
       const oAuth2Client = new google.auth.OAuth2(
         credentials.client_id,
@@ -56,7 +54,7 @@ static removeTags(str) {
         auth: {
           type: "OAuth2",
           user: "shernajis@gmail.com",
-          accessToken: accessToken?.token,
+          accessToken: accessToken.token,
         },
       });
 
@@ -67,12 +65,18 @@ static removeTags(str) {
         subject: subject,
         text: html ? text : MailController.removeTags(text),
         html: html ? text : undefined,
+        attachments: [
+          {
+            filename: attachmentPath,
+            path: attachmentPath
+          },
+        ],
       };
 
       const info = await transporter.sendMail(mailOptions);
       res.status(201).json(info.response);
     } catch (error) {
-console.log(error)
+      console.log(error);
       res.status(500).json({ error: "Ocurrió un error en el servidor" });
     }
   }

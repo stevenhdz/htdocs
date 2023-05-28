@@ -89,7 +89,7 @@ dtostrf(carga, 4, 2, cargaStr);
   delay(1000);
   esp8266.println("AT+CIPSEND=75");
   delay(1000);
-  esp8266.println("GET /reports/1/1/"+String(cargaStr) + " HTTP/1.1\r\nHost: 172.20.10.13\r\n\r\n");
+  esp8266.println("GET /reports/2/1/"+String(cargaStr) + " HTTP/1.1\r\nHost: 172.20.10.13\r\n\r\n");
   delay(5000);
   while (esp8266.available()) {
     Serial.write(esp8266.read());

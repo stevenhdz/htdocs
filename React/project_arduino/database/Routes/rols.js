@@ -1,5 +1,5 @@
 const express = require("express");
-const RolController = require("../controllers/rolController");
+const RolController = require("../Controllers/rolController");
 const router = express.Router();
 const { validarAutenticacion } = require('../Middleware/middleware'); // Importa el middleware
 

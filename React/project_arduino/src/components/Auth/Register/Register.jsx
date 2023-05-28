@@ -28,7 +28,7 @@ export default function Register() {
     idStatusF: 1,
     password: "",
     pass: "",
-    idRolF: 1,
+    idRolF: 2,
   });
 
   useEffect(() => {

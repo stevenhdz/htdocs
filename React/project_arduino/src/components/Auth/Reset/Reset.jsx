@@ -45,16 +45,28 @@ export default function Reset() {
   const generatePassEncrypt = (longitud) => {
     const caracteresPermitidos =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    const specialCharacters = "!@#$%^&*()";
     let clave = "";
-
-    while (clave.length < longitud) {
+  
+    const hasUpperCase = () => /[A-Z]/.test(clave);
+    const hasLowerCase = () => /[a-z]/.test(clave);
+    const hasNumber = () => /[0-9]/.test(clave);
+    const hasSpecialCharacter = () => new RegExp(`[${specialCharacters}]`).test(clave);
+  
+    while (
+      clave.length < longitud ||
+      !hasUpperCase() ||
+      !hasLowerCase() ||
+      !hasNumber() ||
+      !hasSpecialCharacter()
+    ) {
       const indice = Math.floor(Math.random() * caracteresPermitidos.length);
       clave += caracteresPermitidos.charAt(indice);
     }
-
+  
     return clave;
   };
-
+  
   const modifiedUser = async (
     idRolF,
     id_credentials,

@@ -11,6 +11,7 @@ export const MainAgent = (props) => {
   const [user, setUser] = useState([]);
   const [hardware, setHardware] = useState([]);
   const [hardwareplace, setHardwarePlace] = useState([]);
+  const [connect, setConnect] = useState(false)
 
   const [places, setPlace] = useState([]);
   const [municipality, setMunicipality] = useState([]);
@@ -31,7 +32,8 @@ export const MainAgent = (props) => {
 
   useEffect(() => {
     handleGet();
-  }, []);
+  }, [connect]);
+
 
   const sendEmail = (from, to, subject, text, html) => {
     fetch(`${apiUrl}${port}/mail/send`, {
@@ -95,22 +97,32 @@ export const MainAgent = (props) => {
     );
     const data9 = await response9.json();
     setDepartments(data9);
-
+    
     setInterval(async () => {
-
+      
       try {
         const response = await fetch(
           `${apiUrl}${port}/reports/${data2.id_user}/${data3.idHardwareF}`
-        );
-        const data = await response.json();
-        setLevel(data[0].nivel_carga);
-      } catch (error) {
-        console.error("Error al obtener reportes:", error);
-      }
-    }, 3000);
+          );
+          const data = await response.json();
+          setLevel(data[0].nivel_carga);
+
+          if (data[0].nivel_carga === 0) {
+            setConnect(false);
+          } else {
+            setConnect(true);
+          }
+        } catch (error) {
+          console.error("Error al obtener reportes:", error);
+        }
+        
+      }, 3000);
+      
+ 
+    
 
     setInterval(async () => {
-      if (data1[0].nivel_carga > 10 && data1[0].nivel_carga < 21) {
+      if (data1[0].nivel_carga >= 10 && data1[0].nivel_carga < 21) {
         sendEmail(
           null,
           user.email,
@@ -120,103 +132,128 @@ export const MainAgent = (props) => {
         )
       }
     }, timer * 1000);
-  
-};
 
-return (
-  <div className="main-agent-container">
-    <br />
-    <br />
-    {isLoggedIn === "true" ? (
-      rol >= 2 || rol == 1 ? (
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-4">
-              <h5>
-                BIENVENIDO/A:{" "}
-                <span style={{ color: "green" }}>
-                  {user.name} {user.name2} {user.lastname} {user.lastname2}
-                </span>
-              </h5>
-              <h5>{t("Informacion del hardware")}</h5>
-              <h6>
-                <b>IP:</b>{" "}
-                <span style={{ color: "green" }}>{hardware.ip}</span>
-              </h6>
-              <h6>
-                <b>MAC ADDRESS:</b>{" "}
-                <span style={{ color: "green" }}>{hardware.mac}</span>
-              </h6>
-              <h6>
-                <b>VERSION FIRMWARE:</b>{" "}
-                <span style={{ color: "green" }}>
-                  {hardware.version_firmware}
-                </span>
-              </h6>
-              <h5>{t("Caracteristicas del lugar")}</h5>
-              <h6>
-                <b>DETALLES:</b>{" "}
-                <span style={{ color: "green" }}>{places.detail}</span>
-              </h6>
-              <h6>
-                <b>GEOREFERENCIAS:</b>{" "}
-                <span style={{ color: "green" }}>{places.georeference}</span>
-              </h6>
-              <h6>
-                <b>MUNICIPIO:</b>{" "}
-                <span style={{ color: "green" }}>
-                  {municipality.desc_municipality}
-                </span>
-              </h6>
-              <h6>
-                <b>DEPARTAMENTO:</b>{" "}
-                <span style={{ color: "green" }}>
-                  {departments.desc_department}
-                </span>
-              </h6>
-            </div>
-            <div className="col-sm-4">
-              <div className="text-center">
-                <img
-                  className="arduino"
-                  style={{ width: "200px", height: "150px" }}
-                  src="https://docs.allthingstalk.com/images/boards/arduino_uno_board.png"
-                  alt="Arduino Uno"
-                />
+  };
+
+  return (
+    <div className="main-agent-container">
+      <br />
+      <br />
+      {isLoggedIn === "true" ? (
+        rol >= 2 || rol == 1 ? (
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-4">
+                <h5>
+                  BIENVENIDO/A:{" "}
+                  <span style={{ color: "green" }}>
+                    {user.name} {user.name2} {user.lastname} {user.lastname2}
+                  </span>
+                </h5>
+                <h5>{t("Informacion del hardware")}</h5>
+                <h6>
+                  <b>IP:</b>{" "}
+                  <span style={{ color: "green" }}>{connect ? hardware.ip : <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>}</span>
+                </h6>
+                <h6>
+                  <b>MAC ADDRESS:</b>{" "}
+                  <span style={{ color: "green" }}>{connect ? hardware.mac : <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>} </span>
+                </h6>
+                <h6>
+                  <b>VERSION FIRMWARE:</b>{" "}
+                  <span style={{ color: "green" }}>
+                    {connect ? hardware.version_firmware : <div class="spinner-border spinner-border-sm" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>}
+                  </span>
+                </h6>
+                <h5>{t("Caracteristicas del lugar")}</h5>
+                <h6>
+                  <b>DETALLES:</b>{" "}
+                  <span style={{ color: "green" }}>{connect ? places.detail : <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>}</span>
+                </h6>
+                <h6>
+                  <b>GEOREFERENCIAS:</b>{" "}
+                  <span style={{ color: "green" }}>{connect ? places.georeference : <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>}</span>
+                </h6>
+                <h6>
+                  <b>MUNICIPIO:</b>{" "}
+                  <span style={{ color: "green" }}>
+                    {connect ? municipality.desc_municipality : <div class="spinner-border spinner-border-sm" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>}
+                  </span>
+                </h6>
+                <h6>
+                  <b>DEPARTAMENTO:</b>{" "}
+                  <span style={{ color: "green" }}>
+                    {connect ? departments.desc_department : <div class="spinner-border spinner-border-sm" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>}
+                  </span>
+                </h6>
               </div>
-              <h5>{t("Carga en tiempo real")}</h5>
-              <div className="battery-meter">
-                <div className="battery-icon custom">
-                  <div
-                    className="battery-level"
-                    style={{ width: barWidth, backgroundColor: batteryColor }}
-                  ></div>
+              <div className="col-sm-4">
+                <div className="text-center">
+                  <img
+                    className="arduino"
+                    style={{ width: "200px", height: "150px" }}
+                    src="https://docs.allthingstalk.com/images/boards/arduino_uno_board.png"
+                    alt="Arduino Uno"
+                  />
                 </div>
-                <div className="battery-percentage">{batteryLevel}%</div>
+                <h5>{t("Carga en tiempo real")}</h5>
+                <div className="battery-meter">
+                  <div className="battery-icon custom">
+                    <div
+                      className="battery-level"
+                      style={{ width: barWidth, backgroundColor: batteryColor }}
+                    ></div>
+                  </div>
+                  {connect ?
+                    <div className="battery-percentage">{batteryLevel}%</div>
+                    : <div class="spinner-border spinner-border-sm" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  }
+                </div>
               </div>
-            </div>
-            <div className="col-sm-4">
-              <h2>{t("Ubicacion")}</h2>
+              <div className="col-sm-4">
+                <h2>{t("Ubicacion")}</h2>
 
-              <div
-                dangerouslySetInnerHTML={{
-                  __html:
-                    '<iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=' +
-                    municipality.desc_municipality +
-                    '+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/">Car GPS</a></iframe>',
-                }}
-              />
+                {connect ?
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        '<iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=' +
+                        municipality.desc_municipality + "," + departments.desc_department +
+                        '+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/">Car GPS</a></iframe>',
+                    }}
+                  />
+                  : <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+
+                }
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <h5 className="no-access" style={{ color: "black" }}>
+            {t("No tienes acceso")}
+          </h5>
+        )
       ) : (
-        <h5 className="no-access" style={{ color: "black" }}>
-          {t("No tienes acceso")}
-        </h5>
-      )
-    ) : (
-      (window.location = "/login")
-    )}
-  </div>
-);
+        (window.location = "/login")
+      )}
+    </div>
+  );
 };

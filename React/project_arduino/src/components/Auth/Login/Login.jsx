@@ -7,6 +7,7 @@ import { apiUrl, port } from "../../../utils/config";
 
 export default function Login() {
   const [news, setNew] = useState({ usuario: "", password: "" });
+  const [count, setCount] = useState(0);
   const form = "register";
 
   const handleInputChange = (e) => {
@@ -38,6 +39,7 @@ export default function Login() {
     fetch(`${apiUrl}${port}/${form}/doc/${id}`)
       .then((response) => response.json())
       .then((dataget) => {
+        setCount(count + 1)
         if (dataget.idStatusF == 1) {
           fetch(`${apiUrl}${port}/login/auth`, {
             method: "POST",
@@ -67,7 +69,13 @@ export default function Login() {
                   window.location.href = "./MainAgent";
                 }
               } else {
-                alert("usuario o contraseña incorrectos.");
+                if(count < 3){
+                  alert("Usuario o contraseña incorrectos.");
+                }else{
+                  alert(`Haz llegado al limite de intentos permitidos ${count}, procederemos a redireccionarte al generar de cambio de clave.`);
+                  setCount(0)
+                  window.location.href = "./reset";
+                }
               }
             });
         } else {
@@ -121,7 +129,7 @@ export default function Login() {
               Iniciar
             </button>
           </div>
-          <p className="forgot-password text-right">
+          <p className="forgot-password text-right" style={{"padding-top": "10px"}}>
             <a href="/register">¿Aún no tienes una cuenta? Regístrate aquí</a>
           </p>
         </form>
