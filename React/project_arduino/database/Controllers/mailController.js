@@ -27,13 +27,15 @@ static removeTags(str) {
       const { from, to, subject, text, html, attachmentPath } = req.body;
 
       const credentials = {
-        client_id: "138602344841-1qghi666324bu2ui2t57hbislqa25tp9.apps.googleusercontent.com",
+        client_id:
+          "138602344841-1qghi666324bu2ui2t57hbislqa25tp9.apps.googleusercontent.com",
         client_secret: "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",
         redirect_uris: ["https://developers.google.com/oauthplayground"],
       };
-
-      const codigoAutorizacion = "1//04kSTYL0WYwFcCgYIARAAGAQSNwF-L9IrcWwwpJSr_iD-L3RbmvoFJPoTUHXO7Psleekum_1mckEzp5gmZCCzkDUtDM6S-hk7deE";
-
+  
+      const codigoAutorizacion =
+        "1//04lORkYUfkwxwCgYIARAAGAQSNwF-L9Ir2l5opk83632mdA__ZHY5pX90yQURfv-lZuwYJs_Czl4Eg7gK1dAfRIuNKKssPyooC3k";
+  
       const oAuth2Client = new google.auth.OAuth2(
         credentials.client_id,
         credentials.client_secret,

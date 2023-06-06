@@ -122,7 +122,7 @@ export const MainAgent = (props) => {
     
 
     setInterval(async () => {
-      if (data1[0].nivel_carga >= 10 && data1[0].nivel_carga < 21) {
+      if (data1[0].nivel_carga >= 0 && data1[0].nivel_carga < 21) {
         sendEmail(
           null,
           user.email,

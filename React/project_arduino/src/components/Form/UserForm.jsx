@@ -312,7 +312,7 @@ export const UserForm = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <form onSubmit={handleSubmit} className="mb-4">
               <div className="form-row">
                 <MySelectComponent
@@ -419,7 +419,7 @@ export const UserForm = () => {
               </div>
             </form>
           </div>
-          <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
             {/*   password remove */}
             <MyTableComponent
               data={current}
