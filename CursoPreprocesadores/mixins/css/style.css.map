@@ -1,1 +1,10 @@
-{"version":3,"sourceRoot":"","sources":["../sass/_footer.scss"],"names":[],"mappings":"AAAA;EACI;EACA","file":"style.css"}
+{
+    "version": 3,
+    "sourceRoot": "",
+    "sources": [
+        "../sass/_footer.scss"
+    ],
+    "names": [],
+    "mappings": "AAAA;EACI;EACA",
+    "file": "style.css"
+}
