@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Video</title>
+</head>
+
+<body>
+    <h1>Mi Video de Ejemplo</h1>
+
+    <!-- Etiqueta de video -->
+    <video width="640" height="360" controls>
+        <!-- Fuente MP4 (H.264) para navegadores compatibles -->
+        <source src="mi_video.mp4" type="video/mp4">
+
+        <!-- Fuente WebM para navegadores compatibles -->
+        <source src="mi_video.webm" type="video/webm">
+
+        <!-- Mensaje de error en caso de que el navegador no sea compatible -->
+        Tu navegador no admite la reproducción de video.
+    </video>
+
+    <p>Descripción de mi video.</p>
+</body>
+
+</html>

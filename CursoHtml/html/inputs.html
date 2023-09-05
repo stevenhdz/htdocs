@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Diversos Campos de Entrada en HTML</title>
+    <style>
+        /* Estilos generales para los campos de entrada */
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="email"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="time"],
+        input[type="color"],
+        select,
+        textarea {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Estilo para botones de radio y casillas de verificación */
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        /* Estilo para el botón de envío */
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Campos de Entrada HTML</h2>
+    <form>
+        <label for="texto">Texto:</label>
+        <input type="text" id="texto" name="texto" placeholder="Texto">
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" placeholder="Contraseña">
+
+        <label for="numero">Número:</label>
+        <input type="number" id="numero" name="numero" min="0" max="100" step="1" value="50">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email">
+
+        <label for="url">URL:</label>
+        <input type="url" id="url" name="url" placeholder="URL">
+
+        <label for="tel">Teléfono:</label>
+        <input type="tel" id="tel" name="tel" placeholder="Teléfono">
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha">
+
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora">
+
+        <label for="color">Color:</label>
+        <input type="color" id="color" name="color" value="#ff0000">
+
+        <label for="select">Selecciona una opción:</label>
+        <select id="select" name="select">
+            <option value="opcion1">Opción 1</option>
+            <option value="opcion2">Opción 2</option>
+            <option value="opcion3">Opción 3</option>
+        </select>
+
+        <label for="radio">Selecciona un radio button:</label>
+        <input type="radio" id="radio1" name="radio" value="opcion1">
+        <label for="radio1">Opción 1</label>
+        <input type="radio" id="radio2" name="radio" value="opcion2">
+        <label for="radio2">Opción 2</label>
+        <input type="radio" id="radio3" name="radio" value="opcion3">
+        <label for="radio3">Opción 3</label>
+
+        <label>Selecciona casillas de verificación:</label>
+        <input type="checkbox" id="check1" name="check1" value="opcion1">
+        <label for="check1">Opción 1</label>
+        <input type="checkbox" id="check2" name="check2" value="opcion2">
+        <label for="check2">Opción 2</label>
+        <input type="checkbox" id="check3" name="check3" value="opcion3">
+        <label for="check3">Opción 3</label>
+
+        <label for="textarea">Área de Texto:</label>
+        <textarea id="textarea" name="textarea" rows="4" placeholder="Escribe algo aquí..."></textarea>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+
+</html>

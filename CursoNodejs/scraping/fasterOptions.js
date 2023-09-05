@@ -58,10 +58,22 @@ switch (selected) {
     console.log("invalid");
 } */
 
-const array = { apple: "This is an apple.", banana: "This is a banana." };
+/* const array = { apple: "This is an apple.", banana: "This is a banana." };
 const selected = "apple";
 if (selected in array) {
   console.log(array[selected]);
 } else {
   console.log("invalid");
-}
+} */
+
+const puntaje = 90
+const calificaciones = [
+  { rango: 90, calificacion: "A" },
+  { rango: 80, calificacion: "B" },
+  { rango: 70, calificacion: "C" },
+  { rango: 60, calificacion: "D" }
+];
+
+let calificacion = calificaciones.reduceRight((acc, curr) => puntaje >= curr.rango ? curr.calificacion : acc, "F");
+
+console.log("La calificación del estudiante es: " + calificacion);
