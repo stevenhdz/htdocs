@@ -1,0 +1,21 @@
+button {
+  background-color: #FFFFFF;
+  color: black;
+  font-size: 20px;
+}
+
+button .t {
+  background-color: #FFFFFF;
+  color: black;
+  font-size: 20px;
+}
+
+form {
+  color: aqua;
+}
+form h4 {
+  color: black;
+}
+form h4 span {
+  color: bisque;
+}/*# sourceMappingURL=button.css.map */

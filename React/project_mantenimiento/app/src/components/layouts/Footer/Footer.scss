@@ -1,0 +1,16 @@
+$color-fondo-footer: #333;
+$altura-footer: 60px;
+
+footer {
+  background-color: $color-fondo-footer;
+  height: $altura-footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

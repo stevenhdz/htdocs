@@ -1,0 +1,30 @@
+@import './variables';
+
+@mixin zoom(){
+    font-size: 20px;
+}
+
+@mixin propiedadesCompartidas(){
+    background-color: #FFFFFF;
+    color: $title;
+}
+
+button {
+    @include propiedadesCompartidas();
+    @include zoom()
+}
+
+button .t {
+    @include propiedadesCompartidas();
+    @include zoom()
+}
+
+form {
+    color: aqua;
+    h4 {
+        color: $bg;
+        span {
+            color: bisque;
+        }
+    }
+}
