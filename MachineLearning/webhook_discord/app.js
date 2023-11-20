@@ -19,8 +19,8 @@ const messageContent = `
 
 This is a reminder for our **important** meeting.
 
-- :date: **Date start:** *Septiembre 25, 2023*
-- :alarm_clock: **Hour start:** *8:00 PM*
+- :date: **Date start:** *November 1, 2023*
+- :alarm_clock: **Hour start:** *7:00 PM*
 
 [In the voice channel Freelance](https://example.com/meeting)
 
