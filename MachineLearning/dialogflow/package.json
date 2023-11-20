@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@google-cloud/dialogflow": "^6.2.0",
+    "@google-cloud/storage": "^7.4.0",
+    "sqlite": "^5.0.1",
+    "sqlite3": "^5.1.6"
+  }
+}
