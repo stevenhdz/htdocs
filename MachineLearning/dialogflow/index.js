@@ -36,13 +36,9 @@ authenticateImplicitWithAdc();
 
 const intentsClient = new dialogflow.IntentsClient();
 
-async function updateIntent() {
-
-}
-
-//updateIntent();
 
 
+//detect intent
 
 const sessionID = '263ygdgsdy23y2g3ybdh'
 
@@ -292,7 +288,6 @@ async function listIntents() {
 //listIntents();
 
 
-//delete one
 async function deleteIntentsOne() {
 
     const intentId = '1e3ac81f-ca06-452c-aaec-14e36152337c'
@@ -350,6 +345,8 @@ async function createEntity() {
 
 createEntity();
 
+//TODO: FALTO LAS OTRAS DE ENTITY
+
 
 
 async function setAgent() {
@@ -374,6 +371,6 @@ async function setAgent() {
     console.log(`response: ${JSON.stringify(response, null, 2)}`);
 
 }
-//setAgent();
+//setAgent(); project
 
 //delete DELETE https://dialogflow.googleapis.com/v2/projects/PROJECT_ID/agent
