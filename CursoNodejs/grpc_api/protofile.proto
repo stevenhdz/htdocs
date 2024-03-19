@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package myservice;
+
+message Item {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+service CrudService {
+  rpc Create(Item) returns (Item);
+  rpc Read(Item) returns (Item);
+  rpc Update(Item) returns (Item);
+  rpc Delete(Item) returns (Item);
+  rpc List(Empty) returns (stream Item);
+}
+
+message Empty {}
