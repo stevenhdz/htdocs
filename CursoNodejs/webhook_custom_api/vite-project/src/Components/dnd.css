@@ -1,0 +1,52 @@
+.dndflow {
+    flex-direction: row;
+    display: flex;
+    height: 100vh;
+  }
+  
+  .dndflow aside {
+    font-size: 12px;
+    background: #778294;
+
+  }
+  
+  .dndflow aside > * {
+    margin-bottom: 10px;
+    cursor: grab;
+  }
+  
+  .dndflow aside .description {
+    margin-bottom: 10px;
+  }
+  
+  .dndflow .reactflow-wrapper {
+    flex-grow: 1;
+    height: 100%;
+  }
+
+  
+ button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+  
+  @media screen and (min-width: 768px) {
+    .dndflow {
+      flex-direction: row;
+    }
+  
+    .dndflow aside {
+      width: 20%;
+      max-width: 240px;
+    }
+  }
+  
