@@ -1,4 +1,6 @@
 #include <SoftwareSerial.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
 
 // variables para medir bateria 
 const int pinLedVerde = 2;
@@ -9,6 +11,16 @@ const float resistencia = 220.0;
 const float voltajeMaximo = 2.4;
 
 SoftwareSerial esp8266(8, 9); // RX, TX
+
+// Dirección I2C del LCD
+#define LCD_ADDRESS 0x27
+
+// Configuración del LCD
+#define LCD_COLS 20
+#define LCD_ROWS 4
+
+// Inicialización del LCD
+LiquidCrystal_I2C lcd(LCD_ADDRESS, LCD_COLS, LCD_ROWS);
 
 void setup() {
   // pin leds carga
@@ -48,6 +60,18 @@ void loop() {
   Serial.print("V, Carga: ");
   Serial.print(carga);
   Serial.println(" %");
+
+    // Mostrar la carga en el LCD
+  lcd.init(); 
+  lcd.init();   
+  lcd.clear();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("Carga: ");
+  lcd.print(carga);
+  lcd.print("%");
+  lcd.setCursor(0, 1);
+  lcd.print("ALEX!");
   
   if (carga >= 70.0) {
     digitalWrite(pinLedVerde, HIGH);

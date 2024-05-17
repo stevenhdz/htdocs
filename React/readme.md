@@ -1,10 +1,16 @@
+---
+runme:
+  id: 01HSSNDFWY3KS3C5HJZ2KERTZR
+  version: v3
+---
 
 Como crear un proyecto en react e iniciarlo.
 
-```console
+```console {"id":"01HSSNDFWY3KS3C5HJZ14F1W4M"}
 npx create-react-app test
 cd test
 npm start
+
 ```
 
 ## Tematicas aprendidas
@@ -41,3 +47,5 @@ npm start
     - useContext
     - TailwindCSS
     - Despliegue Github Pages
+
+npm create vite@latest
