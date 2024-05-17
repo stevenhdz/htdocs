@@ -19,6 +19,7 @@ import {
   updateTransactionPay,
   updateTransactionsPay,
 } from './database.tsx';
+import { TextInputComponents } from './components/TextInput/TextInputComponent.tsx';
 
 interface Transaction {
   id: string;
@@ -196,6 +197,13 @@ const FinanzasApp: React.FC = () => {
       </View>
 
       <View style={styles.inputContainer}>
+        <TextInputComponents
+          types="numeric"
+          styles={styles}
+          handleChange={handleAmountChange}
+          value={amount}
+          placeholder="Monto"
+        />
         <TextInput
           style={[styles.input, {backgroundColor: '#f2f2f2'}]}
           placeholder="Monto"
