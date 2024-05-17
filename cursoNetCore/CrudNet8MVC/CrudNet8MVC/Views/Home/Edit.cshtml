@@ -1,0 +1,49 @@
+﻿@model CrudNet8MVC.Models.Contact
+@{
+    ViewData["Title"] = "Edit contact";
+}
+
+<h1 class="text-center">Contacto con .NET 8 (.NET Core MVC)</h1>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong>Edit user</strong></h3>
+            </div>
+            <div class="card-body">
+
+                <form asp-action="Edit">
+
+                    <!--ID del usuario como campo oculto *-->
+                    <input type="hidden" asp-for="Id" />
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Here name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Telephone" class="control-label"></label>
+                        <input asp-for="Telephone" class="form-control" placeholder="Here telephone" />
+                        <span asp-validation-for="Telephone" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" placeholder="Here email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-primary d-block mx-auto"><i class="fa fa-user" aria-hidden="true"></i> Edit user</button>
+                    </div>
+                </form>
+
+                <a asp-controller="Home" asp-action="Index">Last</a>
+            </div>
+        </div>
+    </div>
+</div>
