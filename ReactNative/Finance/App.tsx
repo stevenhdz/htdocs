@@ -42,6 +42,7 @@ const FinanzasApp: React.FC = () => {
   const [description, setDescription] = useState<string>('');
   const [date, setDate] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
+  const [showDatetimePicker, setShowDateTimePicker] = useState<boolean>(false);
   const [selectedTransactions, setSelectedTransactions] = useState<string[]>(
     [],
   );
@@ -129,6 +130,13 @@ const FinanzasApp: React.FC = () => {
     }
   };
 
+  const handleDateTimeChange = (event: any, selectedDate?: Date) => {
+    setShowDateTimePicker(false);
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
+  };
+
   const deleteTransaction = async (id: any) => {
     try {
       await deleteTransactions(id);
@@ -174,7 +182,7 @@ const FinanzasApp: React.FC = () => {
       type,
       amount: parsedAmount,
       description,
-      date: date.toLocaleDateString(),
+      date: date.toLocaleString(),
       pay: 0
     };
 
@@ -182,7 +190,7 @@ const FinanzasApp: React.FC = () => {
       type,
       parsedAmount,
       description,
-      date.toLocaleDateString(),
+      date.toLocaleString(),
       0,
     );
     setTransactions(prevTransactions => [...prevTransactions, newTransaction]);
@@ -265,22 +273,46 @@ const FinanzasApp: React.FC = () => {
         />
         <TextInputComponents
           stylesExt={tw`text-center bg-slate-200 text-lg`}
-          value={date.toLocaleDateString()}
+          value={date.toLocaleDateString('es-CO', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+          })}
           placeholder="Fecha"
           editable={false}
         />
         <View>
-          <View style={styles.buttonDate}>
-            <ButtonComponent title="Seleccionar Fecha" type="primary" onPress={() => setShowDatePicker(true)} />
-          </View>
+          <View style={styles.buttonContainer}>
+            <View style={{ width: '47%' }}>
+              <ButtonComponent title="Fecha" type="primary" onPress={() => setShowDatePicker(true)} />
+            </View>
+            <View style={{ width: '47%' }}>
+              <ButtonComponent title="Hora" type='primary' onPress={() => setShowDateTimePicker(true)} />
+            </View>
+          </View> 
           {!!showDatePicker ? (
             <DateTimePicker
               value={date}
-              mode="date"
+              mode={'date'}
               display="default"
               onChange={handleDateChange}
             />
           ) : null}
+          {
+            !!showDatetimePicker ? (
+              <DateTimePicker
+                value={date}
+                mode={'time'}
+                is24Hour={false}
+                display="default"
+                onChange={handleDateTimeChange}
+              />
+            ) : null
+          }
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.buttonIncome}>
