@@ -1,49 +1,45 @@
-src
-├── domain  # Modelos de dominio, entidades, agregados, interfaces y value_objects.
-│   ├── entities
-│   │   ├── producto.py       # Clase Producto y su interfaz IProducto
-│   │   └── pedido.py          # Clase Pedido y su interfaz IPedido
-│   ├── aggregates
-│   │   ├── carrito_compras.py  # Clase CarritoCompras y su interfaz ICarritoCompras
-│   │   └── pedido.py          # Clase Pedido (agregado) y su interfaz IPedido
-│   ├── value_objects
-│   │   ├── dinero.py          # Clase Dinero y su interfaz IDinero
-│   │   └── direccion.py       # Clase Direccion y su interfaz IDireccion
-│   └── interfaces  # Interfaces para entidades, agregados y value_objects.
-│       ├── entidades
-│       │   ├── i_producto.py      # Interfaz IProducto
-│       │   └── i_pedido.py         # Interfaz IPedido
-│       ├── agregados
-│       │   ├── i_carrito_compras.py # Interfaz ICarritoCompras
-│       │   └── i_pedido.py          # Interfaz IPedido (agregado)
-│       └── value_objects
-│           ├── i_dinero.py          # Interfaz IDinero
-│           └── i_direccion.py       # Interfaz IDireccion
-├── application  # Casos de uso, servicios de aplicación, interfaces y comandos.
-│   ├── use_cases
-│   │   ├── registrar_pedido.py  # Caso de uso RegistrarPedido y su interfaz IRegistrarPedido
-│   │   └── procesar_pago.py     # Caso de uso ProcesarPago y su interfaz IProcesarPago
-│   ├── application_services
-│   │   ├── registrar_pedido.py  # Servicio RegistrarPedido y su interfaz IRegistrarPedidoService
-│   │   └── procesar_pago.py     # Servicio ProcesarPago y su interfaz IProcesarPagoService
-│   ├── interfaces
-│       ├── use_cases
-│       │   ├── i_registrar_pedido.py # Interfaz IRegistrarPedido
-│       │   └── i_procesar_pago.py    # Interfaz IProcesarPago
-│       └── application_services
-│           ├── i_registrar_pedido_service.py # Interfaz IRegistrarPedidoService
-│           └── i_procesar_pago_service.py    # Interfaz IProcesarPagoService
-│   └── commands
-│       ├── registrar_pedido.py   # Comando RegistrarPedido
-│       └── procesar_pago.py      # Comando ProcesarPago
-├── infrastructure  # Implementación de detalles técnicos (BD, mensajería, etc.).
-│   ├── repositories
-│   │   ├── repositorio_producto.py # Clase RepositorioProducto
-│   │   └── repositorio_pedido.py   # Clase RepositorioPedido
-│   ├── event_handlers
-│   │   └── manejador_evento_pedido_pagado.py # Clase ManejadorEventoPedidoPagado
-│   ├── message_handlers
-│   │   └── manejador_mensaje_confirmacion_pedido.py # Clase ManejadorMensajeConfirmacionPedido
-│   └── logging  # Configuración y lógica de registro.
-└── tests  # Pruebas unitarias y de integración.
-    # ... (Estructura de pruebas según tu preferencia)
+Dominio:
+
+    Entidades: Modelos con identidad (ej. Character).
+    Objetos de Valor: Modelos sin identidad, definidos por atributos (ej. CharacterStatus).
+    Repositorios: Interfaces para acceder y manipular entidades (ej. CharacterRepository).
+
+Aplicación:
+
+    Servicios de Aplicación: Lógica que orquesta operaciones (ej. CharacterService).
+    Comandos y Consultas: Objetos para acciones y solicitudes de información (ej. CreateCharacterCommand, GetCharacterQuery).
+    DTOs: Objetos para transferir datos entre capas (ej. CharacterDTO).
+
+Infraestructura:
+
+    Implementaciones de Repositorios: Clases concretas para acceder a datos (ej. CharacterRepositoryImpl).
+    APIs Externas: Clases para comunicación con servicios externos (ej. RickAndMortyAPI).
+    Acceso a Datos: Código para manejar bases de datos y consultas.
+
+
+├── main.py
+├── requirements.txt
+├── src/
+│   ├── application/
+│   │   ├── character/
+│   │   │   ├── dto/
+│   │   │   │   ├── character_dto.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── services/
+│   │   │   │   ├── character_service.py
+│   │   │   │   └── __init__.py
+│   │   │   └── __init__.py
+│   ├── domain/
+│   │   ├── entities/
+│   │   │   ├── character.py
+│   │   │   └── __init__.py
+│   │   ├── repositories/
+│   │   │   ├── character_repository.py
+│   │   │   └── __init__.py
+│   │   └── __init__.py
+│   ├── infrastructure/
+│   │   ├── external_api/
+│   │   │   ├── rick_and_morty_api.py
+│   │   │   └── __init__.py
+│   │   └── __init__.py
+│   └── __init__.py
