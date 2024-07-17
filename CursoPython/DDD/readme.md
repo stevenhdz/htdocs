@@ -45,3 +45,13 @@ Jerarquia:
     │   │   │   └── __init__.py
     │   │   └── __init__.py
     │   └── __init__.py
+
+Arrancar:
+
+cd DDD
+
+Scripts\activate
+
+pip install -r ./requirements.txt
+
+python -m main
