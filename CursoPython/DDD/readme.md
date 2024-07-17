@@ -17,6 +17,8 @@ Infraestructura:
     Acceso a Datos: Código para manejar bases de datos y consultas.
 
 
+Jerarquia:
+
     ├── main.py
     ├── requirements.txt
     ├── src/
