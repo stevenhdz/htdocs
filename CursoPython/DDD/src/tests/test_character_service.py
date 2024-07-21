@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import MagicMock
-from ..application.services.character_service import CharacterService
+from ..application.character.services.character_service import CharacterService
 from ..domain.entities.character import Character
-from ..application.dtos.character_dto import CharacterDTO
+from ..application.character.dtos.character_dto import CharacterDTO
 
 
 class TestCharacterService(unittest.TestCase):

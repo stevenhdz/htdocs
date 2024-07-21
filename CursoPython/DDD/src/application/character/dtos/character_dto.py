@@ -1,4 +1,4 @@
-from ....domain.entities.character import Character
+from domain.entities.character import Character
 
 
 class CharacterDTO:
@@ -34,17 +34,4 @@ class CharacterDTO:
         )
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "status": self.status,
-            "species": self.species,
-            "type": self.type,
-            "gender": self.gender,
-            "origin": self.origin,
-            "location": self.location,
-            "image": self.image,
-            "episode": self.episode,
-            "url": self.url,
-            "created": self.created
-        }
+        return self.__dict__

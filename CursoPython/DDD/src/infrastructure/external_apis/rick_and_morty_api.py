@@ -1,6 +1,6 @@
 import requests
-from ...domain.entities.character import Character
-from ...domain.repositories.character_repository import CharacterRepository
+from domain.entities.character import Character
+from domain.repositories.character_repository import CharacterRepository
 
 
 class RickAndMortyAPI(CharacterRepository):
