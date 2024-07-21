@@ -38,8 +38,6 @@ Jerarquia:
         │   ├── infrastructure/
         │   │   ├── external_apis/
         │   │   │   └── rick_and_morty_api.py
-        │   │   └── persistence/
-        │   │       └── in_memory_character_repository.py
         │   ├── tests/
         │   │   ├── test_character_service.py
         │   ├── config.py
