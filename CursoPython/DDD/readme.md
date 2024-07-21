@@ -17,34 +17,37 @@ Infraestructura:
     Acceso a Datos: Código para manejar bases de datos y consultas.
 
 
+![Alt text](assets/1_yR4C1B-YfMh5zqpbHzTyag.png)
+
+
 Jerarquia:
 
-    ├── main.py
-    ├── requirements.txt
-    ├── src/
-    │   ├── application/
-    │   │   ├── character/
-    │   │   │   ├── dto/
-    │   │   │   │   ├── character_dto.py
-    │   │   │   │   └── __init__.py
-    │   │   │   ├── services/
-    │   │   │   │   ├── character_service.py
-    │   │   │   │   └── __init__.py
-    │   │   │   └── __init__.py
-    │   ├── domain/
-    │   │   ├── entities/
-    │   │   │   ├── character.py
-    │   │   │   └── __init__.py
-    │   │   ├── repositories/
-    │   │   │   ├── character_repository.py
-    │   │   │   └── __init__.py
-    │   │   └── __init__.py
-    │   ├── infrastructure/
-    │   │   ├── external_api/
-    │   │   │   ├── rick_and_morty_api.py
-    │   │   │   └── __init__.py
-    │   │   └── __init__.py
-    │   └── __init__.py
+  DDD/
+├── Domain-driven-design/
+├── src/
+│   ├── application/
+│   │   ├── controllers/
+│   │   │   └── character_controller.py
+│   │   ├── dtos/
+│   │   │   └── character_dto.py
+│   │   ├── services/
+│   │   │   └── character_service.py
+│   ├── domain/
+│   │   ├── entities/
+│   │   │   └── character.py
+│   │   ├── repositories/
+│   │   │   └── character_repository.py
+│   ├── infrastructure/
+│   │   ├── external_apis/
+│   │   │   └── rick_and_morty_api.py
+│   │   └── persistence/
+│   │       └── in_memory_character_repository.py
+│   ├── tests/
+│   │   ├── test_character_service.py
+│   ├── config.py
+│   └── main.py
+readme.md
+requirements.txt
 
 Arrancar:
 
@@ -55,3 +58,5 @@ Scripts\activate
 pip install -r ./requirements.txt
 
 python -m main
+
+python -m unittest discover src/tests

@@ -1,19 +1,18 @@
 import requests
-from src.domain.entities.character import Character
-from src.domain.repositories.character_repository import CharacterRepository
+from ...domain.entities.character import Character
+from ...domain.repositories.character_repository import CharacterRepository
 
 
 class RickAndMortyAPI(CharacterRepository):
-    BASE_URL = "https://rickandmortyapi.com/api"
+    BASE_URL = "https://rickandmortyapi.com/api/character"
 
-    def get_character(self, character_id):
-        response = requests.get(f"{self.BASE_URL}/character/{character_id}")
-        data = response.json()
-        return Character(
-            id=data['id'],
-            name=data['name'],
-            status=data['status'],
-            species=data['species'],
-            type=data['type'],
-            gender=data['gender']
-        )
+    def get_character_by_id(self, character_id: int) -> Character:
+        response = requests.get(f"{self.BASE_URL}/{character_id}")
+        response.raise_for_status()
+        return Character(**response.json())
+
+    def get_all_characters(self) -> list[Character]:
+        response = requests.get(self.BASE_URL)
+        response.raise_for_status()
+        characters = [Character(**char) for char in response.json()["results"]]
+        return characters

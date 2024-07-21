@@ -1,8 +1,17 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Character:
-    def __init__(self, id, name, status, species, type, gender):
-        self.id = id
-        self.name = name
-        self.status = status
-        self.species = species
-        self.type = type
-        self.gender = gender
+    id: int
+    name: str
+    status: str
+    species: str
+    type: str
+    gender: str
+    origin: dict
+    location: dict
+    image: str
+    episode: list
+    url: str
+    created: str
