@@ -20,7 +20,7 @@ Infraestructura:
 
 Jerarquia:
 
-        DDD/
+                DDD/
         ├── Domain-driven-design/
         ├── src/
         │   ├── application/
@@ -28,8 +28,13 @@ Jerarquia:
         │   │   │   └── character_controller.py
         │   │   ├── dtos/
         │   │   │   └── character_dto.py
+        │   │   ├── events/
+        │   │   │   └── character_events.py
         │   │   ├── services/
         │   │   │   └── character_service.py
+        │   │   ├── use_cases/
+        │   │   │   ├── get_character_by_id_use_case.py
+        │   │   │   └── get_all_characters_use_case.py
         │   ├── domain/
         │   │   ├── entities/
         │   │   │   └── character.py
@@ -40,10 +45,11 @@ Jerarquia:
         │   │   │   └── rick_and_morty_api.py
         │   ├── tests/
         │   │   ├── test_character_service.py
+        │   │   └── test_use_cases.py
         │   ├── config.py
         │   └── main.py
-        readme.md
-        requirements.txt
+        ├── readme.md
+        └── requirements.txt
 
 Arrancar:
 
