@@ -1,6 +1,7 @@
 import requests
 from domain.entities.character import Character
 from domain.repositories.character_repository import CharacterRepository
+from utils.cleaning import remove_spaces
 
 
 class RickAndMortyAPI(CharacterRepository):
@@ -12,7 +13,7 @@ class RickAndMortyAPI(CharacterRepository):
         data = response.json()
         return Character(
             id=data.get("id"),
-            name=data.get("name"),
+            name=remove_spaces(data.get("name", "unknown")),
             status=data.get("status"),
             species=data.get("species"),
             type=data.get("type"),
