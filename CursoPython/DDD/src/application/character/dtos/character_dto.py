@@ -1,20 +1,35 @@
+from typing import Optional, List, Dict
 from domain.entities.character import Character
 
 
 class CharacterDTO:
-    def __init__(self, id: int, name: str, status: str, species: str, type: str, gender: str, origin: dict, location: dict, image: str, episode: list, url: str, created: str):
+    def __init__(
+        self,
+        id: int,
+        name: str,
+        status: Optional[str] = None,
+        species: Optional[str] = None,
+        type: Optional[str] = None,
+        gender: Optional[str] = None,
+        origin: Optional[Dict] = None,
+        location: Optional[Dict] = None,
+        image: Optional[str] = None,
+        episode: Optional[List[str]] = None,
+        url: Optional[str] = None,
+        created: Optional[str] = None
+    ):
         self.id = id
         self.name = name
         self.status = status
         self.species = species
         self.type = type
         self.gender = gender
-        self.origin = origin
-        self.location = location
-        self.image = image
-        self.episode = episode
-        self.url = url
-        self.created = created
+        self.origin = origin or {}
+        self.location = location or {}
+        self.image = image or ''
+        self.episode = episode or []
+        self.url = url or ''
+        self.created = created or ''
 
     @staticmethod
     def from_character(character: Character):
@@ -25,12 +40,12 @@ class CharacterDTO:
             species=character.species,
             type=character.type,
             gender=character.gender,
-            origin=character.origin,
-            location=character.location,
-            image=character.image,
-            episode=character.episode,
-            url=character.url,
-            created=character.created
+            origin=character.origin or {},
+            location=character.location or {},
+            image=character.image or '',
+            episode=character.episode or [],
+            url=character.url or '',
+            created=character.created or ''
         )
 
     def to_dict(self):
