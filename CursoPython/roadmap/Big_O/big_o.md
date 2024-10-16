@@ -19,6 +19,8 @@ A continuación, se detallan las clases más comunes de complejidad temporal y e
 
 ![Alt text](assets/image.png)
 
+Mas informacion visita: http://bigocheatsheet.com
+
 ## 4. Análisis de Complejidad
 
 - **Peor Caso**: Se refiere al escenario donde el algoritmo tarda más tiempo o usa más recursos. Big O generalmente se refiere a este caso.
