@@ -1,5 +1,6 @@
 import timeit
 import matplotlib.pyplot as plt
+import cProfile
 
 # O(1)
 
@@ -63,74 +64,47 @@ def factorial_time_operation(n):
     else:
         return n * factorial_time_operation(n - 1)
 
-# Función para medir el tiempo usando timeit
+# Function to measure execution time using timeit
 
 
-def measure_time_and_operations(func, *args):
-    # Ejecutar la función 1000 veces para obtener un promedio
+def measure_time(func, *args):
     execution_time = timeit.timeit(lambda: func(*args), number=1000)
-    result = func(*args)  # Ejecutar una vez para obtener el resultado
-    operations = 'n/a'  # Variable para operaciones
-
-    # Contar operaciones
-    if func == constant_time_operation:
-        operations = f"O(1)"  # O(1)
-    elif func == logarithmic_time_operation:
-        operations = f"O(log({args[0]}))"  # O(log n)
-    elif func == linear_time_operation:
-        operations = f"O({args[0]})"  # O(n)
-    elif func == linear_logarithmic_time_operation:
-        operations = f"O({args[0]} log({args[0]}))"  # O(n log n)
-    elif func == quadratic_time_operation:
-        operations = f"O({args[0]}^2)"  # O(n^2)
-    elif func == exponential_time_operation:
-        operations = f"O(2^{args[0]})"  # O(2^n)
-    elif func == factorial_time_operation:
-        operations = f"O({args[0]}!)"  # O(n!)
-
-    execution_time_ms = execution_time * 1000
-    return operations, func.__name__.replace('_time_operation', ''), execution_time_ms
+    return execution_time
 
 
 def plot_results(results):
-    funciones, names, tiempos = zip(*results)
+    functions, times = zip(*results)
 
-    # Colores diferentes para cada barra
     colors = ['skyblue', 'orange', 'green', 'red', 'purple', 'brown', 'pink']
+    plt.figure(figsize=(14, 8))
+    plt.bar(functions, times, color=colors)
 
-    # Crear el gráfico de barras
-    plt.figure(figsize=(12, 6))
-    plt.bar(funciones, tiempos, color=colors)
-
-    for i, v in enumerate(tiempos):
-        plt.text(i, v + 0.5, f"{names[i]}", ha='center',
+    for i, v in enumerate(times):
+        plt.text(i, v + 0.5, f"{v:.6f}", ha='center',
                  va='bottom', rotation=0, color='black')
 
-    plt.xlabel('Complejidad teórica (Operaciones)')
-    plt.ylabel('Tiempo promedio (ms)')
-    plt.title('Relación entre Complejidad y Tiempo de Ejecución')
-    plt.grid(axis='y', linestyle='--', linewidth=0.5)
+    plt.xlabel('Function Complexity')
+    plt.ylabel('Average Time (s)')
+    plt.title('Execution Time of Different Algorithm Complexities')
+    plt.grid(axis='y', linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
 
-    # Mostrar el gráfico
     plt.tight_layout()
     plt.show()
 
 
-# Ejecución de las funciones
-print("Abriendo grafica:")
-result = []
-result.append(measure_time_and_operations(constant_time_operation))
-result.append(measure_time_and_operations(
-    logarithmic_time_operation, 10))  # Aumenta n
-result.append(measure_time_and_operations(
-    linear_time_operation, 10))  # Aumenta n
-result.append(measure_time_and_operations(
-    linear_logarithmic_time_operation, 10))  # Aumenta n
-result.append(measure_time_and_operations(
-    quadratic_time_operation, 6))  # Mantén n razonable
-result.append(measure_time_and_operations(
-    exponential_time_operation, 7))  # Mantén n razonable
-result.append(measure_time_and_operations(
-    factorial_time_operation, 110))  # Mantén n razonable
+def main():
+    results = []
+    results.append(("O(1)", measure_time(constant_time_operation)))
+    results.append(("O(log n)", measure_time(logarithmic_time_operation, 10)))
+    results.append(("O(n)", measure_time(linear_time_operation, 10)))
+    results.append(("O(n log n)", measure_time(
+        linear_logarithmic_time_operation, 10)))
+    results.append(("O(n^2)", measure_time(quadratic_time_operation, 7)))
+    results.append(("O(2^n)", measure_time(exponential_time_operation, 7)))
+    results.append(("O(n!)", measure_time(factorial_time_operation, 112)))
 
-plot_results(result)
+    plot_results(results)
+
+
+if __name__ == '__main__':
+    cProfile.run("main()", sort="totime", filename="output_profile.prof")
