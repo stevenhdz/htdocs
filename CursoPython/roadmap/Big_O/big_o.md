@@ -35,3 +35,8 @@ Mas informacion visita: http://bigocheatsheet.com
 
 - Big O no proporciona información sobre la constante oculta o el tiempo real de ejecución.
 - Dos algoritmos pueden tener la misma complejidad Big O pero rendir de manera diferente en la práctica.
+
+ncalls: Número de veces que se llama a una función.
+tottime: Tiempo total de CPU en la función, excluyendo llamadas a otras funciones.
+percall: Tiempo promedio de CPU por llamada a la función (tottime / ncalls).
+cumtime: Tiempo total de CPU en la función y en todas las funciones que llama.

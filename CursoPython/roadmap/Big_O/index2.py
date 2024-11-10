@@ -1,6 +1,9 @@
 import asyncio
 import cProfile
-import timeit
+import time
+import multiprocessing
+import threading
+from flask import jsonify
 
 
 def fors():
@@ -56,16 +59,51 @@ def fors1():
                 print("default")
 
 
+def process_step(step, id):
+    result = []
+    match step:
+        case "automateX":
+            result = {"step": "automateX"}
+        case "iam":
+            result = {"step": "iam"}
+        case "main":
+            result = {"step": "main", "id": id}
+        case _:
+            result = {"step": "default"}
+    return result
+
+
+def fors2ultimate():
+    cases_relation = [222, 333, 334, 444]
+
+    for id in cases_relation:
+        rules = {
+            "steps": [
+                {"step": "automateX"},
+                {"step": "main"},
+                {"step": "iam"}
+            ]
+        }
+
+        tasks = []
+        for j in rules["steps"]:
+            step = j.get("step")
+            tasks.append(process_step(step, id))
+        return tasks
+
+
 async def process_step(step, id):
-    if step == "automateX":
-        print("automateX")
-    elif step == "iam":
-        print("iam")
-    elif step == "main":
-        print("main")
-        print(id)
-    else:
-        print("default")
+    result = []
+    match step:
+        case "automateX":
+            result = {"step": "automateX"}
+        case "iam":
+            result = {"step": "iam"}
+        case "main":
+            result = {"step": "main", "id": id}
+        case _:
+            result = {"step": "default"}
+    return result
 
 
 async def fors2():
@@ -84,20 +122,21 @@ async def fors2():
         for j in rules["steps"]:
             step = j.get("step")
             tasks.append(process_step(step, id))
-        await asyncio.gather(*tasks)
+        return tasks
 
 
 async def process_step2(step, id):
+    result = []
     match step:
         case "automateX":
-            print("automateX")
+            result = {"step": "automateX"}
         case "iam":
-            print("iam")
+            result = {"step": "iam"}
         case "main":
-            print("main")
-            print(id)
+            result = {"step": "main", "id": id}
         case _:
-            print("default")
+            result = {"step": "default"}
+    return result
 
 
 async def fors3():
@@ -115,7 +154,7 @@ async def fors3():
         tasks = []
         for j in rules["steps"]:
             step = j.get("step")
-            tasks.append(process_step(step, id))
+            tasks.append(process_step2(step, id))
         await asyncio.gather(*tasks)
 
 
@@ -144,14 +183,90 @@ def fors1_optimizado():
             ) if step != "main" else pasos[step](id)
 
 
+def process_step_multiprocessing(step, id):
+    if step == "automateX":
+        print("automateX")
+    elif step == "iam":
+        print("iam")
+    elif step == "main":
+        print("main")
+        print(id)
+    else:
+        print("default")
+
+
+def fors_multiprocessing():
+    cases_relation = [222, 333, 334, 444]
+
+    for id in cases_relation:
+        rules = {
+            "steps": [
+                {"step": "automateX"},
+                {"step": "main"},
+                {"step": "iam"}
+            ]
+        }
+
+        processes = []
+        for j in rules["steps"]:
+            step = j.get("step")
+            p = multiprocessing.Process(
+                target=process_step_multiprocessing, args=(step, id))
+            processes.append(p)
+            p.start()
+
+        for p in processes:
+            p.join()
+
+
+def process_step_threading(step, id):
+    if step == "automateX":
+        print("automateX")
+    elif step == "iam":
+        print("iam")
+    elif step == "main":
+        print("main")
+        print(id)
+    else:
+        print("default")
+
+
+def fors_threading():
+    cases_relation = [222, 333, 334, 444]
+
+    for id in cases_relation:
+        rules = {
+            "steps": [
+                {"step": "automateX"},
+                {"step": "main"},
+                {"step": "iam"}
+            ]
+        }
+
+        threads = []
+        for j in rules["steps"]:
+            step = j.get("step")
+            t = threading.Thread(
+                target=process_step_threading, args=(step, id))
+            threads.append(t)
+            t.start()
+
+        for t in threads:
+            t.join()
+
+
 async def main():
     fors()
     fors1()
     await fors2()
     await fors3()
+    fors2ultimate()
     fors1_optimizado()
+    fors_multiprocessing()
+    fors_threading()
 
 
 if __name__ == "__main__":
-    cProfile.run("asyncio.run(main())", sort="totime",
+    # time in ms
+    cProfile.run("asyncio.run(main())", sort="tottime",
                  filename="output_profile.prof")

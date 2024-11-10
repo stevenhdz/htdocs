@@ -53,18 +53,6 @@ async def run_with_asyncio(n, num_tasks):
 
 # Configuración y ejecución de pruebas
 
-# asyncio use ram low memory
-# multiprocessing use ram high memory
-# threading use ram moderate memory
-
-# asyncio use cpu low or moderate
-# multiprocessing use cpu high
-# threading use cpu moderate
-
-# asyncio use only thread for concurrent tasks
-# multiprocessing use only process for concurrent tasks
-# threading use threads for concurrent tasks
-
 
 def main():
     n = 1000000  # Número para sumar
