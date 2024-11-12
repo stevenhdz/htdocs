@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import Flask, jsonify
 from application.use_cases.get_character import GetCharacter
 
 

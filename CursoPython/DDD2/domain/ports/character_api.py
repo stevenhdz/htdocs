@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from domain.models.character import Character
 
 
 class CharacterApi(ABC):
