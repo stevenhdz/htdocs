@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import Mock, patch
-from infrastructure.external_adapters.api_adapter import RickAndMortyApiAdapter
+from infrastructure.adapters.external.api_adapter import RickAndMortyApiAdapter
 
 
 class TestRickAndMortyApiAdapter(unittest.TestCase):

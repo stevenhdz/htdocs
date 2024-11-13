@@ -1,3 +1,4 @@
+# domain/services/character_event_service.py
 import logging
 from domain.events.character_event import CharacterEvent
 

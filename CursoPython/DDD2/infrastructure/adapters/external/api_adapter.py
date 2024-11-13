@@ -1,3 +1,4 @@
+# domain/adapters/external/api_adapter.py
 import requests
 from domain.ports.character_api import CharacterApi
 from domain.models.character import Character

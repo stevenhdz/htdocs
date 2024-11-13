@@ -1,36 +1,38 @@
-from flask import Flask, request
-from infrastructure.external_adapters.api_adapter import RickAndMortyApiAdapter
-from infrastructure.internal_adapters.db_adapter import SqliteCharacterRepository
-from infrastructure.internal_adapters.logger_adapter import SimpleLogger
-from infrastructure.controllers.character_controller import CharacterController
-from application.use_cases.get_character import GetCharacter
+# CursoPython\DDD2\app.py
+from flask import Flask
+from infrastructure.adapters.internal.db_adapter import SqliteCharacterRepository
+from infrastructure.adapters.internal.logger_adapter import SimpleLogger
+from infrastructure.adapters.external.api_adapter import RickAndMortyApiAdapter
 from domain.services.character_event_service import CharacterEventService
 from domain.services.character_transformer import CharacterTransformer
+from application.use_cases.get_character import GetCharacter
+from infrastructure.controllers.character_controller import CharacterController
 
 app = Flask(__name__)
 
-# Configuraciones y dependencias
+# Configuraciones e inyecciones de dependencias
+character_repository = SqliteCharacterRepository('characters.db')
 api_adapter = RickAndMortyApiAdapter("https://rickandmortyapi.com/api")
-db_adapter = SqliteCharacterRepository("characters.db")
 logger = SimpleLogger()
 event_service = CharacterEventService()
 transformer = CharacterTransformer()
-use_case = GetCharacter(character_repository=db_adapter,
-                        character_api=api_adapter, logger=logger,
-                        event_service=event_service, transformer=transformer)
-controller = CharacterController(use_case=use_case)
+
+# Casos de uso y controlador
+get_character_use_case = GetCharacter(
+    character_repository, api_adapter, logger, event_service, transformer)
+character_controller = CharacterController(get_character_use_case)
 
 # Rutas
 
 
 @app.route("/characters", methods=["GET"])
 def get_characters():
-    return controller.get_characters()
+    return character_controller.get_characters()
 
 
-@app.route("/character/<int:character_id>", methods=["GET"])
+@app.route("/characters/<int:character_id>", methods=["GET"])
 def get_character_by_id(character_id):
-    return controller.get_character_by_id(character_id)
+    return character_controller.get_character_by_id(character_id)
 
 
 if __name__ == "__main__":

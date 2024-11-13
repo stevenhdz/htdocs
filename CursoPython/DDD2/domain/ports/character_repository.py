@@ -1,3 +1,4 @@
+# CursoPython/DDD2/domain/ports/character_repository.py
 from abc import ABC, abstractmethod
 from domain.models.character import Character
 

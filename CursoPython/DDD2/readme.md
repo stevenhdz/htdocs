@@ -1,10 +1,14 @@
 project/
 │
 ├── app.py
-│
+├── config
+├── shared/
+│   ├── exceptions
+│   └── utils
 ├── application/
 │   └── use_cases/
-│       └── get_character.py
+│       └── character/
+│         └── get_character.py
 │
 ├── domain/
 │   ├── models/
@@ -19,15 +23,18 @@ project/
 │       └── character_service.py
 │
 ├── infrastructure/
-│   ├── external_adapters/
-│   │   └── api_adapter.py
-│   │
-│   ├── internal_adapters/
-│   │   ├── db_adapter.py
-│   │   ├── logger_adapter.py
-│   │
-│   ├── controllers/
-│   │   └── character_controller.py
+│   ├── adapters/
+│   │   ├── external/
+│   │   │   └── api_adapter.py
+│   │   └── internal/
+│   │       ├── db_adapter.py
+│   │       └── logger_adapter.py
+│   ├── repositories/
+│   │   ├── character_repository.py
+│   └── controllers/
+│       ├── character_controller.py
+├── interfaces/
+│   ├── character_api.py
 │
 └── requirements.txt
 

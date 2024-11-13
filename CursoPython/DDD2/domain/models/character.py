@@ -1,3 +1,4 @@
+# CursoPython/DDD2/domain/models/character.py
 class Character:
     def __init__(self, id, name, species):
         self.id = id

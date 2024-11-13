@@ -1,3 +1,4 @@
+# CursoPython/DDD2/domain/events/character_event.py
 class CharacterEvent:
     def __init__(self, event_type, character):
         self.event_type = event_type

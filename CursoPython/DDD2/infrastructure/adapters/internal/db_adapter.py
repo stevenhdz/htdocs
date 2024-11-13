@@ -1,3 +1,4 @@
+# CursoPython/DDD2/infrastructure/adapters/internal/db_adapter.py
 import sqlite3
 from domain.ports.character_repository import CharacterRepository
 from domain.models.character import Character

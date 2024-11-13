@@ -1,3 +1,4 @@
+# CursoPython/DDD2/application/use_cases/get_character.py
 from domain.services.character_event_service import CharacterEventService
 from domain.services.character_transformer import CharacterTransformer
 
