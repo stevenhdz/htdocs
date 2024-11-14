@@ -1,3 +1,4 @@
+# application/controllers/character_controller.py
 from flask import jsonify
 from application.use_cases.get_character import GetCharacter
 

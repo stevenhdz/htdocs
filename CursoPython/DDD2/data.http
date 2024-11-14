@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-curl --location --request GET 'http://127.0.0.1:5000/characters/8'
-=======
 curl --location --request GET 'http://127.0.0.1:5000/characters/11'
->>>>>>> 958259630b69b19a7b1e95b761036fd4ac0d6108
