@@ -1,8 +1,9 @@
-# CursoPython\DDD2\app.py
-from flask import Flask
-from infrastructure.adapters.internal.db_adapter import SqliteCharacterRepository
-from infrastructure.adapters.internal.logger_adapter import SimpleLogger
-from infrastructure.adapters.external.api_adapter import RickAndMortyApiAdapter
+from flask import Flask, request
+from infrastructure.external_adapters.api_adapter import RickAndMortyApiAdapter
+from infrastructure.internal_adapters.db_adapter import SqliteCharacterRepository
+from infrastructure.internal_adapters.logger_adapter import SimpleLogger
+from infrastructure.controllers.character_controller import CharacterController
+from application.use_cases.get_character import GetCharacter
 from domain.services.character_event_service import CharacterEventService
 from domain.services.character_transformer import CharacterTransformer
 from application.use_cases.get_character import GetCharacter
