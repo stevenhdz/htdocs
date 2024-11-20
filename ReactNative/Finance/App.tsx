@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
   RefreshControl
 } from 'react-native';
-//import {MaterialIcons} from '@expo/vector-icons';
 import {
   fetchTransactions,
   initDatabase,
@@ -34,6 +33,8 @@ interface Transaction {
   description: string;
   date: string;
   pay: number;
+  cuotas: number;
+  cuotasPagadas: number;
 }
 
 const FinanzasApp: React.FC = () => {
@@ -41,11 +42,10 @@ const FinanzasApp: React.FC = () => {
   const [amount, setAmount] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [date, setDate] = useState<Date>(new Date());
+  const [cuotas, setCuotas] = useState<string>('');
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const [showDatetimePicker, setShowDateTimePicker] = useState<boolean>(false);
-  const [selectedTransactions, setSelectedTransactions] = useState<string[]>(
-    [],
-  );
+  const [selectedTransactions, setSelectedTransactions] = useState<string[]>([]);
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const [updatedMessage, setUpdatedMessage] = useState<string>('');
 
@@ -71,51 +71,13 @@ const FinanzasApp: React.FC = () => {
     }, 2000);
   };
 
-  let pc = true ? 1 : 0
-
   useEffect(() => {
     initializeDatabase();
   }, []);
 
-  useEffect(() => {
-    const handleSelectedTransactions = (
-      rangeStart: number,
-      rangeEnd: number,
-    ) => {
-      const filteredTransactions = transactions.filter(item => {
-        const day = parseInt(item.date.split('/')[pc]);
-        return day >= rangeStart && day <= rangeEnd && item.type === 'expense';
-      })
-        .map(item => item.id);
-      const allSelected = filteredTransactions.every(id =>
-        selectedTransactions.includes(id),
-      );
-      console.log(selectedTransactions)
-      if (
-        allSelected &&
-        filteredTransactions.length > 0 &&
-        selectedTransactions.length > 0
-      ) {
-        setSelectedTransactions(prevSelected => {
-          updateTransactionsPay(selectedTransactions, 0);
-          showMessage({
-            message: "Transaccion seleccionada",
-            type: "success",
-            icon: "success",
-            duration: 2000,
-          })
-          return prevSelected.filter(id => !filteredTransactions.includes(id));
-        });
-      }
-    };
-
-    handleSelectedTransactions(1, 15);
-    handleSelectedTransactions(16, 31);
-  }, [transactions, selectedTransactions]);
-
-  const updatePay = async (id: string, pay: number) => {
+  const updatePay = async (id: string, pay: number, cuotasPagadas: number) => {
     try {
-      await updateTransactionPay(id, pay);
+      await updateTransactionPay(id, pay, cuotasPagadas);
       const updatedTransactions = await fetchTransactions();
       setTransactions(updatedTransactions);
     } catch (error) {
@@ -167,9 +129,10 @@ const FinanzasApp: React.FC = () => {
 
   const addTransaction = (type: 'income' | 'expense' | 'extra') => {
     const parsedAmount = parseFloat(amount);
-    if (isNaN(parsedAmount) || parsedAmount <= 0 || !description) {
+    const parsedCuotas = parseInt(cuotas);
+    if (isNaN(parsedAmount) || parsedAmount <= 0 || !description || isNaN(parsedCuotas) || parsedCuotas <= 0) {
       showMessage({
-        message: "Por favor, rellene todos los campos",
+        message: "Por favor, rellene todos los campos correctamente",
         type: "danger",
         icon: "danger",
         duration: 2000,
@@ -183,7 +146,9 @@ const FinanzasApp: React.FC = () => {
       amount: parsedAmount,
       description,
       date: date.toLocaleString(),
-      pay: 0
+      pay: 0,
+      cuotas: parsedCuotas,
+      cuotasPagadas: 0
     };
 
     saveTransaction(
@@ -192,20 +157,41 @@ const FinanzasApp: React.FC = () => {
       description,
       date.toLocaleString(),
       0,
+      parsedCuotas,
+      0
     );
     setTransactions(prevTransactions => [...prevTransactions, newTransaction]);
     setAmount('');
     setDescription('');
+    setCuotas('');
 
     showMessage({
-      message: "Elemento añadido",
+      message: "Elemento añadido",
       type: "success",
     });
   };
 
+  const incrementCuotasPagadas = async (id: string, cuotasPagadas: number, cuotas: number, pay: number) => {
+    if (cuotasPagadas < cuotas) {
+      const updatedCuotasPagadas = cuotasPagadas + 1;
+      await updatePay(id, pay, updatedCuotasPagadas); // pass the 'pay' as the second argument
+      setTransactions(prevTransactions =>
+        prevTransactions.map(transaction =>
+          transaction.id === id
+            ? { ...transaction, cuotasPagadas: updatedCuotasPagadas }
+            : transaction
+        )
+      );
+    }
+  };
   const handleAmountChange = (text: string) => {
-    const numericValue = text.replace(/[^0-9]/g, '');
+    const numericValue = text.replace(/[^0-9\.]/g, '');  // Permitir solo números y puntos
     setAmount(numericValue);
+  };
+
+  const handleCuotasChange = (text: string) => {
+    const numericValue = text.replace(/[^0-9]/g, '');  // Permitir solo números
+    setCuotas(numericValue);
   };
 
   const calculateIncome = () => {
@@ -241,37 +227,65 @@ const FinanzasApp: React.FC = () => {
         />
       }>
       <FlashMessage position="top" />
-      <View style={styles.summaryContainer2}>
-        <TitleComponent text="Finanzas App" />
-        <TitleComponent text="@copyright alexdevorigin1" stylesExt={{ fontSize: 12, textAlign: 'center', marginBottom: 10 }} />
+      <View style={{ alignItems: 'center' }}>
+        <TitleComponent text="Finanzas App" stylesExt={{ color: 'white' }} />
+        <TitleComponent text="@copyright alexdevorigin1" stylesExt={{ fontSize: 12, textAlign: 'center', color: 'white', marginBottom: 10 }} />
       </View>
-      
+
       <View style={styles.summaryContainer}>
-        <Text style={[styles.summaryText, { fontWeight: 'bold' }]}>
-          Total Ingresos: <Text style={{ fontFamily: 'Montserrat-SemiBold', color: calculateIncome() > 0 ? 'green' : 'red' }}>{convertCurrency(calculateIncome())}</Text>
-        </Text>
-        <Text style={[styles.summaryText, { fontWeight: 'bold' }]}>
-          Total Egresos: <Text style={{ fontFamily: 'Montserrat-SemiBold', color: calculateExpenses() > 0 ? 'red' : 'green' }}>{convertCurrency(calculateExpenses())}</Text>
-        </Text>
-        <Text style={[styles.summaryText, { fontWeight: 'bold' }]}>Ahorros: <Text style={{ fontFamily: 'Montserrat-SemiBold', color: calculateExtras() > 0 ? '#FF8C00' : 'grey' }}>{convertCurrency(calculateExtras())}</Text></Text>
-        <Text style={styles.balanceText}>Saldo: <Text style={{ fontFamily: 'Montserrat-SemiBold', color: calculateBalance() > 0 ? 'green' : 'red' }}>{convertCurrency(calculateBalance())}</Text></Text>
-      </View>
+  <View style={styles.row}>
+    <Text style={[styles.summaryText, { fontWeight: 'bold' }]}>
+      Ingresos: 
+      <Text style={{ fontFamily: 'Montserrat-SemiBold', color: calculateIncome() > 0 ? 'green' : 'red' }}>
+        {convertCurrency(calculateIncome())}
+      </Text>
+    </Text>
+    <Text style={[styles.summaryText, { fontWeight: 'bold' }]}>
+      Gastos: 
+      <Text style={{ fontFamily: 'Montserrat-SemiBold', color: calculateExpenses() > 0 ? 'red' : 'green' }}>
+        {convertCurrency(calculateExpenses())}
+      </Text>
+    </Text>
+  </View>
+  <View style={styles.row}>
+    <Text style={[styles.summaryText, { fontWeight: 'bold' }]}>
+      Ahorros: 
+      <Text style={{ fontFamily: 'Montserrat-SemiBold', color: calculateExtras() > 0 ? '#FF8C00' : 'grey' }}>
+        {convertCurrency(calculateExtras())}
+      </Text>
+    </Text>
+    <Text style={styles.balanceText}>
+      Saldo: 
+      <Text style={{ fontFamily: 'Montserrat-SemiBold', color: calculateBalance() > 0 ? 'green' : 'red' }}>
+        {convertCurrency(calculateBalance())}
+      </Text>
+    </Text>
+  </View>
+</View>
 
       <View style={styles.inputContainer}>
         <TextInputComponents
-          types="numeric"
+         placeholder="Ingresar monto"
+         types="numeric"
+         value={amount}      
           handleChange={handleAmountChange}
-          value={amount}
-          placeholder="Monto"
+          stylesExt={{ backgroundColor: '#333F52', color: 'black' }}
         />
         <TextInputComponents
-          handleChange={text => setDescription(text)}
-          multiline={true}
-          autoCorrect={true}
+          types="string"
+          placeholder="Ingresar descripción"
           value={description}
-          placeholder="Descripción"
+          handleChange={setDescription}
+          stylesExt={{ backgroundColor: '#333F52', color: 'black' }}
         />
         <TextInputComponents
+          placeholder="Ingresar cantidad de cuotas"
+          types="numeric"
+          value={cuotas}
+          handleChange={handleCuotasChange}       
+          stylesExt={{ backgroundColor: '#333F52', color: 'black' }}
+        />
+            <TextInputComponents
           stylesExt={tw`text-center bg-slate-200 text-lg`}
           value={date.toLocaleDateString('es-CO', {
             year: 'numeric',
@@ -285,7 +299,8 @@ const FinanzasApp: React.FC = () => {
           placeholder="Fecha"
           editable={false}
         />
-        <View>
+      </View>
+      <View>
           <View style={styles.buttonContainer}>
             <View style={{ width: '47%' }}>
               <ButtonComponent title="Fecha" type="primary" onPress={() => setShowDatePicker(true)} />
@@ -314,226 +329,175 @@ const FinanzasApp: React.FC = () => {
             ) : null
           }
         </View>
-        <View style={styles.buttonContainer}>
-          <View style={styles.buttonIncome}>
-            <ButtonComponent title="Ingreso" type="success" onPress={() => addTransaction('income')} />
-          </View>
-          <View style={styles.buttonExpense}>
-            <ButtonComponent title="Egreso" type="error" onPress={() => addTransaction('expense')} />
-          </View>
-          <View style={styles.buttonExtra}>
-            <ButtonComponent title="Extra" type="warning" onPress={() => addTransaction('extra')} />
-          </View>
+
+      <View style={styles.buttonContainer}>
+        <View style={styles.buttonWrapper}>
+          <ButtonComponent title="Ingreso" type="success" onPress={() => addTransaction('income')} />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <ButtonComponent title="Gasto" type="error" onPress={() => addTransaction('expense')} />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <ButtonComponent title="Extra" type="primary" onPress={() => addTransaction('extra')} />
         </View>
       </View>
-      <Text
-        style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 20 }}>
-        Pagos pendientes:{' '}
-        {
-          transactions.filter(
-            item =>
-              item.type === 'expense' && selectedTransactions.includes(item.id),
-          ).length
-        }
-        /{transactions.filter(item => item.type === 'expense').length}
-      </Text>
-      <Text style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 10, marginBottom: 10, backgroundColor: '#5C62D6', color: 'white', padding: 10 }}>1 - 15 {`  🡰  `} 📆Rangos {`  🡲  `} 16 - 31</Text>
-      <View style={{ flexDirection: 'row' }}>
-        <FlatList
-          style={[styles.transactionList, { marginRight: 10 }]}
-          data={transactions.filter(item => {
-            const day = parseInt(item.date.split('/')[pc]);
-            return Array.from({ length: 15 }, (_, i) => i + 1).some(
-              num => day === num,
-            );
-          })}
-          renderItem={({ item }) => (
-            <View style={styles.transactionItem}>
-              <TouchableOpacity
-                style={{ zIndex: 999 }}
-                onPress={() => deleteTransaction(item.id)}>
-                <Text style={{ position: 'absolute', top: 0, right: 0 }}>❌</Text>
-              </TouchableOpacity>
-              <Text>
-                {item.type === 'expense' ? <TouchableOpacity
-                  onPress={() => {
-                    selectedTransactions.includes(item.id)
-                    toggleTransactionSelection(item.id);
-                    const newPayValue = item.pay === 1 ? 0 : 1;
-                    updatePay(item.id, newPayValue);
 
-                  }}>
-                  <Text>{item.pay === 1 ? '✅ ' : '⬜️ '}</Text>
-                </TouchableOpacity> : null}
-              </Text>
-              <Text style={[
-                  styles.transactionAmount,
-                  item.type === 'income' && styles.incomeAmount,
-                  item.type === 'extra' && styles.extraAmount,
-                  item.type !== 'income' &&
-                  item.type !== 'extra' &&
-                  styles.expenseAmount,
-                ]}>
-                {item.type === 'income'
-                  ? '+'
-                  : item.type === 'extra'
-                    ? '+'
-                    : '-'}{' '}
-                {convertCurrency(item.amount)}
-              </Text>
-              <TitleComponent stylesExt={styles.transactionDescription} text={`Descripción: ${item.description}`} />
-              <TitleComponent stylesExt={styles.transactionDate} text={`Fecha: ${item.date}`} />
-            </View>
-          )}
-          keyExtractor={item => item.id}
-        />
-        <FlatList
-          style={[styles.transactionList]}
-          data={transactions.filter(item => {
-            const day = parseInt(item.date.split('/')[pc]);
-            return Array.from({ length: 16 }, (_, i) => i + 16).some(
-              num => day === num,
-            );
-          })}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.transactionItem}>
-              <TouchableOpacity
-                style={{ zIndex: 999 }}
-                onPress={() => deleteTransaction(item.id)}>
-                <Text style={{ position: 'absolute', top: 0, right: 0 }}>❌</Text>
-              </TouchableOpacity>
-              <Text>
-                {item.type === 'expense' ? <TouchableOpacity
-                  onPress={() => {
-
-                    selectedTransactions.includes(item.id)
-                    toggleTransactionSelection(item.id);
-                    const newPayValue = item.pay === 1 ? 0 : 1;
-                    updatePay(item.id, newPayValue);
-
-                  }}>
-                  <Text>{item.pay === 1 ? '✅ ' : '⬜️ '}</Text>
-                </TouchableOpacity> : null}
-              </Text>
-              <Text  style={[
-                  styles.transactionAmount,
-                  item.type === 'income' && styles.incomeAmount,
-                  item.type === 'extra' && styles.extraAmount,
-                  ...(item.type !== 'income' && item.type !== 'extra'
-                    ? [styles.expenseAmount]
-                    : []),
-                ]}>
-                {item.type === 'income'
-                  ? '+'
-                  : item.type === 'extra'
-                    ? '+'
-                    : '-'}{' '}
-                {convertCurrency(item.amount)}
-              </Text>
-              <TitleComponent stylesExt={styles.transactionDescription} text={`Descripción: ${item.description}`} />
-              <TitleComponent stylesExt={styles.transactionDate} text={`Fecha: ${item.date}`} />
-            </View>
-          )}
-        />
-      </View>
+      <FlatList
+        data={transactions}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.transactionCard}>
+            <TouchableOpacity onPress={() => toggleTransactionSelection(item.id)}>
+              <Text style={styles.transactionText}>Descripcion: {item.description}</Text>
+              <Text style={styles.transactionText}>Fecha: {item.date}</Text>
+              <Text style={styles.transactionText}>Tipo: {item.type === 'extra' ? 'Extra' : item.type === 'income' ? 'Ingreso' : 'Gasto'}</Text>
+              <Text style={styles.transactionText}>Monto: {convertCurrency(item.amount)}</Text>
+              {item.type === 'expense' && (
+                 <Text style={styles.transactionText}>Pagado: {item.cuotasPagadas} de {item.cuotas}</Text>
+              )}
+              <Text style={styles.transactionText}>Total pagado: {convertCurrency(item.cuotasPagadas * item.amount)}</Text>
+            </TouchableOpacity>
+            {item.cuotasPagadas < item.cuotas && (
+              <Button
+              title="Cuota Pagada"
+              onPress={() => incrementCuotasPagadas(item.id, item.cuotasPagadas, item.cuotas, item.pay)}
+              color={'#28a745'}
+            />
+            )}
+            <Button
+              title="Eliminar"
+              onPress={() => deleteTransaction(item.id)}
+              color={'#e74c3c'}
+            />
+          </View>
+        )}
+      />
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonDate: {
-    backgroundColor: '#87CEFA',
-  },
-  incomeAmount: {
-    color: '#008000',
-  },
-  extraAmount: {
-    color: '#FF8C00',
-  },
-  expenseAmount: {
-    color: '#FF0000',
-  },
-  inputContainer: {
-    marginBottom: 16,
-  },
-  buttonContainer: {
+  cuotaPagadaButton: {
+    backgroundColor: '#28a745', // Green for "Cuota Pagada"
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
     marginTop: 10,
-    paddingBottom: 10,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+    width: '100%', // Adjust the width if you want it to be more compact
+    alignSelf: 'center', // Center align the button
+  },
+  eliminarButton: {
+    backgroundColor: '#e74c3c', // Red for "Eliminar"
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginTop: 10,
+    width: '100%', // Adjust the width to fit
+    alignSelf: 'center', // Center align the button
+  },
+  row: {
+    flexDirection: 'row', // This will make items appear side by side
+    justifyContent: 'space-between', // Adjusts spacing between items
+    marginBottom: 10, // Optional, to add space between rows
   },
   container: {
     flexGrow: 1,
-    padding: 14,
-    backgroundColor: '#f5f5f5',
+    justifyContent: 'flex-start',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: '#333', // Set background to gray
   },
   summaryContainer: {
-    marginBottom: 16,
-    backgroundColor: '#ffffff',
-    padding: 16,
-    borderRadius: 8,
-    elevation: 3,
-  },
-  summaryContainer2: {
-    marginBottom: 16,
-    backgroundColor: '#ffffff',
-    borderRadius: 8,
-    elevation: 3,
+    marginBottom: 20,
+    backgroundColor: '#fff', // White background for summary container
+    padding: 15,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
   },
   summaryText: {
-    fontSize: 16,
-    marginBottom: 8,
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 12,
   },
   balanceText: {
-    fontSize: 18,
+    paddingTop: 25,
+    fontSize: 14,
+    marginTop: 15,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  inputContainer: {
+    marginBottom: 20,
+    backgroundColor: '#fff', // White background for input container
+    padding: 15,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  transactionCard: {
+    padding: 20,
+    marginBottom: 20,
+    backgroundColor: '#fff', // White background for transaction cards
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  transactionText: {
+    fontSize: 14,
+    marginBottom: 8,
+    color: '#333',
+  },
+  transactionButton: {
+    marginTop: 10,
+    backgroundColor: '#007bff',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 5,
+  },
+  deleteButton: {
+    marginTop: 15,
+    backgroundColor: '#e74c3c',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+  },
+  inputLabel: {
+    marginBottom: 5,
     fontWeight: 'bold',
   },
-  transactionList: {
-    marginBottom: 16,
-    backgroundColor: '#fff3e0',
-    padding: 8,
-    borderRadius: 4,
-    elevation: 2,
-    width: 300,
+  inputField: {
+    height: 45,
+    paddingHorizontal: 15,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+    marginBottom: 15,
+    color: '#333',
   },
-  transactionItem: {
-    marginBottom: 8,
-    backgroundColor: '#ffffff',
-    padding: 8,
-    borderRadius: 4,
-    elevation: 2,
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',  // Distribute buttons evenly
+    marginBottom: 15,
   },
-  transactionAmount: {
-    fontSize: 16,
-    marginBottom: 4,
-    backgroundColor: '#fff3e0',
-    fontFamily: "Montserrat-SemiBold",
-    textAlign: 'center',
-    padding: 2,
-    marginTop: 4,
-  },
-  transactionDescription: {
-    fontSize: 14,
-  },
-  transactionDate: {
-    fontSize: 14,
-  },
-  buttonExtra: {
-    marginBottom: 0,
-    width: 115,
-    backgroundColor: '#FFA07A',
-  },
-  buttonExpense: {
-    marginBottom: 0,
-    width: 115,
-    backgroundColor: '#FF6347',
-  },
-  buttonIncome: {
-    marginBottom: 0,
-    width: 115,
-    backgroundColor: '#90EE90',
+  buttonWrapper: {
+    flex: 1,
+    marginHorizontal: 5,  // Reduce horizontal space between buttons
   },
 });
+
+
 
 export default FinanzasApp;

@@ -24,7 +24,9 @@ export const initDatabase = async () => {
         amount REAL NOT NULL,
         description TEXT,
         date TEXT NOT NULL,
-        pay INTEGER NOT NULL
+        pay INTEGER NOT NULL,
+        cuotas INTEGER NOT NULL,
+        cuotasPagadas INTEGER NOT NULL
       );
     `);
     console.log('Database initialized');
@@ -40,6 +42,8 @@ export const initDatabase = async () => {
  * @param {string} description
  * @param {string} date
  * @param {number} pay
+ * @param {number} cuotas
+ * @param {number} cuotasPagadas
  * @returns {Promise<void>}
  * @example
  * saveTransaction('ingreso', 100, 'Salario', '2021-09-01', 0);
@@ -50,6 +54,8 @@ export const saveTransaction = async (
   description: string,
   date: string,
   pay: number,
+  cuotas: number,
+  cuotasPagadas: number
 ) => {
   try {
     const db = await SQLite.openDatabase({
@@ -57,8 +63,8 @@ export const saveTransaction = async (
       location: 'default',
     });
     await db.executeSql(
-      'INSERT INTO transactions2 (id, type, amount, description, date, pay) VALUES (?, ?, ?, ?, ?, ?)',
-      [Math.random().toString(), type, amount, description, date, pay],
+      'INSERT INTO transactions2 (id, type, amount, description, date, pay, cuotas, cuotasPagadas) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+      [Math.random().toString(), type, amount, description, date, pay, cuotas, cuotasPagadas],
     );
     console.log('Transaction saved');
   } catch (error) {
@@ -108,7 +114,9 @@ export const fetchTransactions = async () => {
         amount: row.amount,
         description: row.description,
         date: row.date,
-        pay: row.pay
+        pay: row.pay,
+        cuotas: row.cuotas,
+        cuotasPagadas: row.cuotasPagadas
       });
     }
     console.log(transactions)
@@ -143,23 +151,25 @@ export const updateTransactionsPay = async (transactionIds: string[], payValue: 
   }
 };
 
-/** 
+/**
  * Actualiza el valor de pay de una transacción
  * @param {string} id
  * @param {number} pay
+ * @param {number} cuotasPagadas
  * @returns {Promise<void>}
  * @example
- * updateTransactionPay('1', 1);
- * */
-export const updateTransactionPay = async (id: string, pay: number) => {
+ * updateTransactionPay('1', 1, 1);
+ */
+export const updateTransactionPay = async (id: string, pay: number, cuotasPagadas: number): Promise<void> => {
+  console.log("id", id, "pay", pay, "cuotasPagadas ---->", cuotasPagadas)
   try {
     const db = await SQLite.openDatabase({
       name: DB_NAME,
       location: 'default',
     });
     await db.executeSql(
-      'UPDATE transactions2 SET pay = ? WHERE id = ?',
-      [pay, id],
+      'UPDATE transactions2 SET pay = ?, cuotasPagadas = ? WHERE id = ?',
+      [pay, cuotasPagadas, id]
     );
     console.log('Transaction pay updated');
   } catch (error) {
