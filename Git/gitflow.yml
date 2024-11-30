@@ -1,0 +1,189 @@
+name: GitFlow CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - 'release/*'
+      - 'hotfix/*'
+      - 'main'
+      - 'develop'
+
+jobs:
+  # Incrementar la versión automáticamente
+  versioning:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/release/*' || github.ref == 'refs/heads/hotfix/*'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python (o el entorno adecuado)
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Cambia a la versión que uses, si es otro lenguaje
+
+      - name: Incrementar la versión
+        run: |
+          VERSION_FILE="version.txt"  # Cambia el archivo donde guardas la versión
+          
+          # Obtener la versión actual
+          CURRENT_VERSION=$(cat $VERSION_FILE)
+          
+          # Incrementar la versión (por ejemplo, incrementando el parche)
+          IFS='.' read -r -a VERSION_PARTS <<< "$CURRENT_VERSION"
+          PATCH=${VERSION_PARTS[2]}
+          PATCH=$((PATCH + 1))
+          
+          # Nueva versión (por ejemplo, incrementando solo el parche)
+          NEW_VERSION="${VERSION_PARTS[0]}.${VERSION_PARTS[1]}.$PATCH"
+          
+          # Guardar la nueva versión
+          echo $NEW_VERSION > $VERSION_FILE
+          
+          # Hacer commit del cambio de versión
+          git add $VERSION_FILE
+          git commit -m "Increment version to $NEW_VERSION"
+          
+          # Push de la nueva versión
+          git push origin HEAD:$GITHUB_REF
+
+      - name: Crear tag de la nueva versión
+        run: |
+          VERSION=$(cat version.txt)
+          git tag -a "v$VERSION" -m "Release version $VERSION"
+          git push origin "v$VERSION"
+
+  # Job para ramas feature
+  feature:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/feature/')
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python (o el entorno adecuado)
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest  # o el comando que utilices para ejecutar las pruebas
+
+  # Job para ramas develop
+  develop:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python (o el entorno adecuado)
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest  # o el comando que utilices para ejecutar las pruebas
+
+  # Job para ramas release
+  release:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/release/')
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python (o el entorno adecuado)
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest  # o el comando que utilices para ejecutar las pruebas
+
+      - name: Build project
+        run: |
+          echo "Building project"
+
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to staging environment"
+          # Agregar comandos para desplegar en staging (ejemplo: AWS, Heroku, etc.)
+
+  # Job para hotfixes
+  hotfix:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/hotfix/')
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python (o el entorno adecuado)
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest  # o el comando que utilices para ejecutar las pruebas
+
+      - name: Build project
+        run: |
+          echo "Building project"
+
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production environment"
+          # Agregar comandos para desplegar en producción
+
+  # Job para la rama main (Despliegue en producción)
+  deploy-production:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python (o el entorno adecuado)
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest  # o el comando que utilices para ejecutar las pruebas
+
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production environment"
+          # Agregar el comando para desplegar el proyecto a producción
