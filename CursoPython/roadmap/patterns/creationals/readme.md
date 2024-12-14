@@ -1,8 +1,8 @@
-# Patrones de Diseño CREACIONALES
+# Patrones de Diseño
 
 ## 1. Singleton
 **Descripción:**  
-El patrón Singleton asegura que una clase tenga una **única instancia** en toda la aplicación y proporciona un **punto global de acceso** a esa instancia.
+Singleton es un patrón de diseño creacional que nos permite asegurarnos de que una clase tenga una única instancia, a la vez que proporciona un punto de acceso global a dicha instancia.
 
 **¿Cuándo usarlo?**
 - Cuando necesitas controlar el acceso a un recurso compartido, como un logger, una conexión a base de datos o un gestor de configuración.
@@ -12,7 +12,7 @@ El patrón Singleton asegura que una clase tenga una **única instancia** en tod
 
 ## 2. Factory Method
 **Descripción:**  
-El patrón Factory Method define una **interfaz para crear objetos**, pero permite que las subclases decidan qué clase instanciar. Esto promueve la flexibilidad al delegar la creación de objetos a las subclases.
+Factory Method es un patrón de diseño creacional que proporciona una interfaz para crear objetos en una superclase, mientras permite a las subclases alterar el tipo de objetos que se crearán.
 
 **¿Cuándo usarlo?**
 - Cuando necesitas delegar la creación de objetos a subclases específicas sin acoplar el código al tipo concreto.
@@ -22,7 +22,7 @@ El patrón Factory Method define una **interfaz para crear objetos**, pero permi
 
 ## 3. Builder
 **Descripción:**  
-El patrón Builder se utiliza para construir **objetos complejos paso a paso**. Permite crear diferentes representaciones del mismo objeto utilizando el mismo proceso de construcción.
+Builder es un patrón de diseño creacional que nos permite construir objetos complejos paso a paso. El patrón nos permite producir distintos tipos y representaciones de un objeto empleando el mismo código de construcción.
 
 **¿Cuándo usarlo?**
 - Cuando necesitas construir objetos con muchas configuraciones opcionales o pasos intermedios.
@@ -32,10 +32,20 @@ El patrón Builder se utiliza para construir **objetos complejos paso a paso**. 
 
 ## 4. Abstract Factory
 **Descripción:**  
-El patrón Abstract Factory es una **fábrica de fábricas** que proporciona una interfaz para crear familias de objetos relacionados o dependientes sin especificar sus clases concretas.
+Abstract Factory es un patrón de diseño creacional que nos permite producir familias de objetos relacionados sin especificar sus clases concretas.
 
 **¿Cuándo usarlo?**
 - Cuando trabajas con múltiples familias de productos que deben ser consistentes entre sí.
 - Cuando quieres garantizar que los objetos creados sean compatibles y facilitar cambios de plataforma (por ejemplo, entre interfaces para Windows, MacOS o Linux).
 
 ---
+
+## 5. Prototype
+
+**Descripción:**  
+Prototype es un patrón de diseño creacional que nos permite copiar objetos existentes sin que el código dependa de sus clases.
+
+**¿Cuándo usarlo?**
+- Cuando necesitas clonar objetos de forma eficiente.
+- Cuando las clases a instanciar son definidas en tiempo de ejecución y no puedes determinar sus tipos con antelación.
+- Cuando quieres evitar costosos procesos de inicialización de un objeto.
