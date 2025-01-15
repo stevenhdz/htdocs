@@ -1,39 +1,23 @@
-# CursoPython\DDD2\app.py
-from flask import Flask
-from infrastructure.adapters.internal.db_adapter import SqliteCharacterRepository
-from infrastructure.adapters.internal.logger_adapter import SimpleLogger
-from infrastructure.adapters.external.api_adapter import RickAndMortyApiAdapter
-from domain.services.character_event_service import CharacterEventService
-from domain.services.character_transformer import CharacterTransformer
-from application.use_cases.get_character import GetCharacter
-from infrastructure.controllers.character_controller import CharacterController
-
-app = Flask(__name__)
-
-# Configuraciones e inyecciones de dependencias
-character_repository = SqliteCharacterRepository('characters.db')
-api_adapter = RickAndMortyApiAdapter("https://rickandmortyapi.com/api")
-logger = SimpleLogger()
-event_service = CharacterEventService()
-transformer = CharacterTransformer()
-
-# Casos de uso y controlador
-get_character_use_case = GetCharacter(
-    character_repository, api_adapter, logger, event_service, transformer)
-character_controller = CharacterController(get_character_use_case)
-
-# Rutas
-
-
-@app.route("/characters", methods=["GET"])
-def get_characters():
-    return character_controller.get_characters()
-
-
-@app.route("/characters/<int:character_id>", methods=["GET"])
-def get_character_by_id(character_id):
-    return character_controller.get_character_by_id(character_id)
+from infrastructure.controllers import UserController
+from domain.services import UserDomainService
+from application.use_cases import RegisterUserUseCase, ListUsersUseCase
+from infrastructure.database import init_db
+from infrastructure.sqlite_repo import SQLiteUserRepository
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Initialize database
+    init_db()
+
+    # Instantiate dependencies
+    user_repository = SQLiteUserRepository()
+    domain_service = UserDomainService(user_repository)
+
+    # Use cases
+    register_user_use_case = RegisterUserUseCase(
+        user_repository, domain_service)
+    list_users_use_case = ListUsersUseCase(user_repository)
+
+    # Start the application
+    controller = UserController(register_user_use_case, list_users_use_case)
+    controller.run()
