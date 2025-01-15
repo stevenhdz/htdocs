@@ -1,10 +1,8 @@
 import asyncio
 import cProfile
-import time
 import multiprocessing
 import threading
-from flask import jsonify
-
+from functools import lru_cache
 
 def fors():
 
@@ -58,6 +56,31 @@ def fors1():
             else:
                 print("default")
 
+@lru_cache(maxsize=1, typed=True)
+def fors_cache():
+
+    cases_relation = [222, 333, 334, 444]
+
+    for id in cases_relation:
+
+        rules = {
+            "steps": [
+                {"step": "automateX"},
+                {"step": "main"},
+                {"step": "iam"}
+            ]}
+
+        for j in rules["steps"]:
+
+            if j.get("step") == "automateX":
+                print("automateX")
+            elif j.get("step") == "iam":
+                print("iam")
+            elif j.get("step") == "main":
+                print("main")
+                print(id)
+            else:
+                print("default")
 
 def process_step(step, id):
     result = []
@@ -123,6 +146,25 @@ async def fors2():
             step = j.get("step")
             tasks.append(process_step(step, id))
         return tasks
+
+@lru_cache(maxsize=2, typed=True)
+async def fors3_cache_async():
+    cases_relation = [222, 333, 334, 444]
+
+    for id in cases_relation:
+        rules = {
+            "steps": [
+                {"step": "automateX"},
+                {"step": "main"},
+                {"step": "iam"}
+            ]
+        }
+
+        tasks = []
+        for j in rules["steps"]:
+            step = j.get("step")
+            tasks.append(process_step2(step, id))
+        await asyncio.gather(*tasks)
 
 
 async def process_step2(step, id):
@@ -256,13 +298,24 @@ def fors_threading():
 
 
 async def main():
+    print("normal")
     fors()
+    print("normal")
     fors1()
+    print("cache")
+    fors_cache()
+    print("async/await")
     await fors2()
+    print("async/await and cache")
     await fors3()
+    await fors3_cache_async()
+    print("ultimate")
     fors2ultimate()
+    print("optimizado")
     fors1_optimizado()
+    print("multiprocessing")
     fors_multiprocessing()
+    print("threading")
     fors_threading()
 
 
