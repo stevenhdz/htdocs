@@ -108,7 +108,7 @@ GitFlow se basa en el uso de varias ramas principales y auxiliares. A continuaci
 6. **Fusiona `release` en `main` y `develop`:** Una vez que la versión esté lista, fusiona la rama `release` en `main` y `develop`.
 7. **Corrige errores con `hotfix`:** Si se detecta un error crítico en producción, crea una rama `hotfix` desde `main`.
 
----
+----
 
 ## Beneficios de GitFlow
 
