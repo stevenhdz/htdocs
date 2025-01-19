@@ -33,3 +33,7 @@ Socket.IO:
 
 Necesitas reconexión automática, manejo de eventos, y soporte multi-servidor.
 Buscas una solución más sencilla y robusta para aplicaciones en tiempo real.
+
+Test:
+
+![alt text](image.png)
