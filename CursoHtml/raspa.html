@@ -1,0 +1,76 @@
+<div class="scratch-container">
+    <canvas id="scratchCanvas"></canvas>
+    <img class="scratch-image" src="./hola.png" alt="Fondo revelado" />
+  </div>
+
+  <style>
+    .scratch-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .scratch-image {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+  <script>
+    // Configuración del canvas
+    const canvas = document.getElementById('scratchCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Configuración del tamaño del canvas
+    const container = document.querySelector('.scratch-container');
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+
+    // Pintar la capa de raspado
+    ctx.fillStyle = 'grey'; // Color de la capa superior de raspado, cambiar a transparente
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Configurar el modo de borrado
+    ctx.globalCompositeOperation = 'destination-out';
+
+    // Función para manejar el raspado
+    function scratch(event) {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left; // Coordenada X relativa al canvas
+      const y = event.clientY - rect.top;  // Coordenada Y relativa al canvas
+
+      ctx.beginPath();
+      ctx.arc(x, y, 100, 0, Math.PI * 2); // Crear un círculo "raspado"
+      ctx.fill(); // Pintar el círculo
+    }
+
+    // Eventos de interacción
+    let isScratching = false;
+
+    canvas.addEventListener('mousedown', () => (isScratching = true));
+    canvas.addEventListener('mouseup', () => (isScratching = false));
+    canvas.addEventListener('mousemove', (event) => {
+      if (isScratching) scratch(event);
+    });
+
+    canvas.addEventListener('touchstart', () => (isScratching = true));
+    canvas.addEventListener('touchend', () => (isScratching = false));
+    canvas.addEventListener('touchmove', (event) => {
+      if (isScratching) {
+        const touch = event.touches[0];
+        scratch({
+          clientX: touch.clientX,
+          clientY: touch.clientY,
+        });
+      }
+    });
+  </script>

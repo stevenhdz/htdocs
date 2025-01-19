@@ -1,6 +1,6 @@
 const { ApolloServer } = require('@apollo/server');
 const { startStandaloneServer } = require('@apollo/server/standalone');
-const { v1: uuidv  } = require('uuid');
+const { v1: uuidv } = require('uuid');
 
 const Person = [
     {
@@ -69,12 +69,12 @@ const resolvers = {
     },
     Mutation: {
         addPerson: (prev, args) => {
-            const person = {...args, id: uuidv()}
+            const person = { ...args, id: uuidv() }
             Person.push(person)
             return person
         }
     },
-    //calcular cosas aca 
+    //calcular cosas aca
     Person: {
         address: (root) => {
             return {
