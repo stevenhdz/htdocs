@@ -3,7 +3,7 @@ import websockets
 
 # Diccionario para mantener los canales y sus clientes
 channels = {}
-
+count = 0
 
 async def handle_client(websocket):
     # Extraer el identificador del canal desde el path
@@ -27,7 +27,7 @@ async def handle_client(websocket):
             for client in channels[channel_id]:
                 await client.send(f"[Channel {channel_id}] {message}")
                 # if client != websocket:  # No reenviar el mensaje al remitente
-                # await client.send(f"[Channel {channel_id}] {message}")
+                    # await client.send(f"[Channel {channel_id}] {message}")
     except websockets.exceptions.ConnectionClosedOK:
         print("Connection closed gracefully by client.")
     except websockets.exceptions.ConnectionClosedError as e:
@@ -35,6 +35,8 @@ async def handle_client(websocket):
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
+        count = sum(len(channel) for channel in channels.values())
+        print(f"Total clients: {count}")
         # Remover el cliente del canal al desconectarse
         channels[channel_id].remove(websocket)
         if not channels[channel_id]:  # Si el canal queda vacío, eliminarlo
