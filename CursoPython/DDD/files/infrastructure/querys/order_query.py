@@ -1,0 +1,1 @@
+# Este archivo puede incluir consultas específicas relacionadas con las órdenes.

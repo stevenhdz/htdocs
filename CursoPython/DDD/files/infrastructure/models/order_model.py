@@ -1,0 +1,1 @@
+# Este archivo puede incluir modelos específicos relacionados con las órdenes.
