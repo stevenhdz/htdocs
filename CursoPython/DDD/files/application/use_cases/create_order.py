@@ -1,5 +1,5 @@
 from typing import List
-from domain.models.order import Order, OrderItem
+from infrastructure.models.order_model import Order, OrderItem
 from domain.ports.order_repository import OrderRepository
 from datetime import datetime
 

@@ -1,4 +1,4 @@
-from domain.models.order import OrderItem
+from infrastructure.models.order_model import OrderItem
 from domain.ports.order_repository import OrderRepository
 
 class AddItemToOrder:

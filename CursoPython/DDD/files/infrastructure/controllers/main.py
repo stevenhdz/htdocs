@@ -1,11 +1,12 @@
 from application.use_cases.create_order import CreateOrder
 from application.use_cases.add_item_to_order import AddItemToOrder
-from domain.models.order import OrderItem
-from infra.adapters.in_memory_order_repository import InMemoryOrderRepository
+from infrastructure.models.order_model import OrderItem
+from infrastructure.adapters.in_memory_order_repository import InMemoryOrderRepository
 
 if __name__ == "__main__":
     order_repository = InMemoryOrderRepository()
 
+    print(order_repository)
     create_order_use_case = CreateOrder(order_repository)
     add_item_to_order_use_case = AddItemToOrder(order_repository)
 

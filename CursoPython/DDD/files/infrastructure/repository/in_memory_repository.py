@@ -1,5 +1,5 @@
 from typing import Optional
-from domain.models.order import Order
+from infrastructure.models.order_model import Order
 from domain.ports.order_repository import OrderRepository
 
 

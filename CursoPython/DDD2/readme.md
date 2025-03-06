@@ -1,5 +1,6 @@
 ```sh {"id":"01JCBASYB48KWDPATJZJ02N0PY"}
 Scripts\activate
+source mi_entorno/bin/activate
 python app.py
 ```
 
