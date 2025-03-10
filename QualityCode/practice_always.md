@@ -1,9 +1,9 @@
 # 📌 Guía de Buenas Prácticas para Código Limpio
 
 ## 🟢 Principios Básicos
-- [ ] Usa nombres significativos para clases, variables y funciones (clases en sustantivo, variables en sustantivo, funciones en verbo).
-- [ ] Usa estilos de nomenclatura consistentes (camelCase, snake_case, kebab-case, PascalCase).
-- [ ] Escribe código en inglés para mejorar la mantenibilidad y compatibilidad.
+- [x] Usa nombres significativos para clases, variables y funciones (clases en sustantivo, variables en sustantivo, funciones en verbo).
+- [x] Usa estilos de nomenclatura consistentes (camelCase, snake_case, kebab-case, PascalCase).
+- [x] Escribe código en inglés para mejorar la mantenibilidad y compatibilidad.
 - [ ] Mantén una estructura clara y organizada en los archivos.
 - [ ] Escribe código modular, desacoplado y reutilizable.
 - [ ] Separa la lógica de negocio de la infraestructura para mayor flexibilidad.
