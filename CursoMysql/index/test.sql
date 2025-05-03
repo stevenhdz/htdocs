@@ -36,3 +36,13 @@ ON locations (coordinates); -- Nota: La tabla "locations" y la columna "coordina
 CREATE INDEX idx_hash
 USING HASH
 ON personas (Name);
+
+-- no se puede eliminar un indice invisible, si es invisible no aplica en la optimizacion, simplemente esta alli para no ser borrado es como desactivarlo
+-- Crear un índice invisible
+CREATE INDEX idx_category_invisible ON personas (Category) INVISIBLE;
+
+-- Ver los índices invisibles
+SHOW INDEXES FROM personas;
+
+-- Hacer el índice invisible visible
+ALTER INDEX idx_category_invisible VISIBLE;
