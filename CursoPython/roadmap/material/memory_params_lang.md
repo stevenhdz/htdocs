@@ -124,14 +124,3 @@ Este documento proporciona una comparación del tamaño en memoria de variables 
 | **Null**             | 0 bytes (null puntero) |
 | **NaN (Not-a-Number)** | 8 bytes (dependiendo de la implementación) |
 
----
-
-### Notas:
-1. **Tamaño variable**: Los tamaños en memoria de cadenas, arreglos y objetos pueden variar dependiendo de la implementación del motor y la codificación utilizada.
-2. **Función**: El tamaño de una función depende de su complejidad y si es una función anónima o definida.
-3. **Null/None**: En JavaScript, `null` y `undefined` no ocupan espacio de memoria significativo, pero se mencionan para completitud.
-4. **C++**: En C++, la memoria se maneja explícitamente, lo que significa que los tamaños de los tipos pueden depender de la implementación y cómo se manejen los punteros, objetos y estructuras de datos.
-
----
-
-Esta tabla proporciona una comparación general basada en la memoria utilizada por los tipos de datos en estos lenguajes. Los tamaños pueden variar dependiendo de la implementación del lenguaje, versión y otros factores.
