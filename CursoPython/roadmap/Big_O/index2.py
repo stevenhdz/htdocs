@@ -31,6 +31,28 @@ def fors():
                     print("default")
 
 
+def fors_dict():
+    cases_relation = list(range(10_000))
+
+    def handle_automatex(): pass
+    def handle_main(id): pass
+    def handle_iam(): pass
+    def handle_default(): pass
+
+    step_actions = {
+        "automateX": handle_automatex,
+        "main": lambda id=None: handle_main(id),
+        "iam": handle_iam
+    }
+
+    steps = ["automateX", "main", "iam"]
+
+    for id in cases_relation:
+        for step in steps:
+            action = step_actions.get(step, handle_default)
+            action(id) if step == "main" else action()
+
+
 def fors1():
 
     cases_relation = [222, 333, 334, 444]
