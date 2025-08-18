@@ -1,20 +1,12 @@
 # MODULO C4 - ARQUITECTURA SOFTWARE
 
-## **C1**
+| C1 - Contexto | C2 - Contenedores |
+|---------------|------------------|
+| [<img src="image.png" width="400" class="zoom"/>](image.png) | [<img src="image-1.png" width="400" class="zoom"/>](image-1.png) |
 
-![alt text](image.png)
-
-## **C2**
-
-![alt text](image-1.png)
-
-## **C3**
-
-![alt text](image-2.png)
-
-## **C4**
-
-![alt text](image-3.png)
+| C3 - Componentes | C4 - Código |
+|------------------|-------------|
+| [<img src="image-2.png" width="400" class="zoom"/>](image-2.png) | [<img src="image-3.png" width="400" class="zoom"/>](image-3.png) |
 
 
 **PLANTUML:** https://editor.plantuml.com/
