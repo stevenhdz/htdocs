@@ -50,13 +50,6 @@ test: https://editor.plantuml.com/
 
 ---
 
-## ✅ Resumen rápido
-- **C1:** visión general (*qué es el sistema*).  
-- **C2:** visión técnica de alto nivel (*qué piezas lo componen*).  
-- **C3:** visión de diseño (*cómo se organizan las piezas internas*).  
-- **C4:** visión de implementación (*cómo se escribe en código*).  
-
-
 ## 📌 Relación C3/C4 con la estructura de carpetas
 
 - **C3:** → blueprint de carpetas.
