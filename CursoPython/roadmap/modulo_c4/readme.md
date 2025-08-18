@@ -14,31 +14,12 @@
 
 # 📌 Objetivos del Modelo C4
 
-## **C1 — Contexto**
-- **Objetivo:** Mostrar el **alcance del sistema** y sus **interacciones externas** (usuarios, otros sistemas, servicios externos).  
-- **Enfocado en:** Audiencias no técnicas, interesados de negocio, visión general.  
-- **Pregunta que responde:** *¿Qué es el sistema y con quién se comunica?*  
-
----
-
-## **C2 — Contenedores**
-- **Objetivo:** Representar las **grandes piezas de software** que componen el sistema (apps, bases de datos, servicios, frontends) y cómo colaboran.  
-- **Enfocado en:** Arquitectos y desarrolladores para entender dónde vive cada parte.  
-- **Pregunta que responde:** *¿De qué está hecho el sistema y dónde corre cada parte?*  
-
----
-
-## **C3 — Componentes**
-- **Objetivo:** Detallar los **componentes internos de cada contenedor**, mostrando responsabilidades principales y cómo se relacionan.  
-- **Enfocado en:** Equipos de desarrollo para organizar código y responsabilidades.  
-- **Pregunta que responde:** *¿Cómo está organizado internamente cada contenedor?*  
-
----
-
-## **C4 — Código**
-- **Objetivo:** Mostrar la **implementación detallada** de los componentes, incluyendo clases, interfaces, métodos y relaciones.  
-- **Enfocado en:** Desarrolladores que necesitan comprender el diseño a nivel de código.  
-- **Pregunta que responde:** *¿Cómo se implementa en código cada componente del sistema?*  
+| Nivel | Objetivo | Enfocado en | Pregunta que responde |
+|-------|-----------|-------------|------------------------|
+| **C1 — Contexto** | Mostrar el sistema en su **panorama más amplio**, explicando qué es, qué hace y con quién interactúa (usuarios, sistemas externos, servicios de terceros). | Audiencias no técnicas, directivos, stakeholders. | *¿Qué es el sistema y con quién se comunica?* |
+| **C2 — Contenedores** | Describir las **grandes piezas tecnológicas** que conforman el sistema (ej. aplicación web, API, bases de datos, colas de mensajería, servicios externos). | Arquitectos y desarrolladores. | *¿De qué está hecho el sistema y dónde vive cada pieza?* |
+| **C3 — Componentes** | Mostrar cómo está **organizado internamente cada contenedor**, detallando los componentes principales (controladores, servicios, repositorios, adaptadores, etc.) y sus responsabilidades. | Equipos de desarrollo. | *¿Cómo se organizan y colaboran las partes internas de cada contenedor?* |
+| **C4 — Código** | Bajar al **máximo nivel de detalle**, mostrando cómo se implementa cada componente mediante clases, interfaces, métodos o funciones. | Desarrolladores que implementan o mantienen el código. | *¿Cómo está implementado el diseño en código?* |
 
 ---
 
