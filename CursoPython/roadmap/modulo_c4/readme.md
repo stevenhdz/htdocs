@@ -54,3 +54,49 @@
 
 - **C3:** → blueprint de carpetas.
 - **C4:** → código dentro de esas carpetas.
+
+```code
+src/
+├─ controllers/
+│  └─ auth.controller.ts              # login(), logout(), forgot(), reset(), refresh()
+│
+├─ application/
+│  ├─ login.usecase.ts
+│  ├─ logout.usecase.ts
+│  ├─ forgot-password.usecase.ts
+│  ├─ reset-password.usecase.ts
+│  └─ refresh-token.usecase.ts
+│
+├─ domain/
+│  ├─ user.entity.ts                  # id, email, passwordHash, verified...
+│  ├─ token.entity.ts                 # value, type, expiresAt...
+│  └─ policies.ts                     # reglas (p.ej. complejidad de password)
+│
+├─ ports/
+│  ├─ user.repo.port.ts               # findByEmail(), create(), updatePassword()
+│  ├─ token.repo.port.ts              # saveReset(), findValidReset(), consume()
+│  └─ mail.port.ts                    # sendVerification(to,link), sendReset(to,link)
+│
+├─ adapters/
+│  ├─ orm/
+│  │  ├─ prisma.user.repo.ts          # implements UserRepo
+│  │  └─ prisma.token.repo.ts         # implements TokenRepo
+│  ├─ mail/
+│  │  └─ gmail.adapter.ts             # implements MailPort (SMTP/Gmail API)
+│  └─ security/
+│     ├─ jwt.service.ts               # sign(), verify(), jwks()
+│     └─ password-hasher.ts           # hash(), compare()
+│
+├─ middlewares/
+│  ├─ auth.middleware.ts              # valida access token
+│  ├─ rate-limit.middleware.ts
+│  └─ error.middleware.ts
+│
+├─ routes/
+│  └─ auth.routes.ts                  # mapea /login,/logout,/forgot,/reset,/refresh → controller
+│
+├─ shared/
+│  ├─ env.ts                          # variables, claves, SMTP, DB
+│  └─ errors.ts                       # errores de dominio/aplicación
+└─ main.ts                            # arranque (Express/Fastify)
+```
