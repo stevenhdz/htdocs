@@ -1,3 +1,9 @@
+# SDLC
+
+[<img src="image-4.png" width="400" class="zoom"/>](image-4.png)
+
+- El c4 se aplica entre la fase de design y development
+
 # MODULO C4 - ARQUITECTURA SOFTWARE
 
 | C1 - Contexto | C2 - Contenedores |
