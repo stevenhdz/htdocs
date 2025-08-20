@@ -1,1 +1,0 @@
-Base de datos, servicios, librerias etc
