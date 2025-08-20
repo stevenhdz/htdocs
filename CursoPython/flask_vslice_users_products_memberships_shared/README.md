@@ -34,6 +34,8 @@ flask_vslice_users_products_memberships_shared/
          └─ infrastructure/{controllers,readers,repositories}.py
 ```
 
+![alt text](image.png)
+
 ## Endpoints
 ### Users
 - `POST /users` → `{ "name": "Ana", "email": "ana@mail.com" }`
