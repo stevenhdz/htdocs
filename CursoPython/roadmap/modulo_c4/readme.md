@@ -209,3 +209,5 @@ Se requiere autenticación **stateless** para escalar y soportar clientes web/m�
 - ✅ Escalabilidad sin mantener sesión en servidor.  
 - ✅ Compatible con microservicios y APIs.  
 - ⚠️ Revocación y expiración requieren manejo cuidadoso.  
+
+link: https://github.com/npryce/adr-tools
