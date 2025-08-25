@@ -160,12 +160,15 @@
   Mobile["AppMunicipality\n(Móvil)"]
   API["API Pública"]
   Payments["Pasarela de Pagos\n(Stripe/PayU)"]
+  I18N["Servicio de Internacionalización\n(Archivos locales + API i18n opcional)"]
 
   %% Relaciones
   User -->|Usa| Mobile
   Admin -->|Usa| Mobile
   Mobile -->|REST/HTTPS + JWT| API
   API -->|Webhooks/Checkout| Payments
+  Mobile -->|Selección de idioma| I18N
+  API -->|Cabecera Accept-Language| I18N
 ```
 
 ## 🔹 C2 - Contenedores
@@ -174,16 +177,17 @@
 ```mermaid
 flowchart LR
   subgraph Client
-    RN["React Native App"]
+    RN["React Native App\n(i18n: react-intl/i18next)"]
   end
 
   subgraph Cloud [Cloud]
-    API["API Backend (Python/FastAPI)\nREST + JWT/Refresh"]
+    API["API Backend (Python/FastAPI)\nREST + JWT/Refresh\n(i18n headers)"]
     WORKERS["Workers (Celery/RQ)\njobs: ranking, antifraude, webhooks"]
     REDIS["Redis\nCache + Cola + Leaderboards"]
-    DB[(MySQL\nInnoDB)]
+    DB[(MySQL\nInnoDB\n+ Preferencias de idioma)]
     STORAGE[(Object Storage\nimágenes/QR evidencias)]
     OBS["OpenTelemetry\nLogs/Metrics/Traces"]
+    I18N_SVC["Módulo de Localización\nArchivos JSON/ARB + Traducciones dinámicas"]
   end
 
   subgraph External
@@ -196,6 +200,8 @@ flowchart LR
   API --> REDIS
   API --> STORAGE
   API --> OBS
+  API --> I18N_SVC
+  RN --> I18N_SVC
   WORKERS --> DB
   WORKERS --> REDIS
   API -->|Checkout| PAY
