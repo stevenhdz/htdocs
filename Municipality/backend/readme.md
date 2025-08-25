@@ -77,7 +77,7 @@
 
 ---
 
-# 🟡 Fase 2: Diseño  
+# 🟡 Fase 2: Diseño y arquitectura
 
 ## 🔹 Casos de Uso
 #### **Son la traducción técnica y detallada de un RF: describen actores, precondiciones, flujo principal y alternos.**
