@@ -156,19 +156,19 @@
   User([Usuario])
   Admin([Administrador])
 
-  %% Sistemas
-  Mobile["AppMunicipality\n(Móvil)"]
+  %% Sistema en estudio
+  Mobile["AppMunicipality\n(Sistema - App móvil)"]
   API["API Pública"]
+
+  %% Sistema externo
   Payments["Pasarela de Pagos\n(Stripe/PayU)"]
-  I18N["Servicio de Internacionalización\n(Archivos locales + API i18n opcional)"]
 
   %% Relaciones
   User -->|Usa| Mobile
   Admin -->|Usa| Mobile
   Mobile -->|REST/HTTPS + JWT| API
   API -->|Webhooks/Checkout| Payments
-  Mobile -->|Selección de idioma| I18N
-  API -->|Cabecera Accept-Language| I18N
+  %% Nota: i18n (archivos locales + Accept-Language) se maneja dentro del sistema -> detallar en C2/C3
 ```
 
 ## 🔹 C2 - Contenedores
@@ -176,32 +176,44 @@
 
 ```mermaid
 flowchart LR
+  %% ============================
+  %% Cliente
+  %% ============================
   subgraph Client
-    RN["React Native App\n(i18n: react-intl/i18next)"]
+    RN["React Native App\n(i18n: react-intl / i18next)"]
   end
 
-  subgraph Cloud [Cloud]
-    API["API Backend (Python/FastAPI)\nREST + JWT/Refresh\n(i18n headers)"]
-    WORKERS["Workers (Celery/RQ)\njobs: ranking, antifraude, webhooks"]
+  %% ============================
+  %% Nube (Sistema en estudio)
+  %% ============================
+  subgraph Cloud [Cloud - AppMunicipality Backend]
+    API["API Backend (Python/FastAPI)\nREST + JWT/Refresh\n(soporte i18n vía Accept-Language)"]
+    WORKERS["Workers (Celery/RQ)\nJobs: ranking, antifraude, webhooks"]
     REDIS["Redis\nCache + Cola + Leaderboards"]
     DB[(MySQL\nInnoDB\n+ Preferencias de idioma)]
-    STORAGE[(Object Storage\nimágenes/QR evidencias)]
-    OBS["OpenTelemetry\nLogs/Metrics/Traces"]
-    I18N_SVC["Módulo de Localización\nArchivos JSON/ARB + Traducciones dinámicas"]
+    STORAGE[(Object Storage\nImágenes/QR evidencias)]
+    OBS["OpenTelemetry\nLogs / Métricas / Trazas"]
+    I18N["Módulo de Localización\nArchivos JSON/ARB locales\nGestión de traducciones"]
   end
 
+  %% ============================
+  %% Externos
+  %% ============================
   subgraph External
     PAY["Pasarela de pagos (Stripe/PayU)\nCheckout + Webhooks firmado"]
     GEO["Servicio Geocoding/Reverse (opcional)"]
   end
 
+  %% ============================
+  %% Relaciones
+  %% ============================
   RN -->|HTTPS| API
   API --> DB
   API --> REDIS
   API --> STORAGE
   API --> OBS
-  API --> I18N_SVC
-  RN --> I18N_SVC
+  API --> I18N
+  RN --> I18N
   WORKERS --> DB
   WORKERS --> REDIS
   API -->|Checkout| PAY
