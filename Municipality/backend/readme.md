@@ -10,6 +10,7 @@
 - **RF-02:** El sistema debe permitir al usuario iniciar sesión.  
 - **RF-09:** El sistema debe permitir al usuario modificar contraseña, recuperar contraseña y eliminar su cuenta.  
 - **RF-13:** El sistema debe eliminar todas las relaciones de datos al borrar la cuenta.  
+- **RF-19:** El sistema debe permitir al usuario ver detalles de su perfil, plan actual, idioma.
 
 ### 2. Experiencia de Usuario
 - **RF-03:** El sistema debe mostrar una pantalla de demo para nuevos usuarios.  
@@ -18,6 +19,7 @@
 - **RF-10:** El sistema debe permitir recibir recomendaciones sobre municipios.  
 - **RF-14:** El sistema debe mostrar el historial/progreso del usuario.  
 - **RF-16:** El sistema debe permitir al usuario descubrir municipios.  
+- **RF-18:** El sistema debe permitir ver información del municipio.
 
 ### 3. Ranking y Gamificación
 - **RF-06:** El sistema debe mostrar el ranking por municipio.  
@@ -30,7 +32,11 @@
 
 ### 5. Monetización
 - **RF-11:** El sistema debe ofrecer un período de prueba (Trial) al registrarse.  
-- **RF-12:** El sistema debe mostrar planes de suscripción, con opción de compra y pago. 
+- **RF-12:** El sistema debe mostrar planes de suscripción, con opción de compra y pago.  
+- **RF-20:** El sistema debe permitir renovar o cancelar plan.  
+- **RF-21:** El sistema debe contar con historial de pagos por usuario.  
+
+---
 
 ## 🔹 Requisitos No Funcionales
 #### **Definen cómo debe comportarse el sistema en términos de calidad.**
@@ -71,7 +77,7 @@
 
 ---
 
-# 🟡 Fase 2: Diseño
+# 🟡 Fase 2: Diseño  
 
 ## 🔹 Casos de Uso
 #### **Son la traducción técnica y detallada de un RF: describen actores, precondiciones, flujo principal y alternos.**
@@ -93,6 +99,12 @@
 - **CU-15:** Modificar roles de usuarios → Actor: Administrador. (RF-15)  
 - **CU-16:** Ver pantalla de demo inicial → Actor: Usuario. (RF-03)  
 - **CU-17:** Descubrir municipios y actividades → Actor: Usuario. (RF-04, RF-16)  
+- **CU-18:** Ver información del municipio → Actor: Usuario. (RF-18)  
+- **CU-19:** Consultar perfil y plan actual → Actor: Usuario. (RF-19)  
+- **CU-20:** Renovar o cancelar plan → Actor: Usuario. (RF-20)  
+- **CU-21:** Consultar historial de pagos → Actor: Usuario. (RF-21)  
+
+---
 
 ## 🔹 Historias de Usuario
 #### **Expresan la misma necesidad pero en lenguaje del usuario, centradas en el valor.**
@@ -109,9 +121,13 @@
 - *Como usuario quiero comprar un plan y pagarlo en línea para seguir participando.* → **CU-08, CU-09 / RF-12, RF-15**  
 - *Como usuario quiero recuperar o modificar mi contraseña para mantener el acceso a la app.* → **CU-11 / RF-09**  
 - *Como usuario quiero eliminar mi cuenta y que se borren todas mis relaciones de datos.* → **CU-10 / RF-09, RF-13**  
+- *Como usuario quiero ver la información de un municipio para conocer qué ofrece.* → **CU-18 / RF-18**  
+- *Como usuario quiero consultar mi perfil y el plan que tengo activo para saber mis beneficios.* → **CU-19 / RF-19**  
+- *Como usuario quiero renovar o cancelar mi plan para seguir o dejar de usar la app.* → **CU-20 / RF-20**  
+- *Como usuario quiero consultar mi historial de pagos para tener control sobre mis gastos.* → **CU-21 / RF-21**  
 - *Como administrador quiero gestionar actividades (CRUD) para mantener actualizado el contenido.* → **CU-07 / RF-08**  
 - *Como administrador quiero gestionar municipios (CRUD) para mantener la app alineada con la realidad.* → **CU-14 / RF-17**  
-- *Como administrador quiero modificar roles de usuarios para controlar los permisos dentro de la app.* → **CU-15 / RF-15**   
+- *Como administrador quiero modificar roles de usuarios para controlar los permisos dentro de la app.* → **CU-15 / RF-15**  
 
 ## 🔹 Stack tecnologico
 
@@ -145,56 +161,6 @@
 ## 🔹 C2 - Contenedores
 #### **¿Qué apps (ejecutables) e infraestructura (BD, colas, storage) forman el sistema?**
 
-WIP....
-
-```mermaid
-flowchart LR
-  %% ============================
-  %% Nodos principales
-  %% ============================
-
-  subgraph Mobile["Móvil (React Native/Expo)"]
-    UI["UI"]
-    LocalDB["Storage Local\n(Realm/SQLite)"]
-    Queue["Cola Offline\n(backoff)"]
-  end
-
-  subgraph Backend["Backend (Monolito Modular)"]
-    API["API HTTP\n(FastAPI/Nest/Spring)"]
-    AppLayer["Aplicación\n(Casos de Uso)"]
-    Domain["Dominio\n(Entidades/Servicios)"]
-    Adapters["Adaptadores\n(Repos/Payments)"]
-    GeoLib["GeoValidator\n(PostGIS/Turf.js)"]
-    Workers["Workers\n(Jobs/Webhooks)"]
-  end
-
-  PG[("PostgreSQL\n+PostGIS")]
-  Redis[["Redis\n(Leaderboards)"]]
-  MQ{{"Broker\n(RabbitMQ/PubSub)"}}
-  S3[/"Object Storage\n(archivos)"/]
-  Payments["Pasarela de Pagos"]
-
-  %% ============================
-  %% Relaciones
-  %% ============================
-
-  UI --> LocalDB
-  UI --> Queue
-  UI -->|HTTPS + JWT| API
-
-  API --> AppLayer
-  AppLayer --> Domain
-  AppLayer --> Adapters
-  AppLayer -->|Validación geovalla| GeoLib
-
-  Adapters --> PG
-  Adapters --> Redis
-  Adapters --> S3
-
-  Workers --> MQ
-  API --> Payments
-  Payments -->|webhooks firmados| Workers
-```
 ## 🔹 C3 - Componentes
 #### **¿Qué partes internas tiene cada app?**
 
