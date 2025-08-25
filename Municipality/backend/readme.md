@@ -11,6 +11,8 @@
 - **RF-09:** El sistema debe permitir al usuario modificar contraseña, recuperar contraseña y eliminar su cuenta.  
 - **RF-13:** El sistema debe eliminar todas las relaciones de datos al borrar la cuenta.  
 - **RF-19:** El sistema debe permitir al usuario ver detalles de su perfil, plan actual, idioma.
+- **RF-22:** El sistema debe permitir al usuario cambiar el idioma de la interfaz en cualquier momento (internacionalización).  
+
 
 ### 2. Experiencia de Usuario
 - **RF-03:** El sistema debe mostrar una pantalla de demo para nuevos usuarios.  
@@ -20,6 +22,8 @@
 - **RF-14:** El sistema debe mostrar el historial/progreso del usuario.  
 - **RF-16:** El sistema debe permitir al usuario descubrir municipios.  
 - **RF-18:** El sistema debe permitir ver información del municipio.
+- **RF-23:** El sistema debe adaptar formatos locales (fecha, moneda, separadores, etc.) según el idioma/región configurados.  
+
 
 ### 3. Ranking y Gamificación
 - **RF-06:** El sistema debe mostrar el ranking por municipio.  
@@ -69,6 +73,8 @@
 - **RNF-16:** Accesibilidad según WCAG 2.2 AA.  
 - **RNF-17:** Internacionalización ES/EN y formatos locales.  
 - **RNF-23:** Compatibilidad móvil: Android 10+ e iOS 14+.  
+- **RNF-25:** Los textos deben gestionarse mediante archivos de localización (ej. JSON/ARB), evitando hardcodeo.  
+- **RNF-26:** El cambio de idioma debe aplicarse sin necesidad de reinstalar la aplicación. 
 
 ### 5. Mantenibilidad y Calidad de Software
 - **RNF-20:** Cobertura de pruebas ≥ 70% en módulos críticos.  
@@ -103,6 +109,8 @@
 - **CU-19:** Consultar perfil y plan actual → Actor: Usuario. (RF-19)  
 - **CU-20:** Renovar o cancelar plan → Actor: Usuario. (RF-20)  
 - **CU-21:** Consultar historial de pagos → Actor: Usuario. (RF-21)  
+- **CU-22:** Cambiar idioma de la app → Actor: Usuario. (RF-22, RNF-17)  
+- **CU-23:** Mostrar datos en formato local (fecha, moneda, unidades) → Actor: Usuario. (RF-23)  
 
 ---
 
@@ -128,6 +136,8 @@
 - *Como administrador quiero gestionar actividades (CRUD) para mantener actualizado el contenido.* → **CU-07 / RF-08**  
 - *Como administrador quiero gestionar municipios (CRUD) para mantener la app alineada con la realidad.* → **CU-14 / RF-17**  
 - *Como administrador quiero modificar roles de usuarios para controlar los permisos dentro de la app.* → **CU-15 / RF-15**  
+- *Como usuario quiero cambiar el idioma de la aplicación en cualquier momento para usarla en mi lengua preferida.* → **CU-22 / RF-22**  
+- *Como usuario quiero que los precios y fechas se muestren en el formato de mi región para entender mejor la información.* → **CU-23 / RF-23**  
 
 ## 🔹 Stack tecnologico
 
@@ -161,8 +171,42 @@
 ## 🔹 C2 - Contenedores
 #### **¿Qué apps (ejecutables) e infraestructura (BD, colas, storage) forman el sistema?**
 
+```mermaid
+flowchart LR
+  subgraph Client
+    RN["React Native App"]
+  end
+
+  subgraph Cloud [Cloud]
+    API["API Backend (Python/FastAPI)\nREST + JWT/Refresh"]
+    WORKERS["Workers (Celery/RQ)\njobs: ranking, antifraude, webhooks"]
+    REDIS["Redis\nCache + Cola + Leaderboards"]
+    DB[(MySQL\nInnoDB)]
+    STORAGE[(Object Storage\nimágenes/QR evidencias)]
+    OBS["OpenTelemetry\nLogs/Metrics/Traces"]
+  end
+
+  subgraph External
+    PAY["Pasarela de pagos (Stripe/PayU)\nCheckout + Webhooks firmado"]
+    GEO["Servicio Geocoding/Reverse (opcional)"]
+  end
+
+  RN -->|HTTPS| API
+  API --> DB
+  API --> REDIS
+  API --> STORAGE
+  API --> OBS
+  WORKERS --> DB
+  WORKERS --> REDIS
+  API -->|Checkout| PAY
+  PAY -->|Webhooks| API
+```
+
 ## 🔹 C3 - Componentes
 #### **¿Qué partes internas tiene cada app?**
 
 ## 🔹 C4 - Código
 #### **¿Qué clases, funciones e implementaciones tiene cada módulo?**
+
+## modelo de datos
+backup_schema.sql
