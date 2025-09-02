@@ -174,6 +174,7 @@
 ## 🔹 C2 - Contenedores
 #### **¿Qué apps (ejecutables) e infraestructura (BD, colas, storage) forman el sistema?**
 
+#### WIP.....
 ```mermaid
 flowchart LR
   %% ============================
