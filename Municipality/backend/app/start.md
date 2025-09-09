@@ -6,3 +6,6 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 python app.py
+
+
+python -m flask --app wsgi:app run

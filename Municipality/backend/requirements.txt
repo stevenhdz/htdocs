@@ -1,4 +1,0 @@
-Flask>=2.3,<4
-requests>=2.32.0,<3
-SQLAlchemy>=2.0.0,<3
-shapely==2.1.1
