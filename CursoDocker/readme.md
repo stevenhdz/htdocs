@@ -1,6 +1,6 @@
 Recomendaciones para un dockerfile mas optimo y rapido:
 
-    Capas (Layer Caching):
+Capas (Layer Caching):
 
     Copia solo package.json y package-lock.json primero.
 
@@ -11,14 +11,14 @@ Recomendaciones para un dockerfile mas optimo y rapido:
     Objetivo: Asegurar que la costosa instalación de dependencias solo se ejecute si los archivos de bloqueo cambian.
 
     
-    Multi-stage Builds:
+Multi-stage Builds:
 
     Divide el Dockerfile en etapas: deps (dependencias) → build (compilación) → runtime (imagen final).
 
     Objetivo: Reducir drásticamente el tamaño de la imagen final al excluir herramientas de desarrollo y archivos intermedios.
 
     
-    BuildKit + Caché de Montaje:
+BuildKit + Caché de Montaje:
 
     Activa BuildKit con DOCKER_BUILDKIT=1.
 
@@ -27,7 +27,7 @@ Recomendaciones para un dockerfile mas optimo y rapido:
     Objetivo: Evitar que npm descargue dependencias desde internet en cada build, acelerando la instalación.
 
     
-    .dockerignore:
+.dockerignore:
 
     Excluye directorios y archivos innecesarios del contexto de build.
 
