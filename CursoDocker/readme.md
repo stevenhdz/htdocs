@@ -51,7 +51,7 @@ Paso 2: Desde cero fast es mejor
 
 Paso 3: Con cambios fast es mejor
 ```
-echo "// cambio" >> src/server.js
+echo "// cambio" >> server.js
 ```
 
 ```docker
