@@ -35,11 +35,13 @@ BuildKit + Caché de Montaje:
 
     Objetivo: Minimizar el tamaño del contexto copiado inicialmente y evitar archivos basura en la imagen.
 
+Paso 1: Depurar cache
+
 ```docker
 podman builder prune -af
 ```
 
-Desde cero fast es mejor
+Paso 2: Desde cero fast es mejor
 
 ```docker
 /usr/bin/time -f "slow-1: %E" podman build --progress=plain -f Dockerfile.slow -t localhost/hello:slow .
@@ -47,7 +49,7 @@ Desde cero fast es mejor
 /usr/bin/time -f "fast-1: %E" podman build  --progress=plain -f Dockerfile.fast -t  localhost/hello:fast .
 ```
 
-Con cambios fast es mejor
+Paso 3: Con cambios fast es mejor
 ```
 echo "// cambio" >> src/server.js
 ```
@@ -58,7 +60,7 @@ echo "// cambio" >> src/server.js
 /usr/bin/time -f "fast-1: %E" podman build  --progress=plain -f Dockerfile.fast -t  localhost/hello:fast .
 ```
 
-Sin cambios la diferencia es minima siendo asi slow mejor que fast
+Paso 4: Sin cambios la diferencia es minima siendo asi slow mejor que fast
 
 ```docker
 /usr/bin/time -f "slow-1: %E" podman build --progress=plain -f Dockerfile.slow -t localhost/hello:slow .
@@ -68,6 +70,8 @@ Sin cambios la diferencia es minima siendo asi slow mejor que fast
 
 #### export BUILDAH_LAYERS=1
 
+Resultado aproximados:
+
 ```docker
 Caso                 slow        fast
 -----------------------------------------
@@ -75,6 +79,8 @@ Cold start           11.95 s     1.80 s   ← gran mejora (deps cacheadas + meno
 Cambio solo código   1.84 s      0.40 s   ← reuse de deps en fast
 Sin cambios          0.18 s      0.50 s   ← mas pasos en fast
 ```
+
+Paso 5: Subir imagen
 
 ```docker
 podman run --rm -p 3000:3000 localhost/hello:fast
@@ -96,6 +102,7 @@ No usar cache
 --no-cache
 ```
 
+Paso 6: Probar
 # En otra terminal:
 ```
 curl -s http://localhost:3000/
