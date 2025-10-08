@@ -10,12 +10,14 @@ Recomendaciones para un dockerfile mas optimo y rapido:
 
     Objetivo: Asegurar que la costosa instalación de dependencias solo se ejecute si los archivos de bloqueo cambian.
 
+    
     Multi-stage Builds:
 
     Divide el Dockerfile en etapas: deps (dependencias) → build (compilación) → runtime (imagen final).
 
     Objetivo: Reducir drásticamente el tamaño de la imagen final al excluir herramientas de desarrollo y archivos intermedios.
 
+    
     BuildKit + Caché de Montaje:
 
     Activa BuildKit con DOCKER_BUILDKIT=1.
@@ -24,6 +26,7 @@ Recomendaciones para un dockerfile mas optimo y rapido:
 
     Objetivo: Evitar que npm descargue dependencias desde internet en cada build, acelerando la instalación.
 
+    
     .dockerignore:
 
     Excluye directorios y archivos innecesarios del contexto de build.
@@ -36,7 +39,7 @@ Recomendaciones para un dockerfile mas optimo y rapido:
 podman builder prune -af
 ```
 
-desde cero fast es mejor
+Desde cero fast es mejor
 
 ```docker
 /usr/bin/time -f "slow-1: %E" podman build --progress=plain -f Dockerfile.slow -t localhost/hello:slow .
@@ -44,7 +47,7 @@ desde cero fast es mejor
 /usr/bin/time -f "fast-1: %E" podman build  --progress=plain -f Dockerfile.fast -t  localhost/hello:fast .
 ```
 
-con cambios fast es mejor
+Con cambios fast es mejor
 ```
 echo "// cambio" >> src/server.js
 ```
@@ -55,7 +58,7 @@ echo "// cambio" >> src/server.js
 /usr/bin/time -f "fast-1: %E" podman build  --progress=plain -f Dockerfile.fast -t  localhost/hello:fast .
 ```
 
-Sin cambios al diferencia es minima siendo asi slow mejor que fast
+Sin cambios la diferencia es minima siendo asi slow mejor que fast
 
 ```docker
 /usr/bin/time -f "slow-1: %E" podman build --progress=plain -f Dockerfile.slow -t localhost/hello:slow .
