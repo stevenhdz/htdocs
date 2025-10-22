@@ -40,10 +40,10 @@ Definir **cómo se construirá la solución**.
 
 ### a) **Arquitectura**
 - Uso del **modelo C4**:  
-  - **C1 (Contexto):** usuarios y sistemas externos.  
-  - **C2 (Contenedores):** apps, APIs, BD, front/back.  
-  - **C3 (Componentes):** módulos internos de cada contenedor.  
-  - **C4 (Código):** clases, librerías, funciones.  
+  - **C1 (Contexto):** usuarios y sistemas externos.
+  - **C2 (Contenedores):** apps, APIs, BD, front/back.  (PARTS)
+  - **C3 (Componentes):** módulos internos de cada contenedor.  (MODULES)
+  - **C4 (Código):** clases, librerías, funciones.  (USE CASES)
 - **ADRs**: decisiones de diseño técnico (ej: JWT para autenticación, PostgreSQL como BD).  
 
 ### b) **Base de datos**
