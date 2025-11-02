@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Especificidad y cascada</title>
+    <style>
+        .box {
+            background: #9dd;
+        }
+
+        div.box {
+            background: #7bd;
+        }
+
+        /* m�s espec�fico por tipo + clase */
+        #importante.box {
+            background: #e88;
+        }
+
+        /* ID gana */
+    </style>
+</head>
+
+<body>
+    <h1>Especificidad</h1>
+    <div class="box">.box</div>
+    <div class="box" style="background:#0c8;color:#fff">inline style gana</div>
+    <div id="importante" class="box">#importante.box</div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Position & z-index</title>
+    <style>
+        .wrap {
+            position: relative;
+            height: 160px;
+            border: 1px dashed #456;
+        }
+
+        .abs {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background: #7bd;
+            padding: 6px;
+        }
+
+        .fixed {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            background: #eee;
+            padding: 6px;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 0;
+            background: #ffc;
+            padding: 6px;
+        }
+
+        .a {
+            position: absolute;
+            left: 40px;
+            top: 40px;
+            z-index: 1;
+            background: #59f;
+            padding: 4px;
+        }
+
+        .b {
+            position: absolute;
+            left: 60px;
+            top: 60px;
+            z-index: 2;
+            background: #f67;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="sticky">Sticky arriba</h1>
+    <div class="wrap">
+        <div class="abs">Absolute</div>
+        <div class="a">z‑1</div>
+        <div class="b">z‑2</div>
+    </div>
+    <div style="height:400px"></div>
+    <div class="fixed">Fixed</div>
+</body>
+
+</html>

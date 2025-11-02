@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Filtros y backdrop</title>
+    <style>
+        body {
+            background: url('https://picsum.photos/800/400') center/cover no-repeat fixed;
+        }
+
+        .panel {
+            backdrop-filter: blur(8px) saturate(1.2);
+            background: rgba(255, 255, 255, .25);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 20vh
+        }
+
+        .mezcla {
+            mix-blend-mode: screen
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panel">
+        <h1>Backdrop\u2011filter</h1>
+        <p class="mezcla">mix\u2011blend\u2011mode: screen</p>
+    </div>
+</body>
+
+</html>

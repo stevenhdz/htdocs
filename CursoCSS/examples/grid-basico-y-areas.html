@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Grid</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .5rem;
+        }
+
+        .cell {
+            background: #eef;
+            border: 1px solid #345;
+            padding: .5rem;
+            border-radius: 6px;
+        }
+
+        .areas {
+            display: grid;
+            gap: .5rem;
+            grid-template:
+                "head head head" auto
+                "side main ads" auto
+                "foot foot foot" auto / 1fr 2fr 1fr;
+        }
+
+        .head {
+            grid-area: head
+        }
+
+        .side {
+            grid-area: side
+        }
+
+        .main {
+            grid-area: main
+        }
+
+        .ads {
+            grid-area: ads
+        }
+
+        .foot {
+            grid-area: foot
+        }
+
+        .blk {
+            background: #def;
+            border: 1px solid #345;
+            border-radius: 6px;
+            padding: .5rem
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Grid b�sico</h1>
+    <div class="grid">
+        <div class="cell">1</div>
+        <div class="cell">2</div>
+        <div class="cell">3</div>
+    </div>
+    <h2>�reas</h2>
+    <div class="areas">
+        <div class="blk head">Header</div>
+        <div class="blk side">Sidebar</div>
+        <div class="blk main">Main</div>
+        <div class="blk ads">Ads</div>
+        <div class="blk foot">Footer</div>
+    </div>
+</body>
+
+</html>

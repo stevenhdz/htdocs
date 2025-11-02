@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pseudo\u2011elementos</title>
+    <style>
+        p::first-line {
+            font-weight: 700;
+        }
+
+        p::first-letter {
+            font-size: 200%;
+            color: #e83;
+        }
+
+        .badge::before {
+            content: "\u2605 ";
+            color: #fb0;
+        }
+
+        .subrayado::selection {
+            background: #ff0;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pseudo\u2011elementos</h1>
+    <p class="subrayado">Este texto muestra <span class="badge">pseudo\u2011elementos</span> en acci�n.</p>
+</body>
+
+</html>

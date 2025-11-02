@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tipograf�a y color</title>
+    <style>
+        body {
+            font-family: system-ui, Segoe UI, Roboto, sans-serif
+        }
+
+        .scale {
+            font-size: clamp(1rem, 1vw+0.5rem, 1.5rem)
+        }
+
+        .ch {
+            width: 30ch;
+            border: 1px dashed #456;
+            padding: .5rem
+        }
+
+        .muted {
+            color: #678
+        }
+
+        .oklch {
+            color: oklch(65% 0.17 245)
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="scale">Escala fluida (clamp)</h1>
+    <p class="ch">Ancho de 30ch para controlar la longitud de l�nea.</p>
+    <p class="muted">Texto atenuado</p>
+    <p class="oklch">Color en OKLCH</p>
+</body>
+
+</html>

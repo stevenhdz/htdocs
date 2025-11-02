@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Container Queries</title>
+    <style>
+        .card {
+            container-type: inline-size;
+            border: 1px solid #aaa;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 40%
+        }
+
+        .title {
+            font-size: 1.1rem
+        }
+
+        @container (min-width: 500px) {
+            .title {
+                font-size: 2rem;
+                color: #06c
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Container Queries</h1>
+    <div class="card">
+        <h2 class="title">Título responde al contenedor</h2>
+        <p>Redimensiona la ventana.</p>
+    </div>
+</body>
+
+</html>

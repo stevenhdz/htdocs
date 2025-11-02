@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Variables CSS</title>
+    <style>
+        :root {
+            --brand: #0a7;
+            --panel: #eef;
+        }
+
+        .box {
+            background: var(--panel);
+            border: 3px solid color-mix(in oklab, var(--brand), black 30%);
+            padding: 1rem;
+            border-radius: 8px
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Custom properties</h1>
+    <div class="box">Usando var(--brand) y color-mix()</div>
+</body>
+
+</html>

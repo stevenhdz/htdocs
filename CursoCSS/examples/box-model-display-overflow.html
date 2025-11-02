@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Box model & display</title>
+    <style>
+        .caja {
+            border: 4px solid #89a;
+            padding: 16px;
+            margin: 12px;
+            width: 220px;
+        }
+
+        .content {
+            box-sizing: content-box;
+        }
+
+        .border {
+            box-sizing: border-box;
+        }
+
+        .inline span {
+            display: inline;
+            border: 1px solid #678;
+            margin: 4px;
+            padding: 4px;
+        }
+
+        .inline-block span {
+            display: inline-block;
+            width: 4ch;
+            border: 1px solid #678;
+            margin: 4px;
+            padding: 4px;
+        }
+
+        .overflow {
+            width: 240px;
+            height: 80px;
+            overflow: auto;
+            border: 1px dashed #678;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Box model, display y overflow</h1>
+    <div class="caja content">content-box</div>
+    <div class="caja border">border-box</div>
+    <p class="inline">inline: <span>A</span><span>B</span><span>C</span></p>
+    <p class="inline-block">inline-block: <span>1</span><span>2</span><span>3</span></p>
+    <div class="overflow">Texto largo Texto largo Texto largo Texto largo Texto largo Texto largo Texto largo Texto
+        largo</div>
+</body>
+
+</html>

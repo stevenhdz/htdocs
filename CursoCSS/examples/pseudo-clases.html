@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pseudo‑clases</title>
+    <style>
+        a:link {
+            color: #06c;
+        }
+
+        a:visited {
+            color: #639;
+        }
+
+        a:hover {
+            color: #e83;
+        }
+
+        li:nth-child(odd) {
+            background: #eef;
+        }
+
+        input:focus {
+            outline: 2px solid #0a7;
+        }
+
+        input:required:invalid {
+            border: 2px solid #d33;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pseudo‑clases</h1>
+    <a href="#">Enlace hover</a>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <p><input placeholder="requerido" required></p>
+</body>
+
+</html>
