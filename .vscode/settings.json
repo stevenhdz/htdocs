@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/Webpack/test.html"
+    "livePreview.defaultPreviewPath": "/Webpack/test.html",
+    "cmake.sourceDirectory": "/home/shernandezj/Desktop/htdocs/CursoFlutter/auth2_crud/linux"
 }

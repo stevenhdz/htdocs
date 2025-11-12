@@ -1,0 +1,3 @@
+curl -i -X POST "http://127.0.0.1:8081/api/users?role=admin" -d "hola" -H "Content-Type: text/plain"
+
+curl -i -x http://127.0.0.1:8080 http://httpbin.org/ip
