@@ -70,7 +70,7 @@ Paso 4: Sin cambios la diferencia es minima siendo asi slow mejor que fast
 
 #### export BUILDAH_LAYERS=1
 
-Resultado aproximados:
+Resultado aproximados (node:20-slim):
 
 ```docker
 Caso                 slow        fast
@@ -79,6 +79,8 @@ Cold start           11.95 s     1.80 s   ← gran mejora (deps cacheadas + meno
 Cambio solo código   1.84 s      0.40 s   ← reuse de deps en fast
 Sin cambios          0.18 s      0.50 s   ← mas pasos en fast
 ```
+
+Con base a la imagen estos tiempos pueden aumentar o disminuir...
 
 Paso 5: Subir imagen
 
@@ -101,6 +103,31 @@ No usar cache
 ```docker
 --no-cache
 ```
+Las imagenes influyen tambien en el tiempo de ejecucion y optimizacion:
+
+    fast3 -> node:20 -> 1.12 GB
+    fast -> node:20-slim -> 208 MB
+    fast2 -> node:20-alpine -> 141 MB
+
+La imagen final de fast2 tiene un peso de 141 MB mientras que fast3 en los peores casos 1.12 GB
+
+![alt text](image.png)
+
+A la hora de hacer build, con base a esto vemos que tambien existe una mejora significativa segun la imagen
+
+    fast3 -> node:20 -> 0:29.18
+    fast -> node:20-slim -> 0:10.79
+    fast2 -> node:20-alpine -> 0:07.14
+
+![alt text](image-1.png)
+
+    slow3 -> node:20 -> 0:30.25
+    slow -> node:20-slim -> 0:12.23
+    slow2 -> node:20-alpine -> 0:07.04
+
+![alt text](image-2.png)
+
+En lo anterior solo se esta mostrando que las imagenes tambien afectan el tiempo del build
 
 Paso 6: Probar
 # En otra terminal:
