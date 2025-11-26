@@ -79,6 +79,7 @@ Cold start           11.95 s     1.80 s   ← gran mejora (deps cacheadas + meno
 Cambio solo código   1.84 s      0.40 s   ← reuse de deps en fast
 Sin cambios          0.18 s      0.50 s   ← mas pasos en fast
 ```
+Sin cambios se percibe que en slow es mejor ya que en fast existe mas pasos no obstante solo pasa cuando no existe cambios sin embargo no debemos volver a ejecutar si no tiene nada que alterar.
 
 Con base a la imagen estos tiempos pueden aumentar o disminuir...
 

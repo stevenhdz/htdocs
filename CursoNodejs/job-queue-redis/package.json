@@ -1,0 +1,19 @@
+{
+  "name": "job-queue-redis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "produce": "node src/producer.js",
+    "worker": "node src/worker.js",
+     "inspect": "node src/inspect.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ioredis": "^5.8.2"
+  }
+}
