@@ -16,6 +16,7 @@ import ComponenteB from './components/ComponenteB';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import {FlowNavigatorSingleGrid} from './components/test';
+import { FlowNavigatorSingleGrid2 } from './components/test2';
 
 export const UserContext = createContext();
 
@@ -53,6 +54,7 @@ function App() {
             <MyComponentuseId />
             <MOC nombre={'steven'} edad={28}/>
             <FlowNavigatorSingleGrid />
+            <FlowNavigatorSingleGrid2 />
           </div>
         </UserContext.Provider>
         <Provider store={store}>
