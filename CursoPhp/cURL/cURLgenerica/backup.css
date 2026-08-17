@@ -1,0 +1,39 @@
+/* $ node-sass my-styles.scss my-styles.css compiles a single file manually.
+$ node-sass my-sass-folder/ -o my-css-folder/ compiles all the files in a folder manually.
+$ node-sass -w sass/ -o css/ compiles all the files in a folder automatically whenever the source file(s) are modified. -w adds a watch for changes to the file(s). */
+
+		/* son clases */ 
+		body{
+			background-color: #96989c; 
+			box-sizing: border-box; 
+			font-family: Arial;
+		}
+	
+		form{
+			background-color: white;
+			padding: 10px;
+			margin: 100px auto;
+			width: 400px;
+		}
+		
+
+		/* se llaman con id  */
+		.visible {
+			visibility: visible;
+		}
+		.invisible {
+			visibility: hidden;
+		}
+		.form1{
+			background-color: white;
+		}
+		.error{
+			background-color: #FF9185;
+			font-size: 12px;
+			padding: 10px;
+		}
+		.correcto{
+			background-color: #A0DEA7;
+			font-size: 12px;
+			padding: 10px;
+		}

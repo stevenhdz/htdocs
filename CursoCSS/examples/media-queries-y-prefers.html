@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Media queries</title>
+    <style>
+        .caja {
+            padding: 1rem;
+            background: #def
+        }
+
+        @media (max-width:700px) {
+            .caja {
+                background: #fdd
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: .001ms !important;
+                transition-duration: .001ms !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Media queries</h1>
+    <div class="caja">Cambiar� de color si el viewport \u2264 700px</div>
+</body>
+
+</html>

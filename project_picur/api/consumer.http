@@ -1,0 +1,39 @@
+
+GET https://localhost:3000/client/list HTTP/1.1
+###
+GET https://localhost:3000/robot HTTP/1.1
+###
+GET https://localhost:3000/client/list/paciente HTTP/1.1
+###
+DELETE  https://localhost:3000/client/delete/2 HTTP/1.1
+###
+POST https://localhost:3000/client/add HTTP/1.1
+content-type: application/json
+
+{
+    "id":"2",
+    "image":"https://cdn.elnacional.com/wp-content/uploads/2019/11/John-Legend-Foto-Archivo.jpg",
+    "names":"req.body.names",
+    "rol": "req.body.rol",
+    "contacts": "req.body.contacts",
+    "history":"Alergia a los INES, no puede correr.",
+    "email": "req.body.email",
+    "entity": "req.body.entity",
+    "parent": "padre",
+    "custom": "req.body.custom"
+}
+###
+PUT  https://localhost:3000/client/edit/2 HTTP/1.1
+content-type: application/json
+
+{
+    "image":"https://cdn.elnacional.com/wp-content/uploads/2019/11/John-Legend-Foto-Archivo.jpg",
+    "names":"req.body.names",
+    "rol": "req.body.rol",
+    "contacts": "req.body.contacts",
+    "history":"Alergia a los INES, no puede correr.",
+    "email": "req.body.email",
+    "entity": "req.body.entity",
+    "parent": "padre",
+    "custom": "req.body.custom"
+}

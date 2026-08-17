@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Transform/Transition/Animation</title>
+    <style>
+        .box {
+            width: 120px;
+            aspect-ratio: 1;
+            background: #def;
+            border: 1px solid #345;
+            border-radius: 10px;
+            display: grid;
+            place-items: center
+        }
+
+        .trans {
+            transition: transform .3s ease
+        }
+
+        .trans:hover {
+            transform: translateY(-6px) rotate(3deg) scale(1.05)
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .spin {
+            animation: spin 2s linear infinite
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Transform / Transition / Animation</h1>
+    <div class="box trans">Hover</div>
+    <p class="box spin" style="margin-top:12px">Spin</p>
+</body>
+
+</html>

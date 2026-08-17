@@ -1,0 +1,96 @@
+@baseUrl = http://localhost:3000
+
+# ─────────────────────────────────────────────────────
+# CLIENTES — operaciones normales
+# ─────────────────────────────────────────────────────
+
+### GET cliente existente (id=1) → 200 OK
+GET {{baseUrl}}/customers/1
+
+###
+
+### GET cliente inexistente → 404 CP_BUS_001
+# ⚠ Este error NO abre el circuit breaker (es un error de negocio, no de infra)
+GET {{baseUrl}}/customers/999
+
+###
+
+### POST cliente válido → 201 Created
+POST {{baseUrl}}/customers
+Content-Type: application/json
+
+{
+  "documento": "99999",
+  "email": "nuevo@test.com",
+  "nombre": "Carlos"
+}
+
+###
+
+### POST email inválido → 400 CP_VAL_002
+POST {{baseUrl}}/customers
+Content-Type: application/json
+
+{
+  "documento": "88888",
+  "email": "no-es-email",
+  "nombre": "Luis"
+}
+
+###
+
+### POST documento duplicado → 409 CP_VAL_001
+POST {{baseUrl}}/customers
+Content-Type: application/json
+
+{
+  "documento": "12345",
+  "email": "otro@test.com",
+  "nombre": "Duplicado"
+}
+
+###
+
+### GET /crash → 500 SYS_INF_001 (error no manejado)
+GET {{baseUrl}}/crash
+
+
+# ─────────────────────────────────────────────────────
+# CIRCUIT BREAKER — demo del patrón
+# ─────────────────────────────────────────────────────
+
+### 1. Ver estado inicial del circuit breaker → CLOSED
+GET {{baseUrl}}/circuit-breaker/status
+
+###
+
+### 2. Simular fallo de infraestructura en la BD → 500
+# Ejecutar 3 veces seguidas para abrir el circuit breaker
+POST {{baseUrl}}/circuit-breaker/simulate-failure
+
+###
+
+### 3. Ver estado tras fallos → debería pasar a OPEN
+GET {{baseUrl}}/circuit-breaker/status
+
+###
+
+### 4. Intentar operar con el breaker OPEN → 503 SYS_CB_001
+# El breaker rechaza la petición sin llegar a la BD
+GET {{baseUrl}}/customers/1
+
+###
+
+### 5. (Esperar 15 s) El breaker pasa a HALF_OPEN — probar recuperación
+# Después de 15 segundos, la siguiente petición "prueba" si la BD volvió
+GET {{baseUrl}}/customers/1
+
+###
+
+### 6. Repetir petición exitosa para cerrar el breaker (successThreshold = 2)
+GET {{baseUrl}}/customers/1
+
+###
+
+### 7. Ver estado final → debería volver a CLOSED
+GET {{baseUrl}}/circuit-breaker/status

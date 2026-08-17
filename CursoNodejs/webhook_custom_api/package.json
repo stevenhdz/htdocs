@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "@google-cloud/dialogflow": "^6.2.0",
+    "@google-cloud/storage": "^7.6.0",
+    "@google-cloud/text-to-speech": "^5.0.1",
+    "express": "^4.18.2",
+    "https": "^1.0.0",
+    "say": "^0.16.0",
+    "socket.io": "^4.7.2",
+    "sqlite3": "^5.1.6",
+    "text-to-speech-js": "^1.1.10",
+    "tts-api": "^2.5.1",
+    "uuid": "^9.0.1"
+  },
+  "scripts": {
+    "server": "nodemon server/api_socket.js",
+    "client": "node client/client.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

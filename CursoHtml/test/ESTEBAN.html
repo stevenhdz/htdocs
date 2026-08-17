@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formulario Esteban Florez</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .gender {
+            width: 13%;
+            margin: 0 auto;
+        }
+        .se {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: #4caf50; padding: 15px;">
+        <center>
+            <h4 style="font-weight: bold;">INFORMACION DEL EMPLEADO</h4>
+            <h4 style="font-weight: bold;">Ingrese los siguientes datos:</h4>
+        </center>
+    </div>
+    <form action="#">
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" class="se">
+        <label for="Estatura">Estatura:</label>
+        <input type="text" id="Estatura" class="se">
+        <label for="Sexo">Sexo:</label>
+        <div class="gender">
+            <input type="radio" id="SexoM">
+            <label for="SexMas">M</label>
+            <input type="radio" id="Seco">
+            <label for="SexFem">F</label>
+        </div>
+        <label for="Dias">Dias trabajados:</label>
+        <input type="number" id="Dias" class="se"/>
+        <label for="Email">Email:</label>
+        <input type="email" id="email" class="se" />
+        <label for="Fecha">Fecha:</label>
+        <input type="DATE" id="Fecha" class="se"/>
+        <label for="Lenguaje">Lenguaje Preferido:</label>
+        <select name="Lenguaje" class="se">
+            <option value="Español" selected>Seleccione...</option>
+            <option value="Español" >Español</option>
+            <option value="Ingles">Ingles</option>
+            <option value="Portugues">Portugues</option>
+            <option value="Frances">Frances</option>
+            <option value="Otro">Otro</option></select>
+        <label for="salarioapagar">Salario a pagar:</label> 
+        <input type="number" id="salarioapagar" class="se"/>
+        <br>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-success btn-md" style="background-color: #4caf50; color: black;">Calcular</button>
+                <button class="btn btn-success btn-md" style="background-color: #4caf50; color: black;">Enviar</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

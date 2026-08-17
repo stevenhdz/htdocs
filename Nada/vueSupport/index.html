@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+    
+    <!-- Load polyfills to support older browsers -->
+    <script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+    
+    <!-- Load Vue followed by BootstrapVue -->
+    <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+    
+    <!-- Load the following for BootstrapVueIcons support -->
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="app-vue">
+        <button class="btn btn-primary" @click="fetchUsers">
+            Get
+        </button>
+        <button class="btn btn-primary" @click="updateUser">
+            Put
+        </button>
+        <button class="btn btn-primary" @click="deleteUser">
+            Delete
+        </button>
+          <p v-if="errors.length">
+            <b>Por favor, corrija el(los) siguiente(s) error(es):</b>
+            <ul>
+              <li v-for="error in errors">{{ error }}</li>
+            </ul>
+          </p>
+        <form @submit.prevent="addUser">
+        <input placeholder="Nombres" class="add-serach-input" type="text" v-model="nombres">
+        <br>
+        <input placeholder="Apellidos" class="add-serach-input" type="text" v-model="apellidos">
+        <br>
+        <input placeholder="Fecha ingreso" class="add-serach-input" type="datetime-local" v-model="fechaentrada">
+        <br>
+        <input placeholder="Direccion" class="add-serach-input" type="text" v-model="direccion">
+        <br>
+        <input placeholder="Cantidad equipos" class="add-serach-input" type="number" v-model="cantidadequipos">
+        <br>
+        <input placeholder="Total" class="add-serach-input" type="text" v-model="valortotal">
+        <br>
+        <input placeholder="Tipo" class="add-serach-input" type="text" v-model="identificador">
+        <br>
+        <input placeholder="Respuesta" class="add-serach-input" type="text" v-model="respuesta">
+        <br>
+        <input placeholder="Telefono" class="add-serach-input" type="text" v-model="telefono">
+        <br>
+        <input placeholder="Tipo pago" class="add-serach-input" type="text" v-model="tipopago">
+        <br>
+        <input placeholder="Descripcion" class="add-serach-input" type="text" v-model="descripcion">
+        <br>
+        <input placeholder="Valor/unidad" class="add-serach-input" type="text" v-model="valorunidad">
+        <br>
+        <input placeholder="Adjunto" class="add-serach-input" type="text" v-model="adjuntar">
+        <br>
+        <input placeholder="Correo" class="add-serach-input" type="text"  v-model="correo">
+        <br>
+        <input placeholder="idsoporte" class="add-serach-input" type="text"  v-model="idsoporte">
+        <br>
+        <br>
+        <button class="btn btn-primary">
+            Post
+        </button>
+        <br>
+        <div>
+            <p v-if="loading">Loading...</p>
+            <table>
+                <tbody>
+                    <tr v-for="user in users">
+                        <td>{{user.idsoporte}}</td>
+                        <td>{{user.nombres}}</td>
+                        <td>{{user.apellidos}}</td>
+                        <td>{{user.fechaentrada}}</td>
+                        <td>{{user.direccion}}</td>
+                        <td>{{user.cantidadequipos}}</td>
+                        <td>{{user.valortotal}}</td>
+                        <td>{{user.identificador}}</td>
+                        <td>{{user.respuesta}}</td>
+                        <td>{{user.telefono}}</td>
+                        <td>{{user.tipopago}}</td>
+                        <td>{{user.descripcion}}</td>
+                        <td>{{user.valorunidad}}</td>
+                        <td>{{user.adjuntar}}</td>
+                        <td>{{user.correo}}</td>
+                        {{users}}
+                    </tr> 
+                </tbody>   
+            </table>
+        </div>
+    </form>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

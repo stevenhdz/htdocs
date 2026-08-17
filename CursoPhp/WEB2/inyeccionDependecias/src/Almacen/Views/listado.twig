@@ -1,0 +1,17 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <h2>PHP con FastRoute, PHP-DI y Twig</h2>
+    <h4>Listado de artículos</h4>
+
+    <ul class="collection">
+        {% for art in articulos %}
+            <li class="collection-item avatar">
+                <i class="mdi-insert-comment circle"></i>
+                <b class="title">{{art.getDescripcion()}}</b>
+                <p>{{art.getPrecio()}}</p>
+                <a href="/articulo/{{art.getId()}}">Ver más</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

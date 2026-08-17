@@ -1,0 +1,1 @@
+sudo pip3 install -r ../test2/requirements.txt

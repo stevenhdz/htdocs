@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML + Tailwind: Básico a Avanzado</title>
+  <!-- Tailwind generado por tu build -->
+  <link href="src/output.css" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 p-6 md:p-10">
+  <!-- Header -->
+  <header class="flex items-center justify-between gap-4 mb-10">
+    <h1 class="text-2xl md:text-3xl font-bold">HTML + Tailwind: de 0 a avanzado</h1>
+    <button
+      class="px-4 py-2 rounded-lg bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-900"
+      onclick="document.documentElement.classList.toggle('dark')">
+      Cambiar tema
+    </button>
+  </header>
+
+  <main class="space-y-12">
+
+    <!-- 1) COLORES -->
+    <section id="colores" class="space-y-4">
+      <h2 class="text-xl font-semibold">1) Colores</h2>
+
+      <!-- Texto -->
+      <div class="grid gap-2 md:grid-cols-4">
+        <p class="p-3 rounded border border-gray-200 dark:border-gray-800 text-red-500">Texto rojo</p>
+        <p class="p-3 rounded border border-gray-200 dark:border-gray-800 text-blue-500">Texto azul</p>
+        <p class="p-3 rounded border border-gray-200 dark:border-gray-800 text-green-500">Texto verde</p>
+        <p class="p-3 rounded border border-gray-200 dark:border-gray-800 text-yellow-500">Texto amarillo</p>
+      </div>
+
+      <!-- Fondo -->
+      <div class="grid gap-2 md:grid-cols-4">
+        <div class="p-3 rounded bg-gray-200 text-gray-900">Fondo gris claro</div>
+        <div class="p-3 rounded bg-gray-800 text-white">Fondo gris oscuro</div>
+        <div class="p-3 rounded bg-purple-500 text-white">Fondo morado</div>
+        <div class="p-3 rounded bg-pink-400 text-white">Fondo rosado</div>
+      </div>
+
+      <!-- Gradiente -->
+      <div class="p-4 rounded text-white bg-gradient-to-r from-blue-400 to-purple-600">
+        Gradiente de azul a morado
+      </div>
+    </section>
+
+    <!-- 2) MEDIDAS -->
+    <section id="medidas" class="space-y-4">
+      <h2 class="text-xl font-semibold">2) Medidas</h2>
+
+      <!-- Anchuras -->
+      <div class="flex items-end gap-2">
+        <div class="w-20 h-10 bg-red-300 rounded"></div>
+        <div class="w-40 h-10 bg-red-400 rounded"></div>
+        <div class="w-60 h-10 bg-red-500 rounded"></div>
+      </div>
+
+      <!-- Alturas -->
+      <div class="flex items-end gap-2">
+        <div class="w-32 h-16 bg-blue-300 rounded"></div>
+        <div class="w-32 h-32 bg-blue-400 rounded"></div>
+        <div class="w-32 h-48 bg-blue-500 rounded"></div>
+      </div>
+
+      <!-- Completo -->
+      <div class="w-full h-24 bg-green-300 rounded"></div>
+    </section>
+
+    <!-- 3) ESTADOS (hover, active, focus) -->
+    <section id="estados" class="space-y-4">
+      <h2 class="text-xl font-semibold">3) Estados (hover, active, focus)</h2>
+
+      <div class="flex flex-wrap gap-3">
+        <!-- Hover -->
+        <button class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 rounded transition">
+          Hover para cambiar color
+        </button>
+
+        <!-- Active -->
+        <button class="bg-gray-600 active:bg-black text-white px-4 py-2 rounded transition">
+          Presióname (active)
+        </button>
+
+        <!-- Focus en input -->
+        <input
+          class="border border-gray-400 focus:border-blue-500 focus:ring focus:ring-blue-200 px-3 py-2 rounded outline-none"
+          placeholder="Foco cambia el borde y ring" />
+      </div>
+    </section>
+
+    <!-- 4) PSEUDOCLASES -->
+    <section id="pseudoclases" class="space-y-4">
+      <h2 class="text-xl font-semibold">4) Pseudoclases</h2>
+
+      <!-- Hover + scale -->
+      <div class="bg-purple-400 p-6 rounded hover:scale-110 transition-transform w-fit">
+        Se agranda al pasar el mouse
+      </div>
+
+      <!-- Focus + shadow -->
+      <input
+        class="border p-2 rounded focus:shadow-md focus:shadow-blue-300 focus:outline-none"
+        placeholder="Focus con sombra" />
+
+      <!-- Disabled -->
+      <button class="bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed" disabled>
+        Botón deshabilitado
+      </button>
+    </section>
+
+    <!-- 5) RESPONSIVO -->
+    <section id="responsivo" class="space-y-4">
+      <h2 class="text-xl font-semibold">5) Diseño Responsivo</h2>
+
+      <!-- Texto adaptable -->
+      <p class="text-sm md:text-lg lg:text-2xl">
+        Este texto crece en md y lg
+      </p>
+
+      <!-- Imagen adaptable -->
+      <img src="https://picsum.photos/600/300"
+           alt="Imagen aleatoria"
+           class="w-40 md:w-64 lg:w-96 rounded-lg border border-gray-200 dark:border-gray-800" />
+
+      <!-- Mostrar/Ocultar por breakpoint -->
+      <div class="space-y-1">
+        <p class="block md:hidden text-red-600">Solo visible en móvil (md:hidden)</p>
+        <p class="hidden md:block text-green-600">Visible desde md en adelante (hidden md:block)</p>
+      </div>
+    </section>
+
+    <!-- 6) FLEXBOX -->
+    <section id="flexbox" class="space-y-4">
+      <h2 class="text-xl font-semibold">6) Flexbox</h2>
+
+      <!-- Horizontal -->
+      <div class="flex gap-3">
+        <div class="bg-red-300 p-4 rounded">A</div>
+        <div class="bg-red-400 p-4 rounded">B</div>
+        <div class="bg-red-500 p-4 rounded">C</div>
+      </div>
+
+      <!-- Centrado total -->
+      <div class="flex items-center justify-center h-40 bg-gray-100 dark:bg-gray-900 rounded">
+        <p>Centrado</p>
+      </div>
+
+      <!-- Vertical -->
+      <div class="flex flex-col gap-2">
+        <button class="bg-blue-500 text-white p-2 rounded">1</button>
+        <button class="bg-blue-500 text-white p-2 rounded">2</button>
+        <button class="bg-blue-500 text-white p-2 rounded">3</button>
+      </div>
+    </section>
+
+    <!-- 7) GRID -->
+    <section id="grid" class="space-y-4">
+      <h2 class="text-xl font-semibold">7) Grid</h2>
+
+      <!-- Tres columnas -->
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-yellow-300 p-4 rounded">1</div>
+        <div class="bg-yellow-300 p-4 rounded">2</div>
+        <div class="bg-yellow-300 p-4 rounded">3</div>
+      </div>
+
+      <!-- 2 cols móvil, 4 cols en md+ -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-green-300 p-4 rounded">A</div>
+        <div class="bg-green-300 p-4 rounded">B</div>
+        <div class="bg-green-300 p-4 rounded">C</div>
+        <div class="bg-green-300 p-4 rounded">D</div>
+      </div>
+
+      <!-- Span -->
+      <div class="grid grid-cols-3 gap-4">
+        <div class="col-span-2 bg-blue-300 p-4 rounded">Grande (col-span-2)</div>
+        <div class="bg-blue-400 p-4 rounded">Pequeña</div>
+      </div>
+    </section>
+
+    <!-- 8) DARK MODE -->
+    <section id="darkmode" class="space-y-4">
+      <h2 class="text-xl font-semibold">8) Dark Mode</h2>
+
+      <div class="p-6 rounded border bg-white text-black dark:bg-gray-900 dark:text-white dark:border-gray-800">
+        Este bloque alterna con <code>.dark</code> en &lt;html&gt;.
+      </div>
+
+        <button
+        class="px-4 py-2 rounded bg-gray-700 text-white dark:bg-gray-200 dark:text-gray-900"
+        onclick="document.documentElement.classList.toggle('dark')">
+        Alternar Dark Mode
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-sm text-gray-500">
+    Hecho con Tailwind. Practica tocando cada ejemplo y leyendo las clases.
+  </footer>
+</body>
+</html>

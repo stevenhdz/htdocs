@@ -1,0 +1,114 @@
+### Registro de usuario (RF1)
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Accept-Language: pt
+
+{
+  "name": "Usuario Prueba",
+  "email": "prueba@example.com",
+  "password": "123456"
+}
+
+### Login (RF2)
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Accept-Language: pt
+
+{
+  "email": "prueba@example.com",
+  "password": "123456"
+}
+
+### Solicitar recuperación de contraseña (RF3)
+POST http://localhost:8080/api/auth/forgot-password
+Content-Type: application/json
+Accept-Language: pt
+
+{
+  "email": "prueba@example.com"
+}
+
+### Resetear contraseña (RF3)
+POST http://localhost:8080/api/auth/reset-password
+Content-Type: application/json
+Accept-Language: pt
+
+{
+  "token": "token-que-recibiste-por-consola",
+  "newPassword": "nuevaPassword123"
+}
+
+### Obtener lista completa de productos (RF4)
+GET http://localhost:8080/api/products
+Authorization: Bearer XXX
+
+### Obtener lista de productos filtrados por categoría (ejemplo hamburguesas)
+GET http://localhost:8080/api/products?category=hamburguesas
+Authorization: Bearer XXX
+
+### Obtener detalle de producto por ID (RF5)
+GET http://localhost:8080/api/products/1
+Authorization: Bearer XXX
+
+### Buscar productos por palabra clave (RF6)
+GET http://localhost:8080/api/products/search?q=bbq
+Authorization: Bearer XXX
+
+### Actualizar nuevo producto (solo si tienes permiso y endpoint para crear productos)
+POST http://localhost:8080/api/products
+Content-Type: application/json
+Authorization: Bearer XXX
+
+  {
+        "id": 1,
+        "name": "Classic Cheeseburger2",
+        "description": "1Delicious beef patty with cheese.",
+        "price": 8.99,
+        "imageUrl": "https://example.com/cheeseburger.jpg",
+        "category": {
+            "id": 1
+        }
+    }
+
+### Crear orden
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+Accept-Language: pt
+Authorization: Bearer XXX
+
+{
+    "items": [
+        {
+            "productId": 1,
+            "quantity": 2
+        },
+        {
+            "productId": 2,
+            "quantity": 3
+        }
+    ],
+    "note": "Sin cebolla"
+}
+
+### LISTAR orden especifica
+GET http://localhost:8080/api/orders/43
+Accept-Language: pt
+Authorization: Bearer XXX
+
+
+### listar ordenes creadas por mi
+GET http://localhost:8080/api/orders/me
+Accept-Language: pt
+Authorization: Bearer XXX
+
+
+### actualizar ordenes estado
+PATCH http://localhost:8080/api/orders/43/status
+Content-Type: application/json
+Accept-Language: pt
+Authorization: Bearer XXX
+
+{
+    "status": "ON_THE_WAY",
+    "note": "Sale a domicilio"
+}

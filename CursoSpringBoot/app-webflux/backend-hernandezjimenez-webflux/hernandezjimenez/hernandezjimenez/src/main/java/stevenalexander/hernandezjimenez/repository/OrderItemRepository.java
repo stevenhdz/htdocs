@@ -1,0 +1,9 @@
+package stevenalexander.hernandezjimenez.repository;
+
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Flux;
+import stevenalexander.hernandezjimenez.model.OrderItem;
+
+public interface OrderItemRepository extends ReactiveCrudRepository<OrderItem, Long> {
+    Flux<OrderItem> findByOrderId(Long orderId);
+}

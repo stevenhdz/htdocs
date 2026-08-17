@@ -1,0 +1,7 @@
+GET https://localhost:3001/api/logs/ HTTP/2.0
+Content-type: application/json
+
+### logs one
+
+GET https://localhost:3001/api/logs/61fc4ca80291f3bec9764fdf HTTP/2.0
+Content-type: application/json

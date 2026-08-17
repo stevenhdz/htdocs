@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fondos, bordes y sombras</title>
+    <style>
+        .bg {
+            background: linear-gradient(135deg, #eef, transparent 60%);
+            padding: 1rem;
+            border-radius: 12px
+        }
+
+        .borde {
+            border: 6px double #89a;
+            border-radius: 20px / 40px
+        }
+
+        .sombra {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .35)
+        }
+
+        .outline {
+            outline: 3px solid #06c;
+            outline-offset: 6px
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Decoraci�n</h1>
+    <div class="bg borde sombra">Bloque con fondo, borde y sombra</div>
+    <p class="outline">Outline con offset</p>
+</body>
+
+</html>

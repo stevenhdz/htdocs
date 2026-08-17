@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C87F2CCD-14E1-456A-82EE-596C929746C1}|BlogCore\\BlogCore.csproj|c:\\users\\stevenhdz\\downloads\\blogcore\\blogcore\\blogcore\\areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C87F2CCD-14E1-456A-82EE-596C929746C1}|BlogCore\\BlogCore.csproj|solutionrelative:blogcore\\areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87F2CCD-14E1-456A-82EE-596C929746C1}|BlogCore\\BlogCore.csproj|c:\\users\\stevenhdz\\downloads\\blogcore\\blogcore\\blogcore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C87F2CCD-14E1-456A-82EE-596C929746C1}|BlogCore\\BlogCore.csproj|solutionrelative:blogcore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB0E443B-AFDB-4C0C-890E-D861C49F76C6}|BlogCore.AccesoDatos\\BlogCore.AccesoDatos.csproj|c:\\users\\stevenhdz\\downloads\\blogcore\\blogcore\\blogcore.accesodatos\\data\\inicializador\\inicializadorbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB0E443B-AFDB-4C0C-890E-D861C49F76C6}|BlogCore.AccesoDatos\\BlogCore.AccesoDatos.csproj|solutionrelative:blogcore.accesodatos\\data\\inicializador\\inicializadorbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87F2CCD-14E1-456A-82EE-596C929746C1}|BlogCore\\BlogCore.csproj|c:\\users\\stevenhdz\\downloads\\blogcore\\blogcore\\blogcore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87F2CCD-14E1-456A-82EE-596C929746C1}|BlogCore\\BlogCore.csproj|solutionrelative:blogcore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB0E443B-AFDB-4C0C-890E-D861C49F76C6}|BlogCore.AccesoDatos\\BlogCore.AccesoDatos.csproj|c:\\users\\stevenhdz\\downloads\\blogcore\\blogcore\\blogcore.accesodatos\\data\\inicializador\\iinicializadorbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB0E443B-AFDB-4C0C-890E-D861C49F76C6}|BlogCore.AccesoDatos\\BlogCore.AccesoDatos.csproj|solutionrelative:blogcore.accesodatos\\data\\inicializador\\iinicializadorbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "BlogCore\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "BlogCore\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-19T21:21:57.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore\\appsettings.json",
+              "RelativeDocumentMoniker": "BlogCore\\appsettings.json",
+              "ToolTip": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore\\appsettings.json",
+              "RelativeToolTip": "BlogCore\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-19T21:16:33.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore\\Program.cs",
+              "RelativeDocumentMoniker": "BlogCore\\Program.cs",
+              "ToolTip": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore\\Program.cs",
+              "RelativeToolTip": "BlogCore\\Program.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAAAD4AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T21:16:33.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IInicializadorBD.cs",
+              "DocumentMoniker": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore.AccesoDatos\\Data\\Inicializador\\IInicializadorBD.cs",
+              "RelativeDocumentMoniker": "BlogCore.AccesoDatos\\Data\\Inicializador\\IInicializadorBD.cs",
+              "ToolTip": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore.AccesoDatos\\Data\\Inicializador\\IInicializadorBD.cs",
+              "RelativeToolTip": "BlogCore.AccesoDatos\\Data\\Inicializador\\IInicializadorBD.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T21:16:33.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InicializadorBD.cs",
+              "DocumentMoniker": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore.AccesoDatos\\Data\\Inicializador\\InicializadorBD.cs",
+              "RelativeDocumentMoniker": "BlogCore.AccesoDatos\\Data\\Inicializador\\InicializadorBD.cs",
+              "ToolTip": "C:\\Users\\stevenhdz\\Downloads\\BlogCore\\BlogCore\\BlogCore.AccesoDatos\\Data\\Inicializador\\InicializadorBD.cs",
+              "RelativeToolTip": "BlogCore.AccesoDatos\\Data\\Inicializador\\InicializadorBD.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAowDIAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T21:16:33.69Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

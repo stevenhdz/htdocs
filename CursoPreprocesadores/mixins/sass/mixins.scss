@@ -1,0 +1,17 @@
+@mixin cuadrado (){
+    width: auto;
+    height: auto;
+}
+
+.cd1{
+    background-color: blue;
+    @include cuadrado()
+}
+.cd2{
+    background-color: black;
+    @include cuadrado()
+}
+.cd3{
+    background-color: orange;
+    @include cuadrado()
+}

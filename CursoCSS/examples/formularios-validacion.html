@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Formularios y validaci�n</title>
+    <style>
+        input,
+        select {
+            background: #f6f8ff;
+            border: 1px solid #89a;
+            border-radius: 6px;
+            padding: .5rem
+        }
+
+        input:focus-visible {
+            outline: 2px solid #06c
+        }
+
+        input:invalid {
+            border-color: #d33
+        }
+
+        input:valid {
+            border-color: #0a7
+        }
+
+        input::placeholder {
+            color: #789
+        }
+
+        .group:has(input:focus-visible) label {
+            color: #06c
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Validaci�n nativa</h1>
+    <div class="group">
+        <label>Correo</label>
+        <p><input type="email" placeholder="t�@correo.com" required></p>
+    </div>
+    <p><select required>
+            <option value="">Elegir\u2026</option>
+            <option>Opci�n</option>
+        </select></p>
+</body>
+
+</html>

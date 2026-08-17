@@ -1,0 +1,37 @@
+### register [queda con el role user]
+curl --location --request POST 'https://127.0.0.1:3000/v1/register' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "stevenhdzx18",
+    "password": "Admin*1ñ"
+}'
+
+### auth [username admin - password admin, username rrhh, password rrhh]
+curl --location --request POST 'https://127.0.0.1:3000/v1/login' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "stevenhdzx18",
+    "password": "Admin*1ñ"
+}'
+
+### user info
+curl --location --request POST 'https://127.0.0.1:3000/v1/information/external/one' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNTg4NjM0OSwianRpIjoiYmU5N2I5NWMtNjA3Zi00MGUyLTk0MTktNzYwYzVkNTg3NGViIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InN0ZXZlbmhkengxOCIsIm5iZiI6MTcxNTg4NjM0OSwiY3NyZiI6IjA2MzM1YmI0LWY2NGUtNGIzNS1iOGQwLTFmYzk0NWUwYzQ2MCIsImV4cCI6MTcxNTg4Njg0OX0.zotf7THUZjGWiEL4A2fkE-WrZbCjJ0v93NNRJpqE9hD3QKBOPZI58vkYHybUJAWgAaXUlIvMLGM_Dq0cclnJpg' \
+--data '{
+    "id": 101
+}'
+
+### users info
+curl --location --request POST 'https://127.0.0.1:3000/v1/information/external' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNTg4Njc1NSwianRpIjoiY2E3ZDExNTItYzgzMy00OWVhLWFhZmMtYjgzMWVhNTAzZjYyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InN0ZXZlbmhkengxOCIsIm5iZiI6MTcxNTg4Njc1NSwiY3NyZiI6IjYwMzJiM2I0LWJmYjUtNGJhZi05ODBiLTk1MGE2ZjFlN2RmYyIsImV4cCI6MTcxNTg4NzI1NX0.GBv4ugIuhwP9O1eqLd8QpJQkJkH1HVCeKaJHALMjtcfT80ngAPVMlzXOtS1hDxoMmdMye6tlmABHm19tvvhgJA'
+
+### logout
+curl --location --request POST 'https://127.0.0.1:3000/v1/logout' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNTg4NzE5MywianRpIjoiYThlYjRhOTUtZDNhZC00MzVmLWEwYzEtZWY5ODljMzQzOWUxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InN0ZXZlbmhkengxOCIsIm5iZiI6MTcxNTg4NzE5MywiY3NyZiI6ImY3NTAwM2IzLTJiZDItNDc0My04MWM1LTAyZmEzYmUwN2VjMSIsImV4cCI6MTcxNTg4NzY5M30.Q5CVRrgRgzOgCcWrzUpva3B1V6VYs_sjhNdN70bccereQoFNOvHyOjLad3RoN6vr0-SQ_ntW5m-VavKRA4EZ6g'
+
+### route no exists any
+curl --location --request POST 'https://127.0.0.1:3000/v1/PRUEBA'
+
+### route DOCS swagger
+curl --location --request GET 'https://127.0.0.1:3000/v1/swagger'

@@ -1,0 +1,8 @@
+{
+    "require": {
+        "kint-php/kint": "*",
+        "illuminate/database": "*",
+        "laravel/installer": "*",
+        "laravel-shift/blueprint": "*"
+    }
+}

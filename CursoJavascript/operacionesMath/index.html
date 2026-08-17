@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../operacionesMath/css/style.css">
+    <script src="../operacionesMath/js/calc.js"></script>
+</head>
+<body class="bg" onload="foco()">
+    <form action="">
+        <table class="table">
+            <tr>
+                <td class="title" colspan="2">
+                    Operaciones Matematicas Basicas
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><br></td>
+            </tr>
+            <tr>
+                <td class="title">
+                    numero 1:
+                </td>
+                <td>
+                    <input type="number" class="inputR" name="numero2" id="numero2">
+                </td>
+            </tr>
+            <tr>
+                <td class="title">
+                    numero 2:
+                </td>
+                <td>
+                    <input type="number" class="inputR" name="numero1" id="numero1">  
+                </td>
+            </tr>
+            <tr>
+                <td class="title">
+                    Resultado:
+                </td>
+                <td>
+                    <input type="text" class="inputR" name="result" id="result" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" onclick="Sumar()" class="button" value="Suma">
+                
+                    <input type="button" onclick="resta_y_muestra()" class="button" value="Resta">
+                
+                    <input type="button" onclick="mult_y_muestra()" class="button" value="Multiplicacion">
+               
+                    <input type="button" onclick="division_y_muestra()" class="button" value="Division">
+                </td>
+            </tr>
+        </table>
+    </form>  
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "hello-docker",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "express": "^4.19.2",
+    "npm-ci": "^0.0.2"
+  }
+}

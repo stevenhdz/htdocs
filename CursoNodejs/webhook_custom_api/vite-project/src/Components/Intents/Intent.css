@@ -1,0 +1,66 @@
+/* IntentForm.css */
+
+.intent-form-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.intent-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.styled-select,
+.styled-input,
+.styled-button,
+.styled-submit-button {
+    margin-top: 5px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.styled-select {
+    width: 100%;
+}
+
+.styled-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.styled-submit-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    border: none;
+}
+
+.intent-list {
+    margin-top: 20px;
+}
+
+.intent-list h2 {
+    color: #333;
+}
+
+.intent-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.intent-list li {
+    margin-bottom: 10px;
+}
+
+.intent-list strong {
+    font-weight: bold;
+}

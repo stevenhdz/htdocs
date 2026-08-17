@@ -1,0 +1,24 @@
+table{
+	
+	font-family:"tahoma";
+	text-size:20pt;
+	padding-left:12cm;
+	padding-bottom:30px;
+}
+
+ input[type="button"] {
+	font-weight:bold;
+	font-family:"tahoma";
+	background: #3a7999;
+	color: #f2f2f2;
+	font-size: 15px;
+	border-radius: 5px;
+	width:200px;
+	height:20pt;
+}
+
+form{
+	padding-left:7cm;
+	padding-right:7cm
+}
+

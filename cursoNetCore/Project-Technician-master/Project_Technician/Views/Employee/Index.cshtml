@@ -1,0 +1,240 @@
+@model IEnumerable<Project_Technician.Models.Employee>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    Layout = "_Layout";
+}
+
+
+<center><h1 class="font-weight-light">Lista de Servicios</h1></center>
+
+<style>
+
+
+    .table-earnings {
+        background: #F3F5F6;
+    }
+
+    table {
+        display: block;
+        height: 650px;
+        overflow-y: auto;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #myInput {
+    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+}
+
+#myTable th, #myTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px; /* Add padding */
+}
+
+#myTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd; 
+}
+
+#myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+}
+</style>
+
+
+<p>
+    <a href="../Home/New" class="btn btn-sm text-light bg-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i>Agregar</a>
+    <a href="../Home/Index" class="btn btn-sm text-light bg-danger rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i>Regresar</a>
+</p>
+
+
+
+<!--filtrar por id="myTable-->
+<center>
+    <div class="col-md-6 form-control info-color">
+        <input class="form-control my-0 py-1 amber-border" type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar" title="Filtrar">
+    </div>
+</center>
+
+<table class="table text-monospace text-uppercase table-striped table-bordered"
+       width="300">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullNombre)
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Respuesta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GarantiaMarca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GarantiaTecnica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoServicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorPagar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadEquipos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroCelular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correos)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+        </tr>
+    </thead>
+    <tbody id="myTable" >
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                <p>
+                    <a asp-action="Edit" asp-route-id="@item.IdPersona" class="btn btn-sm text-light bg-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i>Editar</a>
+                    <br>
+                    <a asp-action="Details" asp-route-id="@item.IdPersona" class="btn btn-sm text-light bg-info rounded-0 text-uppercase">Detalles</a>
+                    <br>
+                    <a asp-action="Delete" asp-route-id="@item.IdPersona" class="btn btn-sm text-light bg-danger rounded-0 text-uppercase">Eliminar</a>
+                </p>
+            </td>
+            <td>
+                <a href="~/images/@item.ProfilePicture"
+                   class="rounded-circle"
+                   height="50" width="50"
+                   asp-append-version="true">
+
+
+                    <img src="~/images/@item.ProfilePicture"
+                         height="50" width="50"
+                         asp-append-version="true" />
+
+                </a>
+                <br />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                <span class="d-inline-block text-truncate" style="max-width: 150px;">     
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </span>
+            </td>
+            <td>
+                <span class="d-inline-block text-truncate" style="max-width: 150px;">     
+                    @Html.DisplayFor(modelItem => item.Respuesta)
+                </span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GarantiaMarca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GarantiaTecnica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoServicio)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.ValorPagar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadEquipos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroCelular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correos)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.Total)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+  @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Formulario</title>
+    
+    <script>
+        function multiplicar(){
+            var num1 = document.getElementById("dias").value
+            
+            var multiplicar = parseInt(num1) * 30284;
+            alert("Los días a pagar son: " + multiplicar)
+            
+        }
+
+
+    </script>
+    <style>
+        .formulario{
+    margin-left: 440px;
+    margin-right: 440px;
+    }
+
+        .formulario2{
+        margin-left: 450px;
+        margin-right: 450px;
+
+    }
+
+    .formulario3{
+    margin-left: 396px;
+    margin-right: 396px;
+
+    }
+
+    .formulario4{
+    margin-left: 500px;
+    margin-right: 500px;
+
+    }
+
+    .formulario5{
+    margin-left: 458px;
+    margin-right: 458px;
+    }
+
+    .formulario6{
+    margin-left: 382px;
+    margin-right: 382px;
+    }
+
+    .formulario7{
+    margin-left: 400px;
+    margin-right: 400px
+
+    }
+    .head{
+        background-color: limegreen;
+    }
+
+    .head2{
+        margin-left: 470px;
+        margin-right: 470px
+    }
+    </style>
+</head>
+<body>
+    <header class="head">
+        <div class="head2">
+            <h3>INFORMACIÓN DEL EMPLEADO</h3>
+            <h4>Ingrese los siguientes datos: </h4>
+        </div>
+    </header>
+    
+
+    
+    <form>
+        
+        
+            <label for="nombre">Nombre: </label>
+            <input id="nombre" type="text"  placeholder="Escriba nombre" class="formulario" name="nombre"></input>  <br> <br>
+            
+            <label for="estatura">Estatura:  </label>
+            <input id="estatura" type="text"  placeholder="Digite estatura" class="formulario" name="estatura"></input> <br> <br>
+
+            <label>Sexo: </label>
+            
+            <div class="formulario4">
+                <input id="sexo" type="radio" name="color" ></input>
+                <label for="sexo" >M</label>
+            
+                <input id="sexo2" type="radio" name="color" ></input> 
+                <label for="sexo2" >F</label> <br>  <br>
+            </div>
+
+            <label for="salario">Salario:  </label>
+            <input id="salario" type="text"  placeholder="Digite salario" class="formulario2" name="correo"></input>  <br> <br>
+
+            <label for="dias">Días trabajados:  </label>
+            <input id="dias" type="number"  placeholder="Digite días trabajados" class="formulario3" name="correo"></input>  <br> <br>
+
+            <label for="correo">Correo:  </label>
+            <input id="correo" type="email"  placeholder="Ingrese correo"  name="correo" class="formulario2"></input> <br> <br>
+
+
+
+            <label for="fecha">Fecha:   </label>
+            <input id="fecha" type="date"   name="fecha" class="formulario5"></input> <br> <br>
+
+            <label for="menu">Lenguaje favorito:   </label>
+            <select id="menu" name="menu"  class="formulario6">
+                <option>Seleccione...</option>
+                <option>C#</option>
+                <option>Python</option>
+                <option>JavaScript</option>
+            </select> <br> <br>
+
+            <label for="pagar">Salario a pagar:   </label>
+            <input id="pagar" type="text"   name="pagar" class="formulario7" disabled></input> <br> <br>
+
+            <center>
+                <input type="button" value="Calcular" class="head"onclick="multiplicar()"></input>
+                <input type="button" value="Enviar" class="head" ></input>
+            </center>
+            
+
+        
+    </form>
+</body>
+</html>

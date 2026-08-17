@@ -1,0 +1,3 @@
+﻿id;Nombre;Cedula;Edad;Genero;Origen etnico;Nivel socioeconómico;Situación laboral de los padres;Nivel educativo de los padres;Relación con los padres;Recursos comunitarios;Transporte;Calificacion1;Calificacion2;Calificacion3;Calificacion4;Asistencia;Materia;Desertó
+1;Ana;1017247467;18;F;Asiatico;Alto;Empleado;Universitario;Buena;Amplios;Privado;1;1;1;1;3;Mateticas;Sí
+2;Luis;1017247468;16;M;Hispano;Bajo;Desempleado;Secundaria;Regular;Limitados;Público;5;5;5;5;12;Ingles;No

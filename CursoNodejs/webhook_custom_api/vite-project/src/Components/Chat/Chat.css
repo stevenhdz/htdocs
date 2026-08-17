@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+h1 {
+    color: #333;
+}
+
+#chat-container {
+    height: 86.2vh;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fdf6fd;
+    padding: 4px 4px 0px 4px;
+}
+
+#chat-content {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+#chat-messages {
+    max-height: 100%;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+
+::-webkit-scrollbar {
+    width: 100%;
+    height: 20px;
+}
+
+#chat {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding-right: 2px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#formularioMensaje {
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    background-color: #892CDC;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+#mensajeInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 4px;
+}
+
+#enviarBtn {
+    padding: 10px;
+    border: 1px solid #222831;
+    border-radius: 5px;
+    background-color: #BC6FF1;
+    color: white;
+    cursor: pointer;
+}
+
+li {
+    padding: 8px 5px 8px 5px;
+    border: 1px solid #babeba;
+    border-radius: 5px;
+    border-bottom-width: initial;
+    margin-bottom: 1%;
+    border-collapse: collapse;
+}
+
+i {
+    color: #BC6FF1;
+}
+
+.mensaje-usuario {
+    text-align: right;
+    background-color: #fdf6fd;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-left: 40px;
+}
+
+.mensaje-usuario i {
+    margin-left: 5px;
+}
+
+.mensaje-usuario-agent {
+    background-color: #D9ACF5;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-right: 40px;
+}
+
+.mensaje-usuario-agent i {
+    margin-right: 5px;
+}
+
+.mensaje-time {
+    text-align: center;
+    font-size: 10px;
+    border: none;
+}
+
+.mensaje-webhook {
+    text-align: left;
+    background-color: #454e59;
+    color: #fdf6fd;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-right: 40px;
+}
+
+.mensaje-webhook i,
+.mensaje-usuario i {
+    margin-right: 8px;
+}
+
+.mensaje-webhook i {
+    margin-right: 5px;
+}
+
+#escribiendoMensaje {
+    position: fixed;
+    bottom: 13vh;
+    font-size: 12px;
+    color: #ccc;
+    left: 15px;
+}

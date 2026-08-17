@@ -1,0 +1,8 @@
+flask
+python-dotenv
+pysqlite3
+tabulate
+colorama
+gunicorn
+flask-cors
+pyopenssl

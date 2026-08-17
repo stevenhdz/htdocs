@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "docxtemplater": "^3.42.4",
+    "exceljs": "^4.4.0",
+    "html-pdf": "^3.0.1",
+    "mammoth": "^1.6.0",
+    "officegen": "^0.6.5",
+    "pdfkit": "^0.14.0"
+  }
+}

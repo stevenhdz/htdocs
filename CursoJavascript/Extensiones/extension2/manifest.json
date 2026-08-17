@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Blocker Extension",
+  "version": "1.0",
+  "description": "Bloquea sitios web específicos.",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "declarativeNetRequest",
+    "storage",
+    "management"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "<all_urls>",
+    "https://api.example.com/*"
+  ],
+  "action": {
+    "default_icon": {
+      "128": "icon_active.png"
+    }
+  }
+}

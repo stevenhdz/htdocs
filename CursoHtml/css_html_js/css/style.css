@@ -1,0 +1,111 @@
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td,
+#customers th {
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: white;
+}
+
+#customers tr:hover {
+  background-color: white;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4caf50;
+  color: white;
+}
+
+input[type="email"],
+[type="number"],
+[type="text"] {
+  width: 30%;
+  padding: 7px 14px;
+  border: 1;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+input[type="email"]:focus,
+[type="number"]:focus,
+[type="text"]:focus {
+  background-color: lightblue;
+  font-size: 18px;
+}
+
+select {
+  width: 35%;
+  padding: 10px 17px;
+  border: 1;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  font-size: 15px;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  background-color: #4caf50;
+  border: none;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: black;
+  font-size: 15px;
+}
+#button{
+  float:none;
+	text-align:center;
+}
+
+input[type="date"] {
+  height: 35px;
+  width: 35%;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  outline: none;
+  border: 1;
+  border-radius: 3px;
+  padding: 0 3px;
+  color: rgb(2, 2, 2);
+}
+input[type="date"]::-webkit-datetime-edit-month-field {
+  color: rgb(0, 0, 0);
+}
+input[type="date"]::-webkit-datetime-edit-day-field {
+  color: rgb(0, 0, 0);
+}
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: rgb(0, 0, 0);
+}
+input[type="date"]::-webkit-clear-button {
+  font-size: 18px;
+  height: 30px;
+  position: relative;
+  right: 5px;
+  margin-right: 4px;
+}
+input[type="date"]::-webkit-inner-spin-button {
+  height: 30px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  font-size: 18px;
+}
+
+pre {
+  text-align: center;
+  font-size: 15px;
+  color: black;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "miseruntime",
+  "version": "1.0.0",
+  "description": "Este proyecto usa **mise** para gestionar versiones de Node.js de forma reproducible. curl https://mise.run | sh",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,5 @@
+idPrestamos,NumeroPrestamo,FechaPrestamo,HoraPrestamo,idTipoPrestamo,idBibliotecario,idAlumno
+1,1,2020-03-04,12:00,1,1,1
+2,4,2021-08-04,7:47,3,1,2
+4,3,2021-07-07,7:47,3,1,2
+5,17,2019-03-04,7:50,2,1,2

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Print CSS</title>
+  <style>
+    /* Estilos de pantalla (solo para que notes la diferencia) */
+    @media screen {
+      body { font-family: system-ui, sans-serif; color: #223; }
+      .no-print { background: #fee; padding: 4px 8px; border-radius: 6px; }
+      .only-print { display: none; } /* esto se verá solo al imprimir */
+    }
+
+    /* Estilos para imprimir */
+    @media print {
+      /* Márgenes del documento (opcional) */
+      @page { margin: 15mm; }
+
+      body { font: 12pt/1.4 serif; color: #000; }
+
+      /* Mostrar la URL de cada enlace al lado del texto */
+      a::after { content: " (" attr(href) ")"; }
+
+      /* Ocultar cosas que no queremos en papel */
+      .no-print { display: none !important; }
+
+      /* Mostrar solo en impresión */
+      .only-print { display: block !important; }
+
+      /* Evitar desbordes feos con URLs largas */
+      a, p { word-break: break-word; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Reglas de impresión</h1>
+
+  <p>
+    En pantalla verás solo el texto del
+    <a href="https://example.com/una/url/larga?utm_source=demo&ref=print">enlace</a>.
+    En papel aparecerá también la URL.
+  </p>
+
+  <p class="no-print">
+    Esto es útil en pantalla, pero <strong>no se imprimirá</strong>.
+  </p>
+
+  <p class="only-print">
+    Este aviso <em>solo</em> aparece en la impresión (por ejemplo, “Documento generado el 02/11/2025”).
+  </p>
+</body>
+</html>

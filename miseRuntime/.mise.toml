@@ -1,0 +1,34 @@
+[tools]
+node = "18"
+
+[env]
+NODE_ENV = "development"
+APP_NAME = "mi-api-node"
+PORT = "3000"
+API_URL = "http://localhost:3000"
+
+[tasks.install]
+description = "Instala dependencias"
+run = "npm install"
+
+[tasks.dev]
+description = "Levanta la app en modo desarrollo"
+run = "node index.js"
+
+[tasks.check-env]
+description = "Muestra variables de entorno cargadas por mise"
+run = [
+  "echo APP_NAME=$APP_NAME",
+  "echo NODE_ENV=$NODE_ENV",
+  "echo PORT=$PORT",
+  "echo API_URL=$API_URL"
+]
+
+[tasks.node-version]
+description = "Muestra la version activa de Node"
+run = "node -v"
+
+[tasks.start]
+description = "Task principal"
+depends = ["node-version", "check-env", "dev"]
+run = "echo Iniciando proyecto..."

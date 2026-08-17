@@ -1,0 +1,109 @@
+
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height:  81vh;
+}
+
+#root > header {
+  padding:  10px 20px;
+  background-color: #111;
+  color:  #f1faee;
+}
+
+.container {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  margin: 10px; /* Ajusta según sea necesario para el espacio entre las columnas */
+}
+
+#root > main {
+  flex:  1;
+  padding:  10px 20px;
+  background-color:  #EEE;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Diagram {
+  margin-top:  60px;
+  margin-bottom:  60px;
+  flex:  1;
+  max-width:  1000px;
+  border:  1px solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.reactflow-wrapper {
+  flex:  1;
+  z-index:  1;
+}
+
+.sidebar {
+  position: absolute;
+  left:  9px;
+  bottom:  400px;
+  width:  80px;
+  padding: 10px;
+  transition:  opacity .2s linear;
+  z-index:  2;
+  font-size:  12px;
+
+ 
+}
+
+.sidebar:hover {
+  opacity:  1;
+}
+
+.description {
+  margin-bottom:  10px;
+}
+
+.dndnode_end {
+  align-items: center;
+  border: 1px solid #464648;
+  background:  #FF6B6B;
+  border-radius: 10px;
+  cursor: grab;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  padding: 4px;
+  margin-bottom:  10px;
+}
+
+.dndnode_start {
+  align-items: center;
+  border: 1px solid #464648;
+  background:  #00A896;
+  border-radius: 10px;
+  cursor: grab;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  padding: 4px;
+  margin-bottom:  10px;
+}
+
+.dndnode_conversation {
+  align-items: center;
+  border: 1px solid #464648;
+  background:  #F2EFE9;
+  border-radius: 10px;
+  cursor: grab;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  padding: 4px;
+  margin-bottom:  10px;
+}
+
